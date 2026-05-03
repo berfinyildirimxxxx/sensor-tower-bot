@@ -1,0 +1,73 @@
+name: Daily Alert
+
+on:
+  schedule:
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Run the bot in Slack test mode"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  run-daily-alert:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Istanbul
+      SENSOR_TOWER_API_KEY: ${{ secrets.SENSOR_TOWER_API_KEY }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot in test mode
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_mode }}
+        run: python main.py --test
+
+      - name: Run bot
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_mode }}
+        run: python main.py
+
+      - name: Commit sent games registry updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git diff --quiet sent_games.json || (git add sent_games.json && git commit -m "chore: update sent games registry [skip ci]" && git push)
+
+      - name: Notify Slack on failure
+        if: failure()
+        run: |
+          python - <<'PY'
+          import os
+          import requests
+
+          webhook_url = os.environ["SLACK_WEBHOOK_URL"]
+          payload = {
+              "blocks": [
+                  {
+                      "type": "section",
+                      "text": {
+                          "type": "mrkdwn",
+                          "text": "❌ Sensor Tower bot failed today, check GitHub Actions logs."
+                      }
+                  }
+              ]
+          }
+          requests.post(webhook_url, json=payload, timeout=15)
+          PY
