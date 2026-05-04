@@ -21,6 +21,8 @@ jobs:
       TZ: Europe/Istanbul
       SENSOR_TOWER_API_KEY: ${{ secrets.SENSOR_TOWER_API_KEY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+      GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
