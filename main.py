@@ -38,8 +38,8 @@ def main() -> None:
         logging.info("Fetching games to send first one to Slack...")
         games = fetch_new_games(
             min_installs=500,
-            max_installs=30000,
-            release_lookback_days=30,
+            max_installs=50000,
+            release_lookback_days=60,
         )
         if not games:
             print("❌ No games fetched, cannot test.")
@@ -70,8 +70,8 @@ def main() -> None:
     logging.info("Fetching games from Sensor Tower.")
     games = fetch_new_games(
         min_installs=500,
-        max_installs=30000,
-        release_lookback_days=30,
+        max_installs=50000,
+        release_lookback_days=60,
     )
     logging.info("Fetched %s games.", len(games))
     print(f"Fetched {len(games)} games.")
