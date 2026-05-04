@@ -85,7 +85,7 @@ def main() -> None:
     scored_games: list[dict[str, Any]] = []
     for game in games:
         score, reason, mechanic = score_game(game)
-        if score >= 70:
+        if score >= 40:
             scored_games.append(
                 {
                     "game": game,
