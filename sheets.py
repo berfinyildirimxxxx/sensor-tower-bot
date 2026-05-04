@@ -19,8 +19,9 @@ SCOPES = [
 ]
 
 
-def _build_row(game: dict[str, Any]) -> list[str]:
-    """Build a sheet row from a game payload."""
+def _build_row(item: dict[str, Any]) -> list[str]:
+    """Build a sheet row from a scored game payload."""
+    game = item["game"]
     launch_date = str(game.get("launch_date") or "").strip()
     if "T" in launch_date:
         launch_date = launch_date.split("T")[0]
@@ -38,11 +39,13 @@ def _build_row(game: dict[str, Any]) -> list[str]:
         str(game.get("country") or ""),
         launch_date,
         installs_text,
+        str(item.get("score", 0)),
+        str(item.get("mechanic", "")),
         str(game.get("store_url") or ""),
     ]
 
 
-def write_to_sheet(games: list[dict[str, Any]]) -> str | None:
+def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
     """Write today's games to a new tab in the Google Sheet.
 
     Returns the sheet URL on success, None on failure.
@@ -53,7 +56,7 @@ def write_to_sheet(games: list[dict[str, Any]]) -> str | None:
     Loads sheet ID from GOOGLE_SHEET_ID env var.
     Returns None and logs error on any failure — never crashes.
     """
-    if not games:
+    if not scored_games:
         logger.info("No games to write to Google Sheets.")
         return None
 
@@ -82,6 +85,8 @@ def write_to_sheet(games: list[dict[str, Any]]) -> str | None:
             "Country",
             "Release Date",
             "Installs",
+            "Relevance Score",
+            "Mechanic",
             "Store URL",
         ]
 
@@ -90,7 +95,7 @@ def write_to_sheet(games: list[dict[str, Any]]) -> str | None:
         except gspread.WorksheetNotFound:
             worksheet = spreadsheet.add_worksheet(
                 title=tab_name,
-                rows=max(len(games) + 10, 100),
+                rows=max(len(scored_games) + 10, 100),
                 cols=len(headers),
             )
 
@@ -98,7 +103,12 @@ def write_to_sheet(games: list[dict[str, Any]]) -> str | None:
         if not existing_values:
             worksheet.append_row(headers, value_input_option="RAW")
 
-        rows = [_build_row(game) for game in games]
+        sorted_games = sorted(
+            scored_games,
+            key=lambda item: int(item.get("score", 0)),
+            reverse=True,
+        )
+        rows = [_build_row(item) for item in sorted_games]
         worksheet.append_rows(rows, value_input_option="RAW")
         return spreadsheet.url
     except Exception as exc:
