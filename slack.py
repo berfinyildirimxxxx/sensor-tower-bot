@@ -42,6 +42,16 @@ def _platform_label(platform: Any) -> str:
     return "?"
 
 
+def _format_release_date(value: Any) -> str:
+    """Format ISO date string to YYYY-MM-DD. Return '?' if empty/invalid."""
+    text = str(value or "").strip()
+    if not text:
+        return "?"
+    if "T" in text:
+        return text.split("T")[0]
+    return text
+
+
 def _valid_screenshot_urls(game: dict[str, Any]) -> list[str]:
     """Return up to four valid HTTP(S) screenshot URLs from a game payload."""
     raw_screenshots = game.get("screenshots", [])
@@ -113,6 +123,7 @@ def send_game_alert(
     name = _truncate_text(game.get("name"), "?")
     publisher = _truncate_text(game.get("publisher"), "?")
     country = _truncate_text(game.get("country"), "?")
+    release_date = _format_release_date(game.get("launch_date"))
     installs = _normalize_installs(game.get("installs_last_day"))
     platform = _platform_label(game.get("platform"))
     relevance = _normalize_installs(score)
@@ -132,6 +143,7 @@ def send_game_alert(
                 {"type": "mrkdwn", "text": f"*👤 Developer:*\n{publisher}"},
                 {"type": "mrkdwn", "text": f"*📱 Platform:*\n{platform}"},
                 {"type": "mrkdwn", "text": f"*🌍 Country:*\n{country}"},
+                {"type": "mrkdwn", "text": f"*📅 Release:*\n{release_date}"},
                 {"type": "mrkdwn", "text": f"*📊 Installs:*\n{installs:,}"},
                 {"type": "mrkdwn", "text": f"*⭐ Relevance:*\n{relevance}/100"},
                 {"type": "mrkdwn", "text": f"*🎯 Mechanic:*\n{mechanic_text}"},
