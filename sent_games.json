@@ -1,1 +1,1188 @@
-{ "sent": {} }
+{
+  "sent": {
+    "6761481875": {
+      "name": "Footy Games",
+      "fid": "6761481875",
+      "app_id": "6761481875",
+      "store_url": "https://apps.apple.com/app/id6761481875",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:56.892306Z"
+    },
+    "6757004918": {
+      "name": "Blind tank",
+      "fid": "6757004918",
+      "app_id": "6757004918",
+      "store_url": "https://apps.apple.com/app/id6757004918",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:57.307006Z"
+    },
+    "6760118786": {
+      "name": "Yarn Away Loop",
+      "fid": "6760118786",
+      "app_id": "6760118786",
+      "store_url": "https://apps.apple.com/app/id6760118786",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:57.758461Z"
+    },
+    "6760922051": {
+      "name": "Dial Tone - Rhythm Game",
+      "fid": "6760922051",
+      "app_id": "6760922051",
+      "store_url": "https://apps.apple.com/app/id6760922051",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:58.184580Z"
+    },
+    "6757820026": {
+      "name": "Sushi Sort: Yummy Puzzle",
+      "fid": "6757820026",
+      "app_id": "6757820026",
+      "store_url": "https://apps.apple.com/app/id6757820026",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:58.731835Z"
+    },
+    "6759945940": {
+      "name": "拼图我最行 - 拼图达人 益智力拼图大作战",
+      "fid": "6759945940",
+      "app_id": "6759945940",
+      "store_url": "https://apps.apple.com/app/id6759945940",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:58.988856Z"
+    },
+    "6760633183": {
+      "name": "Arrow Master - Maze Escape Out",
+      "fid": "6760633183",
+      "app_id": "6760633183",
+      "store_url": "https://apps.apple.com/app/id6760633183",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:59.394920Z"
+    },
+    "6760967757": {
+      "name": "Samotxis Mcveli",
+      "fid": "6760967757",
+      "app_id": "6760967757",
+      "store_url": "https://apps.apple.com/app/id6760967757",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:58:59.857718Z"
+    },
+    "6761234362": {
+      "name": "Sweet Match Tile",
+      "fid": "6761234362",
+      "app_id": "6761234362",
+      "store_url": "https://apps.apple.com/app/id6761234362",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:00.305466Z"
+    },
+    "6761249989": {
+      "name": "Pixel Loop Blast",
+      "fid": "6761249989",
+      "app_id": "6761249989",
+      "store_url": "https://apps.apple.com/app/id6761249989",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:00.813572Z"
+    },
+    "6753683553": {
+      "name": "Angry Birds Match World",
+      "fid": "6753683553",
+      "app_id": "6753683553",
+      "store_url": "https://apps.apple.com/app/id6753683553",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:01.331315Z"
+    },
+    "6759152358": {
+      "name": "GardenScapes Khu vườn huyền bí",
+      "fid": "6759152358",
+      "app_id": "6759152358",
+      "store_url": "https://apps.apple.com/app/id6759152358",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:01.576445Z"
+    },
+    "6760542746": {
+      "name": "Block Picture Jam",
+      "fid": "6760542746",
+      "app_id": "6760542746",
+      "store_url": "https://apps.apple.com/app/id6760542746",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:01.986913Z"
+    },
+    "6761654191": {
+      "name": "Block Craft - Puzzle Games",
+      "fid": "6761654191",
+      "app_id": "6761654191",
+      "store_url": "https://apps.apple.com/app/id6761654191",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:02.346746Z"
+    },
+    "6760461442": {
+      "name": "Color Sort Solitaire",
+      "fid": "6760461442",
+      "app_id": "6760461442",
+      "store_url": "https://apps.apple.com/app/id6760461442",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:02.785653Z"
+    },
+    "6760471048": {
+      "name": "Goodsy Match: Puzzle Game",
+      "fid": "6760471048",
+      "app_id": "6760471048",
+      "store_url": "https://apps.apple.com/app/id6760471048",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:03.146258Z"
+    },
+    "6761415566": {
+      "name": "CrayonRoad",
+      "fid": "6761415566",
+      "app_id": "6761415566",
+      "store_url": "https://apps.apple.com/app/id6761415566",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:03.386341Z"
+    },
+    "6761688528": {
+      "name": "Recall Colors - Memorize Hue",
+      "fid": "6761688528",
+      "app_id": "6761688528",
+      "store_url": "https://apps.apple.com/app/id6761688528",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:03.816332Z"
+    },
+    "6761743043": {
+      "name": "画个箭头：万箭归宗，一个箭头666",
+      "fid": "6761743043",
+      "app_id": "6761743043",
+      "store_url": "https://apps.apple.com/app/id6761743043",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:04.150528Z"
+    },
+    "6761752384": {
+      "name": "Ants Flow",
+      "fid": "6761752384",
+      "app_id": "6761752384",
+      "store_url": "https://apps.apple.com/app/id6761752384",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:04.514745Z"
+    },
+    "6761811489": {
+      "name": "Cats And City Barriers",
+      "fid": "6761811489",
+      "app_id": "6761811489",
+      "store_url": "https://apps.apple.com/app/id6761811489",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:04.871213Z"
+    },
+    "6761048822": {
+      "name": "Triple Match Color",
+      "fid": "6761048822",
+      "app_id": "6761048822",
+      "store_url": "https://apps.apple.com/app/id6761048822",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:05.281510Z"
+    },
+    "6761822962": {
+      "name": "跑了只羊：指尖上的羊",
+      "fid": "6761822962",
+      "app_id": "6761822962",
+      "store_url": "https://apps.apple.com/app/id6761822962",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:05.620008Z"
+    },
+    "6761446587": {
+      "name": "Beads Coloring: Jewel Pixel 3D",
+      "fid": "6761446587",
+      "app_id": "6761446587",
+      "store_url": "https://apps.apple.com/app/id6761446587",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:06.080111Z"
+    },
+    "6759363847": {
+      "name": "Voice of the Sea (Mystery F2P)",
+      "fid": "6759363847",
+      "app_id": "6759363847",
+      "store_url": "https://apps.apple.com/app/id6759363847",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:06.479735Z"
+    },
+    "6761767133": {
+      "name": "Hollow Arc",
+      "fid": "6761767133",
+      "app_id": "6761767133",
+      "store_url": "https://apps.apple.com/app/id6761767133",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:06.665365Z"
+    },
+    "6761703116": {
+      "name": "Solitaire Word Connect",
+      "fid": "6761703116",
+      "app_id": "6761703116",
+      "store_url": "https://apps.apple.com/app/id6761703116",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:07.043740Z"
+    },
+    "6761709896": {
+      "name": "Sorta Coffee",
+      "fid": "6761709896",
+      "app_id": "6761709896",
+      "store_url": "https://apps.apple.com/app/id6761709896",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:07.507601Z"
+    },
+    "6761885574": {
+      "name": "color block crush",
+      "fid": "6761885574",
+      "app_id": "6761885574",
+      "store_url": "https://apps.apple.com/app/id6761885574",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:07.922912Z"
+    },
+    "6761907008": {
+      "name": "脱出ゲーム ネオン街の裏路地",
+      "fid": "6761907008",
+      "app_id": "6761907008",
+      "store_url": "https://apps.apple.com/app/id6761907008",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:08.300835Z"
+    },
+    "6760856670": {
+      "name": "脱出ゲーム TORI",
+      "fid": "6760856670",
+      "app_id": "6760856670",
+      "store_url": "https://apps.apple.com/app/id6760856670",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:08.812524Z"
+    },
+    "6761509314": {
+      "name": "Block Art: Gem Sort Puzzle",
+      "fid": "6761509314",
+      "app_id": "6761509314",
+      "store_url": "https://apps.apple.com/app/id6761509314",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:09.231672Z"
+    },
+    "6761602739": {
+      "name": "Beads Escape: Coloring Puzzle",
+      "fid": "6761602739",
+      "app_id": "6761602739",
+      "store_url": "https://apps.apple.com/app/id6761602739",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:09.652785Z"
+    },
+    "6759596236": {
+      "name": "Oh Jellies!",
+      "fid": "6759596236",
+      "app_id": "6759596236",
+      "store_url": "https://apps.apple.com/app/id6759596236",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:10.030418Z"
+    },
+    "6760691377": {
+      "name": "再消一关",
+      "fid": "6760691377",
+      "app_id": "6760691377",
+      "store_url": "https://apps.apple.com/app/id6760691377",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:10.275486Z"
+    },
+    "6761104093": {
+      "name": "Pixel Shooter :Block Puzzle",
+      "fid": "6761104093",
+      "app_id": "6761104093",
+      "store_url": "https://apps.apple.com/app/id6761104093",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:10.631072Z"
+    },
+    "6746919411": {
+      "name": "Nubby's Number Factory",
+      "fid": "6746919411",
+      "app_id": "6746919411",
+      "store_url": "https://apps.apple.com/app/id6746919411",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:11.170389Z"
+    },
+    "6761989377": {
+      "name": "Jewel Sort Coloring",
+      "fid": "6761989377",
+      "app_id": "6761989377",
+      "store_url": "https://apps.apple.com/app/id6761989377",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:11.408764Z"
+    },
+    "6754161015": {
+      "name": "Nubby's Number Factory Lite",
+      "fid": "6754161015",
+      "app_id": "6754161015",
+      "store_url": "https://apps.apple.com/app/id6754161015",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:12.054693Z"
+    },
+    "6760191624": {
+      "name": "Slice Loop!",
+      "fid": "6760191624",
+      "app_id": "6760191624",
+      "store_url": "https://apps.apple.com/app/id6760191624",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:12.494278Z"
+    },
+    "6760377931": {
+      "name": "Mahjong Rumble: Win Real Cash",
+      "fid": "6760377931",
+      "app_id": "6760377931",
+      "store_url": "https://apps.apple.com/app/id6760377931",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:12.862948Z"
+    },
+    "6760545144": {
+      "name": "Crime Shadows: Spotlight F2P",
+      "fid": "6760545144",
+      "app_id": "6760545144",
+      "store_url": "https://apps.apple.com/app/id6760545144",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:13.558889Z"
+    },
+    "6760887135": {
+      "name": "Hidden Objects: Hunter Journey",
+      "fid": "6760887135",
+      "app_id": "6760887135",
+      "store_url": "https://apps.apple.com/app/id6760887135",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:14.286415Z"
+    },
+    "6761343374": {
+      "name": "LOOK 脱出ゲーム",
+      "fid": "6761343374",
+      "app_id": "6761343374",
+      "store_url": "https://apps.apple.com/app/id6761343374",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:14.713962Z"
+    },
+    "6761900868": {
+      "name": "Hexascapes - Block Puzzle",
+      "fid": "6761900868",
+      "app_id": "6761900868",
+      "store_url": "https://apps.apple.com/app/id6761900868",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:15.106033Z"
+    },
+    "6761990996": {
+      "name": "Fuzzy's Ice Cream: Scream Game",
+      "fid": "6761990996",
+      "app_id": "6761990996",
+      "store_url": "https://apps.apple.com/app/id6761990996",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:15.484032Z"
+    },
+    "6759004578": {
+      "name": "Paint Loop: Color Puzzle",
+      "fid": "6759004578",
+      "app_id": "6759004578",
+      "store_url": "https://apps.apple.com/app/id6759004578",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:15.810891Z"
+    },
+    "6761990157": {
+      "name": "Fruit Flow: Color Sort",
+      "fid": "6761990157",
+      "app_id": "6761990157",
+      "store_url": "https://apps.apple.com/app/id6761990157",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:16.303980Z"
+    },
+    "6758542324": {
+      "name": "我脑子大了",
+      "fid": "6758542324",
+      "app_id": "6758542324",
+      "store_url": "https://apps.apple.com/app/id6758542324",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:16.540019Z"
+    },
+    "6760829170": {
+      "name": "射的でポイ活",
+      "fid": "6760829170",
+      "app_id": "6760829170",
+      "store_url": "https://apps.apple.com/app/id6760829170",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:16.866311Z"
+    },
+    "6761107495": {
+      "name": "GameDen - Offline Games",
+      "fid": "6761107495",
+      "app_id": "6761107495",
+      "store_url": "https://apps.apple.com/app/id6761107495",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:17.291330Z"
+    },
+    "6761488276": {
+      "name": "CreateDun : Tower Defense",
+      "fid": "6761488276",
+      "app_id": "6761488276",
+      "store_url": "https://apps.apple.com/app/id6761488276",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:17.660770Z"
+    },
+    "6754275346": {
+      "name": "Zishes – Marketplace",
+      "fid": "6754275346",
+      "app_id": "6754275346",
+      "store_url": "https://apps.apple.com/app/id6754275346",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:18.156592Z"
+    },
+    "6758489771": {
+      "name": "織夢花園：森系輕經營",
+      "fid": "6758489771",
+      "app_id": "6758489771",
+      "store_url": "https://apps.apple.com/app/id6758489771",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:18.679467Z"
+    },
+    "6760818996": {
+      "name": "TopTop: 게임, 채팅 & 친구들",
+      "fid": "6760818996",
+      "app_id": "6760818996",
+      "store_url": "https://apps.apple.com/app/id6760818996",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:18.925692Z"
+    },
+    "6761523808": {
+      "name": "Chase Brainzot: Run for",
+      "fid": "6761523808",
+      "app_id": "6761523808",
+      "store_url": "https://apps.apple.com/app/id6761523808",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:19.530287Z"
+    },
+    "6761583812": {
+      "name": "タップガールズ 〜 東方 紅魔館編",
+      "fid": "6761583812",
+      "app_id": "6761583812",
+      "store_url": "https://apps.apple.com/app/id6761583812",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:19.896795Z"
+    },
+    "6754019390": {
+      "name": "朵拉的露营餐车",
+      "fid": "6754019390",
+      "app_id": "6754019390",
+      "store_url": "https://apps.apple.com/app/id6754019390",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:20.076040Z"
+    },
+    "6759599568": {
+      "name": "Oceanary",
+      "fid": "6759599568",
+      "app_id": "6759599568",
+      "store_url": "https://apps.apple.com/app/id6759599568",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:20.316695Z"
+    },
+    "6759997224": {
+      "name": "巡回中！即タイホ！",
+      "fid": "6759997224",
+      "app_id": "6759997224",
+      "store_url": "https://apps.apple.com/app/id6759997224",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:20.704071Z"
+    },
+    "6739824826": {
+      "name": "Zombie World War: Storm",
+      "fid": "6739824826",
+      "app_id": "6739824826",
+      "store_url": "https://apps.apple.com/app/id6739824826",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:21.329020Z"
+    },
+    "6758645050": {
+      "name": "ポケシル ~ ポケットシールちょう ~",
+      "fid": "6758645050",
+      "app_id": "6758645050",
+      "store_url": "https://apps.apple.com/app/id6758645050",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:21.568634Z"
+    },
+    "6761612147": {
+      "name": "Animal Zoo: Voice Record",
+      "fid": "6761612147",
+      "app_id": "6761612147",
+      "store_url": "https://apps.apple.com/app/id6761612147",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:22.045006Z"
+    },
+    "6761725707": {
+      "name": "Diesel Engine Wheel Up Shot 3D",
+      "fid": "6761725707",
+      "app_id": "6761725707",
+      "store_url": "https://apps.apple.com/app/id6761725707",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:22.648162Z"
+    },
+    "6757777250": {
+      "name": "Bloom Haven: Garden Glow Up",
+      "fid": "6757777250",
+      "app_id": "6757777250",
+      "store_url": "https://apps.apple.com/app/id6757777250",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:23.049048Z"
+    },
+    "6761821101": {
+      "name": "Still13",
+      "fid": "6761821101",
+      "app_id": "6761821101",
+      "store_url": "https://apps.apple.com/app/id6761821101",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:23.494951Z"
+    },
+    "6761974965": {
+      "name": "Max Reinbou Choko",
+      "fid": "6761974965",
+      "app_id": "6761974965",
+      "store_url": "https://apps.apple.com/app/id6761974965",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:23.983994Z"
+    },
+    "6756631647": {
+      "name": "MOTU Skeletor: Until Next Time",
+      "fid": "6756631647",
+      "app_id": "6756631647",
+      "store_url": "https://apps.apple.com/app/id6756631647",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:24.225894Z"
+    },
+    "6761649257": {
+      "name": "Chromatch: Color game",
+      "fid": "6761649257",
+      "app_id": "6761649257",
+      "store_url": "https://apps.apple.com/app/id6761649257",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:24.456630Z"
+    },
+    "6754686102": {
+      "name": "JUMP 全明星亂鬥(CBT)",
+      "fid": "6754686102",
+      "app_id": "6754686102",
+      "store_url": "https://apps.apple.com/app/id6754686102",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:24.768040Z"
+    },
+    "6756245705": {
+      "name": "Classic Solitaire: Gold Dash",
+      "fid": "6756245705",
+      "app_id": "6756245705",
+      "store_url": "https://apps.apple.com/app/id6756245705",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:25.107978Z"
+    },
+    "6760550068": {
+      "name": "Angry Birds Rush",
+      "fid": "6760550068",
+      "app_id": "6760550068",
+      "store_url": "https://apps.apple.com/app/id6760550068",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:25.344785Z"
+    },
+    "6761002912": {
+      "name": "Love Love Mystery Club",
+      "fid": "6761002912",
+      "app_id": "6761002912",
+      "store_url": "https://apps.apple.com/app/id6761002912",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:25.862770Z"
+    },
+    "6761248786": {
+      "name": "Fairytale Jigsaw Puzzles",
+      "fid": "6761248786",
+      "app_id": "6761248786",
+      "store_url": "https://apps.apple.com/app/id6761248786",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:26.439931Z"
+    },
+    "6761824373": {
+      "name": "Lucky Scoop - DIY Packing",
+      "fid": "6761824373",
+      "app_id": "6761824373",
+      "store_url": "https://apps.apple.com/app/id6761824373",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:26.746001Z"
+    },
+    "6761850304": {
+      "name": "Win Play 2026",
+      "fid": "6761850304",
+      "app_id": "6761850304",
+      "store_url": "https://apps.apple.com/app/id6761850304",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:27.159873Z"
+    },
+    "6761895562": {
+      "name": "Build Fight",
+      "fid": "6761895562",
+      "app_id": "6761895562",
+      "store_url": "https://apps.apple.com/app/id6761895562",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:27.533545Z"
+    },
+    "6762035728": {
+      "name": "One Block Island: Cozy Farming",
+      "fid": "6762035728",
+      "app_id": "6762035728",
+      "store_url": "https://apps.apple.com/app/id6762035728",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:27.871413Z"
+    },
+    "6754688265": {
+      "name": "最終曙光（Last Light）",
+      "fid": "6754688265",
+      "app_id": "6754688265",
+      "store_url": "https://apps.apple.com/app/id6754688265",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:28.123254Z"
+    },
+    "6759168471": {
+      "name": "Mahbuse",
+      "fid": "6759168471",
+      "app_id": "6759168471",
+      "store_url": "https://apps.apple.com/app/id6759168471",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:28.765177Z"
+    },
+    "6759999829": {
+      "name": "Mini ASMR Games Clean Makeover",
+      "fid": "6759999829",
+      "app_id": "6759999829",
+      "store_url": "https://apps.apple.com/app/id6759999829",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:29.370180Z"
+    },
+    "6760688235": {
+      "name": "Fish Farm Tycoon !",
+      "fid": "6760688235",
+      "app_id": "6760688235",
+      "store_url": "https://apps.apple.com/app/id6760688235",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:29.737350Z"
+    },
+    "6762112798": {
+      "name": "Skewer Align Sizzle",
+      "fid": "6762112798",
+      "app_id": "6762112798",
+      "store_url": "https://apps.apple.com/app/id6762112798",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:30.153721Z"
+    },
+    "6762129816": {
+      "name": "Towerecruits",
+      "fid": "6762129816",
+      "app_id": "6762129816",
+      "store_url": "https://apps.apple.com/app/id6762129816",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:30.686838Z"
+    },
+    "6762170612": {
+      "name": "67 Speed: Viral Brainrot Game",
+      "fid": "6762170612",
+      "app_id": "6762170612",
+      "store_url": "https://apps.apple.com/app/id6762170612",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:31.119576Z"
+    },
+    "6755883259": {
+      "name": "Angry Plane",
+      "fid": "6755883259",
+      "app_id": "6755883259",
+      "store_url": "https://apps.apple.com/app/id6755883259",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:31.578930Z"
+    },
+    "6757215581": {
+      "name": "Last Survival: Zombie Defense",
+      "fid": "6757215581",
+      "app_id": "6757215581",
+      "store_url": "https://apps.apple.com/app/id6757215581",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:31.936983Z"
+    },
+    "6758811307": {
+      "name": "農園うさぎ by クラシル",
+      "fid": "6758811307",
+      "app_id": "6758811307",
+      "store_url": "https://apps.apple.com/app/id6758811307",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:32.326015Z"
+    },
+    "6762253696": {
+      "name": "Ayntharel",
+      "fid": "6762253696",
+      "app_id": "6762253696",
+      "store_url": "https://apps.apple.com/app/id6762253696",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:32.727511Z"
+    },
+    "6757417830": {
+      "name": "Word Box: Association",
+      "fid": "6757417830",
+      "app_id": "6757417830",
+      "store_url": "https://apps.apple.com/app/id6757417830",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:33.124562Z"
+    },
+    "6762213230": {
+      "name": "67 Speed - 67 Game Challenge",
+      "fid": "6762213230",
+      "app_id": "6762213230",
+      "store_url": "https://apps.apple.com/app/id6762213230",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:33.468118Z"
+    },
+    "6759153118": {
+      "name": "Imposter Game: Word Party",
+      "fid": "6759153118",
+      "app_id": "6759153118",
+      "store_url": "https://apps.apple.com/app/id6759153118",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:33.947794Z"
+    },
+    "6760336172": {
+      "name": "Imposter (Party Word Game)",
+      "fid": "6760336172",
+      "app_id": "6760336172",
+      "store_url": "https://apps.apple.com/app/id6760336172",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:34.301640Z"
+    },
+    "6761820736": {
+      "name": "Word & Logic Mini Puzzle Games",
+      "fid": "6761820736",
+      "app_id": "6761820736",
+      "store_url": "https://apps.apple.com/app/id6761820736",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:34.665695Z"
+    },
+    "6761893296": {
+      "name": "RBX Fast Card Guess",
+      "fid": "6761893296",
+      "app_id": "6761893296",
+      "store_url": "https://apps.apple.com/app/id6761893296",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:35.050525Z"
+    },
+    "6743102309": {
+      "name": "Rising Star Football",
+      "fid": "6743102309",
+      "app_id": "6743102309",
+      "store_url": "https://apps.apple.com/app/id6743102309",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:35.555397Z"
+    },
+    "6744320961": {
+      "name": "美男惡徒 - 闇夜中綻放的邪惡之戀",
+      "fid": "6744320961",
+      "app_id": "6744320961",
+      "store_url": "https://apps.apple.com/app/id6744320961",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:35.935633Z"
+    },
+    "6760487650": {
+      "name": "Morphs Spelling Game",
+      "fid": "6760487650",
+      "app_id": "6760487650",
+      "store_url": "https://apps.apple.com/app/id6760487650",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:36.342341Z"
+    },
+    "6762191704": {
+      "name": "Letter Out",
+      "fid": "6762191704",
+      "app_id": "6762191704",
+      "store_url": "https://apps.apple.com/app/id6762191704",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:36.739726Z"
+    },
+    "6762340834": {
+      "name": "小镇花店：梦想词语铺",
+      "fid": "6762340834",
+      "app_id": "6762340834",
+      "store_url": "https://apps.apple.com/app/id6762340834",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:37.147851Z"
+    },
+    "6756664092": {
+      "name": "You Know: Associations",
+      "fid": "6756664092",
+      "app_id": "6756664092",
+      "store_url": "https://apps.apple.com/app/id6756664092",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:37.477513Z"
+    },
+    "6761984934": {
+      "name": "凡人修真錄：文字放置版",
+      "fid": "6761984934",
+      "app_id": "6761984934",
+      "store_url": "https://apps.apple.com/app/id6761984934",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:37.787261Z"
+    },
+    "6760337916": {
+      "name": "解压有一套 - 词语分类纸牌大师",
+      "fid": "6760337916",
+      "app_id": "6760337916",
+      "store_url": "https://apps.apple.com/app/id6760337916",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:38.027656Z"
+    },
+    "6761298326": {
+      "name": "Mahj Parlour: American Mahjong",
+      "fid": "6761298326",
+      "app_id": "6761298326",
+      "store_url": "https://apps.apple.com/app/id6761298326",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:38.465921Z"
+    },
+    "6761831655": {
+      "name": "Mahjong Pair! - Tile Match",
+      "fid": "6761831655",
+      "app_id": "6761831655",
+      "store_url": "https://apps.apple.com/app/id6761831655",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:38.839823Z"
+    },
+    "6749407960": {
+      "name": "Bounty Go!",
+      "fid": "6749407960",
+      "app_id": "6749407960",
+      "store_url": "https://apps.apple.com/app/id6749407960",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:39.403610Z"
+    },
+    "6758642441": {
+      "name": "마춘돌 : 마루랑 춘배랑 오목 알까기",
+      "fid": "6758642441",
+      "app_id": "6758642441",
+      "store_url": "https://apps.apple.com/app/id6758642441",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:39.642794Z"
+    },
+    "6758669803": {
+      "name": "Witchcraft!",
+      "fid": "6758669803",
+      "app_id": "6758669803",
+      "store_url": "https://apps.apple.com/app/id6758669803",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:40.038918Z"
+    },
+    "6761531877": {
+      "name": "富贵台球:精心益智",
+      "fid": "6761531877",
+      "app_id": "6761531877",
+      "store_url": "https://apps.apple.com/app/id6761531877",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:40.384906Z"
+    },
+    "6761960575": {
+      "name": "ミステリーボード(Mystery Board)",
+      "fid": "6761960575",
+      "app_id": "6761960575",
+      "store_url": "https://apps.apple.com/app/id6761960575",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:40.623713Z"
+    },
+    "6760841440": {
+      "name": "chessMMO.gg",
+      "fid": "6760841440",
+      "app_id": "6760841440",
+      "store_url": "https://apps.apple.com/app/id6760841440",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:41.078477Z"
+    },
+    "6761088652": {
+      "name": "Arrow Escape: Arrows Go 3D",
+      "fid": "6761088652",
+      "app_id": "6761088652",
+      "store_url": "https://apps.apple.com/app/id6761088652",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:41.444724Z"
+    },
+    "6761676699": {
+      "name": "Patches Rectangle Logic Puzzle",
+      "fid": "6761676699",
+      "app_id": "6761676699",
+      "store_url": "https://apps.apple.com/app/id6761676699",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:41.832245Z"
+    },
+    "6758047069": {
+      "name": "Shut the Box: Classic Dice",
+      "fid": "6758047069",
+      "app_id": "6758047069",
+      "store_url": "https://apps.apple.com/app/id6758047069",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:42.224462Z"
+    },
+    "6759380444": {
+      "name": "Hearthside: A Teeny Tiny Game",
+      "fid": "6759380444",
+      "app_id": "6759380444",
+      "store_url": "https://apps.apple.com/app/id6759380444",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:42.593085Z"
+    },
+    "6762347958": {
+      "name": "Money Match n Rush",
+      "fid": "6762347958",
+      "app_id": "6762347958",
+      "store_url": "https://apps.apple.com/app/id6762347958",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:42.992615Z"
+    },
+    "6762517201": {
+      "name": "Domina Kurdi - دۆمینەی کوردی",
+      "fid": "6762517201",
+      "app_id": "6762517201",
+      "store_url": "https://apps.apple.com/app/id6762517201",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:43.327350Z"
+    },
+    "6762518289": {
+      "name": "拼豆钻石画 - 数字填色小游戏",
+      "fid": "6762518289",
+      "app_id": "6762518289",
+      "store_url": "https://apps.apple.com/app/id6762518289",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:43.631117Z"
+    },
+    "6761166114": {
+      "name": "Block Pair: No Solo!",
+      "fid": "6761166114",
+      "app_id": "6761166114",
+      "store_url": "https://apps.apple.com/app/id6761166114",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:43.868115Z"
+    },
+    "6747752407": {
+      "name": "Gambonanza",
+      "fid": "6747752407",
+      "app_id": "6747752407",
+      "store_url": "https://apps.apple.com/app/id6747752407",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:44.316111Z"
+    },
+    "6756160382": {
+      "name": "Merge Age: Stone Haven",
+      "fid": "6756160382",
+      "app_id": "6756160382",
+      "store_url": "https://apps.apple.com/app/id6756160382",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:44.901542Z"
+    },
+    "6758811569": {
+      "name": "Card World: Rummy 500 & Gin",
+      "fid": "6758811569",
+      "app_id": "6758811569",
+      "store_url": "https://apps.apple.com/app/id6758811569",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:45.536930Z"
+    },
+    "6761962135": {
+      "name": "Fruit Away",
+      "fid": "6761962135",
+      "app_id": "6761962135",
+      "store_url": "https://apps.apple.com/app/id6761962135",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:45.996991Z"
+    },
+    "6762193317": {
+      "name": "Heritage Hunter: Explore World",
+      "fid": "6762193317",
+      "app_id": "6762193317",
+      "store_url": "https://apps.apple.com/app/id6762193317",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:46.215258Z"
+    },
+    "6758942126": {
+      "name": "Tizi Aqua Park & Water World",
+      "fid": "6758942126",
+      "app_id": "6758942126",
+      "store_url": "https://apps.apple.com/app/id6758942126",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:46.592751Z"
+    },
+    "6762599536": {
+      "name": "Project Eva",
+      "fid": "6762599536",
+      "app_id": "6762599536",
+      "store_url": "https://apps.apple.com/app/id6762599536",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:46.910932Z"
+    },
+    "6757946399": {
+      "name": "ABC Letter Tracing Kids Games",
+      "fid": "6757946399",
+      "app_id": "6757946399",
+      "store_url": "https://apps.apple.com/app/id6757946399",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:47.426636Z"
+    },
+    "1279682900": {
+      "name": "FantasyTown",
+      "fid": "1279682900",
+      "app_id": "1279682900",
+      "store_url": "https://apps.apple.com/app/id1279682900",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:47.915397Z"
+    },
+    "6736413272": {
+      "name": "Barbie™ Horse Ride & Rescue",
+      "fid": "6736413272",
+      "app_id": "6736413272",
+      "store_url": "https://apps.apple.com/app/id6736413272",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:48.459604Z"
+    },
+    "6760290695": {
+      "name": "FantaGiro",
+      "fid": "6760290695",
+      "app_id": "6760290695",
+      "store_url": "https://apps.apple.com/app/id6760290695",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:48.806968Z"
+    },
+    "6761471389": {
+      "name": "Escape Game Hidden Room",
+      "fid": "6761471389",
+      "app_id": "6761471389",
+      "store_url": "https://apps.apple.com/app/id6761471389",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:49.341051Z"
+    },
+    "6754659539": {
+      "name": "Sapiens Club",
+      "fid": "6754659539",
+      "app_id": "6754659539",
+      "store_url": "https://apps.apple.com/app/id6754659539",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:49.978344Z"
+    },
+    "6761446378": {
+      "name": "EscapeGame:PublicToilet",
+      "fid": "6761446378",
+      "app_id": "6761446378",
+      "store_url": "https://apps.apple.com/app/id6761446378",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:50.358239Z"
+    },
+    "6762212124": {
+      "name": "Escape Game - Mini Trip 2",
+      "fid": "6762212124",
+      "app_id": "6762212124",
+      "store_url": "https://apps.apple.com/app/id6762212124",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:50.975220Z"
+    },
+    "6758194359": {
+      "name": "きのっぴ -楽しく育ててポイントを貯めるアプリ-",
+      "fid": "6758194359",
+      "app_id": "6758194359",
+      "store_url": "https://apps.apple.com/app/id6758194359",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:51.246770Z"
+    },
+    "6761720216": {
+      "name": "Поле Плюс 2",
+      "fid": "6761720216",
+      "app_id": "6761720216",
+      "store_url": "https://apps.apple.com/app/id6761720216",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:51.861779Z"
+    },
+    "6762109471": {
+      "name": "Escape Game Cat Cafe",
+      "fid": "6762109471",
+      "app_id": "6762109471",
+      "store_url": "https://apps.apple.com/app/id6762109471",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:52.290666Z"
+    },
+    "6762284185": {
+      "name": "Bandospottr",
+      "fid": "6762284185",
+      "app_id": "6762284185",
+      "store_url": "https://apps.apple.com/app/id6762284185",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:52.696507Z"
+    },
+    "6762317558": {
+      "name": "脱出ゲーム-きずなの洞窟",
+      "fid": "6762317558",
+      "app_id": "6762317558",
+      "store_url": "https://apps.apple.com/app/id6762317558",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:53.111295Z"
+    },
+    "6762595931": {
+      "name": "Escape Game Custard Pudding",
+      "fid": "6762595931",
+      "app_id": "6762595931",
+      "store_url": "https://apps.apple.com/app/id6762595931",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:53.493263Z"
+    },
+    "6762211741": {
+      "name": "Trivia Win Streak",
+      "fid": "6762211741",
+      "app_id": "6762211741",
+      "store_url": "https://apps.apple.com/app/id6762211741",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:53.860830Z"
+    },
+    "6762853449": {
+      "name": "Dialed GG",
+      "fid": "6762853449",
+      "app_id": "6762853449",
+      "store_url": "https://apps.apple.com/app/id6762853449",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:54.235624Z"
+    },
+    "6755643232": {
+      "name": "EscapeGame MindlessRoom",
+      "fid": "6755643232",
+      "app_id": "6755643232",
+      "store_url": "https://apps.apple.com/app/id6755643232",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:54.539983Z"
+    },
+    "6761025686": {
+      "name": "Slušaj Sad Ovo",
+      "fid": "6761025686",
+      "app_id": "6761025686",
+      "store_url": "https://apps.apple.com/app/id6761025686",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:54.923640Z"
+    },
+    "6761172064": {
+      "name": "Want to Borrow the Manga",
+      "fid": "6761172064",
+      "app_id": "6761172064",
+      "store_url": "https://apps.apple.com/app/id6761172064",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:55.320581Z"
+    },
+    "6762506841": {
+      "name": "脱出ゲーム 廃館した映画館",
+      "fid": "6762506841",
+      "app_id": "6762506841",
+      "store_url": "https://apps.apple.com/app/id6762506841",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:55.650436Z"
+    },
+    "6761697417": {
+      "name": "Escape Game - OrdinaryHouse",
+      "fid": "6761697417",
+      "app_id": "6761697417",
+      "store_url": "https://apps.apple.com/app/id6761697417",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:56.236948Z"
+    },
+    "6764192892": {
+      "name": "Escape Game ~Where's Holiday~",
+      "fid": "6764192892",
+      "app_id": "6764192892",
+      "store_url": "https://apps.apple.com/app/id6764192892",
+      "platform": "ios",
+      "sent_at": "2026-05-04T10:59:56.720984Z"
+    }
+  }
+}
