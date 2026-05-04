@@ -119,7 +119,7 @@ def _fetch_app_ids_for_category(
         "offset": 0,
     }
     data = _get_json(url, params)
-    
+
     # Handle different possible response shapes
     app_ids: list[str] = []
     if isinstance(data, list):
@@ -128,12 +128,20 @@ def _fetch_app_ids_for_category(
         # API might wrap response in a dict like {"app_ids": [...]}
         for key in ("app_ids", "ids", "apps", "data"):
             if key in data and isinstance(data[key], list):
-                app_ids = [str(item) if not isinstance(item, dict) else str(item.get("app_id") or item.get("id") or "") for item in data[key]]
+                app_ids = [
+                    str(item)
+                    if not isinstance(item, dict)
+                    else str(item.get("app_id") or item.get("id") or "")
+                    for item in data[key]
+                ]
                 break
-    
+
     logger.info(
         "Category %s on %s: found %d app IDs (start_date=%s)",
-        category_id, platform, len(app_ids), start_date
+        category_id,
+        platform,
+        len(app_ids),
+        start_date,
     )
     return [aid for aid in app_ids if aid]
 
@@ -382,6 +390,7 @@ def fetch_new_games(
             if max_installs is not None and installs > max_installs:
                 continue
             surviving_ids.append(app_id)
+
         if not surviving_ids:
             logger.info(
                 "No apps met the install threshold for platform=%s min_installs=%s.",
