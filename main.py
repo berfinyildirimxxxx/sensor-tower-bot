@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import sys
+from datetime import datetime
 from typing import Any
 
 from dedupe import (
@@ -15,7 +16,8 @@ from dedupe import (
 )
 from relevance import score_game
 from sensor_tower import fetch_new_games
-from slack import send_game_alert
+from sheets import write_to_sheet
+from slack import send_game_alert, send_summary_message
 
 
 def main() -> None:
@@ -43,13 +45,13 @@ def main() -> None:
             print("❌ No games fetched, cannot test.")
             return
         first_game = games[0]
-
+        
         # Load registry to test dedupe
         registry = load_sent_games()
         if is_already_sent(first_game, registry):
             print(f"⏭  '{first_game.get('name')}' already sent before, skipping (dedupe works!)")
             return
-
+        
         print(f"Sending to Slack: {first_game.get('name')}")
         ok = send_game_alert(
             game=first_game,
@@ -112,6 +114,7 @@ def main() -> None:
 
     print("Sending alerts to Slack...")
     sent_count = 0
+    sent_games_for_sheet: list[dict[str, Any]] = []
     try:
         for item in unsent_games:
             sent = send_game_alert(
@@ -120,8 +123,20 @@ def main() -> None:
             if sent:
                 mark_as_sent(item["game"], registry)
                 sent_count += 1
+                sent_games_for_sheet.append(item["game"])
     finally:
         save_sent_games(registry)
+
+    run_date = datetime.utcnow().strftime("%Y-%m-%d")
+    sheet_url = None
+    if sent_games_for_sheet:
+        sheet_url = write_to_sheet(sent_games_for_sheet)
+
+    send_summary_message(
+        game_count=sent_count,
+        sheet_url=sheet_url,
+        run_date=run_date,
+    )
 
     print(f"Pipeline complete. Sent {sent_count} alerts.")
 
