@@ -119,7 +119,7 @@ def main() -> None:
 
     print("Sending alerts to Slack...")
     sent_count = 0
-    sent_games_for_sheet: list[dict[str, Any]] = []
+    sent_items_for_sheet: list[dict[str, Any]] = []
     try:
         for item in unsent_games:
             sent = send_game_alert(
@@ -128,14 +128,14 @@ def main() -> None:
             if sent:
                 mark_as_sent(item["game"], registry)
                 sent_count += 1
-                sent_games_for_sheet.append(item["game"])
+                sent_items_for_sheet.append(item)
     finally:
         save_sent_games(registry)
 
     run_date = datetime.utcnow().strftime("%Y-%m-%d")
     sheet_url = None
-    if sent_games_for_sheet:
-        sheet_url = write_to_sheet(sent_games_for_sheet)
+    if sent_items_for_sheet:
+        sheet_url = write_to_sheet(sent_items_for_sheet)
 
     send_summary_message(
         game_count=sent_count,
