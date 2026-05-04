@@ -34,18 +34,22 @@ def main() -> None:
 
     if "--send-first-game" in sys.argv:
         logging.info("Fetching games to send first one to Slack...")
-        games = fetch_new_games(min_installs=500, release_lookback_days=120)
+        games = fetch_new_games(
+            min_installs=500,
+            max_installs=30000,
+            release_lookback_days=30,
+        )
         if not games:
             print("❌ No games fetched, cannot test.")
             return
         first_game = games[0]
-        
+
         # Load registry to test dedupe
         registry = load_sent_games()
         if is_already_sent(first_game, registry):
             print(f"⏭  '{first_game.get('name')}' already sent before, skipping (dedupe works!)")
             return
-        
+
         print(f"Sending to Slack: {first_game.get('name')}")
         ok = send_game_alert(
             game=first_game,
@@ -62,7 +66,11 @@ def main() -> None:
         return
 
     logging.info("Fetching games from Sensor Tower.")
-    games = fetch_new_games(min_installs=500, release_lookback_days=120)
+    games = fetch_new_games(
+        min_installs=500,
+        max_installs=30000,
+        release_lookback_days=30,
+    )
     logging.info("Fetched %s games.", len(games))
     print(f"Fetched {len(games)} games.")
 
