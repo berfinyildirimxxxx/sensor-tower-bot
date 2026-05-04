@@ -119,6 +119,15 @@ def _fetch_app_ids_for_category(
         "offset": 0,
     }
     data = _get_json(url, params)
+    if platform == "android":
+        if isinstance(data, list):
+            logger.info("Android app_ids sample (first 3): %s", data[:3])
+        else:
+            logger.info(
+                "Android app_ids unexpected response: type=%s value=%s",
+                type(data).__name__,
+                str(data)[:200],
+            )
 
     # Handle different possible response shapes
     app_ids: list[str] = []
@@ -163,6 +172,20 @@ def _fetch_install_totals(
             "countries[]": ["WW"],
         }
         data = _get_json(url, params)
+        if platform == "android":
+            if isinstance(data, list):
+                logger.info("Android install sample (first 2 rows): %s", data[:2])
+            elif isinstance(data, dict):
+                logger.info(
+                    "Android install response is dict, keys: %s",
+                    list(data.keys())[:10],
+                )
+            else:
+                logger.info(
+                    "Android install response type=%s value=%s",
+                    type(data).__name__,
+                    str(data)[:200],
+                )
         if not isinstance(data, list):
             logger.warning(
                 "Stopping install fetch early for platform=%s after a failed batch request.",
