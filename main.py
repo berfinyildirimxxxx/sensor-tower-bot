@@ -82,18 +82,23 @@ def main() -> None:
             f"({game.get('installs_last_day', 0)} installs)"
         )
 
-    print("TODO: filter and score games for relevance")
     scored_games: list[dict[str, Any]] = []
     for game in games:
         score, reason, mechanic = score_game(game)
-        scored_games.append(
-            {
-                "game": game,
-                "score": score,
-                "reason": reason,
-                "mechanic": mechanic,
-            }
-        )
+        if score >= 70:
+            scored_games.append(
+                {
+                    "game": game,
+                    "score": score,
+                    "reason": reason,
+                    "mechanic": mechanic,
+                }
+            )
+    logging.info(
+        "Scored %d games, %d passed relevance filter (>=70)",
+        len(games),
+        len(scored_games),
+    )
     print(f"Prepared {len(scored_games)} scored games.")
 
     print("Loading sent games registry...")
