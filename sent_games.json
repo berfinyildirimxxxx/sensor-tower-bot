@@ -1055,6 +1055,30 @@
       "store_url": "https://apps.apple.com/app/id6759855492",
       "platform": "ios",
       "sent_at": "2026-05-04T20:08:01.903059Z"
+    },
+    "6759154756": {
+      "name": "Mystery of Myths: Whisper F2P",
+      "fid": "6759154756",
+      "app_id": "6759154756",
+      "store_url": "https://apps.apple.com/app/id6759154756",
+      "platform": "ios",
+      "sent_at": "2026-05-05T09:51:41.221640Z"
+    },
+    "6760441822": {
+      "name": "Packingdom",
+      "fid": "6760441822",
+      "app_id": "6760441822",
+      "store_url": "https://apps.apple.com/app/id6760441822",
+      "platform": "ios",
+      "sent_at": "2026-05-05T09:51:44.324175Z"
+    },
+    "6761831655": {
+      "name": "Mahjong Pair! - Tile Match",
+      "fid": "6761831655",
+      "app_id": "6761831655",
+      "store_url": "https://apps.apple.com/app/id6761831655",
+      "platform": "ios",
+      "sent_at": "2026-05-05T09:51:44.567145Z"
     }
   }
 }
