@@ -16,7 +16,7 @@ from dedupe import (
 )
 from relevance import score_game
 from sensor_tower import fetch_new_games
-from sheets import write_to_sheet
+from sheets import write_all_games_to_sheet, write_to_sheet
 from slack import send_game_alert, send_summary_message
 
 
@@ -75,6 +75,7 @@ def main() -> None:
     )
     logging.info("Fetched %s games.", len(games))
     print(f"Fetched {len(games)} games.")
+    write_all_games_to_sheet(games)
 
     for game in games[:3]:
         print(
@@ -85,7 +86,7 @@ def main() -> None:
     scored_games: list[dict[str, Any]] = []
     for game in games:
         score, reason, mechanic = score_game(game)
-        if score >= 40:
+        if score >= 80:
             scored_games.append(
                 {
                     "game": game,
@@ -95,7 +96,7 @@ def main() -> None:
                 }
             )
     logging.info(
-        "Scored %d games, %d passed relevance filter (>=70)",
+        "Scored %d games, %d passed relevance filter (>=80)",
         len(games),
         len(scored_games),
     )
