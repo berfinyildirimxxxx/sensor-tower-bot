@@ -15,9 +15,8 @@ from config import load_config
 logger = logging.getLogger(__name__)
 
 # Sensor Tower category IDs to query.
-# TODO(berfin): Verify these IDs against Sensor Tower's Category Ids reference page.
-# The exact numeric IDs for puzzle/casual games may differ; replace with correct values
-# after checking the Category Ids link in the API docs before using this in production.
+# iOS: numeric IDs from Apple's genre list
+# Android: string slugs from Sensor Tower's category reference
 PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
     "ios": [
         "7012",  # Games/Puzzle
@@ -28,6 +27,12 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
         "7018",  # Games/Trivia
     ],
     "android": [
+        "GAME_PUZZLE",
+        "GAME_CASUAL",
+        "GAME_WORD",
+        "GAME_BOARD",
+        "GAME_TRIVIA",
+        "GAME_ARCADE",
         "game_puzzle",
         "game_casual",
         "game_word",
@@ -98,7 +103,18 @@ def _get_json(url: str, params: dict[str, Any]) -> Any | None:
         return response.json()
     except requests.HTTPError as exc:
         status_code = exc.response.status_code if exc.response is not None else "unknown"
-        logger.error("Sensor Tower HTTP error for %s status=%s", log_url, status_code)
+        body_preview = ""
+        if exc.response is not None:
+            try:
+                body_preview = exc.response.text[:500]
+            except Exception:
+                pass
+        logger.error(
+            "Sensor Tower HTTP error for %s status=%s body=%s",
+            log_url,
+            status_code,
+            body_preview,
+        )
     except requests.RequestException as exc:
         logger.error("Sensor Tower request failed for %s error=%s", log_url, exc)
     except ValueError as exc:
@@ -119,28 +135,26 @@ def _fetch_app_ids_for_category(
         "offset": 0,
     }
     data = _get_json(url, params)
-    if platform == "android":
-        if isinstance(data, list):
-            logger.info("Android app_ids sample (first 3): %s", data[:3])
-        else:
-            logger.info(
-                "Android app_ids unexpected response: type=%s value=%s",
-                type(data).__name__,
-                str(data)[:200],
-            )
 
-    # Handle different possible response shapes
+    # Log raw response shape for debugging
+    logger.info(
+        "app_ids response for platform=%s category=%s: type=%s preview=%s",
+        platform,
+        category_id,
+        type(data).__name__,
+        str(data)[:300] if data is not None else "None",
+    )
+
     app_ids: list[str] = []
     if isinstance(data, list):
-        app_ids = [str(app_id) for app_id in data]
+        app_ids = [str(app_id) for app_id in data if app_id]
     elif isinstance(data, dict):
-        # API might wrap response in a dict like {"app_ids": [...]}
-        for key in ("app_ids", "ids", "apps", "data"):
+        for key in ("app_ids", "ids", "apps", "data", "results"):
             if key in data and isinstance(data[key], list):
                 app_ids = [
                     str(item)
                     if not isinstance(item, dict)
-                    else str(item.get("app_id") or item.get("id") or "")
+                    else str(item.get("app_id") or item.get("id") or item.get("package_name") or "")
                     for item in data[key]
                 ]
                 break
@@ -156,9 +170,13 @@ def _fetch_app_ids_for_category(
 
 
 def _fetch_install_totals(
-    platform: str, app_ids: list[str], start_date: str, end_date: str, auth_token: str
+    platform: str,
+    app_ids: list[str],
+    start_date: str,
+    end_date: str,
+    auth_token: str,
 ) -> dict[str, dict[str, Any]]:
-    """Fetch summed install totals and top country per app ID."""
+    """Fetch CUMULATIVE install totals since release (summed across all days in window)."""
     install_map: dict[str, dict[str, Any]] = {}
     url = f"{BASE_URL}/v1/{platform}/sales_report_estimates"
 
@@ -172,42 +190,46 @@ def _fetch_install_totals(
             "countries[]": ["WW"],
         }
         data = _get_json(url, params)
-        if platform == "android":
-            if isinstance(data, list):
-                logger.info("Android install sample (first 2 rows): %s", data[:2])
-            elif isinstance(data, dict):
-                logger.info(
-                    "Android install response is dict, keys: %s",
-                    list(data.keys())[:10],
-                )
-            else:
-                logger.info(
-                    "Android install response type=%s value=%s",
-                    type(data).__name__,
-                    str(data)[:200],
-                )
+
+        logger.info(
+            "install_totals response for platform=%s: type=%s preview=%s",
+            platform,
+            type(data).__name__,
+            str(data)[:300] if data is not None else "None",
+        )
+
         if not isinstance(data, list):
             logger.warning(
-                "Stopping install fetch early for platform=%s after a failed batch request.",
+                "Unexpected install response shape for platform=%s; skipping batch.",
                 platform,
             )
-            return install_map
+            # Try alternate response shape (dict with a list inside)
+            if isinstance(data, dict):
+                for key in ("data", "results", "estimates"):
+                    if key in data and isinstance(data[key], list):
+                        data = data[key]
+                        break
+            if not isinstance(data, list):
+                continue
 
         for row in data:
             if not isinstance(row, dict):
                 continue
 
-            app_id = str(row.get("aid", ""))
+            # Sensor Tower uses "aid" for app_id and "iu" for install units
+            app_id = str(row.get("aid") or row.get("app_id") or row.get("id") or "")
             if not app_id:
                 continue
 
-            installs = int(row.get("iu", 0) or 0)
-            country_code = str(row.get("cc", "WW") or "WW")
+            # Sum all daily install rows per app (cumulative total since release)
+            installs = int(row.get("iu") or row.get("units") or row.get("downloads") or 0)
+            country_code = str(row.get("cc") or row.get("country") or "WW")
+
             existing = install_map.setdefault(
                 app_id,
-                {"installs_last_day": 0, "country": "WW", "top_country_installs": -1},
+                {"installs_total": 0, "country": "WW", "top_country_installs": -1},
             )
-            existing["installs_last_day"] += installs
+            existing["installs_total"] += installs
             if installs > int(existing["top_country_installs"]):
                 existing["country"] = country_code
                 existing["top_country_installs"] = installs
@@ -252,9 +274,10 @@ def _extract_metadata_items(data: Any) -> list[dict[str, Any]]:
     if isinstance(data, list):
         return [item for item in data if isinstance(item, dict)]
     if isinstance(data, dict):
-        apps_value = data.get("apps")
-        if isinstance(apps_value, list):
-            return [item for item in apps_value if isinstance(item, dict)]
+        for key in ("apps", "data", "results"):
+            val = data.get(key)
+            if isinstance(val, list):
+                return [item for item in val if isinstance(item, dict)]
     return []
 
 
@@ -272,16 +295,30 @@ def _fetch_metadata(
             "country": "US",
         }
         data = _get_json(url, params)
+
+        logger.info(
+            "metadata response for platform=%s batch_size=%d: type=%s preview=%s",
+            platform,
+            len(batch),
+            type(data).__name__,
+            str(data)[:300] if data is not None else "None",
+        )
+
         items = _extract_metadata_items(data)
         if not items:
             logger.warning(
-                "Stopping metadata fetch early for platform=%s after a failed or empty batch.",
+                "Empty or failed metadata batch for platform=%s; skipping.",
                 platform,
             )
-            return metadata_by_id
+            continue
 
         for item in items:
-            raw_id = item.get("app_id") or item.get("aid") or item.get("id")
+            raw_id = (
+                item.get("app_id")
+                or item.get("aid")
+                or item.get("id")
+                or item.get("package_name")
+            )
             if raw_id is None:
                 continue
             metadata_by_id[str(raw_id)] = item
@@ -332,6 +369,9 @@ def _combine_game_data(
         or []
     )
 
+    # Use cumulative total installs since release (not just "last day")
+    total_installs = int(installs.get("installs_total", 0) or 0)
+
     return {
         "fid": app_id,
         "app_id": app_id,
@@ -344,7 +384,9 @@ def _combine_game_data(
         "keywords": keywords,
         "store_url": _build_store_url(platform, app_id),
         "screenshots": screenshots,
-        "installs_last_day": int(installs.get("installs_last_day", 0) or 0),
+        "installs_total": total_installs,
+        # Keep legacy key for compatibility with slack/sheets code
+        "installs_last_day": total_installs,
         "country": str(installs.get("country", "WW") or "WW"),
         "launch_date": launch_date,
     }
@@ -352,15 +394,14 @@ def _combine_game_data(
 
 def fetch_new_games(
     min_installs: int = 500,
-    max_installs: int | None = None,
-    release_lookback_days: int = 30,
+    max_installs: int | None = 50000,
+    release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
-    """Fetch games released recently and sum their installs since release.
+    """Fetch games released in the last release_lookback_days with cumulative installs in [min, max].
 
-    This queries games released in the last ``release_lookback_days`` days,
-    then sums installs across the full release window through today. On
-    unrecoverable errors, the function logs the issue and returns any data
-    collected so far, or an empty list if nothing usable was fetched.
+    Sums install data across the full release window (not just one day).
+    Returns every game that has crossed the 500-install threshold since release.
+    On failure, logs and returns whatever data was collected.
     """
     try:
         config = load_config()
@@ -372,13 +413,25 @@ def fetch_new_games(
     release_start_date = cutoff_date.isoformat()
     install_end_date = datetime.utcnow().date().isoformat()
 
+    logger.info(
+        "Fetching games: release_start=%s install_end=%s min=%d max=%s",
+        release_start_date,
+        install_end_date,
+        min_installs,
+        max_installs,
+    )
+
     results: list[dict[str, Any]] = []
+    seen_store_urls: set[str] = set()
 
     for platform, category_ids in PUZZLE_CATEGORY_IDS.items():
         platform_app_ids: list[str] = []
         seen_app_ids: set[str] = set()
 
-        for category_id in category_ids:
+        # De-duplicate category IDs for android (we listed both cases)
+        unique_category_ids = list(dict.fromkeys(cat.lower() for cat in category_ids))
+
+        for category_id in unique_category_ids:
             app_ids = _fetch_app_ids_for_category(
                 platform=platform,
                 category_id=category_id,
@@ -391,8 +444,16 @@ def fetch_new_games(
                     platform_app_ids.append(app_id)
 
         if not platform_app_ids:
-            logger.info("No app IDs found for platform=%s in the lookback window.", platform)
+            logger.info(
+                "No app IDs found for platform=%s in the lookback window.", platform
+            )
             continue
+
+        logger.info(
+            "Platform=%s: collected %d unique app IDs across all categories.",
+            platform,
+            len(platform_app_ids),
+        )
 
         install_map = _fetch_install_totals(
             platform=platform,
@@ -401,24 +462,47 @@ def fetch_new_games(
             end_date=install_end_date,
             auth_token=config.sensor_tower_api_key,
         )
+
+        logger.info(
+            "Platform=%s: install data returned for %d apps.",
+            platform,
+            len(install_map),
+        )
+
         if not install_map:
             logger.warning("No install data found for platform=%s.", platform)
             continue
 
+        # Filter by install band
         surviving_ids: list[str] = []
+        below_threshold = 0
+        above_threshold = 0
         for app_id, install_data in install_map.items():
-            installs = int(install_data.get("installs_last_day", 0) or 0)
-            if installs < min_installs:
+            total = int(install_data.get("installs_total", 0) or 0)
+            if total < min_installs:
+                below_threshold += 1
                 continue
-            if max_installs is not None and installs > max_installs:
+            if max_installs is not None and total > max_installs:
+                above_threshold += 1
                 continue
             surviving_ids.append(app_id)
 
+        logger.info(
+            "Platform=%s: %d apps passed install filter (<%d below threshold, >%d above cap).",
+            platform,
+            len(surviving_ids),
+            min_installs,
+            max_installs or 0,
+        )
+        logger.info(
+            "  below_threshold=%d above_cap=%d",
+            below_threshold,
+            above_threshold,
+        )
+
         if not surviving_ids:
             logger.info(
-                "No apps met the install threshold for platform=%s min_installs=%s.",
-                platform,
-                min_installs,
+                "No apps met the install threshold for platform=%s.", platform
             )
             continue
 
@@ -427,6 +511,7 @@ def fetch_new_games(
             app_ids=surviving_ids,
             auth_token=config.sensor_tower_api_key,
         )
+
         if not metadata_by_id:
             logger.warning("No metadata returned for platform=%s.", platform)
             continue
@@ -436,8 +521,10 @@ def fetch_new_games(
             installs = install_map.get(app_id)
             if metadata is None or installs is None:
                 continue
+
             game_data = _combine_game_data(platform, app_id, installs, metadata)
 
+            # Filter by actual release date
             launch_raw = game_data.get("launch_date", "")
             if launch_raw:
                 try:
@@ -446,7 +533,7 @@ def fetch_new_games(
                     ).date()
                     if launch_date < cutoff_date:
                         logger.debug(
-                            "Skipping %s — launch_date %s is older than cutoff %s",
+                            "Skipping %s — launch_date %s older than cutoff %s",
                             game_data.get("name"),
                             launch_date,
                             cutoff_date,
@@ -455,6 +542,13 @@ def fetch_new_games(
                 except ValueError:
                     pass
 
+            # Global dedup by store URL
+            store_url = game_data.get("store_url", "")
+            if store_url in seen_store_urls:
+                continue
+            seen_store_urls.add(store_url)
+
             results.append(game_data)
 
+    logger.info("Total games fetched across all platforms: %d", len(results))
     return results
