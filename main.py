@@ -118,7 +118,12 @@ def main() -> None:
 
     # 7. Summary
     if not dry_run:
-        send_summary_message(game_count=sent_count, sheet_url=sheet_url, run_date=run_date)
+        send_summary_message(
+            game_count=sent_count,
+            sheet_url=sheet_url,
+            run_date=run_date,
+            total_fetched=len(games),
+        )
 
     print(f"\n🏁 Done. Fetched={len(games)} | Relevant={len(relevant_games)} | Sent={sent_count}")
 
