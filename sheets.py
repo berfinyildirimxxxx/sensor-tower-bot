@@ -25,7 +25,8 @@ def _load_spreadsheet() -> gspread.Spreadsheet:
     sheet_id = os.environ.get("GOOGLE_SHEET_ID", "").strip()
     if not credentials_raw or not sheet_id:
         raise RuntimeError(
-            "Missing Google Sheets configuration. GOOGLE_SHEETS_CREDENTIALS or GOOGLE_SHEET_ID is not set."
+            "Missing Google Sheets configuration. "
+            "GOOGLE_SHEETS_CREDENTIALS or GOOGLE_SHEET_ID is not set."
         )
 
     credentials_info = json.loads(credentials_raw)
@@ -60,67 +61,71 @@ def _ensure_headers(worksheet: gspread.Worksheet, headers: list[str]) -> None:
         worksheet.append_row(headers, value_input_option="RAW")
 
 
-def _build_row(item: dict[str, Any]) -> list[str]:
-    """Build a sheet row from a scored game payload."""
-    game = item["game"]
+def _get_installs(game: dict[str, Any]) -> int:
+    """Get total installs from game payload, handling both key names."""
+    val = game.get("installs_total") or game.get("installs_last_day") or 0
+    try:
+        return int(val)
+    except (TypeError, ValueError):
+        return 0
+
+
+def _format_launch_date(game: dict[str, Any]) -> str:
+    """Extract and format the launch date as YYYY-MM-DD."""
     launch_date = str(game.get("launch_date") or "").strip()
     if "T" in launch_date:
-        launch_date = launch_date.split("T")[0]
+        return launch_date.split("T")[0]
+    return launch_date
 
-    installs = game.get("installs_last_day", 0)
-    try:
-        installs_text = str(int(installs or 0))
-    except (TypeError, ValueError):
-        installs_text = "0"
+
+def _build_relevant_row(item: dict[str, Any]) -> list[str]:
+    """Build a sheet row from a Claude-scored relevant game payload."""
+    game = item["game"]
+    installs = _get_installs(game)
+    launch_date = _format_launch_date(game)
 
     return [
         str(game.get("name") or ""),
         str(game.get("publisher") or ""),
-        str(game.get("platform") or ""),
+        str(game.get("platform") or "").upper(),
         str(game.get("country") or ""),
         launch_date,
-        installs_text,
+        str(installs),
         str(item.get("score", 0)),
         str(item.get("mechanic", "")),
+        str(item.get("reason", "")),
         str(game.get("store_url") or ""),
     ]
 
 
 def _build_all_games_row(game: dict[str, Any]) -> list[str]:
-    """Build a sheet row for the all-games export."""
-    launch_date = str(game.get("launch_date") or "").strip()
-    if "T" in launch_date:
-        launch_date = launch_date.split("T")[0]
-
-    installs = game.get("installs_last_day", 0)
-    try:
-        installs_text = str(int(installs or 0))
-    except (TypeError, ValueError):
-        installs_text = "0"
+    """Build a sheet row for the all-games export (no relevance data)."""
+    installs = _get_installs(game)
+    launch_date = _format_launch_date(game)
 
     return [
         str(game.get("name") or ""),
         str(game.get("publisher") or ""),
-        str(game.get("platform") or ""),
+        str(game.get("platform") or "").upper(),
         str(game.get("country") or ""),
         launch_date,
-        installs_text,
+        str(installs),
+        str(game.get("category") or ""),
         str(game.get("store_url") or ""),
     ]
 
 
 def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
-    """Write relevant games to 'Relevant - YYYY-MM-DD' tab in the Google Sheet.
+    """Write Claude-relevant games to 'Relevant - YYYY-MM-DD' tab.
+
+    Columns: Game Name | Developer | Platform | Country | Release Date |
+             Total Installs | AI Score | Mechanic | AI Reason | Store URL
 
     Returns the sheet URL on success, None on failure.
-    Columns: Game Name | Developer | Platform | Country | Release Date | Installs | Relevance Score | Mechanic | Store URL
-    If a tab with today's date already exists, append to it.
-    Loads credentials from GOOGLE_SHEETS_CREDENTIALS env var (JSON string).
-    Loads sheet ID from GOOGLE_SHEET_ID env var.
-    Returns None and logs error on any failure — never crashes.
+    If the tab already exists today, appends to it.
     """
     if not scored_games:
-        logger.info("No games to write to Google Sheets.")
+        logger.info("No relevant games to write to Google Sheets.")
         return None
 
     try:
@@ -132,9 +137,10 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
             "Platform",
             "Country",
             "Release Date",
-            "Installs",
-            "Relevance Score",
+            "Total Installs",
+            "AI Score",
             "Mechanic",
+            "AI Reason",
             "Store URL",
         ]
         worksheet = _get_or_create_worksheet(
@@ -150,8 +156,9 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
             key=lambda item: int(item.get("score", 0)),
             reverse=True,
         )
-        rows = [_build_row(item) for item in sorted_games]
+        rows = [_build_relevant_row(item) for item in sorted_games]
         worksheet.append_rows(rows, value_input_option="RAW")
+        logger.info("Wrote %d relevant games to sheet tab '%s'.", len(rows), tab_name)
         return spreadsheet.url
     except Exception as exc:
         logger.error("Failed to write relevant games to Google Sheets: %s", exc)
@@ -159,12 +166,12 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
 
 
 def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
-    """Write ALL fetched games (no relevance filter) to 'All Games - YYYY-MM-DD' tab.
+    """Write ALL fetched games (iOS + Android, no filter) to 'All Games - YYYY-MM-DD' tab.
 
-    Columns: Game Name | Developer | Platform | Country | Release Date | Installs | Store URL
-    Sorted by installs descending.
-    Same credential loading as write_to_sheet.
-    Never crashes — logs errors.
+    Columns: Game Name | Developer | Platform | Country | Release Date |
+             Total Installs | Category | Store URL
+
+    Sorted by total installs descending. Never crashes — logs errors.
     """
     if not games:
         logger.info("No fetched games to write to all-games sheet.")
@@ -179,7 +186,8 @@ def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
             "Platform",
             "Country",
             "Release Date",
-            "Installs",
+            "Total Installs",
+            "Category",
             "Store URL",
         ]
         worksheet = _get_or_create_worksheet(
@@ -192,10 +200,13 @@ def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
 
         sorted_games = sorted(
             games,
-            key=lambda game: int(game.get("installs_last_day", 0) or 0),
+            key=lambda game: _get_installs(game),
             reverse=True,
         )
         rows = [_build_all_games_row(game) for game in sorted_games]
         worksheet.append_rows(rows, value_input_option="RAW")
+        logger.info(
+            "Wrote %d total games to sheet tab '%s'.", len(rows), tab_name
+        )
     except Exception as exc:
         logger.error("Failed to write all games to Google Sheets: %s", exc)
