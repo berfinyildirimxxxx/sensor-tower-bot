@@ -205,28 +205,25 @@ def send_game_alert(
     return _post_blocks(blocks)
 
 
-def send_summary_message(game_count: int, sheet_url: str | None, run_date: str) -> bool:
-    """Send a daily summary message to Slack.
-
-    Format:
-    📊 Daily Game Scan Complete — {run_date}
-    🎮 {game_count} new relevant games found today
-    🔗 View in Google Sheets: {sheet_url}   ← only if sheet_url is not None
-    """
+def send_summary_message(
+    game_count: int,
+    sheet_url: str | None,
+    run_date: str,
+    total_fetched: int = 0,
+) -> bool:
     lines = [
         f"📊 Daily Game Scan Complete — {run_date}",
-        f"🎮 {game_count} new relevant games found today",
     ]
+    if total_fetched > 0:
+        lines.append(f"📦 {total_fetched} total games fetched today")
+    lines.append(f"🎮 {game_count} relevant games found")
     if sheet_url:
         lines.append(f"🔗 View in Google Sheets: {sheet_url}")
 
-    blocks: list[dict[str, Any]] = [
+    blocks = [
         {
             "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": "\n".join(lines),
-            },
+            "text": {"type": "mrkdwn", "text": "\n".join(lines)},
         }
     ]
     return _post_blocks(blocks)
