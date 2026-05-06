@@ -7,7 +7,6 @@ import sys
 from datetime import datetime
 from typing import Any
 
-from ai_filter import filter_relevant_games
 from dedupe import (
     is_already_sent,
     load_sent_games,
@@ -15,19 +14,20 @@ from dedupe import (
     prune_old_entries,
     save_sent_games,
 )
+from relevance import score_game
 from sensor_tower import fetch_new_games
 from sheets import write_all_games_to_sheet, write_to_sheet
 from slack import send_game_alert, send_summary_message
 
+RELEVANCE_THRESHOLD = 60
+
 
 def main() -> None:
-    """Run the alert pipeline from fetch to Slack delivery."""
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
     )
 
-    # ── Test helpers ────────────────────────────────────────────────────────────
     if "--test" in sys.argv:
         from slack import send_test_message
         ok = send_test_message()
@@ -35,7 +35,6 @@ def main() -> None:
         return
 
     if "--send-first-game" in sys.argv:
-        logging.info("Fetching games to send first one to Slack...")
         games = fetch_new_games(min_installs=500, max_installs=50000, release_lookback_days=60)
         if not games:
             print("❌ No games fetched.")
@@ -43,129 +42,85 @@ def main() -> None:
         first_game = games[0]
         registry = load_sent_games()
         if is_already_sent(first_game, registry):
-            print(f"⏭  '{first_game.get('name')}' already sent — dedupe works!")
+            print(f"⏭  '{first_game.get('name')}' already sent.")
             return
-        print(f"Sending to Slack: {first_game.get('name')}")
-        ok = send_game_alert(
-            game=first_game,
-            score=85,
-            reason="Test alert — gerçek oyun format kontrolü",
-            mechanic="Test Mechanic",
-        )
+        score, reason, mechanic = score_game(first_game)
+        ok = send_game_alert(game=first_game, score=score, reason=reason, mechanic=mechanic)
         if ok:
             mark_as_sent(first_game, registry)
             save_sent_games(registry)
-            print("✅ Game alert sent and marked as sent")
-        else:
-            print("❌ Game alert failed")
+            print("✅ Sent")
         return
 
-    # --dry-run: full pipeline but skip Slack sends
     dry_run = "--dry-run" in sys.argv
 
-    # ── 1. Fetch ─────────────────────────────────────────────────────────────────
-    logging.info("Fetching games from Sensor Tower (iOS + Android).")
-    games = fetch_new_games(
-        min_installs=500,
-        max_installs=50000,
-        release_lookback_days=60,
-    )
+    # 1. Fetch
+    logging.info("Fetching games from Sensor Tower.")
+    games = fetch_new_games(min_installs=500, max_installs=50000, release_lookback_days=60)
     logging.info("Fetched %d games total.", len(games))
-    print(f"\n📦 Fetched {len(games)} games (iOS + Android).")
+    print(f"\n📦 Fetched {len(games)} games.")
 
     if not games:
-        print("No games found. Exiting.")
-        send_summary_message(
-            game_count=0,
-            sheet_url=None,
-            run_date=datetime.utcnow().strftime("%Y-%m-%d"),
-        )
+        send_summary_message(game_count=0, sheet_url=None, run_date=datetime.utcnow().strftime("%Y-%m-%d"))
         return
 
-    # Sanity check sample
     for game in games[:3]:
-        print(
-            f"  Sample: {game.get('name', '<unknown>')} "
-            f"platform={game.get('platform')} "
-            f"installs={game.get('installs_total', 0):,}"
-        )
+        print(f"  Sample: {game.get('name')} platform={game.get('platform')} installs={game.get('installs_total', 0):,}")
 
-    # ── 2. Write ALL games to sheet (no filter) ──────────────────────────────────
-    print(f"\n📊 Writing all {len(games)} games to 'All Games' sheet...")
+    # 2. All games → sheet
+    print(f"\n📊 Writing {len(games)} games to 'All Games' sheet...")
     write_all_games_to_sheet(games)
 
-    # ── 3. Claude AI relevance filter ───────────────────────────────────────────
-    print(f"\n🤖 Running Claude AI relevance filter on {len(games)} games...")
-    relevant_items, all_scored_items = filter_relevant_games(
-        games,
-        min_score=60,
-        batch_size=8,
-        use_screenshots=True,
-    )
-    print(
-        f"✅ Claude found {len(relevant_items)} relevant games "
-        f"(out of {len(all_scored_items)} total)."
-    )
+    # 3. Score
+    print(f"\n🎯 Scoring {len(games)} games...")
+    scored_games: list[dict[str, Any]] = []
+    for game in games:
+        score, reason, mechanic = score_game(game)
+        scored_games.append({"game": game, "score": score, "reason": reason, "mechanic": mechanic})
 
-    # ── 4. Write relevant games to sheet ─────────────────────────────────────────
+    relevant_games = [g for g in scored_games if g["score"] >= RELEVANCE_THRESHOLD]
+    logging.info("Scored %d games — %d passed threshold (>=%d).", len(scored_games), len(relevant_games), RELEVANCE_THRESHOLD)
+    print(f"✅ {len(relevant_games)} relevant (out of {len(scored_games)}, threshold={RELEVANCE_THRESHOLD}).")
+
+    # 4. Relevant → sheet
     run_date = datetime.utcnow().strftime("%Y-%m-%d")
     sheet_url = None
-    if relevant_items:
-        print(f"\n📋 Writing {len(relevant_items)} relevant games to 'Relevant' sheet...")
-        sheet_url = write_to_sheet(relevant_items)
+    if relevant_games:
+        print(f"\n📋 Writing {len(relevant_games)} relevant games to sheet...")
+        sheet_url = write_to_sheet(relevant_games)
 
-    # ── 5. Dedupe & Slack alerts ──────────────────────────────────────────────────
-    print("\n🔍 Loading sent games registry...")
+    # 5. Dedupe
     registry = load_sent_games()
     pruned = prune_old_entries(registry, days=90)
     if pruned:
-        logging.info("Pruned %d old entries from registry.", pruned)
+        logging.info("Pruned %d old entries.", pruned)
 
-    unsent_items: list[dict[str, Any]] = []
-    for item in relevant_items:
-        if not is_already_sent(item["game"], registry):
-            unsent_items.append(item)
+    unsent_games = [item for item in relevant_games if not is_already_sent(item["game"], registry)]
+    print(f"📬 {len(unsent_games)} new to send ({len(relevant_games) - len(unsent_games)} already sent).")
 
-    print(
-        f"📬 {len(unsent_items)} unsent relevant games "
-        f"(filtered out {len(relevant_items) - len(unsent_items)} already-sent)."
-    )
-
+    # 6. Slack
     sent_count = 0
     if dry_run:
-        print("\n⚡ --dry-run mode: skipping Slack sends.")
-        for item in unsent_items:
-            g = item["game"]
-            print(
-                f"  [DRY RUN] Would send: {g.get('name')} "
-                f"score={item['score']} mechanic={item['mechanic']}"
-            )
-        sent_count = len(unsent_items)
+        print("\n⚡ --dry-run: skipping Slack.")
+        for item in unsent_games:
+            print(f"  [DRY RUN] {item['game'].get('name')} score={item['score']} mechanic={item['mechanic']}")
+        sent_count = len(unsent_games)
     else:
-        print("\n📣 Sending alerts to Slack...")
+        print("\n📣 Sending to Slack...")
         try:
-            for item in unsent_items:
-                sent = send_game_alert(
-                    item["game"], item["score"], item["reason"], item["mechanic"]
-                )
+            for item in unsent_games:
+                sent = send_game_alert(item["game"], item["score"], item["reason"], item["mechanic"])
                 if sent:
                     mark_as_sent(item["game"], registry)
                     sent_count += 1
         finally:
             save_sent_games(registry)
 
-    # ── 6. Summary message ────────────────────────────────────────────────────────
+    # 7. Summary
     if not dry_run:
-        send_summary_message(
-            game_count=sent_count,
-            sheet_url=sheet_url,
-            run_date=run_date,
-        )
+        send_summary_message(game_count=sent_count, sheet_url=sheet_url, run_date=run_date)
 
-    print(
-        f"\n🏁 Pipeline complete. "
-        f"Fetched={len(games)} Relevant={len(relevant_items)} Sent={sent_count}"
-    )
+    print(f"\n🏁 Done. Fetched={len(games)} | Relevant={len(relevant_games)} | Sent={sent_count}")
 
 
 if __name__ == "__main__":
