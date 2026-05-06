@@ -2,7 +2,7 @@ name: Daily Alert
 
 on:
   schedule:
-    - cron: "0 15 * * *"
+    - cron: "0 13 * * *"
   workflow_dispatch:
     inputs:
       test_mode:
@@ -23,6 +23,7 @@ jobs:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
       GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
