@@ -607,6 +607,382 @@
       "store_url": "https://apps.apple.com/app/id6762853449",
       "platform": "ios",
       "sent_at": "2026-05-07T17:15:17.492302Z"
+    },
+    "6747460677": {
+      "name": "Sorting Queen",
+      "fid": "6747460677",
+      "app_id": "6747460677",
+      "store_url": "https://apps.apple.com/app/id6747460677",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:40.630516Z"
+    },
+    "6755758608": {
+      "name": "Sudoku Maestro - Grid Puzzle",
+      "fid": "6755758608",
+      "app_id": "6755758608",
+      "store_url": "https://apps.apple.com/app/id6755758608",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:40.992999Z"
+    },
+    "6757699774": {
+      "name": "Family Sort",
+      "fid": "6757699774",
+      "app_id": "6757699774",
+      "store_url": "https://apps.apple.com/app/id6757699774",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:41.398174Z"
+    },
+    "6760117954": {
+      "name": "Golden Dragon Mahjong",
+      "fid": "6760117954",
+      "app_id": "6760117954",
+      "store_url": "https://apps.apple.com/app/id6760117954",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:41.794849Z"
+    },
+    "6758933664": {
+      "name": "Pixel Rush - Duck's Journey",
+      "fid": "6758933664",
+      "app_id": "6758933664",
+      "store_url": "https://apps.apple.com/app/id6758933664",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:42.235888Z"
+    },
+    "6759025515": {
+      "name": "Tile Frost",
+      "fid": "6759025515",
+      "app_id": "6759025515",
+      "store_url": "https://apps.apple.com/app/id6759025515",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:44.049191Z"
+    },
+    "6759960968": {
+      "name": "Arrow Puzzle - Escape Game",
+      "fid": "6759960968",
+      "app_id": "6759960968",
+      "store_url": "https://apps.apple.com/app/id6759960968",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:44.388272Z"
+    },
+    "6760314499": {
+      "name": "Cross Math Number Puzzle ™",
+      "fid": "6760314499",
+      "app_id": "6760314499",
+      "store_url": "https://apps.apple.com/app/id6760314499",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:44.668597Z"
+    },
+    "6758025458": {
+      "name": "Picture Match - Merge Puzzle",
+      "fid": "6758025458",
+      "app_id": "6758025458",
+      "store_url": "https://apps.apple.com/app/id6758025458",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:45.109117Z"
+    },
+    "6759901019": {
+      "name": "Pig Go - Animal Jam Farm Games",
+      "fid": "6759901019",
+      "app_id": "6759901019",
+      "store_url": "https://apps.apple.com/app/id6759901019",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:47.842487Z"
+    },
+    "6621181299": {
+      "name": "Mattel Match",
+      "fid": "6621181299",
+      "app_id": "6621181299",
+      "store_url": "https://apps.apple.com/app/id6621181299",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:48.350202Z"
+    },
+    "6751417720": {
+      "name": "Parseword",
+      "fid": "6751417720",
+      "app_id": "6751417720",
+      "store_url": "https://apps.apple.com/app/id6751417720",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:48.622359Z"
+    },
+    "6755174113": {
+      "name": "Stray Cat Doors 3: Chapter 2",
+      "fid": "6755174113",
+      "app_id": "6755174113",
+      "store_url": "https://apps.apple.com/app/id6755174113",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:49.205765Z"
+    },
+    "6758609287": {
+      "name": "Goods Sorting Star",
+      "fid": "6758609287",
+      "app_id": "6758609287",
+      "store_url": "https://apps.apple.com/app/id6758609287",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:49.538248Z"
+    },
+    "6759697773": {
+      "name": "Bible Jigsaw Puzzles",
+      "fid": "6759697773",
+      "app_id": "6759697773",
+      "store_url": "https://apps.apple.com/app/id6759697773",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:50.152690Z"
+    },
+    "6760386733": {
+      "name": "Amset Match",
+      "fid": "6760386733",
+      "app_id": "6760386733",
+      "store_url": "https://apps.apple.com/app/id6760386733",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:50.501276Z"
+    },
+    "6759798927": {
+      "name": "Pixel Pop! - Color Crush",
+      "fid": "6759798927",
+      "app_id": "6759798927",
+      "store_url": "https://apps.apple.com/app/id6759798927",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:51.041608Z"
+    },
+    "6760103862": {
+      "name": "Flow Out: Line Puzzle",
+      "fid": "6760103862",
+      "app_id": "6760103862",
+      "store_url": "https://apps.apple.com/app/id6760103862",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:51.406422Z"
+    },
+    "6753717206": {
+      "name": "Midnight Dreams Hidden Objects",
+      "fid": "6753717206",
+      "app_id": "6753717206",
+      "store_url": "https://apps.apple.com/app/id6753717206",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:51.749649Z"
+    },
+    "6756654683": {
+      "name": "Jigzun Jigsaw Solitaire Puzzle",
+      "fid": "6756654683",
+      "app_id": "6756654683",
+      "store_url": "https://apps.apple.com/app/id6756654683",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:52.191275Z"
+    },
+    "6758139966": {
+      "name": "Magic Sand Sort",
+      "fid": "6758139966",
+      "app_id": "6758139966",
+      "store_url": "https://apps.apple.com/app/id6758139966",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:52.802072Z"
+    },
+    "6760397687": {
+      "name": "Catageotiq",
+      "fid": "6760397687",
+      "app_id": "6760397687",
+      "store_url": "https://apps.apple.com/app/id6760397687",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:52.987070Z"
+    },
+    "6759820693": {
+      "name": "Order Crush : Sort Puzzle",
+      "fid": "6759820693",
+      "app_id": "6759820693",
+      "store_url": "https://apps.apple.com/app/id6759820693",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:53.347400Z"
+    },
+    "6749264732": {
+      "name": "Screw Jumble",
+      "fid": "6749264732",
+      "app_id": "6749264732",
+      "store_url": "https://apps.apple.com/app/id6749264732",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:53.668422Z"
+    },
+    "6755954250": {
+      "name": "Block Blast : Puzzle Games",
+      "fid": "6755954250",
+      "app_id": "6755954250",
+      "store_url": "https://apps.apple.com/app/id6755954250",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:53.954915Z"
+    },
+    "6759916073": {
+      "name": "Imposter: Who is the Spy?",
+      "fid": "6759916073",
+      "app_id": "6759916073",
+      "store_url": "https://apps.apple.com/app/id6759916073",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:55.421993Z"
+    },
+    "6760156166": {
+      "name": "Riddled: Daily Brain Teasers",
+      "fid": "6760156166",
+      "app_id": "6760156166",
+      "store_url": "https://apps.apple.com/app/id6760156166",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:55.727934Z"
+    },
+    "6760919096": {
+      "name": "WordTok 2",
+      "fid": "6760919096",
+      "app_id": "6760919096",
+      "store_url": "https://apps.apple.com/app/id6760919096",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:56.182535Z"
+    },
+    "6760427086": {
+      "name": "Letter Cubes",
+      "fid": "6760427086",
+      "app_id": "6760427086",
+      "store_url": "https://apps.apple.com/app/id6760427086",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:56.588150Z"
+    },
+    "6760922130": {
+      "name": "Charades! Guess the Word",
+      "fid": "6760922130",
+      "app_id": "6760922130",
+      "store_url": "https://apps.apple.com/app/id6760922130",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:57.059059Z"
+    },
+    "6759153118": {
+      "name": "Imposter Game: Word Party",
+      "fid": "6759153118",
+      "app_id": "6759153118",
+      "store_url": "https://apps.apple.com/app/id6759153118",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:57.494855Z"
+    },
+    "6760336172": {
+      "name": "Imposter (Party Word Game)",
+      "fid": "6760336172",
+      "app_id": "6760336172",
+      "store_url": "https://apps.apple.com/app/id6760336172",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:57.902230Z"
+    },
+    "6761820736": {
+      "name": "Word & Logic Mini Puzzle Games",
+      "fid": "6761820736",
+      "app_id": "6761820736",
+      "store_url": "https://apps.apple.com/app/id6761820736",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:58.216392Z"
+    },
+    "6762191704": {
+      "name": "Letter Out",
+      "fid": "6762191704",
+      "app_id": "6762191704",
+      "store_url": "https://apps.apple.com/app/id6762191704",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:58.585649Z"
+    },
+    "6760588017": {
+      "name": "KubiLogic - Dice Logic Puzzle",
+      "fid": "6760588017",
+      "app_id": "6760588017",
+      "store_url": "https://apps.apple.com/app/id6760588017",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:58.938687Z"
+    },
+    "6760829152": {
+      "name": "Patches - Block Puzzle Shikaku",
+      "fid": "6760829152",
+      "app_id": "6760829152",
+      "store_url": "https://apps.apple.com/app/id6760829152",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:59.284871Z"
+    },
+    "6759899325": {
+      "name": "JigDramas",
+      "fid": "6759899325",
+      "app_id": "6759899325",
+      "store_url": "https://apps.apple.com/app/id6759899325",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:20:59.856332Z"
+    },
+    "6760089163": {
+      "name": "Mahjong Master!",
+      "fid": "6760089163",
+      "app_id": "6760089163",
+      "store_url": "https://apps.apple.com/app/id6760089163",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:00.406189Z"
+    },
+    "6760643806": {
+      "name": "Screw Pixel - Jewel Sort Game",
+      "fid": "6760643806",
+      "app_id": "6760643806",
+      "store_url": "https://apps.apple.com/app/id6760643806",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:01.048949Z"
+    },
+    "6760698955": {
+      "name": "Surreal Jigsaw Puzzles Games",
+      "fid": "6760698955",
+      "app_id": "6760698955",
+      "store_url": "https://apps.apple.com/app/id6760698955",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:01.698230Z"
+    },
+    "6760815652": {
+      "name": "Mahjong Classic: Pair Match",
+      "fid": "6760815652",
+      "app_id": "6760815652",
+      "store_url": "https://apps.apple.com/app/id6760815652",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:02.133437Z"
+    },
+    "6760823377": {
+      "name": "Patches Puzzle Linkedin Blocks",
+      "fid": "6760823377",
+      "app_id": "6760823377",
+      "store_url": "https://apps.apple.com/app/id6760823377",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:02.596166Z"
+    },
+    "6760172610": {
+      "name": "Onet Link Animals",
+      "fid": "6760172610",
+      "app_id": "6760172610",
+      "store_url": "https://apps.apple.com/app/id6760172610",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:02.953767Z"
+    },
+    "6760750449": {
+      "name": "Tribal Art Coloring Book",
+      "fid": "6760750449",
+      "app_id": "6760750449",
+      "store_url": "https://apps.apple.com/app/id6760750449",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:03.564519Z"
+    },
+    "6753792967": {
+      "name": "Humbug 2",
+      "fid": "6753792967",
+      "app_id": "6753792967",
+      "store_url": "https://apps.apple.com/app/id6753792967",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:04.070347Z"
+    },
+    "6760895969": {
+      "name": "Sand Pour: Color Sort",
+      "fid": "6760895969",
+      "app_id": "6760895969",
+      "store_url": "https://apps.apple.com/app/id6760895969",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:04.535378Z"
+    },
+    "6761831655": {
+      "name": "Mahjong Pair! - Tile Match",
+      "fid": "6761831655",
+      "app_id": "6761831655",
+      "store_url": "https://apps.apple.com/app/id6761831655",
+      "platform": "ios",
+      "sent_at": "2026-05-07T18:21:04.945283Z"
     }
   }
 }
