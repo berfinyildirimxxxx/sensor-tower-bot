@@ -27,18 +27,15 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
         "7018",  # Games/Trivia
     ],
     "android": [
-        "GAME_PUZZLE",
-        "GAME_CASUAL",
-        "GAME_WORD",
-        "GAME_BOARD",
-        "GAME_TRIVIA",
-        "GAME_ARCADE",
         "game_puzzle",
         "game_casual",
         "game_word",
         "game_board",
         "game_trivia",
         "game_arcade",
+        "game_card",
+        "game_educational",
+        "game_family",
     ],
 }
 
@@ -176,53 +173,76 @@ def _fetch_install_totals(
     end_date: str,
     auth_token: str,
 ) -> dict[str, dict[str, Any]]:
-    """Fetch CUMULATIVE install totals since release (summed across all days in window)."""
-    install_map: dict[str, dict[str, Any]] = {}
-    url = f"{BASE_URL}/v1/{platform}/sales_report_estimates"
+    """Fetch CUMULATIVE install totals since release (summed across all days in window).
 
-    for batch in _chunked(app_ids, APP_IDS_BATCH_SIZE):
+    Uses the new /api/ endpoint (Sensor Tower changelog 2025-10-20).
+    iOS: countries[]=WW for worldwide totals.
+    Android: no countries[] param — not supported for Android.
+    """
+    install_map: dict[str, dict[str, Any]] = {}
+    # Use /api/ prefix — /v1/sales_report_estimates deprecated on 2025-10-20
+    url = f"{BASE_URL}/api/{platform}/sales_report_estimates"
+
+    batches = _chunked(app_ids, APP_IDS_BATCH_SIZE)
+    for batch_idx, batch in enumerate(batches):
         params: dict[str, Any] = {
             "auth_token": auth_token,
             "start_date": start_date,
             "end_date": end_date,
             "date_granularity": "daily",
             "app_ids[]": batch,
-            "countries[]": ["WW"],
         }
+        # iOS supports WW aggregation; Android does NOT
+        if platform == "ios":
+            params["countries[]"] = ["WW"]
+
         data = _get_json(url, params)
 
         logger.info(
-            "install_totals response for platform=%s: type=%s preview=%s",
+            "install_totals platform=%s batch=%d/%d type=%s preview=%s",
             platform,
+            batch_idx + 1,
+            len(batches),
             type(data).__name__,
-            str(data)[:300] if data is not None else "None",
+            str(data)[:200] if data is not None else "None",
         )
 
+        # Normalize response shape
         if not isinstance(data, list):
-            logger.warning(
-                "Unexpected install response shape for platform=%s; skipping batch.",
-                platform,
-            )
-            # Try alternate response shape (dict with a list inside)
             if isinstance(data, dict):
                 for key in ("data", "results", "estimates"):
                     if key in data and isinstance(data[key], list):
                         data = data[key]
                         break
             if not isinstance(data, list):
+                logger.warning(
+                    "Unexpected install response for platform=%s batch=%d; skipping. type=%s",
+                    platform,
+                    batch_idx + 1,
+                    type(data).__name__,
+                )
                 continue
 
         for row in data:
             if not isinstance(row, dict):
                 continue
 
-            # Sensor Tower uses "aid" for app_id and "iu" for install units
-            app_id = str(row.get("aid") or row.get("app_id") or row.get("id") or "")
+            app_id = str(
+                row.get("aid")
+                or row.get("app_id")
+                or row.get("id")
+                or ""
+            )
             if not app_id:
                 continue
 
-            # Sum all daily install rows per app (cumulative total since release)
-            installs = int(row.get("iu") or row.get("units") or row.get("downloads") or 0)
+            installs = int(
+                row.get("iu")
+                or row.get("units")
+                or row.get("downloads")
+                or row.get("installs")
+                or 0
+            )
             country_code = str(row.get("cc") or row.get("country") or "WW")
 
             existing = install_map.setdefault(
@@ -234,6 +254,11 @@ def _fetch_install_totals(
                 existing["country"] = country_code
                 existing["top_country_installs"] = installs
 
+    logger.info(
+        "install_totals complete platform=%s: %d apps with data.",
+        platform,
+        len(install_map),
+    )
     return install_map
 
 
