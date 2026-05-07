@@ -180,8 +180,8 @@ def _fetch_install_totals(
     Android: no countries[] param — not supported for Android.
     """
     install_map: dict[str, dict[str, Any]] = {}
-    # Use /api/ prefix — /v1/sales_report_estimates deprecated on 2025-10-20
-    url = f"{BASE_URL}/api/{platform}/sales_report_estimates"
+    # /v1/ endpoint — still correct for sales_report_estimates
+    url = f"{BASE_URL}/v1/{platform}/sales_report_estimates"
 
     batches = _chunked(app_ids, APP_IDS_BATCH_SIZE)
     for batch_idx, batch in enumerate(batches):
