@@ -39,7 +39,7 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
 # Platform-specific install thresholds
 MIN_INSTALLS: dict[str, int] = {
     "ios": 500,
-    "android": 200,
+    "android": 500,
 }
 
 BASE_URL = "https://api.sensortower.com"
