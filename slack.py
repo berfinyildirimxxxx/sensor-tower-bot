@@ -15,7 +15,6 @@ MAX_TEXT_LENGTH = 200
 
 
 def _truncate_text(value: Any, default: str) -> str:
-    """Convert a value to text, apply a default, and truncate long content."""
     text = str(value).strip() if value is not None else ""
     if not text:
         text = default
@@ -25,7 +24,6 @@ def _truncate_text(value: Any, default: str) -> str:
 
 
 def _normalize_installs(value: Any) -> int:
-    """Convert an installs-like value to an integer with a safe fallback."""
     try:
         return int(value or 0)
     except (TypeError, ValueError):
@@ -33,7 +31,6 @@ def _normalize_installs(value: Any) -> int:
 
 
 def _platform_label(platform: Any) -> str:
-    """Return a friendly platform label with emoji."""
     normalized = str(platform).strip().lower() if platform is not None else ""
     if normalized == "ios":
         return "🍎 iOS"
@@ -43,7 +40,6 @@ def _platform_label(platform: Any) -> str:
 
 
 def _format_release_date(value: Any) -> str:
-    """Format ISO date string to YYYY-MM-DD. Return '?' if empty/invalid."""
     text = str(value or "").strip()
     if not text:
         return "?"
@@ -53,11 +49,9 @@ def _format_release_date(value: Any) -> str:
 
 
 def _valid_screenshot_urls(game: dict[str, Any]) -> list[str]:
-    """Return up to four valid HTTP(S) screenshot URLs from a game payload."""
     raw_screenshots = game.get("screenshots", [])
     if not isinstance(raw_screenshots, list):
         return []
-
     screenshots: list[str] = []
     for item in raw_screenshots:
         url = str(item).strip()
@@ -69,74 +63,44 @@ def _valid_screenshot_urls(game: dict[str, Any]) -> list[str]:
 
 
 def _post_blocks(blocks: list[dict[str, Any]]) -> bool:
-    """Post a Block Kit payload to the configured Slack webhook."""
     from config import load_config
-
     try:
         config = load_config()
     except RuntimeError as exc:
         logger.error("Unable to load Slack webhook configuration: %s", exc)
         return False
-
     try:
-        response = requests.post(
-            config.slack_webhook_url,
-            json={"blocks": blocks},
-            timeout=15,
-        )
+        response = requests.post(config.slack_webhook_url, json={"blocks": blocks}, timeout=15)
     except requests.RequestException as exc:
         logger.error("Slack webhook request failed: %s", exc)
         return False
-
     if response.status_code != 200:
-        logger.error(
-            "Slack webhook failed: status=%s body=%s",
-            response.status_code,
-            response.text[:500],
-        )
+        logger.error("Slack webhook failed: status=%s body=%s", response.status_code, response.text[:500])
         return False
-
     return True
 
 
 def send_test_message() -> bool:
-    """Send a simple test message to verify webhook setup."""
     blocks: list[dict[str, Any]] = [
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": "🧪 Bot test mesajı — Slack bağlantısı çalışıyor",
-            },
-        }
+        {"type": "section", "text": {"type": "mrkdwn", "text": "🧪 Bot test mesajı — Slack bağlantısı çalışıyor"}},
     ]
     return _post_blocks(blocks)
 
 
-def send_game_alert(
-    game: dict[str, Any],
-    score: int,
-    reason: str,
-    mechanic: str,
-) -> bool:
-    """Post a formatted alert about one game to the configured Slack channel."""
+def send_game_alert(game: dict[str, Any], score: int, reason: str, mechanic: str) -> bool:
     name = _truncate_text(game.get("name"), "?")
     publisher = _truncate_text(game.get("publisher"), "?")
     country = _truncate_text(game.get("country"), "?")
     release_date = _format_release_date(game.get("launch_date"))
-    installs = _normalize_installs(game.get("installs_last_day"))
+    installs = _normalize_installs(game.get("installs_total") or game.get("installs_last_day"))
     platform = _platform_label(game.get("platform"))
-    relevance = _normalize_installs(score)
     mechanic_text = _truncate_text(mechanic, "Unknown")
     reason_text = _truncate_text(reason, "?")
     store_url = _truncate_text(game.get("store_url"), "?")
     screenshots = _valid_screenshot_urls(game)
 
     blocks: list[dict[str, Any]] = [
-        {
-            "type": "header",
-            "text": {"type": "plain_text", "text": f"🎮 {name}"},
-        },
+        {"type": "header", "text": {"type": "plain_text", "text": f"🎮 {name}"}},
         {
             "type": "section",
             "fields": [
@@ -145,62 +109,26 @@ def send_game_alert(
                 {"type": "mrkdwn", "text": f"*🌍 Country:*\n{country}"},
                 {"type": "mrkdwn", "text": f"*📅 Release:*\n{release_date}"},
                 {"type": "mrkdwn", "text": f"*📊 Installs:*\n{installs:,}"},
-                {"type": "mrkdwn", "text": f"*⭐ Relevance:*\n{relevance}/100"},
+                {"type": "mrkdwn", "text": f"*⭐ Relevance:*\n{score}/100"},
                 {"type": "mrkdwn", "text": f"*🎯 Mechanic:*\n{mechanic_text}"},
             ],
         },
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": f"*💡 Why relevant:*\n{reason_text}",
-            },
-        },
+        {"type": "section", "text": {"type": "mrkdwn", "text": f"*💡 Why relevant:*\n{reason_text}"}},
     ]
 
     if store_url.startswith("http://") or store_url.startswith("https://"):
-        blocks.append(
-            {
-                "type": "actions",
-                "elements": [
-                    {
-                        "type": "button",
-                        "text": {
-                            "type": "plain_text",
-                            "text": "📲 Open in Store",
-                        },
-                        "url": store_url,
-                    }
-                ],
-            }
-        )
+        blocks.append({
+            "type": "actions",
+            "elements": [{"type": "button", "text": {"type": "plain_text", "text": "📲 Open in Store"}, "url": store_url}],
+        })
 
     for index, screenshot_url in enumerate(screenshots, start=1):
-        blocks.append(
-            {
-                "type": "image",
-                "image_url": screenshot_url,
-                "alt_text": f"Screenshot {index}",
-            }
-        )
+        blocks.append({"type": "image", "image_url": screenshot_url, "alt_text": f"Screenshot {index}"})
 
-    blocks.extend(
-        [
-            {
-                "type": "context",
-                "elements": [
-                    {
-                        "type": "mrkdwn",
-                        "text": (
-                            "📡 Sensor Tower data · "
-                            f"{datetime.utcnow().date().isoformat()}"
-                        ),
-                    }
-                ],
-            },
-            {"type": "divider"},
-        ]
-    )
+    blocks.extend([
+        {"type": "context", "elements": [{"type": "mrkdwn", "text": f"📡 Sensor Tower data · {datetime.utcnow().date().isoformat()}"}]},
+        {"type": "divider"},
+    ])
 
     return _post_blocks(blocks)
 
@@ -210,20 +138,30 @@ def send_summary_message(
     sheet_url: str | None,
     run_date: str,
     total_fetched: int = 0,
+    relevant_count: int = 0,
+    ios_fetched: int = 0,
+    android_fetched: int = 0,
 ) -> bool:
-    lines = [
-        f"📊 Daily Game Scan Complete — {run_date}",
-    ]
+    lines = [f"📊 *Daily Game Scan Complete — {run_date}*"]
+
     if total_fetched > 0:
-        lines.append(f"📦 {total_fetched} total games fetched today")
-    lines.append(f"🎮 {game_count} relevant games found")
+        if ios_fetched or android_fetched:
+            lines.append(f"📦 *{total_fetched} total games fetched* (🍎 iOS: {ios_fetched} | 🤖 Android: {android_fetched})")
+        else:
+            lines.append(f"📦 *{total_fetched} total games fetched*")
+
+    if relevant_count > 0:
+        lines.append(f"🎯 *{relevant_count} relevant games found*")
+
+    lines.append(f"📣 *{game_count} new alerts sent today*")
+
     if sheet_url:
-        lines.append(f"🔗 View in Google Sheets: {sheet_url}")
+        lines.append(f"🔗 <{sheet_url}|View in Google Sheets>")
+
+    web_url = "https://berfinyildirimxxxx.github.io/sensor-tower-bot"
+    lines.append(f"🌐 <{web_url}|View Game Dashboard>")
 
     blocks = [
-        {
-            "type": "section",
-            "text": {"type": "mrkdwn", "text": "\n".join(lines)},
-        }
+        {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}},
     ]
     return _post_blocks(blocks)
