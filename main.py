@@ -18,7 +18,7 @@ from dedupe import (
 from relevance import score_game
 from sensor_tower import fetch_new_games
 from sheets import write_to_sheet, write_all_games_to_sheet
-from slack import send_game_alert, send_summary_message
+from slack import send_game_alert, send_summary_message, send_test_message
 
 logging.basicConfig(
     level=logging.INFO,
@@ -151,13 +151,21 @@ def _write_web_data(
     )
 
 
+def _installs_of(g: dict[str, Any]) -> int:
+    """Get installs from a game dict, handling both key names."""
+    return int(g.get("installs", 0) or g.get("installs_total", 0) or 0)
+
+
 def main() -> int:
     args = sys.argv[1:]
     test_mode = "--test" in args
     dry_run = "--dry-run" in args
 
     if test_mode:
-        logger.info("Running in TEST mode")
+        logger.info("Running in TEST mode — sending Slack test message and exiting")
+        send_test_message()
+        return 0
+
     if dry_run:
         logger.info("Running in DRY-RUN mode (no Slack alerts)")
 
@@ -184,12 +192,7 @@ def main() -> int:
 
     # Filter relevant (score >= 60)
     relevant = [g for g in scored if int(g.get("score", 0)) >= 60]
-    relevant.sort(
-        key=lambda g: int(
-            g.get("installs", 0) or g.get("installs_total", 0) or 0
-        ),
-        reverse=True,
-    )
+    relevant.sort(key=_installs_of, reverse=True)
 
     ios_relevant = sum(1 for g in relevant if g.get("platform") == "ios")
     android_relevant = sum(1 for g in relevant if g.get("platform") == "android")
@@ -222,29 +225,31 @@ def main() -> int:
     sent_count = 0
     if not dry_run:
         # iOS first, then Android — both sorted by installs desc
-        def _installs(g: dict[str, Any]) -> int:
-            return int(g.get("installs", 0) or g.get("installs_total", 0) or 0)
-
         ios_relevant_sorted = sorted(
             [g for g in relevant if g.get("platform") == "ios"],
-            key=_installs,
+            key=_installs_of,
             reverse=True,
         )
         android_relevant_sorted = sorted(
             [g for g in relevant if g.get("platform") == "android"],
-            key=_installs,
+            key=_installs_of,
             reverse=True,
         )
         ordered = ios_relevant_sorted + android_relevant_sorted
 
         for game in ordered:
-            # Correct parameter order: game first, registry second
+            # Correct parameter order for dedupe: game first, registry second
             if is_already_sent(game, sent_registry):
                 continue
-            ok = send_game_alert(game, test_mode=test_mode)
+            # send_game_alert expects: game, score, reason, mechanic
+            ok = send_game_alert(
+                game=game,
+                score=int(game.get("score", 0)),
+                reason=str(game.get("reason", "")),
+                mechanic=str(game.get("mechanic", "")),
+            )
             if ok:
                 sent_count += 1
-                # Correct parameter order: game first, registry second
                 mark_as_sent(game, sent_registry)
 
         save_sent_games(sent_registry)
@@ -259,6 +264,9 @@ def main() -> int:
             sheet_url=relevant_sheet_url,
             run_date=run_date,
             total_fetched=len(games),
+            relevant_count=len(relevant),
+            ios_fetched=ios_count,
+            android_fetched=android_count,
         )
 
     return 0
