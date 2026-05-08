@@ -330,6 +330,17 @@ def _combine_game_data(
     )
     total_installs = int(installs.get("installs_total", 0) or 0)
 
+    # Icon URL — Sensor Tower returns it under various field names depending on platform/version
+    icon_url = str(
+        metadata.get("icon_url")
+        or metadata.get("icon")
+        or metadata.get("app_icon")
+        or metadata.get("icon_url_512")
+        or metadata.get("icon_url_100")
+        or metadata.get("icon_url_60")
+        or ""
+    )
+
     return {
         "fid": app_id,
         "app_id": app_id,
@@ -342,6 +353,7 @@ def _combine_game_data(
         "keywords": keywords,
         "store_url": _build_store_url(platform, app_id),
         "screenshots": screenshots,
+        "icon_url": icon_url,
         "installs_total": total_installs,
         "installs_last_day": total_installs,  # legacy key
         "country": str(installs.get("country", "WW") or "WW"),
