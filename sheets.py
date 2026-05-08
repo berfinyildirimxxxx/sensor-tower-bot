@@ -62,8 +62,13 @@ def _ensure_headers(worksheet: gspread.Worksheet, headers: list[str]) -> None:
 
 
 def _get_installs(game: dict[str, Any]) -> int:
-    """Get total installs from game payload, handling both key names."""
-    val = game.get("installs_total") or game.get("installs_last_day") or 0
+    """Get total installs from game payload, handling all key names."""
+    val = (
+        game.get("installs")
+        or game.get("installs_total")
+        or game.get("installs_last_day")
+        or 0
+    )
     try:
         return int(val)
     except (TypeError, ValueError):
@@ -79,22 +84,21 @@ def _format_launch_date(game: dict[str, Any]) -> str:
 
 
 def _build_relevant_row(item: dict[str, Any]) -> list[str]:
-    """Build a sheet row from a Claude-scored relevant game payload."""
-    game = item["game"]
-    installs = _get_installs(game)
-    launch_date = _format_launch_date(game)
+    """Build a sheet row from a scored game (flat format)."""
+    installs = _get_installs(item)
+    launch_date = _format_launch_date(item)
 
     return [
-        str(game.get("name") or ""),
-        str(game.get("publisher") or ""),
-        str(game.get("platform") or "").upper(),
-        str(game.get("country") or ""),
+        str(item.get("name") or ""),
+        str(item.get("publisher") or ""),
+        str(item.get("platform") or "").upper(),
+        str(item.get("country") or ""),
         launch_date,
         str(installs),
         str(item.get("score", 0)),
         str(item.get("mechanic", "")),
         str(item.get("reason", "")),
-        str(game.get("store_url") or ""),
+        str(item.get("store_url") or ""),
     ]
 
 
@@ -116,13 +120,12 @@ def _build_all_games_row(game: dict[str, Any]) -> list[str]:
 
 
 def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
-    """Write Claude-relevant games to 'Relevant - YYYY-MM-DD' tab.
+    """Write scored relevant games to 'Relevant - YYYY-MM-DD' tab.
 
-    Columns: Game Name | Developer | Platform | Country | Release Date |
-             Total Installs | AI Score | Mechanic | AI Reason | Store URL
+    Expects flat format: each item has name, publisher, platform, score, mechanic, etc.
+    directly on the dict (no nested 'game' key).
 
     Returns the sheet URL on success, None on failure.
-    If the tab already exists today, appends to it.
     """
     if not scored_games:
         logger.info("No relevant games to write to Google Sheets.")
@@ -151,9 +154,10 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
         )
         _ensure_headers(worksheet, headers)
 
+        # Sort by installs descending (highest installs first)
         sorted_games = sorted(
             scored_games,
-            key=lambda item: int(item.get("score", 0)),
+            key=lambda item: _get_installs(item),
             reverse=True,
         )
         rows = [_build_relevant_row(item) for item in sorted_games]
@@ -167,9 +171,6 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
 
 def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
     """Write ALL fetched games (iOS + Android, no filter) to 'All Games - YYYY-MM-DD' tab.
-
-    Columns: Game Name | Developer | Platform | Country | Release Date |
-             Total Installs | Category | Store URL
 
     Sorted by total installs descending. Never crashes — logs errors.
     """
