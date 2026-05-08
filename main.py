@@ -1,10 +1,12 @@
 """Orchestration entry point for the Sensor Tower to Slack alert bot."""
-
 from __future__ import annotations
 
+import json
 import logging
+import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from typing import Any
 
 from dedupe import (
@@ -16,179 +18,238 @@ from dedupe import (
 )
 from relevance import score_game
 from sensor_tower import fetch_new_games
-from sheets import write_all_games_to_sheet, write_to_sheet
+from sheets import write_to_sheet
 from slack import send_game_alert, send_summary_message
 
-RELEVANCE_THRESHOLD = 60
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+WEB_DATA_PATH = Path("docs/games_data.json")
+WEB_RETENTION_DAYS = 30  # how many days to keep games on the website
 
 
-def main() -> None:
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(message)s",
+def _load_existing_web_data() -> dict[str, Any]:
+    """Load previous games_data.json so we can append, not overwrite."""
+    if not WEB_DATA_PATH.exists():
+        return {"games": []}
+    try:
+        with WEB_DATA_PATH.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+            if not isinstance(data, dict):
+                return {"games": []}
+            if "games" not in data:
+                data["games"] = []
+            return data
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning("Could not read existing web data: %s", exc)
+        return {"games": []}
+
+
+def _game_key(game: dict[str, Any]) -> str:
+    """Unique identifier for a game across runs."""
+    fid = str(game.get("fid") or game.get("app_id") or "")
+    platform = str(game.get("platform") or "")
+    return f"{platform}:{fid}" if fid else ""
+
+
+def _merge_web_games(
+    existing: list[dict[str, Any]],
+    new_relevant: list[dict[str, Any]],
+    today_iso: str,
+) -> list[dict[str, Any]]:
+    """
+    Merge new relevant games into existing list.
+
+    Rules:
+    - If a game already exists (by platform+fid), update its install count and
+      refresh its `last_seen` date but keep it in place.
+    - If new, add it with `first_seen` and `last_seen` set to today.
+    - Drop any game whose `last_seen` is older than WEB_RETENTION_DAYS.
+    """
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=WEB_RETENTION_DAYS)).date().isoformat()
+
+    # Index existing games by key
+    by_key: dict[str, dict[str, Any]] = {}
+    for g in existing:
+        key = _game_key(g)
+        if not key:
+            continue
+        # Drop if too old
+        last_seen = g.get("last_seen") or g.get("first_seen") or today_iso
+        if last_seen < cutoff:
+            continue
+        by_key[key] = g
+
+    # Merge in new games
+    for g in new_relevant:
+        key = _game_key(g)
+        if not key:
+            continue
+        if key in by_key:
+            # Update install count and last_seen, keep first_seen
+            existing_game = by_key[key]
+            existing_game["installs"] = g.get("installs") or g.get("installs_total") or existing_game.get("installs", 0)
+            existing_game["last_seen"] = today_iso
+            # Refresh score and reason in case relevance logic changed
+            if g.get("score") is not None:
+                existing_game["score"] = g["score"]
+            if g.get("mechanic"):
+                existing_game["mechanic"] = g["mechanic"]
+            if g.get("reason"):
+                existing_game["reason"] = g["reason"]
+        else:
+            # New game — add with first_seen and last_seen
+            entry = dict(g)
+            entry["first_seen"] = today_iso
+            entry["last_seen"] = today_iso
+            by_key[key] = entry
+
+    return list(by_key.values())
+
+
+def _write_web_data(
+    relevant_games: list[dict[str, Any]],
+    total_fetched: int,
+    ios_fetched: int,
+    android_fetched: int,
+    total_relevant_today: int,
+    ios_relevant_today: int,
+    android_relevant_today: int,
+) -> None:
+    """Update docs/games_data.json with cumulative data."""
+    today_iso = datetime.now(timezone.utc).date().isoformat()
+    existing = _load_existing_web_data()
+    merged = _merge_web_games(existing.get("games", []), relevant_games, today_iso)
+
+    payload = {
+        "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "run_date": today_iso,
+        "retention_days": WEB_RETENTION_DAYS,
+        "total_fetched_today": total_fetched,
+        "ios_fetched_today": ios_fetched,
+        "android_fetched_today": android_fetched,
+        "total_relevant_today": total_relevant_today,
+        "ios_relevant_today": ios_relevant_today,
+        "android_relevant_today": android_relevant_today,
+        "total_games_on_site": len(merged),
+        "games": merged,
+    }
+
+    WEB_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with WEB_DATA_PATH.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    logger.info(
+        "Web data updated: %d new+kept games on site, retention=%d days",
+        len(merged),
+        WEB_RETENTION_DAYS,
     )
 
-    if "--test" in sys.argv:
-        from slack import send_test_message
-        ok = send_test_message()
-        print("✅ Test message sent" if ok else "❌ Test message failed")
-        return
 
-    if "--send-first-game" in sys.argv:
-        games = fetch_new_games(max_installs=50000, release_lookback_days=60)
-        if not games:
-            print("❌ No games fetched.")
-            return
-        first_game = games[0]
-        registry = load_sent_games()
-        if is_already_sent(first_game, registry):
-            print(f"⏭  '{first_game.get('name')}' already sent.")
-            return
-        score, reason, mechanic = score_game(first_game)
-        ok = send_game_alert(game=first_game, score=score, reason=reason, mechanic=mechanic)
-        if ok:
-            mark_as_sent(first_game, registry)
-            save_sent_games(registry)
-            print("✅ Sent")
-        return
+def main() -> int:
+    args = sys.argv[1:]
+    test_mode = "--test" in args
+    dry_run = "--dry-run" in args
 
-    dry_run = "--dry-run" in sys.argv
+    if test_mode:
+        logger.info("Running in TEST mode")
+    if dry_run:
+        logger.info("Running in DRY-RUN mode (no Slack alerts)")
 
-    # 1. Fetch
-    logging.info("Fetching games from Sensor Tower.")
-    games = fetch_new_games(max_installs=50000, release_lookback_days=60)
-    logging.info("Fetched %d games total.", len(games))
-    print(f"\n📦 Fetched {len(games)} games.")
+    logger.info("Fetching games from Sensor Tower.")
+    games = fetch_new_games(release_lookback_days=60)
+    logger.info("Fetched %d total games", len(games))
 
-    if not games:
-        send_summary_message(
-            game_count=0,
-            relevant_count=0,
-            sheet_url=None,
-            run_date=datetime.utcnow().strftime("%Y-%m-%d"),
-            total_fetched=0,
-        )
-        return
-
-    # Count per platform
     ios_count = sum(1 for g in games if g.get("platform") == "ios")
     android_count = sum(1 for g in games if g.get("platform") == "android")
-    print(f"  🍎 iOS: {ios_count} | 🤖 Android: {android_count}")
+    logger.info("Platform breakdown: iOS=%d, Android=%d", ios_count, android_count)
 
-    # 2. All games → sheet
-    print(f"\n📊 Writing {len(games)} games to 'All Games' sheet...")
-    write_all_games_to_sheet(games)
+    # Score every game
+    scored: list[dict[str, Any]] = []
+    for g in games:
+        score, mechanic, reason = score_game(g)
+        entry = dict(g)
+        entry["score"] = score
+        entry["mechanic"] = mechanic
+        entry["reason"] = reason
+        scored.append(entry)
 
-    # 3. Score — iOS first, then Android
-    print(f"\n🎯 Scoring {len(games)} games...")
-    ios_games = [g for g in games if g.get("platform") == "ios"]
-    android_games = [g for g in games if g.get("platform") == "android"]
-    sorted_games = ios_games + android_games
+    # Write ALL games to "All Games" sheet
+    all_sheet_url = write_to_sheet(scored, sheet_name="All Games")
 
-    scored_games: list[dict[str, Any]] = []
-    for game in sorted_games:
-        score, reason, mechanic = score_game(game)
-        scored_games.append({"game": game, "score": score, "reason": reason, "mechanic": mechanic})
+    # Filter relevant (score >= 60 — adjust if you want stricter)
+    relevant = [g for g in scored if int(g.get("score", 0)) >= 60]
+    relevant.sort(key=lambda g: int(g.get("installs", 0) or 0), reverse=True)
 
-    relevant_games = [g for g in scored_games if g["score"] >= RELEVANCE_THRESHOLD]
-    ios_relevant = sum(1 for g in relevant_games if g["game"].get("platform") == "ios")
-    android_relevant = sum(1 for g in relevant_games if g["game"].get("platform") == "android")
+    ios_relevant = sum(1 for g in relevant if g.get("platform") == "ios")
+    android_relevant = sum(1 for g in relevant if g.get("platform") == "android")
 
-    logging.info(
-        "Scored %d games — %d passed threshold (>=%d). iOS=%d Android=%d",
-        len(scored_games), len(relevant_games), RELEVANCE_THRESHOLD,
-        ios_relevant, android_relevant,
+    logger.info(
+        "Relevant games: %d (iOS=%d, Android=%d)",
+        len(relevant),
+        ios_relevant,
+        android_relevant,
     )
-    print(f"✅ {len(relevant_games)} relevant (🍎 iOS: {ios_relevant} | 🤖 Android: {android_relevant})")
 
-    # 4. Generate web data JSON for GitHub Pages
-    try:
-        import json, os
-        web_data = {
-            "last_updated": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
-            "run_date": datetime.utcnow().strftime("%Y-%m-%d"),
-            "total_fetched": len(games),
-            "ios_fetched": ios_count,
-            "android_fetched": android_count,
-            "total_relevant": len(relevant_games),
-            "ios_relevant": ios_relevant,
-            "android_relevant": android_relevant,
-            "games": [
-                {
-                    "name": item["game"].get("name", ""),
-                    "publisher": item["game"].get("publisher", ""),
-                    "platform": item["game"].get("platform", ""),
-                    "category": item["game"].get("category", ""),
-                    "installs": item["game"].get("installs_total", 0),
-                    "country": item["game"].get("country", ""),
-                    "launch_date": item["game"].get("launch_date", ""),
-                    "store_url": item["game"].get("store_url", ""),
-                    "screenshots": item["game"].get("screenshots", [])[:3],
-                    "description": item["game"].get("description", "")[:500],
-                    "score": item["score"],
-                    "mechanic": item["mechanic"],
-                    "reason": item["reason"],
-                }
-                for item in relevant_games
-            ],
-        }
-        with open("docs/games_data.json", "w", encoding="utf-8") as f:
-            json.dump(web_data, f, ensure_ascii=False, indent=2)
-        print("📄 Web data JSON updated (docs/games_data.json)")
-    except Exception as exc:
-        logging.warning("Could not write web data JSON: %s", exc)
+    # Write relevant to "Relevant" sheet
+    relevant_sheet_url = write_to_sheet(relevant, sheet_name="Relevant")
 
-    # 5. Relevant → sheet
-    run_date = datetime.utcnow().strftime("%Y-%m-%d")
-    sheet_url = None
-    if relevant_games:
-        print(f"\n📋 Writing {len(relevant_games)} relevant games to sheet...")
-        sheet_url = write_to_sheet(relevant_games)
+    # Update web dashboard JSON (cumulative)
+    _write_web_data(
+        relevant_games=relevant,
+        total_fetched=len(games),
+        ios_fetched=ios_count,
+        android_fetched=android_count,
+        total_relevant_today=len(relevant),
+        ios_relevant_today=ios_relevant,
+        android_relevant_today=android_relevant,
+    )
 
-    # 6. Dedupe
-    registry = load_sent_games()
-    pruned = prune_old_entries(registry, days=90)
-    if pruned:
-        logging.info("Pruned %d old entries.", pruned)
+    # Slack alerts (deduped)
+    sent_registry = load_sent_games()
+    sent_registry = prune_old_entries(sent_registry, days=60)
 
-    unsent_games = [item for item in relevant_games if not is_already_sent(item["game"], registry)]
-    print(f"📬 {len(unsent_games)} new to send ({len(relevant_games) - len(unsent_games)} already sent).")
-
-    # 7. Slack — iOS first, then Android
     sent_count = 0
-    if dry_run:
-        print("\n⚡ --dry-run: skipping Slack.")
-        for item in unsent_games:
-            print(f"  [DRY RUN] {item['game'].get('name')} platform={item['game'].get('platform')} score={item['score']}")
-        sent_count = len(unsent_games)
-    else:
-        print("\n📣 Sending to Slack (iOS first, then Android)...")
-        ios_unsent = [i for i in unsent_games if i["game"].get("platform") == "ios"]
-        android_unsent = [i for i in unsent_games if i["game"].get("platform") == "android"]
-        ordered_unsent = ios_unsent + android_unsent
-        try:
-            for item in ordered_unsent:
-                sent = send_game_alert(item["game"], item["score"], item["reason"], item["mechanic"])
-                if sent:
-                    mark_as_sent(item["game"], registry)
-                    sent_count += 1
-        finally:
-            save_sent_games(registry)
+    if not dry_run:
+        # iOS first, then Android — both sorted by installs desc
+        ios_relevant_sorted = sorted(
+            [g for g in relevant if g.get("platform") == "ios"],
+            key=lambda g: int(g.get("installs", 0) or 0),
+            reverse=True,
+        )
+        android_relevant_sorted = sorted(
+            [g for g in relevant if g.get("platform") == "android"],
+            key=lambda g: int(g.get("installs", 0) or 0),
+            reverse=True,
+        )
+        ordered = ios_relevant_sorted + android_relevant_sorted
 
-    # 8. Summary
+        for game in ordered:
+            if is_already_sent(sent_registry, game):
+                continue
+            ok = send_game_alert(game, test_mode=test_mode)
+            if ok:
+                sent_count += 1
+                mark_as_sent(sent_registry, game)
+
+        save_sent_games(sent_registry)
+        logger.info("Sent %d new games to Slack", sent_count)
+    else:
+        logger.info("Dry run: would have sent %d games to Slack", len(relevant))
+
+    run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     if not dry_run:
         send_summary_message(
             game_count=sent_count,
-            relevant_count=len(relevant_games),
-            sheet_url=sheet_url,
+            sheet_url=relevant_sheet_url or all_sheet_url,
             run_date=run_date,
             total_fetched=len(games),
-            ios_fetched=ios_count,
-            android_fetched=android_count,
         )
 
-    print(f"\n🏁 Done. Fetched={len(games)} (iOS={ios_count} Android={android_count}) | Relevant={len(relevant_games)} | Sent={sent_count}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
