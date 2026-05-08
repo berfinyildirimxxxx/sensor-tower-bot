@@ -35,7 +35,7 @@ def main() -> None:
         return
 
     if "--send-first-game" in sys.argv:
-        games = fetch_new_games(min_installs=500, max_installs=50000, release_lookback_days=60)
+        games = fetch_new_games(max_installs=50000, release_lookback_days=60)
         if not games:
             print("❌ No games fetched.")
             return
@@ -56,7 +56,7 @@ def main() -> None:
 
     # 1. Fetch
     logging.info("Fetching games from Sensor Tower.")
-    games = fetch_new_games(min_installs=500, max_installs=50000, release_lookback_days=60)
+    games = fetch_new_games(max_installs=50000, release_lookback_days=60)
     logging.info("Fetched %d games total.", len(games))
     print(f"\n📦 Fetched {len(games)} games.")
 
@@ -118,12 +118,7 @@ def main() -> None:
 
     # 7. Summary
     if not dry_run:
-        send_summary_message(
-            game_count=sent_count,
-            sheet_url=sheet_url,
-            run_date=run_date,
-            total_fetched=len(games),
-        )
+        send_summary_message(game_count=sent_count, sheet_url=sheet_url, run_date=run_date)
 
     print(f"\n🏁 Done. Fetched={len(games)} | Relevant={len(relevant_games)} | Sent={sent_count}")
 
