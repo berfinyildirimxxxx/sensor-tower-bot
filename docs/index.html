@@ -1,1 +1,440 @@
-docs/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Game Alerts Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117;
+    --surface: #181b24;
+    --surface-2: #21252f;
+    --border: #2a2f3c;
+    --text: #e8eaed;
+    --text-muted: #9aa0ac;
+    --accent: #4f8cff;
+    --accent-soft: rgba(79, 140, 255, 0.15);
+    --ios: #4f8cff;
+    --android: #34c759;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    background: rgba(24, 27, 36, 0.95);
+  }
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 { font-size: 20px; font-weight: 600; }
+  .subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .stats { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stat {
+    background: var(--surface-2);
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .stat-value { font-weight: 600; color: var(--accent); }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .tab {
+    padding: 10px 18px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+  .search {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .search:focus { outline: none; border-color: var(--accent); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.15s, border-color 0.15s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .card-top { display: flex; gap: 12px; margin-bottom: 12px; }
+  .card-icon, .card-icon-fallback {
+    width: 56px; height: 56px;
+    border-radius: 12px;
+    background: var(--surface-2);
+    flex-shrink: 0;
+  }
+  .card-icon { object-fit: cover; }
+  .card-icon-fallback {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .card-info { flex: 1; min-width: 0; }
+  .card-name {
+    font-size: 14px; font-weight: 600; margin-bottom: 4px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card-pub {
+    font-size: 12px; color: var(--text-muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; }
+  .badge {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .badge.platform-ios { background: rgba(79, 140, 255, 0.15); color: var(--ios); }
+  .badge.platform-android { background: rgba(52, 199, 89, 0.15); color: var(--android); }
+  .badge.installs { background: var(--accent-soft); color: var(--accent); }
+  .empty { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 700px; width: 100%;
+    padding: 28px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--surface-2);
+    border: none;
+    color: var(--text);
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    cursor: pointer; font-size: 18px;
+  }
+  .modal-header { display: flex; gap: 16px; margin-bottom: 20px; }
+  .modal-icon {
+    width: 80px; height: 80px;
+    border-radius: 16px;
+    background: var(--surface-2);
+    object-fit: cover; flex-shrink: 0;
+  }
+  .modal-title { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .modal-pub { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
+  .modal-section { margin-top: 20px; }
+  .modal-section h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 14px; line-height: 1.6;
+    color: var(--text);
+    white-space: pre-wrap;
+  }
+  .screenshots {
+    display: flex; gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .screenshots img { height: 240px; border-radius: 8px; flex-shrink: 0; }
+  .modal-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+  .link-btn {
+    padding: 10px 16px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px; font-weight: 500;
+  }
+  .link-btn.secondary {
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .error-box {
+    background: rgba(255, 80, 80, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.3);
+    color: #ff8080;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div>
+        <h1>🎮 Game Alerts Dashboard</h1>
+        <div class="subtitle" id="last-updated">Loading…</div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="error-container"></div>
+    <input type="text" class="search" id="search" placeholder="Search by name or publisher…" />
+    <div class="tabs">
+      <button class="tab active" data-platform="all">All</button>
+      <button class="tab" data-platform="ios">iOS</button>
+      <button class="tab" data-platform="android">Android</button>
+    </div>
+    <div id="grid" class="grid"></div>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+<script>
+  let allGames = [];
+  let currentPlatform = 'all';
+  let searchQuery = '';
+
+  function showError(msg) {
+    document.getElementById('error-container').innerHTML =
+      '<div class="error-box">' + msg + '</div>';
+  }
+
+  function formatNumber(n) {
+    n = parseInt(n) || 0;
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+    return n.toString();
+  }
+
+  function getInstalls(game) {
+    return parseInt(game.installs_total || game.installs_last_day || 0) || 0;
+  }
+
+  function platformLabel(p) {
+    return p === 'ios' ? ' iOS' : '🤖 Android';
+  }
+
+  function escapeHtml(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function render() {
+    const grid = document.getElementById('grid');
+    const q = searchQuery.toLowerCase().trim();
+
+    let filtered = allGames.filter(g => {
+      if (currentPlatform !== 'all' && g.platform !== currentPlatform) return false;
+      if (q) {
+        const hay = ((g.name || '') + ' ' + (g.publisher || '')).toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+
+    filtered.sort((a, b) => {
+      if (a.platform !== b.platform) return a.platform === 'ios' ? -1 : 1;
+      return getInstalls(b) - getInstalls(a);
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="empty">No games found.</div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(g => {
+      const installs = getInstalls(g);
+      const idx = allGames.indexOf(g);
+      const icon = g.icon_url
+        ? `<img class="card-icon" src="${g.icon_url}" alt="" onerror="this.outerHTML='<div class=\\'card-icon-fallback\\'>🎮</div>'" />`
+        : `<div class="card-icon-fallback">🎮</div>`;
+      return `
+        <div class="card" data-idx="${idx}">
+          <div class="card-top">
+            ${icon}
+            <div class="card-info">
+              <div class="card-name">${escapeHtml(g.name || 'Unknown')}</div>
+              <div class="card-pub">${escapeHtml(g.publisher || '—')}</div>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="badge platform-${g.platform}">${platformLabel(g.platform)}</span>
+            <span class="badge installs">${formatNumber(installs)} installs</span>
+            ${g.category ? `<span class="badge">${escapeHtml(g.category)}</span>` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    grid.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        openModal(allGames[parseInt(card.dataset.idx)]);
+      });
+    });
+  }
+
+  function openModal(g) {
+    const installs = getInstalls(g);
+    const icon = g.icon_url
+      ? `<img class="modal-icon" src="${g.icon_url}" alt="" onerror="this.style.display='none'" />`
+      : `<div class="modal-icon" style="display:flex;align-items:center;justify-content:center;font-size:36px">🎮</div>`;
+
+    const screenshots = (g.screenshot_urls || []).slice(0, 6);
+    const screenshotsHtml = screenshots.length > 0
+      ? `<div class="modal-section">
+           <h3>Screenshots</h3>
+           <div class="screenshots">
+             ${screenshots.map(s => `<img src="${s}" alt="" />`).join('')}
+           </div>
+         </div>`
+      : '';
+
+    const desc = g.description || g.short_description || 'No description available.';
+    const links = [];
+    if (g.store_url) {
+      const label = g.platform === 'ios' ? 'App Store' : 'Google Play';
+      links.push(`<a class="link-btn" href="${g.store_url}" target="_blank" rel="noopener">View on ${label}</a>`);
+    }
+    if (g.sensor_tower_url) {
+      links.push(`<a class="link-btn secondary" href="${g.sensor_tower_url}" target="_blank" rel="noopener">Sensor Tower</a>`);
+    }
+
+    document.getElementById('modal-content').innerHTML = `
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-header">
+        ${icon}
+        <div>
+          <div class="modal-title">${escapeHtml(g.name || 'Unknown')}</div>
+          <div class="modal-pub">${escapeHtml(g.publisher || '—')}</div>
+          <div class="card-meta">
+            <span class="badge platform-${g.platform}">${platformLabel(g.platform)}</span>
+            <span class="badge installs">${formatNumber(installs)} installs</span>
+            ${g.category ? `<span class="badge">${escapeHtml(g.category)}</span>` : ''}
+            ${g.release_date ? `<span class="badge">Released ${escapeHtml(g.release_date)}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <h3>Description</h3>
+        <div class="modal-desc">${escapeHtml(desc)}</div>
+      </div>
+      ${screenshotsHtml}
+      <div class="modal-links">${links.join('')}</div>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  document.getElementById('modal-overlay').addEventListener('click', (e) => {
+    if (e.target.id === 'modal-overlay') closeModal();
+  });
+
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentPlatform = tab.dataset.platform;
+      render();
+    });
+  });
+
+  document.getElementById('search').addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    render();
+  });
+
+  async function loadData() {
+    const tryPaths = ['games_data.json', './games_data.json'];
+    let data = null;
+    let lastError = null;
+
+    for (const path of tryPaths) {
+      try {
+        const res = await fetch(path + '?t=' + Date.now());
+        if (res.ok) {
+          data = await res.json();
+          break;
+        } else {
+          lastError = 'HTTP ' + res.status + ' for ' + path;
+        }
+      } catch (e) {
+        lastError = e.message;
+      }
+    }
+
+    if (!data) {
+      showError('Could not load games_data.json. ' + (lastError || ''));
+      return;
+    }
+
+    allGames = data.games || [];
+    document.getElementById('last-updated').textContent = 'Last updated: ' + (data.last_updated || '—');
+
+    document.getElementById('stats').innerHTML = `
+      <div class="stat">📦 <span class="stat-value">${data.total_fetched || 0}</span> total fetched</div>
+      <div class="stat">🎯 <span class="stat-value">${data.total_relevant || allGames.length}</span> relevant</div>
+      <div class="stat"> <span class="stat-value">${data.ios_relevant || 0}</span> iOS</div>
+      <div class="stat">🤖 <span class="stat-value">${data.android_relevant || 0}</span> Android</div>
+    `;
+
+    render();
+  }
+
+  loadData();
+</script>
+</body>
+</html>
