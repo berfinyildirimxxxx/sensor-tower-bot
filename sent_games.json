@@ -1,1 +1,2684 @@
-{ "sent": {} } 
+{
+  "sent": {
+    "6759025515": {
+      "name": "Tile Frost",
+      "fid": "6759025515",
+      "app_id": "6759025515",
+      "store_url": "https://apps.apple.com/app/id6759025515",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:15.555588Z"
+    },
+    "6761060099": {
+      "name": "Don't Say It",
+      "fid": "6761060099",
+      "app_id": "6761060099",
+      "store_url": "https://apps.apple.com/app/id6761060099",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:15.811956Z"
+    },
+    "6760750449": {
+      "name": "Tribal Art Coloring Book",
+      "fid": "6760750449",
+      "app_id": "6760750449",
+      "store_url": "https://apps.apple.com/app/id6760750449",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:16.272380Z"
+    },
+    "6757832779": {
+      "name": "3D Colorful Sort™ Magic Water",
+      "fid": "6757832779",
+      "app_id": "6757832779",
+      "store_url": "https://apps.apple.com/app/id6757832779",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:16.648679Z"
+    },
+    "6760089163": {
+      "name": "Mahjong Master!",
+      "fid": "6760089163",
+      "app_id": "6760089163",
+      "store_url": "https://apps.apple.com/app/id6760089163",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:17.080164Z"
+    },
+    "6753792967": {
+      "name": "Humbug 2",
+      "fid": "6753792967",
+      "app_id": "6753792967",
+      "store_url": "https://apps.apple.com/app/id6753792967",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:17.444000Z"
+    },
+    "6760441822": {
+      "name": "Packingdom",
+      "fid": "6760441822",
+      "app_id": "6760441822",
+      "store_url": "https://apps.apple.com/app/id6760441822",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:17.789186Z"
+    },
+    "6759693573": {
+      "name": "Arrow Solver - Escape Puzzle",
+      "fid": "6759693573",
+      "app_id": "6759693573",
+      "store_url": "https://apps.apple.com/app/id6759693573",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:18.100192Z"
+    },
+    "6760123711": {
+      "name": "Block Reveal: Slide & Match",
+      "fid": "6760123711",
+      "app_id": "6760123711",
+      "store_url": "https://apps.apple.com/app/id6760123711",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:18.326238Z"
+    },
+    "6759798927": {
+      "name": "Pixel Pop! - Color Crush",
+      "fid": "6759798927",
+      "app_id": "6759798927",
+      "store_url": "https://apps.apple.com/app/id6759798927",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:18.769237Z"
+    },
+    "6760698955": {
+      "name": "Surreal Jigsaw Puzzles Games",
+      "fid": "6760698955",
+      "app_id": "6760698955",
+      "store_url": "https://apps.apple.com/app/id6760698955",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:19.230425Z"
+    },
+    "6751934503": {
+      "name": "Cross World: Word Riddles",
+      "fid": "6751934503",
+      "app_id": "6751934503",
+      "store_url": "https://apps.apple.com/app/id6751934503",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:19.482579Z"
+    },
+    "6760649135": {
+      "name": "Perfect Angle Puzzle",
+      "fid": "6760649135",
+      "app_id": "6760649135",
+      "store_url": "https://apps.apple.com/app/id6760649135",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:19.673693Z"
+    },
+    "6758609287": {
+      "name": "Goods Sorting Star",
+      "fid": "6758609287",
+      "app_id": "6758609287",
+      "store_url": "https://apps.apple.com/app/id6758609287",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:19.953305Z"
+    },
+    "6760290000": {
+      "name": "Word Associations Now!",
+      "fid": "6760290000",
+      "app_id": "6760290000",
+      "store_url": "https://apps.apple.com/app/id6760290000",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:20.163090Z"
+    },
+    "6759943639": {
+      "name": "Dark Jigsaw Puzzle Game",
+      "fid": "6759943639",
+      "app_id": "6759943639",
+      "store_url": "https://apps.apple.com/app/id6759943639",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:20.541460Z"
+    },
+    "6759589182": {
+      "name": "Escape Game: SPRING CABIN",
+      "fid": "6759589182",
+      "app_id": "6759589182",
+      "store_url": "https://apps.apple.com/app/id6759589182",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:21.005558Z"
+    },
+    "6760240806": {
+      "name": "Wikigacha Game",
+      "fid": "6760240806",
+      "app_id": "6760240806",
+      "store_url": "https://apps.apple.com/app/id6760240806",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:21.216223Z"
+    },
+    "6760209888": {
+      "name": "Escape Game: Tiny Flower Shop",
+      "fid": "6760209888",
+      "app_id": "6760209888",
+      "store_url": "https://apps.apple.com/app/id6760209888",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:21.465217Z"
+    },
+    "6759899677": {
+      "name": "ASTRAL HOUSE",
+      "fid": "6759899677",
+      "app_id": "6759899677",
+      "store_url": "https://apps.apple.com/app/id6759899677",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:21.679034Z"
+    },
+    "6760103862": {
+      "name": "Flow Out: Line Puzzle",
+      "fid": "6760103862",
+      "app_id": "6760103862",
+      "store_url": "https://apps.apple.com/app/id6760103862",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:21.916427Z"
+    },
+    "6758149135": {
+      "name": "Money Sort: Merge Puzzle",
+      "fid": "6758149135",
+      "app_id": "6758149135",
+      "store_url": "https://apps.apple.com/app/id6758149135",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:22.285715Z"
+    },
+    "6759960968": {
+      "name": "Arrow Puzzle - Escape Game",
+      "fid": "6759960968",
+      "app_id": "6759960968",
+      "store_url": "https://apps.apple.com/app/id6759960968",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:22.480551Z"
+    },
+    "6760704403": {
+      "name": "Escape Graduation Ceremony",
+      "fid": "6760704403",
+      "app_id": "6760704403",
+      "store_url": "https://apps.apple.com/app/id6760704403",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:22.707626Z"
+    },
+    "6755758608": {
+      "name": "Sudoku Maestro - Grid Puzzle",
+      "fid": "6755758608",
+      "app_id": "6755758608",
+      "store_url": "https://apps.apple.com/app/id6755758608",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:22.935986Z"
+    },
+    "6759778301": {
+      "name": "Sand Out!",
+      "fid": "6759778301",
+      "app_id": "6759778301",
+      "store_url": "https://apps.apple.com/app/id6759778301",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:23.210065Z"
+    },
+    "6760815652": {
+      "name": "Mahjong Classic: Pair Match",
+      "fid": "6760815652",
+      "app_id": "6760815652",
+      "store_url": "https://apps.apple.com/app/id6760815652",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:23.500585Z"
+    },
+    "6751417720": {
+      "name": "Parseword",
+      "fid": "6751417720",
+      "app_id": "6751417720",
+      "store_url": "https://apps.apple.com/app/id6751417720",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:23.673036Z"
+    },
+    "6760397687": {
+      "name": "Catageotiq",
+      "fid": "6760397687",
+      "app_id": "6760397687",
+      "store_url": "https://apps.apple.com/app/id6760397687",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:23.788434Z"
+    },
+    "6759897674": {
+      "name": "Arrow Plane",
+      "fid": "6759897674",
+      "app_id": "6759897674",
+      "store_url": "https://apps.apple.com/app/id6759897674",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:24.090450Z"
+    },
+    "6760385968": {
+      "name": "Faith Color-Bible Coloring",
+      "fid": "6760385968",
+      "app_id": "6760385968",
+      "store_url": "https://apps.apple.com/app/id6760385968",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:24.370768Z"
+    },
+    "6760643806": {
+      "name": "Screw Pixel - Jewel Sort Game",
+      "fid": "6760643806",
+      "app_id": "6760643806",
+      "store_url": "https://apps.apple.com/app/id6760643806",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:24.709810Z"
+    },
+    "6759798103": {
+      "name": "Word Groups: Match & Sort",
+      "fid": "6759798103",
+      "app_id": "6759798103",
+      "store_url": "https://apps.apple.com/app/id6759798103",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:24.925728Z"
+    },
+    "6753717206": {
+      "name": "Midnight Dreams Hidden Objects",
+      "fid": "6753717206",
+      "app_id": "6753717206",
+      "store_url": "https://apps.apple.com/app/id6753717206",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:25.160012Z"
+    },
+    "6760922130": {
+      "name": "Charades! Guess the Word",
+      "fid": "6760922130",
+      "app_id": "6760922130",
+      "store_url": "https://apps.apple.com/app/id6760922130",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:25.491763Z"
+    },
+    "6761831655": {
+      "name": "Mahjong Pair! - Tile Match",
+      "fid": "6761831655",
+      "app_id": "6761831655",
+      "store_url": "https://apps.apple.com/app/id6761831655",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:25.808607Z"
+    },
+    "6761413233": {
+      "name": "Escape Game Celebrity Mansions",
+      "fid": "6761413233",
+      "app_id": "6761413233",
+      "store_url": "https://apps.apple.com/app/id6761413233",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:26.099181Z"
+    },
+    "6758321221": {
+      "name": "Knit Pixel: Color Puzzle",
+      "fid": "6758321221",
+      "app_id": "6758321221",
+      "store_url": "https://apps.apple.com/app/id6758321221",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:26.324032Z"
+    },
+    "6760655195": {
+      "name": "Solitaire Sort!",
+      "fid": "6760655195",
+      "app_id": "6760655195",
+      "store_url": "https://apps.apple.com/app/id6760655195",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:26.865343Z"
+    },
+    "6758933664": {
+      "name": "Pixel Rush - Duck's Journey",
+      "fid": "6758933664",
+      "app_id": "6758933664",
+      "store_url": "https://apps.apple.com/app/id6758933664",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:27.181055Z"
+    },
+    "6754081548": {
+      "name": "Slide Connect: Mahjong Match",
+      "fid": "6754081548",
+      "app_id": "6754081548",
+      "store_url": "https://apps.apple.com/app/id6754081548",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:27.396380Z"
+    },
+    "6759909647": {
+      "name": "Hexa Arrows: Logic Puzzle",
+      "fid": "6759909647",
+      "app_id": "6759909647",
+      "store_url": "https://apps.apple.com/app/id6759909647",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:27.703967Z"
+    },
+    "6761703116": {
+      "name": "Solitaire Word Connect",
+      "fid": "6761703116",
+      "app_id": "6761703116",
+      "store_url": "https://apps.apple.com/app/id6761703116",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:27.969305Z"
+    },
+    "6759282207": {
+      "name": "Juice Up*",
+      "fid": "6759282207",
+      "app_id": "6759282207",
+      "store_url": "https://apps.apple.com/app/id6759282207",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:28.197944Z"
+    },
+    "6621181299": {
+      "name": "Mattel Match",
+      "fid": "6621181299",
+      "app_id": "6621181299",
+      "store_url": "https://apps.apple.com/app/id6621181299",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:28.627707Z"
+    },
+    "6756350211": {
+      "name": "Icon Associations",
+      "fid": "6756350211",
+      "app_id": "6756350211",
+      "store_url": "https://apps.apple.com/app/id6756350211",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:28.840817Z"
+    },
+    "6760276260": {
+      "name": "Cozy Love",
+      "fid": "6760276260",
+      "app_id": "6760276260",
+      "store_url": "https://apps.apple.com/app/id6760276260",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:29.217185Z"
+    },
+    "6760919096": {
+      "name": "WordTok 2",
+      "fid": "6760919096",
+      "app_id": "6760919096",
+      "store_url": "https://apps.apple.com/app/id6760919096",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:29.425558Z"
+    },
+    "6760533591": {
+      "name": "The Mysterious Internet Cafe",
+      "fid": "6760533591",
+      "app_id": "6760533591",
+      "store_url": "https://apps.apple.com/app/id6760533591",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:29.658194Z"
+    },
+    "6762853449": {
+      "name": "Dialed GG",
+      "fid": "6762853449",
+      "app_id": "6762853449",
+      "store_url": "https://apps.apple.com/app/id6762853449",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:29.862428Z"
+    },
+    "6759899325": {
+      "name": "JigDramas",
+      "fid": "6759899325",
+      "app_id": "6759899325",
+      "store_url": "https://apps.apple.com/app/id6759899325",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:30.226428Z"
+    },
+    "6761820736": {
+      "name": "Word & Logic Mini Puzzle Games",
+      "fid": "6761820736",
+      "app_id": "6761820736",
+      "store_url": "https://apps.apple.com/app/id6761820736",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:30.425168Z"
+    },
+    "6760829152": {
+      "name": "Patches - Block Puzzle Shikaku",
+      "fid": "6760829152",
+      "app_id": "6760829152",
+      "store_url": "https://apps.apple.com/app/id6760829152",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:30.664452Z"
+    },
+    "6762595931": {
+      "name": "Escape Game Custard Pudding",
+      "fid": "6762595931",
+      "app_id": "6762595931",
+      "store_url": "https://apps.apple.com/app/id6762595931",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:30.911153Z"
+    },
+    "6759820693": {
+      "name": "Order Crush : Sort Puzzle",
+      "fid": "6759820693",
+      "app_id": "6759820693",
+      "store_url": "https://apps.apple.com/app/id6759820693",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:31.134046Z"
+    },
+    "6761446378": {
+      "name": "EscapeGame:PublicToilet",
+      "fid": "6761446378",
+      "app_id": "6761446378",
+      "store_url": "https://apps.apple.com/app/id6761446378",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:31.376173Z"
+    },
+    "6760287414": {
+      "name": "Save The Duck - Screw Pop",
+      "fid": "6760287414",
+      "app_id": "6760287414",
+      "store_url": "https://apps.apple.com/app/id6760287414",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:31.589496Z"
+    },
+    "6760588017": {
+      "name": "KubiLogic - Dice Logic Puzzle",
+      "fid": "6760588017",
+      "app_id": "6760588017",
+      "store_url": "https://apps.apple.com/app/id6760588017",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:31.801839Z"
+    },
+    "6761471389": {
+      "name": "Escape Game Hidden Room",
+      "fid": "6761471389",
+      "app_id": "6761471389",
+      "store_url": "https://apps.apple.com/app/id6761471389",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:32.189909Z"
+    },
+    "6758926288": {
+      "name": "Draw It All - Brain Puzzle",
+      "fid": "6758926288",
+      "app_id": "6758926288",
+      "store_url": "https://apps.apple.com/app/id6758926288",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:32.495765Z"
+    },
+    "6759157357": {
+      "name": "Tap Jam: Arrow Puzzle",
+      "fid": "6759157357",
+      "app_id": "6759157357",
+      "store_url": "https://apps.apple.com/app/id6759157357",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:32.682763Z"
+    },
+    "6757430172": {
+      "name": "Her Comeback: Merge & Story",
+      "fid": "6757430172",
+      "app_id": "6757430172",
+      "store_url": "https://apps.apple.com/app/id6757430172",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:33.098368Z"
+    },
+    "6759897981": {
+      "name": "Word Search: Dream Life",
+      "fid": "6759897981",
+      "app_id": "6759897981",
+      "store_url": "https://apps.apple.com/app/id6759897981",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:33.389763Z"
+    },
+    "6759154756": {
+      "name": "Mystery of Myths: Whisper F2P",
+      "fid": "6759154756",
+      "app_id": "6759154756",
+      "store_url": "https://apps.apple.com/app/id6759154756",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:33.921107Z"
+    },
+    "6759914120": {
+      "name": "Triple Meow: Cat World",
+      "fid": "6759914120",
+      "app_id": "6759914120",
+      "store_url": "https://apps.apple.com/app/id6759914120",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:34.318758Z"
+    },
+    "6759901019": {
+      "name": "Pig Out - Animal Jam Farm Game",
+      "fid": "6759901019",
+      "app_id": "6759901019",
+      "store_url": "https://apps.apple.com/app/id6759901019",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:34.681123Z"
+    },
+    "6759801539": {
+      "name": "Brick Escape - logic game",
+      "fid": "6759801539",
+      "app_id": "6759801539",
+      "store_url": "https://apps.apple.com/app/id6759801539",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:34.883140Z"
+    },
+    "6759156271": {
+      "name": "Pixel Fill!",
+      "fid": "6759156271",
+      "app_id": "6759156271",
+      "store_url": "https://apps.apple.com/app/id6759156271",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:35.111193Z"
+    },
+    "6760172610": {
+      "name": "Onet Link Animals",
+      "fid": "6760172610",
+      "app_id": "6760172610",
+      "store_url": "https://apps.apple.com/app/id6760172610",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:35.349908Z"
+    },
+    "6755174113": {
+      "name": "Stray Cat Doors 3: Chapter 2",
+      "fid": "6755174113",
+      "app_id": "6755174113",
+      "store_url": "https://apps.apple.com/app/id6755174113",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:35.785907Z"
+    },
+    "6761107495": {
+      "name": "GameDen - Offline Games",
+      "fid": "6761107495",
+      "app_id": "6761107495",
+      "store_url": "https://apps.apple.com/app/id6761107495",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:36.016687Z"
+    },
+    "6760895969": {
+      "name": "Sand Pour: Color Sort",
+      "fid": "6760895969",
+      "app_id": "6760895969",
+      "store_url": "https://apps.apple.com/app/id6760895969",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:36.328807Z"
+    },
+    "6759546053": {
+      "name": "Merge Cat Detective",
+      "fid": "6759546053",
+      "app_id": "6759546053",
+      "store_url": "https://apps.apple.com/app/id6759546053",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:36.561617Z"
+    },
+    "6749264732": {
+      "name": "Screw Jumble",
+      "fid": "6749264732",
+      "app_id": "6749264732",
+      "store_url": "https://apps.apple.com/app/id6749264732",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:36.770613Z"
+    },
+    "6760005483": {
+      "name": "Wiggle Out: Escape Puzzle",
+      "fid": "6760005483",
+      "app_id": "6760005483",
+      "store_url": "https://apps.apple.com/app/id6760005483",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:36.985504Z"
+    },
+    "6762109471": {
+      "name": "Escape Game Cat Cafe",
+      "fid": "6762109471",
+      "app_id": "6762109471",
+      "store_url": "https://apps.apple.com/app/id6762109471",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:37.189085Z"
+    },
+    "6760660889": {
+      "name": "Cslco",
+      "fid": "6760660889",
+      "app_id": "6760660889",
+      "store_url": "https://apps.apple.com/app/id6760660889",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:37.367753Z"
+    },
+    "6762212124": {
+      "name": "Escape Game - Mini Trip 2",
+      "fid": "6762212124",
+      "app_id": "6762212124",
+      "store_url": "https://apps.apple.com/app/id6762212124",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:37.593753Z"
+    },
+    "6759110829": {
+      "name": "Yapathon: Word Chain Puzzle",
+      "fid": "6759110829",
+      "app_id": "6759110829",
+      "store_url": "https://apps.apple.com/app/id6759110829",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:37.798163Z"
+    },
+    "6758139966": {
+      "name": "Magic Sand Sort",
+      "fid": "6758139966",
+      "app_id": "6758139966",
+      "store_url": "https://apps.apple.com/app/id6758139966",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:38.135235Z"
+    },
+    "6759153118": {
+      "name": "Imposter Game: Word Party",
+      "fid": "6759153118",
+      "app_id": "6759153118",
+      "store_url": "https://apps.apple.com/app/id6759153118",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:38.462599Z"
+    },
+    "6760386733": {
+      "name": "Amset Match",
+      "fid": "6760386733",
+      "app_id": "6760386733",
+      "store_url": "https://apps.apple.com/app/id6760386733",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:38.664989Z"
+    },
+    "6760427086": {
+      "name": "Letter Cubes",
+      "fid": "6760427086",
+      "app_id": "6760427086",
+      "store_url": "https://apps.apple.com/app/id6760427086",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:38.856153Z"
+    },
+    "6755954250": {
+      "name": "Block Blast : Puzzle Games",
+      "fid": "6755954250",
+      "app_id": "6755954250",
+      "store_url": "https://apps.apple.com/app/id6755954250",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:39.034004Z"
+    },
+    "6751292337": {
+      "name": "Splash Sort: Color Puzzle",
+      "fid": "6751292337",
+      "app_id": "6751292337",
+      "store_url": "https://apps.apple.com/app/id6751292337",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:39.240562Z"
+    },
+    "6760269543": {
+      "name": "Casedoku: Detective Puzzle",
+      "fid": "6760269543",
+      "app_id": "6760269543",
+      "store_url": "https://apps.apple.com/app/id6760269543",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:39.464659Z"
+    },
+    "6760156166": {
+      "name": "Riddled: Daily Brain Teasers",
+      "fid": "6760156166",
+      "app_id": "6760156166",
+      "store_url": "https://apps.apple.com/app/id6760156166",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:39.700850Z"
+    },
+    "6760823377": {
+      "name": "Patches Puzzle Linkedin Blocks",
+      "fid": "6760823377",
+      "app_id": "6760823377",
+      "store_url": "https://apps.apple.com/app/id6760823377",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:39.941618Z"
+    },
+    "6756654683": {
+      "name": "Jigzun Jigsaw Solitaire Puzzle",
+      "fid": "6756654683",
+      "app_id": "6756654683",
+      "store_url": "https://apps.apple.com/app/id6756654683",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:40.171355Z"
+    },
+    "6754335689": {
+      "name": "Sizzle Match",
+      "fid": "6754335689",
+      "app_id": "6754335689",
+      "store_url": "https://apps.apple.com/app/id6754335689",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:40.383501Z"
+    },
+    "6759672703": {
+      "name": "Bible Word Game and Trivia",
+      "fid": "6759672703",
+      "app_id": "6759672703",
+      "store_url": "https://apps.apple.com/app/id6759672703",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:40.751730Z"
+    },
+    "6759916073": {
+      "name": "Imposter: Who is the Spy?",
+      "fid": "6759916073",
+      "app_id": "6759916073",
+      "store_url": "https://apps.apple.com/app/id6759916073",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:40.977139Z"
+    },
+    "6759851605": {
+      "name": "Escape Game - Tokyo Alley -",
+      "fid": "6759851605",
+      "app_id": "6759851605",
+      "store_url": "https://apps.apple.com/app/id6759851605",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:41.341874Z"
+    },
+    "6758857094": {
+      "name": "The Girl in the Window",
+      "fid": "6758857094",
+      "app_id": "6758857094",
+      "store_url": "https://apps.apple.com/app/id6758857094",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:41.794799Z"
+    },
+    "6760545083": {
+      "name": "Arrow Go:Casual",
+      "fid": "6760545083",
+      "app_id": "6760545083",
+      "store_url": "https://apps.apple.com/app/id6760545083",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:42.026328Z"
+    },
+    "6758579397": {
+      "name": "Scrambordle: Daily Word Puzzle",
+      "fid": "6758579397",
+      "app_id": "6758579397",
+      "store_url": "https://apps.apple.com/app/id6758579397",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:42.239792Z"
+    },
+    "6760314499": {
+      "name": "Cross Math Number Puzzle ™",
+      "fid": "6760314499",
+      "app_id": "6760314499",
+      "store_url": "https://apps.apple.com/app/id6760314499",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:42.410504Z"
+    },
+    "6760648273": {
+      "name": "Fruit Drop : Match & Sort",
+      "fid": "6760648273",
+      "app_id": "6760648273",
+      "store_url": "https://apps.apple.com/app/id6760648273",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:42.618526Z"
+    },
+    "6757699774": {
+      "name": "Family Sort",
+      "fid": "6757699774",
+      "app_id": "6757699774",
+      "store_url": "https://apps.apple.com/app/id6757699774",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:42.832510Z"
+    },
+    "6758465761": {
+      "name": "Fringe of Reality: Island",
+      "fid": "6758465761",
+      "app_id": "6758465761",
+      "store_url": "https://apps.apple.com/app/id6758465761",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:43.098111Z"
+    },
+    "6761116384": {
+      "name": "Text Twist2 Classic",
+      "fid": "6761116384",
+      "app_id": "6761116384",
+      "store_url": "https://apps.apple.com/app/id6761116384",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:43.355324Z"
+    },
+    "6758759799": {
+      "name": "Hidden Legacy 1: Bonus F2P",
+      "fid": "6758759799",
+      "app_id": "6758759799",
+      "store_url": "https://apps.apple.com/app/id6758759799",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:43.791541Z"
+    },
+    "6760316487": {
+      "name": "AZbul Word Find - Crossword",
+      "fid": "6760316487",
+      "app_id": "6760316487",
+      "store_url": "https://apps.apple.com/app/id6760316487",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:44.172268Z"
+    },
+    "6759793209": {
+      "name": "Mini Escapes: Infinity Pool",
+      "fid": "6759793209",
+      "app_id": "6759793209",
+      "store_url": "https://apps.apple.com/app/id6759793209",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:44.528146Z"
+    },
+    "6760573598": {
+      "name": "Letter Sort - Word Puzzle",
+      "fid": "6760573598",
+      "app_id": "6760573598",
+      "store_url": "https://apps.apple.com/app/id6760573598",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:44.818134Z"
+    },
+    "6760573646": {
+      "name": "Anaduel: Anagram Word Battles",
+      "fid": "6760573646",
+      "app_id": "6760573646",
+      "store_url": "https://apps.apple.com/app/id6760573646",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:44.920293Z"
+    },
+    "6759831211": {
+      "name": "Imposter Online",
+      "fid": "6759831211",
+      "app_id": "6759831211",
+      "store_url": "https://apps.apple.com/app/id6759831211",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:45.125749Z"
+    },
+    "6758087321": {
+      "name": "Splash Drop - Block Puzzle",
+      "fid": "6758087321",
+      "app_id": "6758087321",
+      "store_url": "https://apps.apple.com/app/id6758087321",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:45.442774Z"
+    },
+    "6760336172": {
+      "name": "Imposter (Party Word Game)",
+      "fid": "6760336172",
+      "app_id": "6760336172",
+      "store_url": "https://apps.apple.com/app/id6760336172",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:45.692937Z"
+    },
+    "6758867945": {
+      "name": "Hidden Memories",
+      "fid": "6758867945",
+      "app_id": "6758867945",
+      "store_url": "https://apps.apple.com/app/id6758867945",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:46.064270Z"
+    },
+    "6762191704": {
+      "name": "Letter Out",
+      "fid": "6762191704",
+      "app_id": "6762191704",
+      "store_url": "https://apps.apple.com/app/id6762191704",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:46.304486Z"
+    },
+    "6761406464": {
+      "name": "Urban Lore:Doppelganger Street",
+      "fid": "6761406464",
+      "app_id": "6761406464",
+      "store_url": "https://apps.apple.com/app/id6761406464",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:46.614347Z"
+    },
+    "6758862862": {
+      "name": "Nowhere House",
+      "fid": "6758862862",
+      "app_id": "6758862862",
+      "store_url": "https://apps.apple.com/app/id6758862862",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:47.035691Z"
+    },
+    "6758862359": {
+      "name": "Unwanted Experiment",
+      "fid": "6758862359",
+      "app_id": "6758862359",
+      "store_url": "https://apps.apple.com/app/id6758862359",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:47.380831Z"
+    },
+    "6760452915": {
+      "name": "Arrow Puzzle Game - Arrows",
+      "fid": "6760452915",
+      "app_id": "6760452915",
+      "store_url": "https://apps.apple.com/app/id6760452915",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:47.598350Z"
+    },
+    "6760387328": {
+      "name": "Solitaire Club: Tile Match",
+      "fid": "6760387328",
+      "app_id": "6760387328",
+      "store_url": "https://apps.apple.com/app/id6760387328",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:47.894659Z"
+    },
+    "6761338198": {
+      "name": "Shikaku: CellBlock puzzle",
+      "fid": "6761338198",
+      "app_id": "6761338198",
+      "store_url": "https://apps.apple.com/app/id6761338198",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:48.088510Z"
+    },
+    "6759697773": {
+      "name": "Bible Jigsaw Puzzles",
+      "fid": "6759697773",
+      "app_id": "6759697773",
+      "store_url": "https://apps.apple.com/app/id6759697773",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:48.532051Z"
+    },
+    "6758156016": {
+      "name": "Dino Merge: Jurassic Zoo",
+      "fid": "6758156016",
+      "app_id": "6758156016",
+      "store_url": "https://apps.apple.com/app/id6758156016",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:48.944821Z"
+    },
+    "6758025458": {
+      "name": "Picture Match - Merge Puzzle",
+      "fid": "6758025458",
+      "app_id": "6758025458",
+      "store_url": "https://apps.apple.com/app/id6758025458",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:49.260079Z"
+    },
+    "6758863302": {
+      "name": "Ghost Case",
+      "fid": "6758863302",
+      "app_id": "6758863302",
+      "store_url": "https://apps.apple.com/app/id6758863302",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:49.673274Z"
+    },
+    "6761791379": {
+      "name": "Quordle - Daily Word Game",
+      "fid": "6761791379",
+      "app_id": "6761791379",
+      "store_url": "https://apps.apple.com/app/id6761791379",
+      "platform": "ios",
+      "sent_at": "2026-05-08T15:43:49.836513Z"
+    },
+    "game.fun.draw.one.creative.part": {
+      "name": "One Draw Fix",
+      "fid": "game.fun.draw.one.creative.part",
+      "app_id": "game.fun.draw.one.creative.part",
+      "store_url": "https://play.google.com/store/apps/details?id=game.fun.draw.one.creative.part",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:50.125196Z"
+    },
+    "com.art.jigsaw.puzzle.hd.picture.sort.game": {
+      "name": "Jigsaw Card",
+      "fid": "com.art.jigsaw.puzzle.hd.picture.sort.game",
+      "app_id": "com.art.jigsaw.puzzle.hd.picture.sort.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.art.jigsaw.puzzle.hd.picture.sort.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:50.600353Z"
+    },
+    "com.sort.water.color.lab": {
+      "name": "Color Lab: Water Sort",
+      "fid": "com.sort.water.color.lab",
+      "app_id": "com.sort.water.color.lab",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sort.water.color.lab",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:50.869906Z"
+    },
+    "com.playmint.purely.mahjong": {
+      "name": "Purely Mahjong: Perfect Match",
+      "fid": "com.playmint.purely.mahjong",
+      "app_id": "com.playmint.purely.mahjong",
+      "store_url": "https://play.google.com/store/apps/details?id=com.playmint.purely.mahjong",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:51.170905Z"
+    },
+    "com.vitastudio.mahjongwood": {
+      "name": "Vita Mahjong Wood",
+      "fid": "com.vitastudio.mahjongwood",
+      "app_id": "com.vitastudio.mahjongwood",
+      "store_url": "https://play.google.com/store/apps/details?id=com.vitastudio.mahjongwood",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:51.674350Z"
+    },
+    "com.easybrain.letter.tile.match": {
+      "name": "Letter Tile Match - Word Games",
+      "fid": "com.easybrain.letter.tile.match",
+      "app_id": "com.easybrain.letter.tile.match",
+      "store_url": "https://play.google.com/store/apps/details?id=com.easybrain.letter.tile.match",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:52.104270Z"
+    },
+    "com.dna.blaster": {
+      "name": "Block Blaster - Classic Puzzle",
+      "fid": "com.dna.blaster",
+      "app_id": "com.dna.blaster",
+      "store_url": "https://play.google.com/store/apps/details?id=com.dna.blaster",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:52.696492Z"
+    },
+    "com.boom.boom.gift.gp": {
+      "name": "Boom Boom Gift -Matching  Game",
+      "fid": "com.boom.boom.gift.gp",
+      "app_id": "com.boom.boom.gift.gp",
+      "store_url": "https://play.google.com/store/apps/details?id=com.boom.boom.gift.gp",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:53.020595Z"
+    },
+    "com.newpubco.wordsolitaire": {
+      "name": "Word Solitaire",
+      "fid": "com.newpubco.wordsolitaire",
+      "app_id": "com.newpubco.wordsolitaire",
+      "store_url": "https://play.google.com/store/apps/details?id=com.newpubco.wordsolitaire",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:53.428159Z"
+    },
+    "com.word.solitaire.op.gp": {
+      "name": "Word Sorta Solitaire",
+      "fid": "com.word.solitaire.op.gp",
+      "app_id": "com.word.solitaire.op.gp",
+      "store_url": "https://play.google.com/store/apps/details?id=com.word.solitaire.op.gp",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:53.795969Z"
+    },
+    "com.easybrain.word.stories.game": {
+      "name": "Word Stories: Word Puzzle Game",
+      "fid": "com.easybrain.word.stories.game",
+      "app_id": "com.easybrain.word.stories.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.easybrain.word.stories.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:54.241211Z"
+    },
+    "com.hydeofficialstore.nondirlo": {
+      "name": "Don't Say It!",
+      "fid": "com.hydeofficialstore.nondirlo",
+      "app_id": "com.hydeofficialstore.nondirlo",
+      "store_url": "https://play.google.com/store/apps/details?id=com.hydeofficialstore.nondirlo",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:54.517293Z"
+    },
+    "in.commonmantech.hangman": {
+      "name": "Hangman with Hints",
+      "fid": "in.commonmantech.hangman",
+      "app_id": "in.commonmantech.hangman",
+      "store_url": "https://play.google.com/store/apps/details?id=in.commonmantech.hangman",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:54.892063Z"
+    },
+    "isaac.valter.termo": {
+      "name": "Termo Jogo de Palavras",
+      "fid": "isaac.valter.termo",
+      "app_id": "isaac.valter.termo",
+      "store_url": "https://play.google.com/store/apps/details?id=isaac.valter.termo",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:55.188000Z"
+    },
+    "com.v2r.JewelAncientLegacy": {
+      "name": "Jewel Ancient Legacy",
+      "fid": "com.v2r.JewelAncientLegacy",
+      "app_id": "com.v2r.JewelAncientLegacy",
+      "store_url": "https://play.google.com/store/apps/details?id=com.v2r.JewelAncientLegacy",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:55.542266Z"
+    },
+    "com.kaigames.wastematch3d": {
+      "name": "Waste Match 3D",
+      "fid": "com.kaigames.wastematch3d",
+      "app_id": "com.kaigames.wastematch3d",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kaigames.wastematch3d",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:56.045781Z"
+    },
+    "com.dreamy.farm.en": {
+      "name": "Dream Farm: Match 3 Games",
+      "fid": "com.dreamy.farm.en",
+      "app_id": "com.dreamy.farm.en",
+      "store_url": "https://play.google.com/store/apps/details?id=com.dreamy.farm.en",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:56.476881Z"
+    },
+    "com.sparksgames.sortmatchcolorgame": {
+      "name": "Sort Match",
+      "fid": "com.sparksgames.sortmatchcolorgame",
+      "app_id": "com.sparksgames.sortmatchcolorgame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sparksgames.sortmatchcolorgame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:56.738304Z"
+    },
+    "com.losttemplegames.wordassociations": {
+      "name": "Word Associations Now!",
+      "fid": "com.losttemplegames.wordassociations",
+      "app_id": "com.losttemplegames.wordassociations",
+      "store_url": "https://play.google.com/store/apps/details?id=com.losttemplegames.wordassociations",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:56.953206Z"
+    },
+    "puzzle.Beach.Volley.tile.match": {
+      "name": "BeachTileMatch",
+      "fid": "puzzle.Beach.Volley.tile.match",
+      "app_id": "puzzle.Beach.Volley.tile.match",
+      "store_url": "https://play.google.com/store/apps/details?id=puzzle.Beach.Volley.tile.match",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:57.254617Z"
+    },
+    "com.onmobi.imposter": {
+      "name": "Imposter: Party Word Game",
+      "fid": "com.onmobi.imposter",
+      "app_id": "com.onmobi.imposter",
+      "store_url": "https://play.google.com/store/apps/details?id=com.onmobi.imposter",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:57.507955Z"
+    },
+    "com.gamee.family.match.block.escape.logic.tricky.room.story.quest.rescue": {
+      "name": "Family Match: Tricky Puzzle",
+      "fid": "com.gamee.family.match.block.escape.logic.tricky.room.story.quest.rescue",
+      "app_id": "com.gamee.family.match.block.escape.logic.tricky.room.story.quest.rescue",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gamee.family.match.block.escape.logic.tricky.room.story.quest.rescue",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:57.899161Z"
+    },
+    "com.ibu.match3.castles.king": {
+      "name": "Magic Match",
+      "fid": "com.ibu.match3.castles.king",
+      "app_id": "com.ibu.match3.castles.king",
+      "store_url": "https://play.google.com/store/apps/details?id=com.ibu.match3.castles.king",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:58.474547Z"
+    },
+    "com.woofygames.ballmatch": {
+      "name": "Ball Match",
+      "fid": "com.woofygames.ballmatch",
+      "app_id": "com.woofygames.ballmatch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.woofygames.ballmatch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:58.775746Z"
+    },
+    "com.Arrow.ArrowDetached": {
+      "name": "Arrow Detached",
+      "fid": "com.Arrow.ArrowDetached",
+      "app_id": "com.Arrow.ArrowDetached",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Arrow.ArrowDetached",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:59.062036Z"
+    },
+    "com.merge.travel.food.town.games": {
+      "name": "Merge Food : Sticky Match",
+      "fid": "com.merge.travel.food.town.games",
+      "app_id": "com.merge.travel.food.town.games",
+      "store_url": "https://play.google.com/store/apps/details?id=com.merge.travel.food.town.games",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:59.402094Z"
+    },
+    "com.biginfive.doppelganger": {
+      "name": "Urban Lore:Doppelganger Street",
+      "fid": "com.biginfive.doppelganger",
+      "app_id": "com.biginfive.doppelganger",
+      "store_url": "https://play.google.com/store/apps/details?id=com.biginfive.doppelganger",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:59.678719Z"
+    },
+    "com.art.pixel.flow.games.paint.color.by.numbers": {
+      "name": "Fluid Color Paint By Number",
+      "fid": "com.art.pixel.flow.games.paint.color.by.numbers",
+      "app_id": "com.art.pixel.flow.games.paint.color.by.numbers",
+      "store_url": "https://play.google.com/store/apps/details?id=com.art.pixel.flow.games.paint.color.by.numbers",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:43:59.943967Z"
+    },
+    "com.kite.hexaflow": {
+      "name": "Hexa Arrows: Logic Puzzle",
+      "fid": "com.kite.hexaflow",
+      "app_id": "com.kite.hexaflow",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kite.hexaflow",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:00.266984Z"
+    },
+    "com.judian.hercomeback.gp": {
+      "name": "Her Comeback: Merge & Story",
+      "fid": "com.judian.hercomeback.gp",
+      "app_id": "com.judian.hercomeback.gp",
+      "store_url": "https://play.google.com/store/apps/details?id=com.judian.hercomeback.gp",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:00.538818Z"
+    },
+    "games.b22.tahadiyalsuwar": {
+      "name": "تحدي الصور",
+      "fid": "games.b22.tahadiyalsuwar",
+      "app_id": "games.b22.tahadiyalsuwar",
+      "store_url": "https://play.google.com/store/apps/details?id=games.b22.tahadiyalsuwar",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:00.813792Z"
+    },
+    "com.jigsaw.threedimension.shooting": {
+      "name": "Jigsaw Block Match",
+      "fid": "com.jigsaw.threedimension.shooting",
+      "app_id": "com.jigsaw.threedimension.shooting",
+      "store_url": "https://play.google.com/store/apps/details?id=com.jigsaw.threedimension.shooting",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:01.085476Z"
+    },
+    "com.Colorful.Colorfulpackaging": {
+      "name": "Colorful packaging",
+      "fid": "com.Colorful.Colorfulpackaging",
+      "app_id": "com.Colorful.Colorfulpackaging",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Colorful.Colorfulpackaging",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:01.380464Z"
+    },
+    "com.zm.sandsort": {
+      "name": "Magic Sand Sort",
+      "fid": "com.zm.sandsort",
+      "app_id": "com.zm.sandsort",
+      "store_url": "https://play.google.com/store/apps/details?id=com.zm.sandsort",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:01.642778Z"
+    },
+    "checkers.ludo.online.board.game": {
+      "name": "Checker Mingle: Online Board",
+      "fid": "checkers.ludo.online.board.game",
+      "app_id": "checkers.ludo.online.board.game",
+      "store_url": "https://play.google.com/store/apps/details?id=checkers.ludo.online.board.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:01.980463Z"
+    },
+    "com.tcnt.threeconnect": {
+      "name": "GT99 Three Connect",
+      "fid": "com.tcnt.threeconnect",
+      "app_id": "com.tcnt.threeconnect",
+      "store_url": "https://play.google.com/store/apps/details?id=com.tcnt.threeconnect",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:02.301411Z"
+    },
+    "com.arthur.merge.android.creermaison": {
+      "name": "Créer Maison : Merge&Home",
+      "fid": "com.arthur.merge.android.creermaison",
+      "app_id": "com.arthur.merge.android.creermaison",
+      "store_url": "https://play.google.com/store/apps/details?id=com.arthur.merge.android.creermaison",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:02.728868Z"
+    },
+    "com.mahjongjackora.mjjackora": {
+      "name": "Mahjong Jackora",
+      "fid": "com.mahjongjackora.mjjackora",
+      "app_id": "com.mahjongjackora.mjjackora",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mahjongjackora.mjjackora",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:03.111367Z"
+    },
+    "com.mobilityware.WaterSort": {
+      "name": "Splash Sort: Color Puzzle",
+      "fid": "com.mobilityware.WaterSort",
+      "app_id": "com.mobilityware.WaterSort",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mobilityware.WaterSort",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:03.388005Z"
+    },
+    "com.crystalcaverns.gemmatch.game": {
+      "name": "crystal caverns:gem match",
+      "fid": "com.crystalcaverns.gemmatch.game",
+      "app_id": "com.crystalcaverns.gemmatch.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.crystalcaverns.gemmatch.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:03.678836Z"
+    },
+    "com.gamegos.videojigsawpuzzles": {
+      "name": "Video Jigsaw Puzzle",
+      "fid": "com.gamegos.videojigsawpuzzles",
+      "app_id": "com.gamegos.videojigsawpuzzles",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gamegos.videojigsawpuzzles",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:04.117024Z"
+    },
+    "com.weegoon.cozylove": {
+      "name": "Cozy Love",
+      "fid": "com.weegoon.cozylove",
+      "app_id": "com.weegoon.cozylove",
+      "store_url": "https://play.google.com/store/apps/details?id=com.weegoon.cozylove",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:04.503888Z"
+    },
+    "com.Colorful.ColorfulNut": {
+      "name": "Colorful Nut",
+      "fid": "com.Colorful.ColorfulNut",
+      "app_id": "com.Colorful.ColorfulNut",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Colorful.ColorfulNut",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:04.827024Z"
+    },
+    "com.Palette.PaletteGrid": {
+      "name": "Palette Grid",
+      "fid": "com.Palette.PaletteGrid",
+      "app_id": "com.Palette.PaletteGrid",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Palette.PaletteGrid",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:05.275009Z"
+    },
+    "com.yidagames.joys.emberwarden": {
+      "name": "Funsion:XOR Logic Puzzle",
+      "fid": "com.yidagames.joys.emberwarden",
+      "app_id": "com.yidagames.joys.emberwarden",
+      "store_url": "https://play.google.com/store/apps/details?id=com.yidagames.joys.emberwarden",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:05.501767Z"
+    },
+    "dev.shylax.HangManRedux": {
+      "name": "Hangman Redux: Word Puzzles",
+      "fid": "dev.shylax.HangManRedux",
+      "app_id": "dev.shylax.HangManRedux",
+      "store_url": "https://play.google.com/store/apps/details?id=dev.shylax.HangManRedux",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:05.781497Z"
+    },
+    "com.lizinetwork.games.exquisitepear": {
+      "name": "Block Bridge Battle",
+      "fid": "com.lizinetwork.games.exquisitepear",
+      "app_id": "com.lizinetwork.games.exquisitepear",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lizinetwork.games.exquisitepear",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:06.018264Z"
+    },
+    "com.numberpuzzlehub.numberguess.riddle": {
+      "name": "Guess the Number",
+      "fid": "com.numberpuzzlehub.numberguess.riddle",
+      "app_id": "com.numberpuzzlehub.numberguess.riddle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.numberpuzzlehub.numberguess.riddle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:06.257924Z"
+    },
+    "com.word.td.puz.gg.link": {
+      "name": "TD PuzWord",
+      "fid": "com.word.td.puz.gg.link",
+      "app_id": "com.word.td.puz.gg.link",
+      "store_url": "https://play.google.com/store/apps/details?id=com.word.td.puz.gg.link",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:06.504479Z"
+    },
+    "com.joyfulark.coloring.faithcolor": {
+      "name": "Faith Color By Number Game",
+      "fid": "com.joyfulark.coloring.faithcolor",
+      "app_id": "com.joyfulark.coloring.faithcolor",
+      "store_url": "https://play.google.com/store/apps/details?id=com.joyfulark.coloring.faithcolor",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:06.969904Z"
+    },
+    "com.block.box.strange": {
+      "name": "Infinite Block Elimination",
+      "fid": "com.block.box.strange",
+      "app_id": "com.block.box.strange",
+      "store_url": "https://play.google.com/store/apps/details?id=com.block.box.strange",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:07.326684Z"
+    },
+    "com.tripledot.jigsawdrama": {
+      "name": "Jigsaw Stories",
+      "fid": "com.tripledot.jigsawdrama",
+      "app_id": "com.tripledot.jigsawdrama",
+      "store_url": "https://play.google.com/store/apps/details?id=com.tripledot.jigsawdrama",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:07.713362Z"
+    },
+    "com.mch.WordTok2": {
+      "name": "WordTok 2",
+      "fid": "com.mch.WordTok2",
+      "app_id": "com.mch.WordTok2",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mch.WordTok2",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:07.986781Z"
+    },
+    "games.burny.sortica.card.sort.solitaire": {
+      "name": "Sortica: Cards Game",
+      "fid": "games.burny.sortica.card.sort.solitaire",
+      "app_id": "games.burny.sortica.card.sort.solitaire",
+      "store_url": "https://play.google.com/store/apps/details?id=games.burny.sortica.card.sort.solitaire",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:08.526586Z"
+    },
+    "com.brain.hex.diss": {
+      "name": "Crazy Hexagon Composition",
+      "fid": "com.brain.hex.diss",
+      "app_id": "com.brain.hex.diss",
+      "store_url": "https://play.google.com/store/apps/details?id=com.brain.hex.diss",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:08.884556Z"
+    },
+    "com.Dogivara.MokiRun": {
+      "name": "Moki Run: Rail Route Challenge",
+      "fid": "com.Dogivara.MokiRun",
+      "app_id": "com.Dogivara.MokiRun",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Dogivara.MokiRun",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:09.385234Z"
+    },
+    "com.sea.cleaner.hero": {
+      "name": "Sea Hero Cleaner",
+      "fid": "com.sea.cleaner.hero",
+      "app_id": "com.sea.cleaner.hero",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sea.cleaner.hero",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:09.815682Z"
+    },
+    "com.Sentora.OrbitTiles": {
+      "name": "Orbit Tiles: Galaxy Align",
+      "fid": "com.Sentora.OrbitTiles",
+      "app_id": "com.Sentora.OrbitTiles",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Sentora.OrbitTiles",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:10.316043Z"
+    },
+    "com.hts.numly": {
+      "name": "Numly",
+      "fid": "com.hts.numly",
+      "app_id": "com.hts.numly",
+      "store_url": "https://play.google.com/store/apps/details?id=com.hts.numly",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:10.606018Z"
+    },
+    "com.jigsawsolitaire.puzzle": {
+      "name": "Jigsaw Solitaire: Card Puzzle",
+      "fid": "com.jigsawsolitaire.puzzle",
+      "app_id": "com.jigsawsolitaire.puzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.jigsawsolitaire.puzzle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:11.124222Z"
+    },
+    "com.hsbplx.gjuwriqamr": {
+      "name": "Crown Triple - Royal Match",
+      "fid": "com.hsbplx.gjuwriqamr",
+      "app_id": "com.hsbplx.gjuwriqamr",
+      "store_url": "https://play.google.com/store/apps/details?id=com.hsbplx.gjuwriqamr",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:11.572819Z"
+    },
+    "com.gplay.jigsolitaire.girl": {
+      "name": "Jigsolitaire Girl",
+      "fid": "com.gplay.jigsolitaire.girl",
+      "app_id": "com.gplay.jigsolitaire.girl",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gplay.jigsolitaire.girl",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:12.052056Z"
+    },
+    "com.worqichatian.wcgame": {
+      "name": "Word Charms",
+      "fid": "com.worqichatian.wcgame",
+      "app_id": "com.worqichatian.wcgame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.worqichatian.wcgame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:12.447974Z"
+    },
+    "com.redbean.acrodle": {
+      "name": "Acrodle: Mystery Crossword",
+      "fid": "com.redbean.acrodle",
+      "app_id": "com.redbean.acrodle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.redbean.acrodle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:12.834694Z"
+    },
+    "com.didiwloski.youdontsay": {
+      "name": "youdontsay",
+      "fid": "com.didiwloski.youdontsay",
+      "app_id": "com.didiwloski.youdontsay",
+      "store_url": "https://play.google.com/store/apps/details?id=com.didiwloski.youdontsay",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:13.190141Z"
+    },
+    "com.wikigacha.net": {
+      "name": "GachaPedia Game",
+      "fid": "com.wikigacha.net",
+      "app_id": "com.wikigacha.net",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wikigacha.net",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:13.510358Z"
+    },
+    "com.jhjhhhk.sportmerge.legends": {
+      "name": "Sport Merge Legends",
+      "fid": "com.jhjhhhk.sportmerge.legends",
+      "app_id": "com.jhjhhhk.sportmerge.legends",
+      "store_url": "https://play.google.com/store/apps/details?id=com.jhjhhhk.sportmerge.legends",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:14.130580Z"
+    },
+    "com.cxyx.matchify": {
+      "name": "Matchify Go",
+      "fid": "com.cxyx.matchify",
+      "app_id": "com.cxyx.matchify",
+      "store_url": "https://play.google.com/store/apps/details?id=com.cxyx.matchify",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:14.449207Z"
+    },
+    "com.cxyx.water": {
+      "name": "Water Sort Puzzle",
+      "fid": "com.cxyx.water",
+      "app_id": "com.cxyx.water",
+      "store_url": "https://play.google.com/store/apps/details?id=com.cxyx.water",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:14.667677Z"
+    },
+    "com.yidagames.joys.riseofthefallen": {
+      "name": "One Line Puzzle:3D Connect",
+      "fid": "com.yidagames.joys.riseofthefallen",
+      "app_id": "com.yidagames.joys.riseofthefallen",
+      "store_url": "https://play.google.com/store/apps/details?id=com.yidagames.joys.riseofthefallen",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:14.906248Z"
+    },
+    "com.kite.woodenescape": {
+      "name": "Wooden Escape",
+      "fid": "com.kite.woodenescape",
+      "app_id": "com.kite.woodenescape",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kite.woodenescape",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:15.270671Z"
+    },
+    "com.lalbaghpark.hueharbor": {
+      "name": "HueHarbor",
+      "fid": "com.lalbaghpark.hueharbor",
+      "app_id": "com.lalbaghpark.hueharbor",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lalbaghpark.hueharbor",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:15.623835Z"
+    },
+    "com.CreationLightGame.FoodieWorldTileMatch": {
+      "name": "Fishy Sea World Tile Match",
+      "fid": "com.CreationLightGame.FoodieWorldTileMatch",
+      "app_id": "com.CreationLightGame.FoodieWorldTileMatch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.CreationLightGame.FoodieWorldTileMatch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:15.992841Z"
+    },
+    "com.kidga.word.craft": {
+      "name": "Word Craft",
+      "fid": "com.kidga.word.craft",
+      "app_id": "com.kidga.word.craft",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kidga.word.craft",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:16.322479Z"
+    },
+    "in.playsimple.solitaireassociation": {
+      "name": "Solitaire Word Association",
+      "fid": "in.playsimple.solitaireassociation",
+      "app_id": "in.playsimple.solitaireassociation",
+      "store_url": "https://play.google.com/store/apps/details?id=in.playsimple.solitaireassociation",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:16.570686Z"
+    },
+    "com.CreationLightGame.FishySeaWorldSortPuzzle": {
+      "name": "Fishy Sea World Sort Puzzle",
+      "fid": "com.CreationLightGame.FishySeaWorldSortPuzzle",
+      "app_id": "com.CreationLightGame.FishySeaWorldSortPuzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.CreationLightGame.FishySeaWorldSortPuzzle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:16.928037Z"
+    },
+    "com.jbds.robotcoral": {
+      "name": "Rabbit Link",
+      "fid": "com.jbds.robotcoral",
+      "app_id": "com.jbds.robotcoral",
+      "store_url": "https://play.google.com/store/apps/details?id=com.jbds.robotcoral",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:17.209885Z"
+    },
+    "com.x.birdcalmsorting": {
+      "name": "Bird Calm Sorting",
+      "fid": "com.x.birdcalmsorting",
+      "app_id": "com.x.birdcalmsorting",
+      "store_url": "https://play.google.com/store/apps/details?id=com.x.birdcalmsorting",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:17.512542Z"
+    },
+    "com.halostudio.geoguesserquiz": {
+      "name": "Geo Master: Guess The Place",
+      "fid": "com.halostudio.geoguesserquiz",
+      "app_id": "com.halostudio.geoguesserquiz",
+      "store_url": "https://play.google.com/store/apps/details?id=com.halostudio.geoguesserquiz",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:17.748133Z"
+    },
+    "com.creativegames.imposter": {
+      "name": "امبوستر بالعربي : من المحتال؟",
+      "fid": "com.creativegames.imposter",
+      "app_id": "com.creativegames.imposter",
+      "store_url": "https://play.google.com/store/apps/details?id=com.creativegames.imposter",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:17.977722Z"
+    },
+    "com.CreationLightGame.FishySeaWorldFlipMatch": {
+      "name": "Fishy Sea World Flip Match",
+      "fid": "com.CreationLightGame.FishySeaWorldFlipMatch",
+      "app_id": "com.CreationLightGame.FishySeaWorldFlipMatch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.CreationLightGame.FishySeaWorldFlipMatch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:18.349829Z"
+    },
+    "net.waystargames.crossword.zen.word": {
+      "name": "Words of Zen: Crossword",
+      "fid": "net.waystargames.crossword.zen.word",
+      "app_id": "net.waystargames.crossword.zen.word",
+      "store_url": "https://play.google.com/store/apps/details?id=net.waystargames.crossword.zen.word",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:18.641267Z"
+    },
+    "com.coralplanet.pocketpuzzle": {
+      "name": "رَكِّبْها",
+      "fid": "com.coralplanet.pocketpuzzle",
+      "app_id": "com.coralplanet.pocketpuzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.coralplanet.pocketpuzzle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:18.891521Z"
+    },
+    "com.sky.shifttheway": {
+      "name": "Shift the Way",
+      "fid": "com.sky.shifttheway",
+      "app_id": "com.sky.shifttheway",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sky.shifttheway",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:19.169373Z"
+    },
+    "com.ds.game.sudoku.match": {
+      "name": "DS Sudo Match",
+      "fid": "com.ds.game.sudoku.match",
+      "app_id": "com.ds.game.sudoku.match",
+      "store_url": "https://play.google.com/store/apps/details?id=com.ds.game.sudoku.match",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:19.450579Z"
+    },
+    "com.hyctfyguwrefd.duygihrfedvwed": {
+      "name": "ContrastGrid",
+      "fid": "com.hyctfyguwrefd.duygihrfedvwed",
+      "app_id": "com.hyctfyguwrefd.duygihrfedvwed",
+      "store_url": "https://play.google.com/store/apps/details?id=com.hyctfyguwrefd.duygihrfedvwed",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:19.679031Z"
+    },
+    "com.finespungames.wordgame": {
+      "name": "Word Guessing Puzzle Game",
+      "fid": "com.finespungames.wordgame",
+      "app_id": "com.finespungames.wordgame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.finespungames.wordgame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:20.010975Z"
+    },
+    "com.momethe.momethe": {
+      "name": "MoMethe Word Search",
+      "fid": "com.momethe.momethe",
+      "app_id": "com.momethe.momethe",
+      "store_url": "https://play.google.com/store/apps/details?id=com.momethe.momethe",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:20.298492Z"
+    },
+    "com.lunarinteractivearts.worldtourswordsearch": {
+      "name": "World Tours - Word Search",
+      "fid": "com.lunarinteractivearts.worldtourswordsearch",
+      "app_id": "com.lunarinteractivearts.worldtourswordsearch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lunarinteractivearts.worldtourswordsearch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:20.625094Z"
+    },
+    "com.larubia.hangman3d": {
+      "name": "Hangman 3D",
+      "fid": "com.larubia.hangman3d",
+      "app_id": "com.larubia.hangman3d",
+      "store_url": "https://play.google.com/store/apps/details?id=com.larubia.hangman3d",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:21.154077Z"
+    },
+    "com.czar.solitaireword": {
+      "name": "Solitaire Word GO!",
+      "fid": "com.czar.solitaireword",
+      "app_id": "com.czar.solitaireword",
+      "store_url": "https://play.google.com/store/apps/details?id=com.czar.solitaireword",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:21.456963Z"
+    },
+    "miaozhi.game.stackedwords": {
+      "name": "LexiStack: Sort Words",
+      "fid": "miaozhi.game.stackedwords",
+      "app_id": "miaozhi.game.stackedwords",
+      "store_url": "https://play.google.com/store/apps/details?id=miaozhi.game.stackedwords",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:21.821243Z"
+    },
+    "com.lizinetwork.games.dazzlingfig": {
+      "name": "Brothers: Gate Escape",
+      "fid": "com.lizinetwork.games.dazzlingfig",
+      "app_id": "com.lizinetwork.games.dazzlingfig",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lizinetwork.games.dazzlingfig",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:22.062394Z"
+    },
+    "com.abhi.flagsurvival": {
+      "name": "Flag Survival",
+      "fid": "com.abhi.flagsurvival",
+      "app_id": "com.abhi.flagsurvival",
+      "store_url": "https://play.google.com/store/apps/details?id=com.abhi.flagsurvival",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:22.320193Z"
+    },
+    "com.mishagamesstudio.cumlebulmaca": {
+      "name": "Kriptogram: Kelime Oyunu",
+      "fid": "com.mishagamesstudio.cumlebulmaca",
+      "app_id": "com.mishagamesstudio.cumlebulmaca",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mishagamesstudio.cumlebulmaca",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:22.576793Z"
+    },
+    "com.my.dungeonslime": {
+      "name": "Dungeon Slime: Puzzle Game",
+      "fid": "com.my.dungeonslime",
+      "app_id": "com.my.dungeonslime",
+      "store_url": "https://play.google.com/store/apps/details?id=com.my.dungeonslime",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:22.842382Z"
+    },
+    "com.fiogonia.solitairewords": {
+      "name": "Word Solitaire Associations",
+      "fid": "com.fiogonia.solitairewords",
+      "app_id": "com.fiogonia.solitairewords",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fiogonia.solitairewords",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:23.093737Z"
+    },
+    "com.injoygame.mahjongmonopoly": {
+      "name": "Mahjong Monopoly",
+      "fid": "com.injoygame.mahjongmonopoly",
+      "app_id": "com.injoygame.mahjongmonopoly",
+      "store_url": "https://play.google.com/store/apps/details?id=com.injoygame.mahjongmonopoly",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:23.405874Z"
+    },
+    "com.biltapbilisim.harftas": {
+      "name": "Harftaş - Online Word Puzzle",
+      "fid": "com.biltapbilisim.harftas",
+      "app_id": "com.biltapbilisim.harftas",
+      "store_url": "https://play.google.com/store/apps/details?id=com.biltapbilisim.harftas",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:23.867606Z"
+    },
+    "com.hfthfjftghfthh.RareItemHunt": {
+      "name": "Rare Item Hunt",
+      "fid": "com.hfthfjftghfthh.RareItemHunt",
+      "app_id": "com.hfthfjftghfthh.RareItemHunt",
+      "store_url": "https://play.google.com/store/apps/details?id=com.hfthfjftghfthh.RareItemHunt",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:24.121107Z"
+    },
+    "com.drg.wordscrew": {
+      "name": "Word Cube 3D",
+      "fid": "com.drg.wordscrew",
+      "app_id": "com.drg.wordscrew",
+      "store_url": "https://play.google.com/store/apps/details?id=com.drg.wordscrew",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:24.406372Z"
+    },
+    "prod0026903006.app_33bmwbdtf7.com": {
+      "name": "Aurora Crown: Lucky Numbers",
+      "fid": "prod0026903006.app_33bmwbdtf7.com",
+      "app_id": "prod0026903006.app_33bmwbdtf7.com",
+      "store_url": "https://play.google.com/store/apps/details?id=prod0026903006.app_33bmwbdtf7.com",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:24.624530Z"
+    },
+    "com.fingersteps.wordcontrol": {
+      "name": "Word Control",
+      "fid": "com.fingersteps.wordcontrol",
+      "app_id": "com.fingersteps.wordcontrol",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fingersteps.wordcontrol",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:24.905209Z"
+    },
+    "com.tt.max": {
+      "name": "Mahjong Haven: Calm Journey",
+      "fid": "com.tt.max",
+      "app_id": "com.tt.max",
+      "store_url": "https://play.google.com/store/apps/details?id=com.tt.max",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:25.180340Z"
+    },
+    "com.zzqy.ancient.tower.hanoi": {
+      "name": "Ancient Tower Hanoi",
+      "fid": "com.zzqy.ancient.tower.hanoi",
+      "app_id": "com.zzqy.ancient.tower.hanoi",
+      "store_url": "https://play.google.com/store/apps/details?id=com.zzqy.ancient.tower.hanoi",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:25.780538Z"
+    },
+    "com.cipher.deck": {
+      "name": "WordFlip: Letters Cards Logic",
+      "fid": "com.cipher.deck",
+      "app_id": "com.cipher.deck",
+      "store_url": "https://play.google.com/store/apps/details?id=com.cipher.deck",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:26.024071Z"
+    },
+    "arrow.logic.puzzles.tap.brainteaser.game": {
+      "name": "Arrow Solver: Brain Game",
+      "fid": "arrow.logic.puzzles.tap.brainteaser.game",
+      "app_id": "arrow.logic.puzzles.tap.brainteaser.game",
+      "store_url": "https://play.google.com/store/apps/details?id=arrow.logic.puzzles.tap.brainteaser.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:26.317361Z"
+    },
+    "com.altairika.zorgai": {
+      "name": "Зорг",
+      "fid": "com.altairika.zorgai",
+      "app_id": "com.altairika.zorgai",
+      "store_url": "https://play.google.com/store/apps/details?id=com.altairika.zorgai",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:26.759947Z"
+    },
+    "com.tarda.blockcircuit": {
+      "name": "Block Circuit: Jailed Cores",
+      "fid": "com.tarda.blockcircuit",
+      "app_id": "com.tarda.blockcircuit",
+      "store_url": "https://play.google.com/store/apps/details?id=com.tarda.blockcircuit",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:27.026760Z"
+    },
+    "com.lw.mahjong.id01": {
+      "name": "Mahjong Solitaire - Freecell",
+      "fid": "com.lw.mahjong.id01",
+      "app_id": "com.lw.mahjong.id01",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lw.mahjong.id01",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:27.375127Z"
+    },
+    "com.kinorogames.wordsearchquiz": {
+      "name": "Word Search Quiz: Brain Puzzle",
+      "fid": "com.kinorogames.wordsearchquiz",
+      "app_id": "com.kinorogames.wordsearchquiz",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kinorogames.wordsearchquiz",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:27.720171Z"
+    },
+    "com.etermax.similar": {
+      "name": "Word Solitaire: Card Adventure",
+      "fid": "com.etermax.similar",
+      "app_id": "com.etermax.similar",
+      "store_url": "https://play.google.com/store/apps/details?id=com.etermax.similar",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:27.938928Z"
+    },
+    "com.cdsvsg.fewfdhvc": {
+      "name": "Chicken Road",
+      "fid": "com.cdsvsg.fewfdhvc",
+      "app_id": "com.cdsvsg.fewfdhvc",
+      "store_url": "https://play.google.com/store/apps/details?id=com.cdsvsg.fewfdhvc",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:28.290981Z"
+    },
+    "com.BerryGames.BerryMahjong": {
+      "name": "Berry Mahjong: Tile Match",
+      "fid": "com.BerryGames.BerryMahjong",
+      "app_id": "com.BerryGames.BerryMahjong",
+      "store_url": "https://play.google.com/store/apps/details?id=com.BerryGames.BerryMahjong",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:28.594988Z"
+    },
+    "com.digitflow.samt": {
+      "name": "Fortune Tiger",
+      "fid": "com.digitflow.samt",
+      "app_id": "com.digitflow.samt",
+      "store_url": "https://play.google.com/store/apps/details?id=com.digitflow.samt",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:28.917118Z"
+    },
+    "com.krates.turkcewordle": {
+      "name": "Wordle - Word Game",
+      "fid": "com.krates.turkcewordle",
+      "app_id": "com.krates.turkcewordle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.krates.turkcewordle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:29.151961Z"
+    },
+    "com.sss.mahjongtile.puzzle.tilegame": {
+      "name": "Tile Master Mahjong Match Game",
+      "fid": "com.sss.mahjongtile.puzzle.tilegame",
+      "app_id": "com.sss.mahjongtile.puzzle.tilegame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sss.mahjongtile.puzzle.tilegame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:29.425982Z"
+    },
+    "com.slashremix.WordGame": {
+      "name": "Kelime Oyunu Online",
+      "fid": "com.slashremix.WordGame",
+      "app_id": "com.slashremix.WordGame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.slashremix.WordGame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:29.666875Z"
+    },
+    "com.Worm.WormPile": {
+      "name": "Worm Pile",
+      "fid": "com.Worm.WormPile",
+      "app_id": "com.Worm.WormPile",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Worm.WormPile",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:30.039712Z"
+    },
+    "com.jigsaw.puzzles.relax.zen.puzzles.game.art": {
+      "name": "Jigsaw Puzzles–Fun Relax Game",
+      "fid": "com.jigsaw.puzzles.relax.zen.puzzles.game.art",
+      "app_id": "com.jigsaw.puzzles.relax.zen.puzzles.game.art",
+      "store_url": "https://play.google.com/store/apps/details?id=com.jigsaw.puzzles.relax.zen.puzzles.game.art",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:30.304262Z"
+    },
+    "com.asstudio.thehangmanonlinemultiplayer": {
+      "name": "The Hangman Online Multiplayer",
+      "fid": "com.asstudio.thehangmanonlinemultiplayer",
+      "app_id": "com.asstudio.thehangmanonlinemultiplayer",
+      "store_url": "https://play.google.com/store/apps/details?id=com.asstudio.thehangmanonlinemultiplayer",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:30.593545Z"
+    },
+    "com.brazy.flowergram": {
+      "name": "Flower Gram - Bloom Puzzle",
+      "fid": "com.brazy.flowergram",
+      "app_id": "com.brazy.flowergram",
+      "store_url": "https://play.google.com/store/apps/details?id=com.brazy.flowergram",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:30.941695Z"
+    },
+    "com.erase.mystery.itright": {
+      "name": "Erase Mystery Puzzle",
+      "fid": "com.erase.mystery.itright",
+      "app_id": "com.erase.mystery.itright",
+      "store_url": "https://play.google.com/store/apps/details?id=com.erase.mystery.itright",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:31.188203Z"
+    },
+    "com.roomcraft.matchescape": {
+      "name": "Hidden Room: Match Escape",
+      "fid": "com.roomcraft.matchescape",
+      "app_id": "com.roomcraft.matchescape",
+      "store_url": "https://play.google.com/store/apps/details?id=com.roomcraft.matchescape",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:31.489120Z"
+    },
+    "com.brainwave.arrowmove": {
+      "name": "Arrow Move - Pixel Gallery",
+      "fid": "com.brainwave.arrowmove",
+      "app_id": "com.brainwave.arrowmove",
+      "store_url": "https://play.google.com/store/apps/details?id=com.brainwave.arrowmove",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:31.832547Z"
+    },
+    "com.loppipoppi.sudonumber": {
+      "name": "Sudo Number: Math Logic Puzzle",
+      "fid": "com.loppipoppi.sudonumber",
+      "app_id": "com.loppipoppi.sudonumber",
+      "store_url": "https://play.google.com/store/apps/details?id=com.loppipoppi.sudonumber",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:32.161547Z"
+    },
+    "com.thematic.crossword": {
+      "name": "Thematic Crossword",
+      "fid": "com.thematic.crossword",
+      "app_id": "com.thematic.crossword",
+      "store_url": "https://play.google.com/store/apps/details?id=com.thematic.crossword",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:32.392861Z"
+    },
+    "com.word.solitaire.puzzle.game.pkall": {
+      "name": "Word Solitaire Puzzle Game",
+      "fid": "com.word.solitaire.puzzle.game.pkall",
+      "app_id": "com.word.solitaire.puzzle.game.pkall",
+      "store_url": "https://play.google.com/store/apps/details?id=com.word.solitaire.puzzle.game.pkall",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:32.688965Z"
+    },
+    "and.lhhpub.tileslidepair": {
+      "name": "Tile Slide Pair: Mahjong Match",
+      "fid": "and.lhhpub.tileslidepair",
+      "app_id": "and.lhhpub.tileslidepair",
+      "store_url": "https://play.google.com/store/apps/details?id=and.lhhpub.tileslidepair",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:33.038550Z"
+    },
+    "com.sgg.motscroises2": {
+      "name": "Mom's Crosswords with Pictures",
+      "fid": "com.sgg.motscroises2",
+      "app_id": "com.sgg.motscroises2",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sgg.motscroises2",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:33.413040Z"
+    },
+    "com.kafeinman.wordgame": {
+      "name": "Words of Civilization",
+      "fid": "com.kafeinman.wordgame",
+      "app_id": "com.kafeinman.wordgame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kafeinman.wordgame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:33.771802Z"
+    },
+    "com.lunappstudio.whatisthis": {
+      "name": "What Is This? Guess the Word",
+      "fid": "com.lunappstudio.whatisthis",
+      "app_id": "com.lunappstudio.whatisthis",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lunappstudio.whatisthis",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:34.157251Z"
+    },
+    "com.wilsdxrain.braindventure": {
+      "name": "BDOKWild Brain Adventure",
+      "fid": "com.wilsdxrain.braindventure",
+      "app_id": "com.wilsdxrain.braindventure",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wilsdxrain.braindventure",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:34.493050Z"
+    },
+    "com.fapkkhh.FastAdditionPairs": {
+      "name": "Fast Addition Pairs",
+      "fid": "com.fapkkhh.FastAdditionPairs",
+      "app_id": "com.fapkkhh.FastAdditionPairs",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fapkkhh.FastAdditionPairs",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:34.744966Z"
+    },
+    "com.eightgreatgames.xlseniorspuzzles": {
+      "name": "Mahjong XL - Sharp Mind Puzzle",
+      "fid": "com.eightgreatgames.xlseniorspuzzles",
+      "app_id": "com.eightgreatgames.xlseniorspuzzles",
+      "store_url": "https://play.google.com/store/apps/details?id=com.eightgreatgames.xlseniorspuzzles",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:35.176508Z"
+    },
+    "com.glyphtoday.app": {
+      "name": "Glyph - Daily Word Puzzle",
+      "fid": "com.glyphtoday.app",
+      "app_id": "com.glyphtoday.app",
+      "store_url": "https://play.google.com/store/apps/details?id=com.glyphtoday.app",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:35.539689Z"
+    },
+    "com.wordsearch.find.hiddenword.puzzle.game": {
+      "name": "Word Search: Find Words Puzzle",
+      "fid": "com.wordsearch.find.hiddenword.puzzle.game",
+      "app_id": "com.wordsearch.find.hiddenword.puzzle.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wordsearch.find.hiddenword.puzzle.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:35.938137Z"
+    },
+    "com.prism.friends.escape.puzzle": {
+      "name": "Prism Friends: Escape Puzzle",
+      "fid": "com.prism.friends.escape.puzzle",
+      "app_id": "com.prism.friends.escape.puzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.prism.friends.escape.puzzle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:36.178909Z"
+    },
+    "com.threeblue.riddled": {
+      "name": "Riddled: Daily Brain Teasers",
+      "fid": "com.threeblue.riddled",
+      "app_id": "com.threeblue.riddled",
+      "store_url": "https://play.google.com/store/apps/details?id=com.threeblue.riddled",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:36.591913Z"
+    },
+    "com.birolgames.cengelbulmaca": {
+      "name": "Çengel Bulmaca PRO",
+      "fid": "com.birolgames.cengelbulmaca",
+      "app_id": "com.birolgames.cengelbulmaca",
+      "store_url": "https://play.google.com/store/apps/details?id=com.birolgames.cengelbulmaca",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:36.798070Z"
+    },
+    "com.gihkcatos.holestacklogic": {
+      "name": "Holestack Logic",
+      "fid": "com.gihkcatos.holestacklogic",
+      "app_id": "com.gihkcatos.holestacklogic",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gihkcatos.holestacklogic",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:37.235331Z"
+    },
+    "com.brain.kitty.verse.puzzle": {
+      "name": "KittyVerse Puzzle",
+      "fid": "com.brain.kitty.verse.puzzle",
+      "app_id": "com.brain.kitty.verse.puzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.brain.kitty.verse.puzzle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:37.498897Z"
+    },
+    "com.shortcircuitstudio.hearthside": {
+      "name": "Hearthside: A Teeny Tiny Game",
+      "fid": "com.shortcircuitstudio.hearthside",
+      "app_id": "com.shortcircuitstudio.hearthside",
+      "store_url": "https://play.google.com/store/apps/details?id=com.shortcircuitstudio.hearthside",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:37.883296Z"
+    },
+    "com.feiba.mahjong.tile.match": {
+      "name": "Mahjong Tile - Amazing Match",
+      "fid": "com.feiba.mahjong.tile.match",
+      "app_id": "com.feiba.mahjong.tile.match",
+      "store_url": "https://play.google.com/store/apps/details?id=com.feiba.mahjong.tile.match",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:38.276359Z"
+    },
+    "com.WoulphGames.WordCarver": {
+      "name": "Word Carver: English Vocab",
+      "fid": "com.WoulphGames.WordCarver",
+      "app_id": "com.WoulphGames.WordCarver",
+      "store_url": "https://play.google.com/store/apps/details?id=com.WoulphGames.WordCarver",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:38.637209Z"
+    },
+    "com.mnogoteams.wordsolitaire": {
+      "name": "Word Solitaire: Card Sort",
+      "fid": "com.mnogoteams.wordsolitaire",
+      "app_id": "com.mnogoteams.wordsolitaire",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mnogoteams.wordsolitaire",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:38.836998Z"
+    },
+    "com.picture.puzzle.game.jigsaw.puzzle.building.pixel.builder": {
+      "name": "Pixel Builder - Picture Puzzle",
+      "fid": "com.picture.puzzle.game.jigsaw.puzzle.building.pixel.builder",
+      "app_id": "com.picture.puzzle.game.jigsaw.puzzle.building.pixel.builder",
+      "store_url": "https://play.google.com/store/apps/details?id=com.picture.puzzle.game.jigsaw.puzzle.building.pixel.builder",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:39.345954Z"
+    },
+    "net.culturageneral.app": {
+      "name": "CulturaGeneral: Juega, Aprende",
+      "fid": "net.culturageneral.app",
+      "app_id": "net.culturageneral.app",
+      "store_url": "https://play.google.com/store/apps/details?id=net.culturageneral.app",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:39.675182Z"
+    },
+    "com.BuzCore.TabuFantastik": {
+      "name": "Tabu Fantastik : Kelime Oyunu",
+      "fid": "com.BuzCore.TabuFantastik",
+      "app_id": "com.BuzCore.TabuFantastik",
+      "store_url": "https://play.google.com/store/apps/details?id=com.BuzCore.TabuFantastik",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:40.064019Z"
+    },
+    "com.fahadlabs.jamaa": {
+      "name": "جمعة - العاب جماعية",
+      "fid": "com.fahadlabs.jamaa",
+      "app_id": "com.fahadlabs.jamaa",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fahadlabs.jamaa",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:40.362237Z"
+    },
+    "com.sinyee.babybus.recommendapp.glo": {
+      "name": "Juicy Mini Games",
+      "fid": "com.sinyee.babybus.recommendapp.glo",
+      "app_id": "com.sinyee.babybus.recommendapp.glo",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sinyee.babybus.recommendapp.glo",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:40.641819Z"
+    },
+    "com.felcmg.foxdrawworld": {
+      "name": "Fox Draw World",
+      "fid": "com.felcmg.foxdrawworld",
+      "app_id": "com.felcmg.foxdrawworld",
+      "store_url": "https://play.google.com/store/apps/details?id=com.felcmg.foxdrawworld",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:40.930382Z"
+    },
+    "com.chain.match.game": {
+      "name": "Chain Match",
+      "fid": "com.chain.match.game",
+      "app_id": "com.chain.match.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.chain.match.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:41.328780Z"
+    },
+    "com.kolabs.kelimebul": {
+      "name": "KelimeBul: Türkçe Kelime Oyunu",
+      "fid": "com.kolabs.kelimebul",
+      "app_id": "com.kolabs.kelimebul",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kolabs.kelimebul",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:41.641368Z"
+    },
+    "com.HansolCreative.WordMatch": {
+      "name": "Wordy Buddy: Korean Puzzle",
+      "fid": "com.HansolCreative.WordMatch",
+      "app_id": "com.HansolCreative.WordMatch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.HansolCreative.WordMatch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:42.169433Z"
+    },
+    "com.wordimo.game": {
+      "name": "Wordimo: Word Puzzle Game",
+      "fid": "com.wordimo.game",
+      "app_id": "com.wordimo.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wordimo.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:42.438522Z"
+    },
+    "se.kozakura.wordflow": {
+      "name": "Word Flow - Relax Word Search",
+      "fid": "se.kozakura.wordflow",
+      "app_id": "se.kozakura.wordflow",
+      "store_url": "https://play.google.com/store/apps/details?id=se.kozakura.wordflow",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:42.748105Z"
+    },
+    "com.kyunlabs.imposter": {
+      "name": "Imposter Game - Spy Party Word",
+      "fid": "com.kyunlabs.imposter",
+      "app_id": "com.kyunlabs.imposter",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kyunlabs.imposter",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:42.979703Z"
+    },
+    "com.game.word_tap": {
+      "name": "Word Tap – Search Letters",
+      "fid": "com.game.word_tap",
+      "app_id": "com.game.word_tap",
+      "store_url": "https://play.google.com/store/apps/details?id=com.game.word_tap",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:43.251891Z"
+    },
+    "com.happycapy.mahjong": {
+      "name": "Happy Capy Mahjong Game",
+      "fid": "com.happycapy.mahjong",
+      "app_id": "com.happycapy.mahjong",
+      "store_url": "https://play.google.com/store/apps/details?id=com.happycapy.mahjong",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:43.873466Z"
+    },
+    "com.tcmcrazy.mahjong": {
+      "name": "Tile Crazy Mahjong Game",
+      "fid": "com.tcmcrazy.mahjong",
+      "app_id": "com.tcmcrazy.mahjong",
+      "store_url": "https://play.google.com/store/apps/details?id=com.tcmcrazy.mahjong",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:44.327352Z"
+    },
+    "com.melihmustafaozkan.kurepro": {
+      "name": "Sphere Pro",
+      "fid": "com.melihmustafaozkan.kurepro",
+      "app_id": "com.melihmustafaozkan.kurepro",
+      "store_url": "https://play.google.com/store/apps/details?id=com.melihmustafaozkan.kurepro",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:44.537719Z"
+    },
+    "com.Momend.JellyFlow": {
+      "name": "Jelly Flow: 3D Pixel Puzzle",
+      "fid": "com.Momend.JellyFlow",
+      "app_id": "com.Momend.JellyFlow",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Momend.JellyFlow",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:44.901979Z"
+    },
+    "com.wincloud631.guessworld": {
+      "name": "Win Cloud",
+      "fid": "com.wincloud631.guessworld",
+      "app_id": "com.wincloud631.guessworld",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wincloud631.guessworld",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:45.143061Z"
+    },
+    "com.gamovation.wordtiles": {
+      "name": "Word Tiles - Word Puzzle Game",
+      "fid": "com.gamovation.wordtiles",
+      "app_id": "com.gamovation.wordtiles",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gamovation.wordtiles",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:45.514810Z"
+    },
+    "com.boxoblockpuzzle.game": {
+      "name": "Boxo: Block Puzzle Games",
+      "fid": "com.boxoblockpuzzle.game",
+      "app_id": "com.boxoblockpuzzle.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.boxoblockpuzzle.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:45.794615Z"
+    },
+    "com.fc.p.wm.perfect.cooking.fever.food.game": {
+      "name": "Perfect Cooking Game",
+      "fid": "com.fc.p.wm.perfect.cooking.fever.food.game",
+      "app_id": "com.fc.p.wm.perfect.cooking.fever.food.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fc.p.wm.perfect.cooking.fever.food.game",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:46.090065Z"
+    },
+    "com.romel.tictacword": {
+      "name": "Tic Tac Word",
+      "fid": "com.romel.tictacword",
+      "app_id": "com.romel.tictacword",
+      "store_url": "https://play.google.com/store/apps/details?id=com.romel.tictacword",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:46.363818Z"
+    },
+    "com.fingersyoda.wordcloud": {
+      "name": "Word Cloud",
+      "fid": "com.fingersyoda.wordcloud",
+      "app_id": "com.fingersyoda.wordcloud",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fingersyoda.wordcloud",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:46.609211Z"
+    },
+    "com.dominicoding.slownepotyczki": {
+      "name": "Słowne Potyczki: Gra słowna",
+      "fid": "com.dominicoding.slownepotyczki",
+      "app_id": "com.dominicoding.slownepotyczki",
+      "store_url": "https://play.google.com/store/apps/details?id=com.dominicoding.slownepotyczki",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:47.003290Z"
+    },
+    "com.Sarmanow.LetterExchange": {
+      "name": "Letter Exchange",
+      "fid": "com.Sarmanow.LetterExchange",
+      "app_id": "com.Sarmanow.LetterExchange",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Sarmanow.LetterExchange",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:47.279537Z"
+    },
+    "app.lostpuzzle.egypt.boxes": {
+      "name": "Lost Puzzles of Egypt",
+      "fid": "app.lostpuzzle.egypt.boxes",
+      "app_id": "app.lostpuzzle.egypt.boxes",
+      "store_url": "https://play.google.com/store/apps/details?id=app.lostpuzzle.egypt.boxes",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:47.713866Z"
+    },
+    "app.lovable.kenyaat50online": {
+      "name": "Kenya at 50 Online",
+      "fid": "app.lovable.kenyaat50online",
+      "app_id": "app.lovable.kenyaat50online",
+      "store_url": "https://play.google.com/store/apps/details?id=app.lovable.kenyaat50online",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:47.979027Z"
+    },
+    "com.topparty.tspstack": {
+      "name": "Tops Stack Party Game",
+      "fid": "com.topparty.tspstack",
+      "app_id": "com.topparty.tspstack",
+      "store_url": "https://play.google.com/store/apps/details?id=com.topparty.tspstack",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:48.378689Z"
+    },
+    "com.funny.iq.games.nonogram.logicpic.cross.puzzle": {
+      "name": "Nono Picross - Puzzle games",
+      "fid": "com.funny.iq.games.nonogram.logicpic.cross.puzzle",
+      "app_id": "com.funny.iq.games.nonogram.logicpic.cross.puzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.funny.iq.games.nonogram.logicpic.cross.puzzle",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:48.651218Z"
+    },
+    "com.gtm.imposter": {
+      "name": "Imposter Game: Word Party",
+      "fid": "com.gtm.imposter",
+      "app_id": "com.gtm.imposter",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gtm.imposter",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:48.992623Z"
+    },
+    "com.slide.jspjewel": {
+      "name": "Jewel Slide Puzzle Game",
+      "fid": "com.slide.jspjewel",
+      "app_id": "com.slide.jspjewel",
+      "store_url": "https://play.google.com/store/apps/details?id=com.slide.jspjewel",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:49.383673Z"
+    },
+    "com.smartpuzzle.panga": {
+      "name": "Smart Puzzle for everyone",
+      "fid": "com.smartpuzzle.panga",
+      "app_id": "com.smartpuzzle.panga",
+      "store_url": "https://play.google.com/store/apps/details?id=com.smartpuzzle.panga",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:49.607076Z"
+    },
+    "com.battlejet.woordgame": {
+      "name": "WordSalvo - Word Game",
+      "fid": "com.battlejet.woordgame",
+      "app_id": "com.battlejet.woordgame",
+      "store_url": "https://play.google.com/store/apps/details?id=com.battlejet.woordgame",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:49.841448Z"
+    },
+    "com.mochitchies.escapetraining": {
+      "name": "Escape Training",
+      "fid": "com.mochitchies.escapetraining",
+      "app_id": "com.mochitchies.escapetraining",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mochitchies.escapetraining",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:50.105313Z"
+    },
+    "com.saashagames.spellsmart": {
+      "name": "Spell Smart - Word Connect",
+      "fid": "com.saashagames.spellsmart",
+      "app_id": "com.saashagames.spellsmart",
+      "store_url": "https://play.google.com/store/apps/details?id=com.saashagames.spellsmart",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:50.326884Z"
+    },
+    "com.arabic.crossword": {
+      "name": "كلمات متقاطعة : وصلة ثقافية",
+      "fid": "com.arabic.crossword",
+      "app_id": "com.arabic.crossword",
+      "store_url": "https://play.google.com/store/apps/details?id=com.arabic.crossword",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:50.639493Z"
+    },
+    "com.ktg.crowloop": {
+      "name": "Crow Loop",
+      "fid": "com.ktg.crowloop",
+      "app_id": "com.ktg.crowloop",
+      "store_url": "https://play.google.com/store/apps/details?id=com.ktg.crowloop",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:50.895976Z"
+    },
+    "com.bluehole.wordsearch": {
+      "name": "Word Search Passport",
+      "fid": "com.bluehole.wordsearch",
+      "app_id": "com.bluehole.wordsearch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.bluehole.wordsearch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:51.279750Z"
+    },
+    "com.word.jam.sort": {
+      "name": "Word Jam Sort",
+      "fid": "com.word.jam.sort",
+      "app_id": "com.word.jam.sort",
+      "store_url": "https://play.google.com/store/apps/details?id=com.word.jam.sort",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:51.597944Z"
+    },
+    "com.delimajohnmark.bugtongcryptic": {
+      "name": "Bugtong Cryptic",
+      "fid": "com.delimajohnmark.bugtongcryptic",
+      "app_id": "com.delimajohnmark.bugtongcryptic",
+      "store_url": "https://play.google.com/store/apps/details?id=com.delimajohnmark.bugtongcryptic",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:51.816534Z"
+    },
+    "com.maryourhelp.chino": {
+      "name": "Chino: Catholic Games",
+      "fid": "com.maryourhelp.chino",
+      "app_id": "com.maryourhelp.chino",
+      "store_url": "https://play.google.com/store/apps/details?id=com.maryourhelp.chino",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:52.203221Z"
+    },
+    "com.footfantype.gamebLes": {
+      "name": "Tipico",
+      "fid": "com.footfantype.gamebLes",
+      "app_id": "com.footfantype.gamebLes",
+      "store_url": "https://play.google.com/store/apps/details?id=com.footfantype.gamebLes",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:52.639723Z"
+    },
+    "com.sariyanidi.logiword": {
+      "name": "Logiword",
+      "fid": "com.sariyanidi.logiword",
+      "app_id": "com.sariyanidi.logiword",
+      "store_url": "https://play.google.com/store/apps/details?id=com.sariyanidi.logiword",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:52.921916Z"
+    },
+    "com.Crazeverse.BrainVault": {
+      "name": "Brain Vault",
+      "fid": "com.Crazeverse.BrainVault",
+      "app_id": "com.Crazeverse.BrainVault",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Crazeverse.BrainVault",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:53.340745Z"
+    },
+    "com.kuantark.stackdown": {
+      "name": "Stackdown: Word Tile Puzzle",
+      "fid": "com.kuantark.stackdown",
+      "app_id": "com.kuantark.stackdown",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kuantark.stackdown",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:53.476344Z"
+    },
+    "com.robus.hexawords": {
+      "name": "Hexa Word: Hexagon Word Search",
+      "fid": "com.robus.hexawords",
+      "app_id": "com.robus.hexawords",
+      "store_url": "https://play.google.com/store/apps/details?id=com.robus.hexawords",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:53.808927Z"
+    },
+    "com.wordpop.merge.bubble": {
+      "name": "Word Pop: Bubble Merge Puzzle",
+      "fid": "com.wordpop.merge.bubble",
+      "app_id": "com.wordpop.merge.bubble",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wordpop.merge.bubble",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:54.120582Z"
+    },
+    "com.pfk.picturesforkids": {
+      "name": "Pictures For Kids",
+      "fid": "com.pfk.picturesforkids",
+      "app_id": "com.pfk.picturesforkids",
+      "store_url": "https://play.google.com/store/apps/details?id=com.pfk.picturesforkids",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:54.385496Z"
+    },
+    "air.net.ideasam.games": {
+      "name": "Dark Neon",
+      "fid": "air.net.ideasam.games",
+      "app_id": "air.net.ideasam.games",
+      "store_url": "https://play.google.com/store/apps/details?id=air.net.ideasam.games",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:54.677353Z"
+    },
+    "com.yomi.cryptogram": {
+      "name": "Cryptogram Puzzle: Word Decode",
+      "fid": "com.yomi.cryptogram",
+      "app_id": "com.yomi.cryptogram",
+      "store_url": "https://play.google.com/store/apps/details?id=com.yomi.cryptogram",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:54.905479Z"
+    },
+    "com.gzojhtb.nyeqmlnatxum": {
+      "name": "Mahjong Quest",
+      "fid": "com.gzojhtb.nyeqmlnatxum",
+      "app_id": "com.gzojhtb.nyeqmlnatxum",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gzojhtb.nyeqmlnatxum",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:55.251779Z"
+    },
+    "com.fndfveeftbll": {
+      "name": "Find 5 Football",
+      "fid": "com.fndfveeftbll",
+      "app_id": "com.fndfveeftbll",
+      "store_url": "https://play.google.com/store/apps/details?id=com.fndfveeftbll",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:55.527345Z"
+    },
+    "com.lucratech.wordcircuit": {
+      "name": "Word Circuit",
+      "fid": "com.lucratech.wordcircuit",
+      "app_id": "com.lucratech.wordcircuit",
+      "store_url": "https://play.google.com/store/apps/details?id=com.lucratech.wordcircuit",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:55.880786Z"
+    },
+    "pressapp.ma.mafia": {
+      "name": "Mafia Online: Social Deduction",
+      "fid": "pressapp.ma.mafia",
+      "app_id": "pressapp.ma.mafia",
+      "store_url": "https://play.google.com/store/apps/details?id=pressapp.ma.mafia",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:56.094491Z"
+    },
+    "com.codelytical.hymnalword": {
+      "name": "Hymnal Word Puzzle - Word Game",
+      "fid": "com.codelytical.hymnalword",
+      "app_id": "com.codelytical.hymnalword",
+      "store_url": "https://play.google.com/store/apps/details?id=com.codelytical.hymnalword",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:56.387732Z"
+    },
+    "com.squidstudios.wordblitz": {
+      "name": "Word Blitz - Word Search Game",
+      "fid": "com.squidstudios.wordblitz",
+      "app_id": "com.squidstudios.wordblitz",
+      "store_url": "https://play.google.com/store/apps/details?id=com.squidstudios.wordblitz",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:56.877059Z"
+    },
+    "jok.jokrun.mat": {
+      "name": "Joker Match Run",
+      "fid": "jok.jokrun.mat",
+      "app_id": "jok.jokrun.mat",
+      "store_url": "https://play.google.com/store/apps/details?id=jok.jokrun.mat",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:57.338949Z"
+    },
+    "com.waslagame9.flag.quiz": {
+      "name": "لعبة علم أي دولة ؟",
+      "fid": "com.waslagame9.flag.quiz",
+      "app_id": "com.waslagame9.flag.quiz",
+      "store_url": "https://play.google.com/store/apps/details?id=com.waslagame9.flag.quiz",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:57.573158Z"
+    },
+    "com.keepgamesimple.lettersort": {
+      "name": "Letter Sort - Word Puzzle",
+      "fid": "com.keepgamesimple.lettersort",
+      "app_id": "com.keepgamesimple.lettersort",
+      "store_url": "https://play.google.com/store/apps/details?id=com.keepgamesimple.lettersort",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:57.996800Z"
+    },
+    "com.gameogram.wordrush": {
+      "name": "Word Rush - Fast Word Game",
+      "fid": "com.gameogram.wordrush",
+      "app_id": "com.gameogram.wordrush",
+      "store_url": "https://play.google.com/store/apps/details?id=com.gameogram.wordrush",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:58.219940Z"
+    },
+    "com.codmaker.tahadisowar": {
+      "name": "تحدي الصور - ألغاز الذكاء",
+      "fid": "com.codmaker.tahadisowar",
+      "app_id": "com.codmaker.tahadisowar",
+      "store_url": "https://play.google.com/store/apps/details?id=com.codmaker.tahadisowar",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:58.479463Z"
+    },
+    "cn.zogames.wordsolitaire": {
+      "name": "Word Solitaire: Sort & Match",
+      "fid": "cn.zogames.wordsolitaire",
+      "app_id": "cn.zogames.wordsolitaire",
+      "store_url": "https://play.google.com/store/apps/details?id=cn.zogames.wordsolitaire",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:58.801393Z"
+    },
+    "com.wordtrail.app": {
+      "name": "WordTrail: Word Guess Puzzle",
+      "fid": "com.wordtrail.app",
+      "app_id": "com.wordtrail.app",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wordtrail.app",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:59.051284Z"
+    },
+    "com.aohypns.sulfide": {
+      "name": "Richard Bowen",
+      "fid": "com.aohypns.sulfide",
+      "app_id": "com.aohypns.sulfide",
+      "store_url": "https://play.google.com/store/apps/details?id=com.aohypns.sulfide",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:59.477902Z"
+    },
+    "com.englishwordsearch.englishwordsearch": {
+      "name": "Word Search: English & Kurdish",
+      "fid": "com.englishwordsearch.englishwordsearch",
+      "app_id": "com.englishwordsearch.englishwordsearch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.englishwordsearch.englishwordsearch",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:44:59.717814Z"
+    },
+    "com.klfweswpi.flipexiwep": {
+      "name": "Flipexiwep",
+      "fid": "com.klfweswpi.flipexiwep",
+      "app_id": "com.klfweswpi.flipexiwep",
+      "store_url": "https://play.google.com/store/apps/details?id=com.klfweswpi.flipexiwep",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:45:00.139352Z"
+    },
+    "com.domino.association": {
+      "name": "Domino Association",
+      "fid": "com.domino.association",
+      "app_id": "com.domino.association",
+      "store_url": "https://play.google.com/store/apps/details?id=com.domino.association",
+      "platform": "android",
+      "sent_at": "2026-05-08T15:45:00.645038Z"
+    }
+  }
+}
