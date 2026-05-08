@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -91,7 +90,11 @@ def _merge_web_games(
         if key in by_key:
             # Update install count and last_seen, keep first_seen
             existing_game = by_key[key]
-            existing_game["installs"] = g.get("installs") or g.get("installs_total") or existing_game.get("installs", 0)
+            existing_game["installs"] = (
+                g.get("installs")
+                or g.get("installs_total")
+                or existing_game.get("installs", 0)
+            )
             existing_game["last_seen"] = today_iso
             # Refresh score and reason in case relevance logic changed
             if g.get("score") is not None:
@@ -178,11 +181,15 @@ def main() -> int:
 
     # Write ALL games to "All Games" sheet
     write_all_games_to_sheet(scored)
-    all_sheet_url = None
 
-    # Filter relevant (score >= 60 — adjust if you want stricter)
+    # Filter relevant (score >= 60)
     relevant = [g for g in scored if int(g.get("score", 0)) >= 60]
-    relevant.sort(key=lambda g: int(g.get("installs", 0) or 0), reverse=True)
+    relevant.sort(
+        key=lambda g: int(
+            g.get("installs", 0) or g.get("installs_total", 0) or 0
+        ),
+        reverse=True,
+    )
 
     ios_relevant = sum(1 for g in relevant if g.get("platform") == "ios")
     android_relevant = sum(1 for g in relevant if g.get("platform") == "android")
@@ -210,30 +217,35 @@ def main() -> int:
 
     # Slack alerts (deduped)
     sent_registry = load_sent_games()
-    sent_registry = prune_old_entries(sent_registry, days=60)
+    prune_old_entries(sent_registry, days=60)
 
     sent_count = 0
     if not dry_run:
         # iOS first, then Android — both sorted by installs desc
+        def _installs(g: dict[str, Any]) -> int:
+            return int(g.get("installs", 0) or g.get("installs_total", 0) or 0)
+
         ios_relevant_sorted = sorted(
             [g for g in relevant if g.get("platform") == "ios"],
-            key=lambda g: int(g.get("installs", 0) or 0),
+            key=_installs,
             reverse=True,
         )
         android_relevant_sorted = sorted(
             [g for g in relevant if g.get("platform") == "android"],
-            key=lambda g: int(g.get("installs", 0) or 0),
+            key=_installs,
             reverse=True,
         )
         ordered = ios_relevant_sorted + android_relevant_sorted
 
         for game in ordered:
-            if is_already_sent(sent_registry, game):
+            # Correct parameter order: game first, registry second
+            if is_already_sent(game, sent_registry):
                 continue
             ok = send_game_alert(game, test_mode=test_mode)
             if ok:
                 sent_count += 1
-                mark_as_sent(sent_registry, game)
+                # Correct parameter order: game first, registry second
+                mark_as_sent(game, sent_registry)
 
         save_sent_games(sent_registry)
         logger.info("Sent %d new games to Slack", sent_count)
@@ -244,7 +256,7 @@ def main() -> int:
     if not dry_run:
         send_summary_message(
             game_count=sent_count,
-            sheet_url=relevant_sheet_url or all_sheet_url,
+            sheet_url=relevant_sheet_url,
             run_date=run_date,
             total_fetched=len(games),
         )
