@@ -1,287 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agave Game Radar</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f5f4f2;
-    --surface: #ffffff;
-    --surface-2: #ebeae7;
-    --border: #d4d3d0;
-    --text: #2a2a2a;
-    --text-muted: #7c7a7a;
-    --text-soft: #b3b3b4;
-    --accent: #d97757;
-    --accent-soft: rgba(217, 119, 87, 0.12);
-    --accent-strong: #c25c3d;
-    --ios: #4a6fa5;
-    --android: #5a8a4a;
-    --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: #f5f5f7;
+    color: #1d1d1f;
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
   .header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 32px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: var(--shadow);
-  }
-  .header-content {
-    max-width: 1400px;
-    margin: 0 auto;
+    background: white;
+    padding: 24px 32px;
+    border-bottom: 1px solid #e5e5e7;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 16px;
-    align-items: center;
-    justify-content: space-between;
   }
-  .header-title { display: flex; align-items: center; gap: 12px; }
-  .logo {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    box-shadow: var(--shadow);
-  }
-  .header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
-  .subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-  .stats { display: flex; gap: 8px; flex-wrap: wrap; }
-  .stat {
-    background: var(--surface-2);
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-  .stat-value { font-weight: 700; color: var(--text); }
-  .stat.accent { background: var(--accent-soft); border-color: rgba(217, 119, 87, 0.3); }
-  .stat.accent .stat-value { color: var(--accent-strong); }
-  .container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
-  .controls {
-    background: var(--surface);
-    border: 1px solid var(--border);
+  .header-icon {
+    width: 56px;
+    height: 56px;
+    background: #d97548;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
-  }
-  .controls-row {
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    font-size: 32px;
   }
-  .controls-row + .controls-row { margin-top: 12px; }
-  .search {
+  .header-text h1 { font-size: 24px; font-weight: 700; }
+  .header-text p { font-size: 14px; color: #86868b; margin-top: 2px; }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    padding: 24px 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
     flex: 1;
-    min-width: 220px;
-    padding: 10px 14px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-size: 14px;
+    min-width: 140px;
+    border: 1px solid #e5e5e7;
   }
-  .search:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+  .stat-label { font-size: 12px; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-value { font-size: 28px; font-weight: 700; margin-top: 4px; }
+
+  .controls {
+    background: white;
+    margin: 0 32px;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #e5e5e7;
+  }
+  .search-box {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
   }
   .filter-label {
-    font-size: 12px;
-    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    color: #86868b;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-weight: 600;
-    margin-right: 4px;
+    min-width: 80px;
   }
-  .btn-group {
-    display: flex;
-    gap: 4px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 3px;
-  }
-  .btn {
-    padding: 6px 12px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
+  .pill-group { display: flex; gap: 4px; flex-wrap: wrap; }
+  .pill {
+    padding: 6px 14px;
+    border: 1px solid #d2d2d7;
+    border-radius: 20px;
+    background: white;
     cursor: pointer;
     font-size: 13px;
-    font-weight: 500;
-    border-radius: 6px;
     transition: all 0.15s;
   }
-  .btn:hover { color: var(--text); }
-  .btn.active {
-    background: var(--surface);
-    color: var(--text);
-    box-shadow: var(--shadow);
-  }
-  .btn.active.accent {
-    background: var(--accent);
-    color: white;
-  }
-  .grid {
+  .pill:hover { background: #f5f5f7; }
+  .pill.active { background: #1d1d1f; color: white; border-color: #1d1d1f; }
+
+  .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 16px;
+    padding: 24px 32px;
   }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+  .game-card {
+    background: white;
+    border-radius: 16px;
     padding: 16px;
+    border: 1px solid #e5e5e7;
     cursor: pointer;
-    transition: all 0.18s ease;
-    box-shadow: var(--shadow);
-    position: relative;
+    transition: all 0.2s;
   }
-  .card:hover {
+  .game-card:hover {
     transform: translateY(-2px);
-    border-color: var(--accent);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
-  .card.new::before {
-    content: 'NEW';
-    position: absolute;
-    top: 12px; right: 12px;
-    background: var(--accent);
+  .game-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .game-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: #f5f5f7;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+  .game-icon-fallback {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
     color: white;
-    font-size: 9px;
     font-weight: 700;
-    padding: 3px 6px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-  }
-  .card-top { display: flex; gap: 12px; margin-bottom: 12px; }
-  .card-icon, .card-icon-fallback {
-    width: 56px; height: 56px;
-    border-radius: 12px;
-    background: var(--surface-2);
     flex-shrink: 0;
   }
-  .card-icon { object-fit: cover; }
-  .card-icon-fallback {
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-  }
-  .card-info { flex: 1; min-width: 0; padding-right: 36px; }
-  .card-name {
-    font-size: 14px;
+  .game-info { flex: 1; min-width: 0; }
+  .game-name {
     font-weight: 600;
-    margin-bottom: 4px;
-    white-space: nowrap;
+    font-size: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--text);
+    white-space: nowrap;
   }
-  .card-pub {
+  .game-publisher {
     font-size: 12px;
-    color: var(--text-muted);
-    white-space: nowrap;
+    color: #86868b;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 2px;
   }
-  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; }
+  .game-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
   .badge {
+    font-size: 11px;
     padding: 3px 8px;
     border-radius: 6px;
-    background: var(--surface-2);
-    color: var(--text-muted);
-    font-weight: 600;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    font-weight: 500;
   }
-  .badge.platform-ios { background: rgba(74, 111, 165, 0.12); color: var(--ios); }
-  .badge.platform-android { background: rgba(90, 138, 74, 0.12); color: var(--android); }
-  .badge.installs { background: var(--accent-soft); color: var(--accent-strong); }
-  .badge.score-high { background: rgba(90, 138, 74, 0.15); color: var(--android); }
-  .badge.score-mid { background: rgba(217, 119, 87, 0.12); color: var(--accent-strong); }
-  .badge.score-low { background: var(--surface-2); color: var(--text-muted); }
-  .empty { text-align: center; padding: 60px 20px; color: var(--text-muted); }
-  .modal-overlay {
+  .badge.score-high { background: #d1f4e0; color: #1a7f3e; }
+  .badge.score-mid { background: #fff4d4; color: #8a6d00; }
+  .badge.score-low { background: #ffe5e5; color: #b3261e; }
+  .badge.platform-ios { background: #e8e8ed; }
+  .badge.platform-android { background: #c8e6c9; color: #2e7d32; }
+  .badge.installs { background: #e3f2fd; color: #1565c0; }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 32px;
+    color: #86868b;
+  }
+  .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: #1d1d1f; }
+
+  .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(42, 42, 42, 0.55);
+    background: rgba(0,0,0,0.5);
     z-index: 100;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding: 40px 20px;
-    overflow-y: auto;
-    backdrop-filter: blur(4px);
+    padding: 20px;
   }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    max-width: 700px;
+  .modal.active { display: flex; }
+  .modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 720px;
     width: 100%;
-    padding: 28px;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
   }
-  .modal-close {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: var(--surface-2);
-    border: none;
-    color: var(--text);
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
+  .modal-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
   }
-  .modal-close:hover { background: var(--border); }
-  .modal-header { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
-  .modal-icon {
-    width: 80px; height: 80px;
-    border-radius: 16px;
-    background: var(--surface-2);
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  .modal-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
-  .modal-pub { color: var(--text-muted); font-size: 14px; margin-bottom: 12px; }
-  .modal-section { margin-top: 20px; }
-  .modal-section h3 {
+  .modal-icon { width: 80px; height: 80px; border-radius: 18px; }
+  .modal-title { font-size: 22px; font-weight: 700; }
+  .modal-publisher { color: #86868b; margin-top: 4px; }
+  .modal-section { margin-bottom: 20px; }
+  .modal-section-title {
     font-size: 11px;
+    font-weight: 600;
+    color: #86868b;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--text-muted);
+    letter-spacing: 0.5px;
     margin-bottom: 8px;
-    font-weight: 700;
   }
-  .modal-desc {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text);
-    white-space: pre-wrap;
-  }
-  .modal-reason {
-    background: var(--accent-soft);
-    border-left: 3px solid var(--accent);
-    padding: 10px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    color: var(--text);
-  }
+  .modal-section-content { font-size: 14px; line-height: 1.6; }
   .screenshots {
     display: flex;
     gap: 8px;
@@ -289,252 +226,312 @@
     padding-bottom: 8px;
   }
   .screenshots img {
-    height: 240px;
-    border-radius: 8px;
+    height: 280px;
+    border-radius: 12px;
     flex-shrink: 0;
-    border: 1px solid var(--border);
   }
-  .modal-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
-  .link-btn {
-    padding: 10px 16px;
-    background: var(--accent);
+  .modal-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: #1d1d1f;
     color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.15s;
+    display: inline-block;
   }
-  .link-btn:hover { background: var(--accent-strong); }
-  .error-box {
-    background: #fff5f4;
-    border: 1px solid #ffd4ce;
-    color: #b8533a;
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
+  .btn.secondary { background: #f5f5f7; color: #1d1d1f; }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #86868b;
   }
 </style>
 </head>
 <body>
-  <div class="header">
-    <div class="header-content">
-      <div class="header-title">
-        <div class="logo">🌵</div>
-        <div>
-          <h1>Agave Game Radar</h1>
-          <div class="subtitle" id="last-updated">Loading…</div>
-        </div>
-      </div>
-      <div class="stats" id="stats"></div>
+
+<div class="header">
+  <div class="header-icon">🌵</div>
+  <div class="header-text">
+    <h1>Agave Game Radar</h1>
+    <p id="lastUpdated">Loading...</p>
+  </div>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="controls">
+  <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search by name or publisher...">
+
+  <div class="filter-row">
+    <span class="filter-label">Platform</span>
+    <div class="pill-group" id="platformFilter">
+      <button class="pill active" data-platform="all">All</button>
+      <button class="pill" data-platform="ios">📱 iOS</button>
+      <button class="pill" data-platform="android">🤖 Android</button>
     </div>
   </div>
 
-  <div class="container">
-    <div id="error-container"></div>
-
-    <div class="controls">
-      <div class="controls-row">
-        <input type="text" class="search" id="search" placeholder="🔍 Search by name or publisher…" />
-      </div>
-      <div class="controls-row">
-        <span class="filter-label">Platform</span>
-        <div class="btn-group" id="platform-filter">
-          <button class="btn active" data-platform="all">All</button>
-          <button class="btn" data-platform="ios">📱 iOS</button>
-          <button class="btn" data-platform="android">🤖 Android</button>
-        </div>
-
-        <span class="filter-label" style="margin-left: 12px;">Min score</span>
-        <div class="btn-group" id="score-filter">
-          <button class="btn active" data-score="0">All</button>
-          <button class="btn" data-score="60">60+</button>
-          <button class="btn" data-score="70">70+</button>
-          <button class="btn" data-score="80">80+</button>
-          <button class="btn" data-score="90">90+</button>
-        </div>
-
-        <span class="filter-label" style="margin-left: 12px;">Date</span>
-        <div class="btn-group" id="date-filter">
-          <button class="btn active" data-date="all">All</button>
-          <button class="btn accent" data-date="today">Today</button>
-          <button class="btn" data-date="week">7 days</button>
-        </div>
-      </div>
+  <div class="filter-row">
+    <span class="filter-label">Min Score</span>
+    <div class="pill-group" id="scoreFilter">
+      <button class="pill active" data-score="0">All</button>
+      <button class="pill" data-score="60">60+</button>
+      <button class="pill" data-score="70">70+</button>
+      <button class="pill" data-score="80">80+</button>
+      <button class="pill" data-score="90">90+</button>
     </div>
-
-    <div id="grid" class="grid"></div>
   </div>
 
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal" id="modal-content"></div>
+  <div class="filter-row">
+    <span class="filter-label">Date</span>
+    <div class="pill-group" id="dateFilter">
+      <button class="pill active" data-days="0">All</button>
+      <button class="pill" data-days="1">Today</button>
+      <button class="pill" data-days="7">7 days</button>
+    </div>
   </div>
+</div>
+
+<div id="gamesContainer" class="games-grid"></div>
+
+<div class="modal" id="gameModal">
+  <div class="modal-content" style="position: relative;">
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
 
 <script>
-  let allGames = [];
-  let runDate = '';
-  let currentPlatform = 'all';
-  let currentScore = 0;
-  let currentDate = 'all';
-  let searchQuery = '';
+let allGames = [];
+let filters = { platform: 'all', minScore: 0, days: 0, search: '' };
 
-  function showError(msg) {
-    document.getElementById('error-container').innerHTML =
-      '<div class="error-box">⚠️ ' + msg + '</div>';
+async function loadData() {
+  try {
+    const res = await fetch('games_data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    allGames = data.games || [];
+
+    // Last updated text
+    const lastUpdated = data.last_updated || '';
+    document.getElementById('lastUpdated').textContent =
+      lastUpdated ? `Last updated: ${lastUpdated}` : 'No data yet';
+
+    // Stats — handle both old and new field names
+    const totalToday = data.total_fetched_today ?? data.total_fetched ?? 0;
+    const iosToday = data.ios_fetched_today ?? data.ios_fetched ?? 0;
+    const androidToday = data.android_fetched_today ?? data.android_fetched ?? 0;
+    const relevantToday = data.total_relevant_today ?? data.total_relevant ?? 0;
+    const onSite = data.total_games_on_site ?? allGames.length;
+
+    document.getElementById('stats').innerHTML = `
+      <div class="stat"><div class="stat-label">Fetched Today</div><div class="stat-value">${totalToday.toLocaleString()}</div></div>
+      <div class="stat"><div class="stat-label">iOS / Android</div><div class="stat-value">${iosToday} / ${androidToday}</div></div>
+      <div class="stat"><div class="stat-label">Relevant Today</div><div class="stat-value">${relevantToday}</div></div>
+      <div class="stat"><div class="stat-label">Total on Radar</div><div class="stat-value">${onSite}</div></div>
+    `;
+
+    render();
+  } catch (err) {
+    document.getElementById('lastUpdated').textContent = 'Error loading data: ' + err.message;
+    document.getElementById('gamesContainer').innerHTML =
+      `<div class="empty-state"><h3>Couldn't load data</h3><p>${err.message}</p></div>`;
   }
+}
 
-  function formatNumber(n) {
-    n = parseInt(n) || 0;
-    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-    return n.toString();
-  }
+function getInstalls(game) {
+  return parseInt(game.installs || game.installs_total || game.installs_last_day || 0, 10) || 0;
+}
 
-  function getInstalls(g) {
-    return parseInt(g.installs || g.installs_total || g.installs_last_day || 0) || 0;
-  }
-  function getIcon(g) { return g.icon_url || g.icon || ''; }
-  function getScreenshots(g) { return g.screenshots || g.screenshot_urls || []; }
-  function getReleaseDate(g) {
-    const d = g.launch_date || g.release_date || '';
-    return d ? d.split('T')[0] : '';
-  }
-  function getDescription(g) {
-    return g.description || g.short_description || 'No description available.';
-  }
-  function getLastSeen(g) { return g.last_seen || g.first_seen || ''; }
+function formatInstalls(n) {
+  if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+  return n.toString();
+}
 
-  function platformLabel(p) { return p === 'ios' ? '📱 iOS' : '🤖 Android'; }
+function getScoreClass(score) {
+  if (score >= 80) return 'score-high';
+  if (score >= 60) return 'score-mid';
+  return 'score-low';
+}
 
-  function scoreClass(score) {
-    score = parseInt(score) || 0;
-    if (score >= 80) return 'score-high';
-    if (score >= 60) return 'score-mid';
-    return 'score-low';
-  }
+function platformBadge(platform) {
+  const p = (platform || '').toLowerCase();
+  if (p === 'ios') return '<span class="badge platform-ios">📱 iOS</span>';
+  if (p === 'android') return '<span class="badge platform-android">🤖 Android</span>';
+  return `<span class="badge">${platform || '?'}</span>`;
+}
 
-  function escapeHtml(s) {
-    if (s == null) return '';
-    return String(s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-  }
+function getIconUrl(game) {
+  return game.icon_url || game.icon || '';
+}
 
-  function isWithinDays(dateStr, days) {
-    if (!dateStr) return false;
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return false;
-    const now = new Date();
-    const diffMs = now - d;
-    return diffMs <= days * 24 * 60 * 60 * 1000;
-  }
+function renderCard(game) {
+  const installs = getInstalls(game);
+  const score = parseInt(game.score || 0, 10);
+  const iconUrl = getIconUrl(game);
+  const initial = (game.name || '?').charAt(0).toUpperCase();
 
-  function render() {
-    const grid = document.getElementById('grid');
-    const q = searchQuery.toLowerCase().trim();
+  const iconHTML = iconUrl
+    ? `<img class="game-icon" src="${iconUrl}" onerror="this.outerHTML='<div class=&quot;game-icon-fallback&quot;>${initial}</div>'">`
+    : `<div class="game-icon-fallback">${initial}</div>`;
 
-    let filtered = allGames.filter(g => {
-      if (currentPlatform !== 'all' && g.platform !== currentPlatform) return false;
-      if (currentScore > 0 && (parseInt(g.score) || 0) < currentScore) return false;
-      if (currentDate === 'today' && getLastSeen(g) !== runDate) return false;
-      if (currentDate === 'week' && !isWithinDays(getLastSeen(g), 7)) return false;
-      if (q) {
-        const hay = ((g.name || '') + ' ' + (g.publisher || '')).toLowerCase();
-        if (!hay.includes(q)) return false;
-      }
-      return true;
-    });
-
-    // Sort: most recent (last_seen desc), then iOS first, then by installs
-    filtered.sort((a, b) => {
-      const lsA = getLastSeen(a);
-      const lsB = getLastSeen(b);
-      if (lsA !== lsB) return lsB.localeCompare(lsA);
-      if (a.platform !== b.platform) return a.platform === 'ios' ? -1 : 1;
-      return getInstalls(b) - getInstalls(a);
-    });
-
-    if (filtered.length === 0) {
-      grid.innerHTML = '<div class="empty">No games match these filters.</div>';
-      return;
-    }
-
-    grid.innerHTML = filtered.map(g => {
-      const idx = allGames.indexOf(g);
-      const installs = getInstalls(g);
-      const iconUrl = getIcon(g);
-      const screenshots = getScreenshots(g);
-      const displayIcon = iconUrl || (screenshots && screenshots[0]) || '';
-      const isNew = getLastSeen(g) === runDate;
-      const score = parseInt(g.score) || 0;
-
-      const icon = displayIcon
-        ? `<img class="card-icon" src="${displayIcon}" alt="" onerror="this.outerHTML='<div class=\\'card-icon-fallback\\'>🎮</div>'" />`
-        : `<div class="card-icon-fallback">🎮</div>`;
-
-      return `
-        <div class="card ${isNew ? 'new' : ''}" data-idx="${idx}">
-          <div class="card-top">
-            ${icon}
-            <div class="card-info">
-              <div class="card-name">${escapeHtml(g.name || 'Unknown')}</div>
-              <div class="card-pub">${escapeHtml(g.publisher || '—')}</div>
-            </div>
-          </div>
-          <div class="card-meta">
-            <span class="badge platform-${g.platform}">${platformLabel(g.platform)}</span>
-            <span class="badge installs">${formatNumber(installs)}</span>
-            ${score ? `<span class="badge ${scoreClass(score)}">★ ${score}</span>` : ''}
-            ${g.mechanic ? `<span class="badge">${escapeHtml(g.mechanic)}</span>` : ''}
-          </div>
+  return `
+    <div class="game-card" onclick='openModal(${JSON.stringify(game).replace(/'/g, "&apos;")})'>
+      <div class="game-header">
+        ${iconHTML}
+        <div class="game-info">
+          <div class="game-name">${escapeHtml(game.name || '?')}</div>
+          <div class="game-publisher">${escapeHtml(game.publisher || '?')}</div>
         </div>
-      `;
-    }).join('');
+      </div>
+      <div class="game-meta">
+        ${platformBadge(game.platform)}
+        <span class="badge installs">${formatInstalls(installs)} installs</span>
+        <span class="badge ${getScoreClass(score)}">${score}/100</span>
+        ${game.mechanic ? `<span class="badge">${escapeHtml(game.mechanic)}</span>` : ''}
+      </div>
+    </div>
+  `;
+}
 
-    grid.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        openModal(allGames[parseInt(card.dataset.idx)]);
-      });
-    });
-  }
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
 
-  function openModal(g) {
-    const installs = getInstalls(g);
-    const iconUrl = getIcon(g);
-    const screenshots = getScreenshots(g);
-    const displayIcon = iconUrl || (screenshots && screenshots[0]) || '';
-    const releaseDate = getReleaseDate(g);
-    const desc = getDescription(g);
-    const score = parseInt(g.score) || 0;
-
-    const icon = displayIcon
-      ? `<img class="modal-icon" src="${displayIcon}" alt="" onerror="this.style.display='none'" />`
-      : `<div class="modal-icon" style="display:flex;align-items:center;justify-content:center;font-size:36px">🎮</div>`;
-
-    const ssHtml = screenshots.length > 0
-      ? `<div class="modal-section">
-           <h3>Screenshots</h3>
-           <div class="screenshots">
-             ${screenshots.slice(0, 6).map(s => `<img src="${escapeHtml(s)}" alt="" />`).join('')}
-           </div>
-         </div>`
-      : '';
-
-    const links = [];
-    if (g.store_url) {
-      const label = g.platform === 'ios' ? 'App Store' : 'Google Play';
-      links.push(`<a class="link-btn" href="${escapeHtml(g.store_url)}" target="_blank" rel="noopener">View on ${label}</a>`);
+function render() {
+  const container = document.getElementById('gamesContainer');
+  let filtered = allGames.filter(g => {
+    if (filters.platform !== 'all' && (g.platform || '').toLowerCase() !== filters.platform) return false;
+    if (parseInt(g.score || 0, 10) < filters.minScore) return false;
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      const name = (g.name || '').toLowerCase();
+      const pub = (g.publisher || '').toLowerCase();
+      if (!name.includes(q) && !pub.includes(q)) return false;
     }
+    if (filters.days > 0) {
+      const seen = g.first_seen || g.last_seen;
+      if (!seen) return false;
+      const cutoff = new Date(Date.now() - filters.days * 86400000);
+      if (new Date(seen) < cutoff) return false;
+    }
+    return true;
+  });
 
-    document.getElementById('modal-content').innerHTML = `
-      <button class="modal-close" onclick="closeModal()">×</button>
-      <div class="modal-header">
-        ${icon}
-        <div style="flex:1;min-width:0;">
-          <div class="modal-title">${escapeHtml(g.name || 'Unknown')}</div>
-          <div class="modal-pub">${escapeHtml(g.publisher || '—')}</div>
-          <div class="card-meta">
-            <span class="badge platform-${g.platform}">${platformLabel(g.platform)}</span>
-            <span class="badge installs">${formatNumber(installs)} installs</span>
-            ${score ? `<span class="badge ${scoreClass(score)}">★ Score ${score}</span>` : ''}
+  filtered.sort((a, b) => getInstalls(b) - getInstalls(a));
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="empty-state"><h3>No games match your filters</h3><p>Try changing the filters above.</p></div>`;
+    return;
+  }
+  container.innerHTML = filtered.map(renderCard).join('');
+}
+
+function openModal(game) {
+  const installs = getInstalls(game);
+  const score = parseInt(game.score || 0, 10);
+  const iconUrl = getIconUrl(game);
+  const initial = (game.name || '?').charAt(0).toUpperCase();
+
+  const iconHTML = iconUrl
+    ? `<img class="modal-icon" src="${iconUrl}" onerror="this.style.display='none'">`
+    : `<div class="game-icon-fallback" style="width:80px;height:80px;font-size:32px">${initial}</div>`;
+
+  const screenshots = Array.isArray(game.screenshots) ? game.screenshots.filter(s => s) : [];
+  const screenshotsHTML = screenshots.length
+    ? `<div class="modal-section"><div class="modal-section-title">Screenshots</div>
+       <div class="screenshots">${screenshots.map(s => `<img src="${s}" alt="screenshot">`).join('')}</div></div>`
+    : '';
+
+  const description = game.description || game.short_description || '';
+  const descriptionHTML = description
+    ? `<div class="modal-section"><div class="modal-section-title">Description</div>
+       <div class="modal-section-content">${escapeHtml(description)}</div></div>`
+    : '';
+
+  const reasonHTML = game.reason
+    ? `<div class="modal-section"><div class="modal-section-title">Why relevant</div>
+       <div class="modal-section-content">${escapeHtml(game.reason)}</div></div>`
+    : '';
+
+  const storeUrl = game.store_url || '';
+  const storeBtn = storeUrl ? `<a class="btn" href="${storeUrl}" target="_blank">📲 Open in Store</a>` : '';
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-header">
+      ${iconHTML}
+      <div>
+        <div class="modal-title">${escapeHtml(game.name || '?')}</div>
+        <div class="modal-publisher">${escapeHtml(game.publisher || '?')}</div>
+        <div class="game-meta" style="margin-top:8px">
+          ${platformBadge(game.platform)}
+          <span class="badge installs">${formatInstalls(installs)} installs</span>
+          <span class="badge ${getScoreClass(score)}">${score}/100</span>
+          ${game.mechanic ? `<span class="badge">${escapeHtml(game.mechanic)}</span>` : ''}
+        </div>
+      </div>
+    </div>
+    ${reasonHTML}
+    ${descriptionHTML}
+    ${screenshotsHTML}
+    <div class="modal-buttons">${storeBtn}</div>
+  `;
+  document.getElementById('gameModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('gameModal').classList.remove('active');
+}
+
+document.getElementById('gameModal').addEventListener('click', e => {
+  if (e.target.id === 'gameModal') closeModal();
+});
+
+document.getElementById('searchBox').addEventListener('input', e => {
+  filters.search = e.target.value;
+  render();
+});
+
+document.querySelectorAll('#platformFilter .pill').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('#platformFilter .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    filters.platform = p.dataset.platform;
+    render();
+  });
+});
+
+document.querySelectorAll('#scoreFilter .pill').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('#scoreFilter .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    filters.minScore = parseInt(p.dataset.score, 10);
+    render();
+  });
+});
+
+document.querySelectorAll('#dateFilter .pill').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('#dateFilter .pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    filters.days = parseInt(p.dataset.days, 10);
+    render();
+  });
+});
+
+loadData();
+</script>
+
+</body>
+</html>
