@@ -18,7 +18,7 @@ from dedupe import (
 )
 from relevance import score_game
 from sensor_tower import fetch_new_games
-from sheets import write_to_sheet
+from sheets import write_to_sheet, write_all_games_to_sheet
 from slack import send_game_alert, send_summary_message
 
 logging.basicConfig(
@@ -177,7 +177,8 @@ def main() -> int:
         scored.append(entry)
 
     # Write ALL games to "All Games" sheet
-    all_sheet_url = write_to_sheet(scored, sheet_name="All Games")
+    write_all_games_to_sheet(scored)
+    all_sheet_url = None
 
     # Filter relevant (score >= 60 — adjust if you want stricter)
     relevant = [g for g in scored if int(g.get("score", 0)) >= 60]
@@ -194,7 +195,7 @@ def main() -> int:
     )
 
     # Write relevant to "Relevant" sheet
-    relevant_sheet_url = write_to_sheet(relevant, sheet_name="Relevant")
+    relevant_sheet_url = write_to_sheet(relevant)
 
     # Update web dashboard JSON (cumulative)
     _write_web_data(
