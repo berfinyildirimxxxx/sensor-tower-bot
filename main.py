@@ -61,35 +61,91 @@ def main() -> None:
     print(f"\n📦 Fetched {len(games)} games.")
 
     if not games:
-        send_summary_message(game_count=0, sheet_url=None, run_date=datetime.utcnow().strftime("%Y-%m-%d"))
+        send_summary_message(
+            game_count=0,
+            relevant_count=0,
+            sheet_url=None,
+            run_date=datetime.utcnow().strftime("%Y-%m-%d"),
+            total_fetched=0,
+        )
         return
 
-    for game in games[:3]:
-        print(f"  Sample: {game.get('name')} platform={game.get('platform')} installs={game.get('installs_total', 0):,}")
+    # Count per platform
+    ios_count = sum(1 for g in games if g.get("platform") == "ios")
+    android_count = sum(1 for g in games if g.get("platform") == "android")
+    print(f"  🍎 iOS: {ios_count} | 🤖 Android: {android_count}")
 
     # 2. All games → sheet
     print(f"\n📊 Writing {len(games)} games to 'All Games' sheet...")
     write_all_games_to_sheet(games)
 
-    # 3. Score
+    # 3. Score — iOS first, then Android
     print(f"\n🎯 Scoring {len(games)} games...")
+    ios_games = [g for g in games if g.get("platform") == "ios"]
+    android_games = [g for g in games if g.get("platform") == "android"]
+    sorted_games = ios_games + android_games
+
     scored_games: list[dict[str, Any]] = []
-    for game in games:
+    for game in sorted_games:
         score, reason, mechanic = score_game(game)
         scored_games.append({"game": game, "score": score, "reason": reason, "mechanic": mechanic})
 
     relevant_games = [g for g in scored_games if g["score"] >= RELEVANCE_THRESHOLD]
-    logging.info("Scored %d games — %d passed threshold (>=%d).", len(scored_games), len(relevant_games), RELEVANCE_THRESHOLD)
-    print(f"✅ {len(relevant_games)} relevant (out of {len(scored_games)}, threshold={RELEVANCE_THRESHOLD}).")
+    ios_relevant = sum(1 for g in relevant_games if g["game"].get("platform") == "ios")
+    android_relevant = sum(1 for g in relevant_games if g["game"].get("platform") == "android")
 
-    # 4. Relevant → sheet
+    logging.info(
+        "Scored %d games — %d passed threshold (>=%d). iOS=%d Android=%d",
+        len(scored_games), len(relevant_games), RELEVANCE_THRESHOLD,
+        ios_relevant, android_relevant,
+    )
+    print(f"✅ {len(relevant_games)} relevant (🍎 iOS: {ios_relevant} | 🤖 Android: {android_relevant})")
+
+    # 4. Generate web data JSON for GitHub Pages
+    try:
+        import json, os
+        web_data = {
+            "last_updated": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            "run_date": datetime.utcnow().strftime("%Y-%m-%d"),
+            "total_fetched": len(games),
+            "ios_fetched": ios_count,
+            "android_fetched": android_count,
+            "total_relevant": len(relevant_games),
+            "ios_relevant": ios_relevant,
+            "android_relevant": android_relevant,
+            "games": [
+                {
+                    "name": item["game"].get("name", ""),
+                    "publisher": item["game"].get("publisher", ""),
+                    "platform": item["game"].get("platform", ""),
+                    "category": item["game"].get("category", ""),
+                    "installs": item["game"].get("installs_total", 0),
+                    "country": item["game"].get("country", ""),
+                    "launch_date": item["game"].get("launch_date", ""),
+                    "store_url": item["game"].get("store_url", ""),
+                    "screenshots": item["game"].get("screenshots", [])[:3],
+                    "description": item["game"].get("description", "")[:500],
+                    "score": item["score"],
+                    "mechanic": item["mechanic"],
+                    "reason": item["reason"],
+                }
+                for item in relevant_games
+            ],
+        }
+        with open("docs/games_data.json", "w", encoding="utf-8") as f:
+            json.dump(web_data, f, ensure_ascii=False, indent=2)
+        print("📄 Web data JSON updated (docs/games_data.json)")
+    except Exception as exc:
+        logging.warning("Could not write web data JSON: %s", exc)
+
+    # 5. Relevant → sheet
     run_date = datetime.utcnow().strftime("%Y-%m-%d")
     sheet_url = None
     if relevant_games:
         print(f"\n📋 Writing {len(relevant_games)} relevant games to sheet...")
         sheet_url = write_to_sheet(relevant_games)
 
-    # 5. Dedupe
+    # 6. Dedupe
     registry = load_sent_games()
     pruned = prune_old_entries(registry, days=90)
     if pruned:
@@ -98,17 +154,20 @@ def main() -> None:
     unsent_games = [item for item in relevant_games if not is_already_sent(item["game"], registry)]
     print(f"📬 {len(unsent_games)} new to send ({len(relevant_games) - len(unsent_games)} already sent).")
 
-    # 6. Slack
+    # 7. Slack — iOS first, then Android
     sent_count = 0
     if dry_run:
         print("\n⚡ --dry-run: skipping Slack.")
         for item in unsent_games:
-            print(f"  [DRY RUN] {item['game'].get('name')} score={item['score']} mechanic={item['mechanic']}")
+            print(f"  [DRY RUN] {item['game'].get('name')} platform={item['game'].get('platform')} score={item['score']}")
         sent_count = len(unsent_games)
     else:
-        print("\n📣 Sending to Slack...")
+        print("\n📣 Sending to Slack (iOS first, then Android)...")
+        ios_unsent = [i for i in unsent_games if i["game"].get("platform") == "ios"]
+        android_unsent = [i for i in unsent_games if i["game"].get("platform") == "android"]
+        ordered_unsent = ios_unsent + android_unsent
         try:
-            for item in unsent_games:
+            for item in ordered_unsent:
                 sent = send_game_alert(item["game"], item["score"], item["reason"], item["mechanic"])
                 if sent:
                     mark_as_sent(item["game"], registry)
@@ -116,11 +175,19 @@ def main() -> None:
         finally:
             save_sent_games(registry)
 
-    # 7. Summary
+    # 8. Summary
     if not dry_run:
-        send_summary_message(game_count=sent_count, sheet_url=sheet_url, run_date=run_date)
+        send_summary_message(
+            game_count=sent_count,
+            relevant_count=len(relevant_games),
+            sheet_url=sheet_url,
+            run_date=run_date,
+            total_fetched=len(games),
+            ios_fetched=ios_count,
+            android_fetched=android_count,
+        )
 
-    print(f"\n🏁 Done. Fetched={len(games)} | Relevant={len(relevant_games)} | Sent={sent_count}")
+    print(f"\n🏁 Done. Fetched={len(games)} (iOS={ios_count} Android={android_count}) | Relevant={len(relevant_games)} | Sent={sent_count}")
 
 
 if __name__ == "__main__":
