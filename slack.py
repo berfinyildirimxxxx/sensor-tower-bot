@@ -142,26 +142,40 @@ def send_summary_message(
     ios_fetched: int = 0,
     android_fetched: int = 0,
 ) -> bool:
-    lines = [f"📊 *Daily Game Scan Complete — {run_date}*"]
+    """Short, clear daily summary — one block, scannable."""
 
+    # Line 1: title
+    title = f" *Daily Casual Game Scan  {run_date}*"
+
+    # Line 2: the three key numbers in one row
+    stats_parts = []
     if total_fetched > 0:
-        if ios_fetched or android_fetched:
-            lines.append(f"📦 *{total_fetched} total games fetched* (🍎 iOS: {ios_fetched} | 🤖 Android: {android_fetched})")
-        else:
-            lines.append(f"📦 *{total_fetched} total games fetched*")
-
+        stats_parts.append(f"🔍 *{total_fetched:,}* casual games scanned")
     if relevant_count > 0:
-        lines.append(f"🎯 *{relevant_count} relevant games found*")
+        stats_parts.append(f" *{relevant_count}* 🎯 portfolio match")
+    stats_parts.append(f"✅ *{game_count}* New Today")
+    stats_line = " · ".join(stats_parts)
 
-    lines.append(f"📣 *{game_count} new alerts sent today*")
+    # Line 3: platform breakdown (small, italic)
+    platform_line = ""
+    if ios_fetched or android_fetched:
+        platform_line = f"_🍎 iOS: {ios_fetched:,} · 🤖 Android: {android_fetched:,}_"
 
+    # Line 4: links
+    links = []
     if sheet_url:
-        lines.append(f"🔗 <{sheet_url}|View in Google Sheets>")
-
+        links.append(f"📁 <{sheet_url}|Google Sheet>")
     web_url = "https://berfinyildirimxxxx.github.io/sensor-tower-bot"
-    lines.append(f"🌐 <{web_url}|View Game Dashboard>")
+    links.append(f"🌐 <{web_url}|Radar Dashboard>")
+    links_line = " · ".join(links)
+
+    # Combine
+    text_parts = [title, stats_line]
+    if platform_line:
+        text_parts.append(platform_line)
+    text_parts.append(links_line)
 
     blocks = [
-        {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}},
+        {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(text_parts)}},
     ]
     return _post_blocks(blocks)
