@@ -49,6 +49,7 @@
   }
   .stat-label { font-size: 12px; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; }
   .stat-value { font-size: 28px; font-weight: 700; margin-top: 4px; }
+  .stat-sub { font-size: 11px; color: #86868b; margin-top: 4px; }
 
   .controls {
     background: white;
@@ -106,15 +107,32 @@
     border: 1px solid #e5e5e7;
     cursor: pointer;
     transition: all 0.2s;
+    position: relative;
   }
   .game-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
+  .added-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+    color: #86868b;
+    background: #f5f5f7;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .added-tag.new {
+    background: #d1f4e0;
+    color: #1a7f3e;
+  }
   .game-header {
     display: flex;
     gap: 12px;
     margin-bottom: 12px;
+    padding-right: 60px;
   }
   .game-icon {
     width: 60px;
@@ -292,7 +310,7 @@
   </div>
 
   <div class="filter-row">
-    <span class="filter-label">Date</span>
+    <span class="filter-label">Date Added</span>
     <div class="pill-group" id="dateFilter">
       <button class="pill active" data-days="0">All</button>
       <button class="pill" data-days="1">Today</button>
@@ -321,23 +339,38 @@ async function loadData() {
     const data = await res.json();
     allGames = data.games || [];
 
-    // Last updated text
     const lastUpdated = data.last_updated || '';
     document.getElementById('lastUpdated').textContent =
       lastUpdated ? `Last updated: ${lastUpdated}` : 'No data yet';
 
-    // Stats — handle both old and new field names
     const totalToday = data.total_fetched_today ?? data.total_fetched ?? 0;
     const iosToday = data.ios_fetched_today ?? data.ios_fetched ?? 0;
     const androidToday = data.android_fetched_today ?? data.android_fetched ?? 0;
     const relevantToday = data.total_relevant_today ?? data.total_relevant ?? 0;
     const onSite = data.total_games_on_site ?? allGames.length;
+    const retentionDays = data.retention_days ?? 30;
 
     document.getElementById('stats').innerHTML = `
-      <div class="stat"><div class="stat-label">Fetched Today</div><div class="stat-value">${totalToday.toLocaleString()}</div></div>
-      <div class="stat"><div class="stat-label">iOS / Android</div><div class="stat-value">${iosToday} / ${androidToday}</div></div>
-      <div class="stat"><div class="stat-label">Relevant Today</div><div class="stat-value">${relevantToday}</div></div>
-      <div class="stat"><div class="stat-label">Total on Radar</div><div class="stat-value">${onSite}</div></div>
+      <div class="stat">
+        <div class="stat-label">Scanned Today</div>
+        <div class="stat-value">${totalToday.toLocaleString()}</div>
+        <div class="stat-sub">games matching base criteria</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">iOS / Android</div>
+        <div class="stat-value">${iosToday} / ${androidToday}</div>
+        <div class="stat-sub">today's platform split</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Portfolio Match</div>
+        <div class="stat-value">${relevantToday}</div>
+        <div class="stat-sub">fit Agave's mechanics</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">On Radar (${retentionDays}d)</div>
+        <div class="stat-value">${onSite}</div>
+        <div class="stat-sub">cumulative unique games</div>
+      </div>
     `;
 
     render();
@@ -374,18 +407,42 @@ function getIconUrl(game) {
   return game.icon_url || game.icon || '';
 }
 
+function timeAgo(dateStr) {
+  if (!dateStr) return '';
+  const seenDate = new Date(dateStr + 'T00:00:00');
+  if (isNaN(seenDate)) return '';
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diffMs = today - seenDate;
+  const diffDays = Math.floor(diffMs / 86400000);
+
+  if (diffDays <= 0) return 'Today';
+  if (diffDays === 1) return 'Yesterday';
+  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays < 14) return '1 week ago';
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+  return `${Math.floor(diffDays / 30)} months ago`;
+}
+
 function renderCard(game) {
   const installs = getInstalls(game);
   const score = parseInt(game.score || 0, 10);
   const iconUrl = getIconUrl(game);
   const initial = (game.name || '?').charAt(0).toUpperCase();
+  const addedAgo = timeAgo(game.first_seen);
+  const isNew = addedAgo === 'Today' || addedAgo === 'Yesterday';
 
   const iconHTML = iconUrl
     ? `<img class="game-icon" src="${iconUrl}" onerror="this.outerHTML='<div class=&quot;game-icon-fallback&quot;>${initial}</div>'">`
     : `<div class="game-icon-fallback">${initial}</div>`;
 
+  const addedHTML = addedAgo
+    ? `<div class="added-tag ${isNew ? 'new' : ''}">Added ${addedAgo}</div>`
+    : '';
+
   return `
     <div class="game-card" onclick='openModal(${JSON.stringify(game).replace(/'/g, "&apos;")})'>
+      ${addedHTML}
       <div class="game-header">
         ${iconHTML}
         <div class="game-info">
@@ -397,7 +454,7 @@ function renderCard(game) {
         ${platformBadge(game.platform)}
         <span class="badge installs">${formatInstalls(installs)} installs</span>
         <span class="badge ${getScoreClass(score)}">${score}/100</span>
-        ${game.mechanic ? `<span class="badge">${escapeHtml(game.mechanic)}</span>` : ''}
+        ${game.mechanic ? `<span class="badge">${escapeHtml(String(game.reason || game.mechanic).split('|')[0].replace('Mechanic:', '').trim())}</span>` : ''}
       </div>
     </div>
   `;
@@ -424,7 +481,7 @@ function render() {
       const seen = g.first_seen || g.last_seen;
       if (!seen) return false;
       const cutoff = new Date(Date.now() - filters.days * 86400000);
-      if (new Date(seen) < cutoff) return false;
+      if (new Date(seen + 'T00:00:00') < cutoff) return false;
     }
     return true;
   });
@@ -443,6 +500,7 @@ function openModal(game) {
   const score = parseInt(game.score || 0, 10);
   const iconUrl = getIconUrl(game);
   const initial = (game.name || '?').charAt(0).toUpperCase();
+  const addedAgo = timeAgo(game.first_seen);
 
   const iconHTML = iconUrl
     ? `<img class="modal-icon" src="${iconUrl}" onerror="this.style.display='none'">`
@@ -468,6 +526,10 @@ function openModal(game) {
   const storeUrl = game.store_url || '';
   const storeBtn = storeUrl ? `<a class="btn" href="${storeUrl}" target="_blank">📲 Open in Store</a>` : '';
 
+  const addedDateHTML = addedAgo
+    ? `<div class="added-tag" style="position: static; display: inline-block; margin-top: 8px;">Added ${addedAgo}</div>`
+    : '';
+
   document.getElementById('modalBody').innerHTML = `
     <div class="modal-header">
       ${iconHTML}
@@ -478,8 +540,9 @@ function openModal(game) {
           ${platformBadge(game.platform)}
           <span class="badge installs">${formatInstalls(installs)} installs</span>
           <span class="badge ${getScoreClass(score)}">${score}/100</span>
-          ${game.mechanic ? `<span class="badge">${escapeHtml(game.mechanic)}</span>` : ''}
+          ${game.mechanic ? `<span class="badge">${escapeHtml(String(game.reason || game.mechanic).split('|')[0].replace('Mechanic:', '').trim())}</span>` : ''}
         </div>
+        ${addedDateHTML}
       </div>
     </div>
     ${reasonHTML}
