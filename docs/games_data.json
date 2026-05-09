@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-09 15:25 UTC",
+  "last_updated": "2026-05-09 15:41 UTC",
   "run_date": "2026-05-09",
   "retention_days": 30,
   "total_fetched_today": 1255,
@@ -11721,7 +11721,8 @@
       "mechanic": "Mechanic: Match-3 / Blast (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Match-3 / Blast",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 45258
     },
     {
       "fid": "com.eyestorm.demonpetmaze",
@@ -11780,7 +11781,8 @@
       "mechanic": "Mechanic: Casual Puzzle (+40) | General puzzle signals (+24) → Score: 64",
       "reason": "Casual Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 44914
     },
     {
       "fid": "com.CatSortMatch.sort",
@@ -11816,7 +11818,8 @@
       "mechanic": "Mechanic: Hidden Object (+40) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 79",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 18822
     },
     {
       "fid": "com.vorelia.wordlond.lexstack",
@@ -11844,7 +11847,8 @@
       "mechanic": "Mechanic: Word Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Word Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 12849
     },
     {
       "fid": "6758056604",
@@ -11873,7 +11877,8 @@
       "mechanic": "Mechanic: Merge Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Merge Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 10530
     },
     {
       "fid": "com.x.blockpathescape",
@@ -11906,7 +11911,8 @@
       "mechanic": "Mechanic: Block / Hex Puzzle (+40) | General puzzle signals (+16) | Strong puzzle name (+15) → Score: 71",
       "reason": "Block / Hex Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 8105
     },
     {
       "fid": "com.flipthecards.kasjdfaf",
@@ -11933,7 +11939,8 @@
       "mechanic": "Mechanic: Hidden Object (+40) | General puzzle signals (+24) → Score: 64",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 6058
     },
     {
       "fid": "6760389476",
@@ -11962,7 +11969,8 @@
       "mechanic": "Mechanic: Casual Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) | Negative signals (-35) → Score: 84",
       "reason": "Casual Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 4428
     },
     {
       "fid": "com.eastsidegames.tpbmatch",
@@ -12007,7 +12015,8 @@
       "mechanic": "Mechanic: Match-3 / Blast (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Match-3 / Blast",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 4248
     },
     {
       "fid": "6757842718",
@@ -12039,7 +12048,8 @@
       "mechanic": "Mechanic: Sort Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Sort Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 2446
     },
     {
       "fid": "com.pandorio.mergebazar",
@@ -12103,7 +12113,8 @@
       "mechanic": "Mechanic: Merge Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Merge Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 2303
     },
     {
       "fid": "com.treasurepick.spsoql",
@@ -12131,7 +12142,8 @@
       "mechanic": "Mechanic: Hidden Object (+40) | General puzzle signals (+24) → Score: 64",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 1785
     },
     {
       "fid": "com.tdd.sortile",
@@ -12167,7 +12179,8 @@
       "mechanic": "Mechanic: Sort Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) | Negative signals (-35) → Score: 84",
       "reason": "Sort Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 1721
     },
     {
       "fid": "com.dkg.jigpuzzle",
@@ -12216,7 +12229,8 @@
       "mechanic": "Mechanic: Jigsaw (+40) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 79",
       "reason": "Jigsaw",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 1288
     },
     {
       "fid": "com.FeyInteractive.RescueDuck",
@@ -12258,7 +12272,8 @@
       "mechanic": "Mechanic: Hidden Object (+40) | General puzzle signals (+24) → Score: 64",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 1150
     },
     {
       "fid": "com.foldreach.boardabcde",
@@ -12286,7 +12301,8 @@
       "mechanic": "Mechanic: Hidden Object (+80) | General puzzle signals (+24) → Score: 100",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 1044
     },
     {
       "fid": "com.glitchgames.miniescapes.infinitypool",
@@ -12328,7 +12344,8 @@
       "mechanic": "Mechanic: Escape Room / Point & Click (+40) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 79",
       "reason": "Escape Room / Point & Click",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 1008
     },
     {
       "fid": "6760517672",
@@ -12359,7 +12376,8 @@
       "mechanic": "Mechanic: Casual Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) | Negative signals (-35) → Score: 84",
       "reason": "Casual Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 885
     },
     {
       "fid": "com.ExitPortalMaze.oiwekjfdg",
@@ -12387,7 +12405,8 @@
       "mechanic": "Mechanic: Hidden Object (+40) | General puzzle signals (+24) → Score: 64",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 603
     },
     {
       "fid": "com.kelimax.app",
@@ -12435,7 +12454,8 @@
       "mechanic": "Mechanic: Word Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Word Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 549
     },
     {
       "fid": "il.co.kitapp.daily.crossword",
@@ -12470,7 +12490,8 @@
       "mechanic": "Mechanic: Word Puzzle (+40) | General puzzle signals (+24) → Score: 64",
       "reason": "Word Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 542
     },
     {
       "fid": "com.word.solitaire.journey",
@@ -12509,7 +12530,8 @@
       "mechanic": "Mechanic: Word Puzzle (+80) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 100",
       "reason": "Word Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 519
     },
     {
       "fid": "com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
@@ -12543,7 +12565,8 @@
       "mechanic": "Mechanic: Word Puzzle (+80) | General puzzle signals (+24) | Negative signals (-35) → Score: 69",
       "reason": "Word Puzzle",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 509
     },
     {
       "fid": "com.LoomABSoft.SquimpHunt",
@@ -12569,7 +12592,8 @@
       "mechanic": "Mechanic: Hidden Object (+40) | General puzzle signals (+24) | Strong puzzle name (+15) → Score: 79",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 508
     },
     {
       "fid": "6758867106",
@@ -12599,7 +12623,8 @@
       "mechanic": "Mechanic: Hidden Object (+80) | General puzzle signals (+24) → Score: 100",
       "reason": "Hidden Object",
       "first_seen": "2026-05-09",
-      "last_seen": "2026-05-09"
+      "last_seen": "2026-05-09",
+      "installs": 506
     }
   ]
 }
