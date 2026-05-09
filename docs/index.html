@@ -4,168 +4,687 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agave Game Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #fafaf9;
+    --bg-secondary: #ffffff;
+    --bg-elevated: #ffffff;
+    --border: #ececec;
+    --border-strong: #d4d4d4;
+    --text: #0a0a0a;
+    --text-secondary: #525252;
+    --text-tertiary: #a3a3a3;
+
+    /* Cactus theme — agave colors */
+    --cactus-orange: #d97548;
+    --cactus-orange-light: #fce8df;
+    --cactus-orange-dark: #b85a30;
+    --cactus-green: #5a9b4a;
+    --cactus-green-light: #e6f1e2;
+
+    /* Filter accent colors (each filter group has its own) */
+    --c-platform: #8b5cf6;
+    --c-platform-bg: #f3eeff;
+    --c-mechanic: #d97548;
+    --c-mechanic-bg: #fce8df;
+    --c-score: #10b981;
+    --c-score-bg: #d1fae5;
+    --c-installs: #3b82f6;
+    --c-installs-bg: #dbeafe;
+    --c-date: #ec4899;
+    --c-date-bg: #fce7f3;
+    --c-sort: #6366f1;
+    --c-sort-bg: #e0e7ff;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.10);
+    --shadow-glow: 0 0 0 4px rgba(217, 117, 72, 0.08);
+
+    --green-bg: #ecfdf5;
+    --green-text: #047857;
+    --yellow-bg: #fefce8;
+    --yellow-text: #854d0e;
+    --red-bg: #fef2f2;
+    --red-text: #b91c1c;
+    --blue-bg: #eff6ff;
+    --blue-text: #1e40af;
+    --purple-bg: #faf5ff;
+    --purple-text: #6b21a8;
+    --amber-bg: #fffbeb;
+    --amber-text: #92400e;
+    --pink-bg: #fdf2f8;
+    --pink-text: #9d174d;
+  }
+  [data-theme="dark"] {
+    --bg: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-elevated: #1a1a1a;
+    --border: #262626;
+    --border-strong: #404040;
+    --text: #fafafa;
+    --text-secondary: #a3a3a3;
+    --text-tertiary: #737373;
+
+    --cactus-orange: #ea8a5e;
+    --cactus-orange-light: #3a1f15;
+    --cactus-orange-dark: #d97548;
+    --cactus-green: #7ab86a;
+    --cactus-green-light: #1a2e15;
+
+    --c-platform: #a78bfa;
+    --c-platform-bg: #2a1f4a;
+    --c-mechanic: #ea8a5e;
+    --c-mechanic-bg: #3a1f15;
+    --c-score: #34d399;
+    --c-score-bg: #0f3a2c;
+    --c-installs: #60a5fa;
+    --c-installs-bg: #142e54;
+    --c-date: #f472b6;
+    --c-date-bg: #3a1428;
+    --c-sort: #818cf8;
+    --c-sort-bg: #1f2654;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 0 4px rgba(234, 138, 94, 0.15);
+
+    --green-bg: #064e3b;
+    --green-text: #6ee7b7;
+    --yellow-bg: #422006;
+    --yellow-text: #fcd34d;
+    --red-bg: #450a0a;
+    --red-text: #fca5a5;
+    --blue-bg: #1e3a8a;
+    --blue-text: #93c5fd;
+    --purple-bg: #3b0764;
+    --purple-text: #d8b4fe;
+    --amber-bg: #422006;
+    --amber-text: #fbbf24;
+    --pink-bg: #500724;
+    --pink-text: #f9a8d4;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #f5f5f7;
-    color: #1d1d1f;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s, color 0.2s;
+    font-feature-settings: 'cv11', 'ss01';
   }
-  .header {
-    background: white;
-    padding: 24px 32px;
-    border-bottom: 1px solid #e5e5e7;
+  .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+
+  /* TOPBAR with gradient accent line */
+  .topbar {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
   }
-  .header-icon {
-    width: 56px;
-    height: 56px;
-    background: #d97548;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
+  .topbar::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 2px;
+    background: linear-gradient(90deg,
+      var(--cactus-orange) 0%,
+      var(--cactus-orange-dark) 25%,
+      var(--cactus-green) 65%,
+      var(--c-platform) 100%);
+    opacity: 0.7;
   }
-  .header-text h1 { font-size: 24px; font-weight: 700; }
-  .header-text p { font-size: 14px; color: #86868b; margin-top: 2px; }
-
-  .stats {
-    display: flex;
-    gap: 16px;
-    padding: 24px 32px;
-    flex-wrap: wrap;
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--cactus-orange) 0%, var(--cactus-orange-dark) 100%);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(217, 117, 72, 0.25);
+    position: relative;
+    overflow: hidden;
   }
-  .stat {
-    background: white;
-    border-radius: 12px;
-    padding: 16px 20px;
-    flex: 1;
-    min-width: 140px;
-    border: 1px solid #e5e5e7;
+  .brand-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+    pointer-events: none;
   }
-  .stat-label { font-size: 12px; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; }
-  .stat-value { font-size: 28px; font-weight: 700; margin-top: 4px; }
-  .stat-sub { font-size: 11px; color: #86868b; margin-top: 4px; }
-
-  .controls {
-    background: white;
-    margin: 0 32px;
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid #e5e5e7;
-  }
-  .search-box {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #d2d2d7;
-    border-radius: 8px;
+  .brand-text h1 {
     font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    background: linear-gradient(90deg, var(--text), var(--cactus-orange-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .brand-text p {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: -2px;
+  }
+  .topbar-actions { display: flex; align-items: center; gap: 8px; }
+  .icon-btn {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary);
+    font-size: 16px;
+    transition: all 0.15s;
+  }
+  .icon-btn:hover {
+    background: var(--cactus-orange-light);
+    border-color: var(--cactus-orange);
+    color: var(--cactus-orange-dark);
+    transform: rotate(-8deg);
+  }
+
+  /* HERO STATS */
+  .hero {
+    padding: 32px 32px 0;
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20px; left: 10%; right: 10%;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(217, 117, 72, 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 16px;
     margin-bottom: 16px;
   }
-  .filter-row {
+  @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--card-color, var(--cactus-orange));
+    opacity: 0.9;
+  }
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--card-color, var(--border-strong));
+  }
+  .stat-card.scanned { --card-color: var(--cactus-orange); }
+  .stat-card.scanned::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, var(--cactus-orange-light), transparent 70%);
+    pointer-events: none;
+  }
+  .stat-card.match { --card-color: var(--cactus-green); }
+  .stat-card.radar { --card-color: var(--c-installs); }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-value {
+    font-size: 36px;
+    font-weight: 800;
+    margin-top: 6px;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-variant-numeric: tabular-nums;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-sub-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .dot-ios { background: var(--c-platform); box-shadow: 0 0 6px var(--c-platform); }
+  .dot-android { background: var(--cactus-green); box-shadow: 0 0 6px var(--cactus-green); }
+
+  /* CHART CARD */
+  .chart-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .chart-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--c-date);
+  }
+  .chart-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     margin-bottom: 12px;
-    flex-wrap: wrap;
+  }
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 60px;
+    margin-bottom: 6px;
+  }
+  .bar {
+    flex: 1;
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--text-secondary) 70%, transparent) 0%,
+      color-mix(in srgb, var(--text-secondary) 30%, transparent) 100%);
+    border-radius: 4px 4px 2px 2px;
+    min-height: 4px;
+    position: relative;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .bar:hover {
+    background: linear-gradient(180deg, var(--text) 0%, color-mix(in srgb, var(--text) 50%, transparent) 100%);
+    transform: scaleY(1.05);
+  }
+  .bar.today {
+    background: linear-gradient(180deg, var(--cactus-orange) 0%, var(--cactus-orange-dark) 100%);
+    box-shadow: 0 0 16px rgba(217, 117, 72, 0.4);
+    animation: pulseBar 2.5s ease-in-out infinite;
+  }
+  @keyframes pulseBar {
+    0%, 100% { box-shadow: 0 0 16px rgba(217, 117, 72, 0.4); }
+    50% { box-shadow: 0 0 24px rgba(217, 117, 72, 0.7); }
+  }
+  .bar-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text);
+    color: var(--bg);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+  .bar:hover .bar-tooltip { opacity: 1; }
+  .bar-labels {
+    display: flex;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+  .bar-label { flex: 1; text-align: center; }
+  .bar-label.today-label { color: var(--cactus-orange); font-weight: 700; }
+
+  /* CONTROLS */
+  .controls-wrap {
+    padding: 0 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .controls {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    position: sticky;
+    top: 78px;
+    z-index: 40;
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+    box-shadow: var(--shadow-sm);
+  }
+  .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .search-box {
+    flex: 1;
+    padding: 10px 14px 10px 38px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    transition: all 0.15s;
+  }
+  .search-box:focus {
+    outline: none;
+    border-color: var(--cactus-orange);
+    background-color: var(--bg-secondary);
+    box-shadow: var(--shadow-glow);
+  }
+  .toggle-filters {
+    padding: 10px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .toggle-filters:hover { border-color: var(--cactus-orange); color: var(--cactus-orange-dark); }
+
+  .filter-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px 24px;
+  }
+  .filter-section.collapsed { display: none; }
+  .filter-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
   .filter-label {
     font-size: 11px;
     font-weight: 600;
-    color: #86868b;
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    min-width: 80px;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
-  .pill-group { display: flex; gap: 4px; flex-wrap: wrap; }
+  .filter-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--filter-color, var(--text-tertiary));
+  }
+  .pill-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
   .pill {
-    padding: 6px 14px;
-    border: 1px solid #d2d2d7;
-    border-radius: 20px;
-    background: white;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--bg);
     cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-family: inherit;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .pill:hover {
+    border-color: var(--filter-color, var(--border-strong));
+    color: var(--filter-color, var(--text));
+    transform: translateY(-1px);
+  }
+  .pill.active {
+    background: var(--filter-color, var(--text));
+    color: white;
+    border-color: var(--filter-color, var(--text));
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--filter-color, var(--text)) 30%, transparent);
+  }
+  .pill-count {
+    font-size: 10.5px;
+    opacity: 0.6;
+    margin-left: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .pill.active .pill-count { opacity: 0.85; }
+
+  /* Filter group color assignments */
+  #platformFilter { --filter-color: var(--c-platform); }
+  #mechanicFilter { --filter-color: var(--c-mechanic); }
+  #scoreFilter { --filter-color: var(--c-score); }
+  #installsFilter { --filter-color: var(--c-installs); }
+  #dateFilter { --filter-color: var(--c-date); }
+  #sortFilter { --filter-color: var(--c-sort); }
+
+  #platformFilterLabel { --filter-color: var(--c-platform); }
+  #mechanicFilterLabel { --filter-color: var(--c-mechanic); }
+  #scoreFilterLabel { --filter-color: var(--c-score); }
+  #installsFilterLabel { --filter-color: var(--c-installs); }
+  #dateFilterLabel { --filter-color: var(--c-date); }
+  #sortFilterLabel { --filter-color: var(--c-sort); }
+
+  .date-picker {
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 12.5px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .date-picker:focus { outline: none; border-color: var(--c-date); }
+  .clear-link {
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+    font-family: inherit;
+    padding: 4px;
+  }
+  .clear-link:hover { color: var(--c-date); }
+
+  /* RESULT BAR */
+  .result-bar {
+    padding: 16px 32px 8px;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-secondary);
     font-size: 13px;
+  }
+  .result-count strong { color: var(--text); font-weight: 700; }
+  .view-toggle {
+    display: flex;
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2px;
+    background: var(--bg);
+  }
+  .view-btn {
+    padding: 5px 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 6px;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
     transition: all 0.15s;
   }
-  .pill:hover { background: #f5f5f7; }
-  .pill.active { background: #1d1d1f; color: white; border-color: #1d1d1f; }
+  .view-btn.active {
+    background: var(--cactus-orange-light);
+    color: var(--cactus-orange-dark);
+    box-shadow: var(--shadow-sm);
+  }
 
+  /* GAMES */
+  .games-wrap {
+    padding: 8px 32px 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    padding: 24px 32px;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 14px;
+  }
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
   .game-card {
-    background: white;
-    border-radius: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 13px;
     padding: 16px;
-    border: 1px solid #e5e5e7;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    overflow: hidden;
   }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 13px;
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--mech-color, var(--cactus-orange)) 4%, transparent),
+      transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .game-card:hover::before { opacity: 1; }
   .game-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: color-mix(in srgb, var(--mech-color, var(--cactus-orange)) 40%, var(--border));
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--mech-color, #000) 12%, rgba(0,0,0,0.08));
   }
   .added-tag {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    font-size: 11px;
-    color: #86868b;
-    background: #f5f5f7;
+    top: 14px;
+    right: 14px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    background: var(--bg);
     padding: 3px 8px;
-    border-radius: 6px;
-    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    z-index: 2;
   }
   .added-tag.new {
-    background: #d1f4e0;
-    color: #1a7f3e;
+    background: var(--cactus-orange);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(217, 117, 72, 0.3);
+    animation: newPulse 2s ease-in-out infinite;
+  }
+  @keyframes newPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
   .game-header {
     display: flex;
     gap: 12px;
     margin-bottom: 12px;
-    padding-right: 60px;
+    padding-right: 80px;
+    position: relative;
+    z-index: 1;
   }
-  .game-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
-    background: #f5f5f7;
+  .game-icon, .game-icon-fallback {
+    width: 56px;
+    height: 56px;
+    border-radius: 13px;
     flex-shrink: 0;
-    object-fit: cover;
   }
+  .game-icon { background: var(--bg); object-fit: cover; box-shadow: var(--shadow-sm); }
   .game-icon-fallback {
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+    background: linear-gradient(135deg, var(--mech-color, #6366f1), color-mix(in srgb, var(--mech-color, #6366f1) 70%, #000));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
     color: white;
     font-weight: 700;
-    flex-shrink: 0;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--mech-color, #6366f1) 30%, transparent);
   }
   .game-info { flex: 1; min-width: 0; }
   .game-name {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14.5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    letter-spacing: -0.01em;
   }
   .game-publisher {
     font-size: 12px;
-    color: #86868b;
+    color: var(--text-tertiary);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -174,72 +693,145 @@
   .game-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
     margin-top: 8px;
+    position: relative;
+    z-index: 1;
   }
   .badge {
-    font-size: 11px;
+    font-size: 10.5px;
     padding: 3px 8px;
-    border-radius: 6px;
-    background: #f5f5f7;
-    color: #1d1d1f;
-    font-weight: 500;
+    border-radius: 5px;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    border: 1px solid var(--border);
   }
-  .badge.score-high { background: #d1f4e0; color: #1a7f3e; }
-  .badge.score-mid { background: #fff4d4; color: #8a6d00; }
-  .badge.score-low { background: #ffe5e5; color: #b3261e; }
-  .badge.platform-ios { background: #e8e8ed; }
-  .badge.platform-android { background: #c8e6c9; color: #2e7d32; }
-  .badge.installs { background: #e3f2fd; color: #1565c0; }
+  .badge.score-high { background: var(--green-bg); color: var(--green-text); border-color: transparent; }
+  .badge.score-mid { background: var(--amber-bg); color: var(--amber-text); border-color: transparent; }
+  .badge.score-low { background: var(--red-bg); color: var(--red-text); border-color: transparent; }
+  .badge.platform-ios { background: var(--c-platform-bg); color: var(--c-platform); border-color: transparent; }
+  .badge.platform-android { background: var(--c-score-bg); color: var(--c-score); border-color: transparent; }
+  .badge.installs { background: var(--c-installs-bg); color: var(--c-installs); border-color: transparent; }
+  .badge.mechanic-badge {
+    background: color-mix(in srgb, var(--mech-color, var(--c-mechanic)) 12%, transparent);
+    color: var(--mech-color, var(--c-mechanic));
+    border-color: transparent;
+  }
+
+  /* Mechanic colors */
+  .mech-match3 { --mech-color: #ef4444; }
+  .mech-hidden { --mech-color: #f59e0b; }
+  .mech-sort { --mech-color: #8b5cf6; }
+  .mech-jigsaw { --mech-color: #ec4899; }
+  .mech-mahjong { --mech-color: #06b6d4; }
+  .mech-tile { --mech-color: #06b6d4; }
+  .mech-word { --mech-color: #10b981; }
+  .mech-block { --mech-color: #3b82f6; }
+  .mech-hex { --mech-color: #3b82f6; }
+  .mech-merge { --mech-color: #d97548; }
+  .mech-escape { --mech-color: #6366f1; }
+  .mech-casual { --mech-color: #84cc16; }
+  .mech-other { --mech-color: #737373; }
+
+  /* LIST VIEW */
+  .games-list .game-card {
+    display: grid;
+    grid-template-columns: 48px 1fr auto auto auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 10px 16px;
+    transform: none !important;
+  }
+  .games-list .game-card:hover { transform: none !important; }
+  .games-list .game-icon, .games-list .game-icon-fallback {
+    width: 40px; height: 40px; font-size: 16px; border-radius: 9px;
+  }
+  .games-list .game-header { display: contents; }
+  .games-list .game-info { padding-right: 0; }
+  .games-list .added-tag { position: static; white-space: nowrap; }
+  .games-list .game-meta { margin-top: 0; flex-wrap: nowrap; }
+  @media (max-width: 800px) {
+    .games-list .game-card { grid-template-columns: 40px 1fr auto; }
+    .games-list .extra-meta { display: none; }
+  }
 
   .empty-state {
     text-align: center;
     padding: 80px 32px;
-    color: #86868b;
+    color: var(--text-tertiary);
+    grid-column: 1 / -1;
   }
-  .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: #1d1d1f; }
+  .empty-state-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+  .empty-state h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); font-weight: 600; }
+  .empty-state p { font-size: 13px; }
 
+  /* MODAL */
   .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     z-index: 100;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    backdrop-filter: blur(6px);
   }
-  .modal.active { display: flex; }
+  .modal.active { display: flex; animation: fadeIn 0.2s ease-out; }
   .modal-content {
-    background: white;
-    border-radius: 20px;
-    max-width: 720px;
+    background: var(--bg-secondary);
+    border-radius: 18px;
+    max-width: 760px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     padding: 32px;
+    position: relative;
+    border: 1px solid var(--border);
+    animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .modal-header {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
+  @keyframes modalSlideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
-  .modal-icon { width: 80px; height: 80px; border-radius: 18px; }
-  .modal-title { font-size: 22px; font-weight: 700; }
-  .modal-publisher { color: #86868b; margin-top: 4px; }
-  .modal-section { margin-bottom: 20px; }
+  .modal-header { display: flex; gap: 16px; margin-bottom: 24px; }
+  .modal-icon, .modal-icon-fallback {
+    width: 76px; height: 76px;
+    border-radius: 16px;
+    flex-shrink: 0;
+  }
+  .modal-icon-fallback {
+    background: linear-gradient(135deg, var(--mech-color, #6366f1), color-mix(in srgb, var(--mech-color, #6366f1) 70%, #000));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    color: white;
+    font-weight: 700;
+  }
+  .modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .modal-publisher { color: var(--text-tertiary); margin-top: 2px; font-size: 13px; }
+  .modal-section { margin-bottom: 22px; }
   .modal-section-title {
     font-size: 11px;
     font-weight: 600;
-    color: #86868b;
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.06em;
     margin-bottom: 8px;
   }
-  .modal-section-content { font-size: 14px; line-height: 1.6; }
+  .modal-section-content {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
   .screenshots {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     overflow-x: auto;
     padding-bottom: 8px;
   }
@@ -247,82 +839,167 @@
     height: 280px;
     border-radius: 12px;
     flex-shrink: 0;
+    border: 1px solid var(--border);
   }
   .modal-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
   .btn {
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 10px 18px;
+    border-radius: 9px;
     border: none;
-    background: #1d1d1f;
+    background: linear-gradient(135deg, var(--cactus-orange) 0%, var(--cactus-orange-dark) 100%);
     color: white;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    transition: all 0.15s;
+    box-shadow: 0 4px 12px rgba(217, 117, 72, 0.25);
   }
-  .btn.secondary { background: #f5f5f7; color: #1d1d1f; }
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(217, 117, 72, 0.35);
+  }
   .close-btn {
     position: absolute;
-    top: 20px;
-    right: 24px;
-    background: none;
-    border: none;
-    font-size: 24px;
+    top: 16px;
+    right: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    font-size: 16px;
     cursor: pointer;
-    color: #86868b;
+    color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .close-btn:hover {
+    background: var(--red-bg);
+    color: var(--red-text);
+    border-color: transparent;
+    transform: rotate(90deg);
+  }
+
+  .fade-in { animation: fadeIn 0.3s ease-out; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-icon">🌵</div>
-  <div class="header-text">
-    <h1>Agave Game Radar</h1>
-    <p id="lastUpdated">Loading...</p>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-icon">🌵</div>
+    <div class="brand-text">
+      <h1>Agave Game Radar</h1>
+      <p id="lastUpdated">Loading data…</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
   </div>
 </div>
 
-<div class="stats" id="stats"></div>
+<div class="hero">
+  <div class="hero-grid" id="heroGrid"></div>
+</div>
 
-<div class="controls">
-  <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search by name or publisher...">
-
-  <div class="filter-row">
-    <span class="filter-label">Platform</span>
-    <div class="pill-group" id="platformFilter">
-      <button class="pill active" data-platform="all">All</button>
-      <button class="pill" data-platform="ios">📱 iOS</button>
-      <button class="pill" data-platform="android">🤖 Android</button>
+<div class="controls-wrap">
+  <div class="controls">
+    <div class="search-row">
+      <input type="text" class="search-box" id="searchBox" placeholder="Search by name or publisher…">
+      <button class="toggle-filters" id="toggleFilters">
+        <span id="toggleFiltersText">Hide Filters</span>
+      </button>
     </div>
-  </div>
+    <div class="filter-section" id="filterSection">
 
-  <div class="filter-row">
-    <span class="filter-label">Min Score</span>
-    <div class="pill-group" id="scoreFilter">
-      <button class="pill active" data-score="0">All</button>
-      <button class="pill" data-score="60">60+</button>
-      <button class="pill" data-score="70">70+</button>
-      <button class="pill" data-score="80">80+</button>
-      <button class="pill" data-score="90">90+</button>
-    </div>
-  </div>
+      <div class="filter-block">
+        <span class="filter-label" id="platformFilterLabel">Platform</span>
+        <div class="pill-group" id="platformFilter">
+          <button class="pill active" data-platform="all">All</button>
+          <button class="pill" data-platform="ios">📱 iOS</button>
+          <button class="pill" data-platform="android">🤖 Android</button>
+        </div>
+      </div>
 
-  <div class="filter-row">
-    <span class="filter-label">Date Added</span>
-    <div class="pill-group" id="dateFilter">
-      <button class="pill active" data-days="0">All</button>
-      <button class="pill" data-days="1">Today</button>
-      <button class="pill" data-days="7">7 days</button>
+      <div class="filter-block" style="grid-column: span 2;">
+        <span class="filter-label" id="mechanicFilterLabel">Mechanic</span>
+        <div class="pill-group" id="mechanicFilter">
+          <button class="pill active" data-mechanic="all">All</button>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <span class="filter-label" id="scoreFilterLabel">Min Score</span>
+        <div class="pill-group" id="scoreFilter">
+          <button class="pill active" data-score="0">All</button>
+          <button class="pill" data-score="60">60+</button>
+          <button class="pill" data-score="70">70+</button>
+          <button class="pill" data-score="80">80+</button>
+          <button class="pill" data-score="90">90+</button>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <span class="filter-label" id="installsFilterLabel">Min Installs</span>
+        <div class="pill-group" id="installsFilter">
+          <button class="pill active" data-installs="0">All</button>
+          <button class="pill" data-installs="500">500+</button>
+          <button class="pill" data-installs="10000">10K+</button>
+          <button class="pill" data-installs="20000">20K+</button>
+          <button class="pill" data-installs="30000">30K+</button>
+          <button class="pill" data-installs="40000">40K+</button>
+        </div>
+      </div>
+
+      <div class="filter-block" style="grid-column: span 2;">
+        <span class="filter-label" id="dateFilterLabel">Date Added</span>
+        <div class="pill-group" id="dateFilter">
+          <button class="pill active" data-days="0">All</button>
+          <button class="pill" data-days="1">Today</button>
+          <button class="pill" data-days="2">Yesterday</button>
+          <button class="pill" data-days="3">3 days</button>
+          <button class="pill" data-days="7">7 days</button>
+          <button class="pill" data-days="14">14 days</button>
+          <input type="date" class="date-picker" id="datePicker">
+          <button class="clear-link" id="clearDate" style="display:none">Clear</button>
+        </div>
+      </div>
+
+      <div class="filter-block">
+        <span class="filter-label" id="sortFilterLabel">Sort By</span>
+        <div class="pill-group" id="sortFilter">
+          <button class="pill active" data-sort="installs">Most Installs</button>
+          <button class="pill" data-sort="recent">Newest</button>
+          <button class="pill" data-sort="score">Highest Score</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<div id="gamesContainer" class="games-grid"></div>
+<div class="result-bar">
+  <div class="result-count" id="resultsCount">Loading…</div>
+  <div class="view-toggle">
+    <button class="view-btn active" data-view="grid">⊞ Grid</button>
+    <button class="view-btn" data-view="list">☰ List</button>
+  </div>
+</div>
+
+<div class="games-wrap">
+  <div id="gamesContainer" class="games-grid"></div>
+</div>
 
 <div class="modal" id="gameModal">
-  <div class="modal-content" style="position: relative;">
+  <div class="modal-content">
     <button class="close-btn" onclick="closeModal()">✕</button>
     <div id="modalBody"></div>
   </div>
@@ -330,18 +1007,82 @@
 
 <script>
 let allGames = [];
-let filters = { platform: 'all', minScore: 0, days: 0, search: '' };
+let filters = {
+  platform: 'all', mechanic: 'all', minScore: 0, minInstalls: 0,
+  days: 0, specificDate: '', search: '', sort: 'installs'
+};
+let viewMode = 'grid';
+
+const MECHANIC_KEYWORDS = [
+  'Match-3', 'Hidden Object', 'Sort', 'Jigsaw', 'Mahjong', 'Tile Connect',
+  'Word', 'Block', 'Hex', 'Merge', 'Escape Room', 'Casual Puzzle'
+];
+
+const MECHANIC_CLASSES = {
+  'Match-3': 'mech-match3',
+  'Hidden Object': 'mech-hidden',
+  'Sort': 'mech-sort',
+  'Jigsaw': 'mech-jigsaw',
+  'Mahjong': 'mech-mahjong',
+  'Tile Connect': 'mech-tile',
+  'Word': 'mech-word',
+  'Block': 'mech-block',
+  'Hex': 'mech-hex',
+  'Merge': 'mech-merge',
+  'Escape Room': 'mech-escape',
+  'Casual Puzzle': 'mech-casual'
+};
+
+function extractMechanic(game) {
+  const text = String(game.reason || game.mechanic || '');
+  for (const m of MECHANIC_KEYWORDS) {
+    if (text.toLowerCase().includes(m.toLowerCase())) return m;
+  }
+  const firstPart = text.split('|')[0].replace('Mechanic:', '').trim();
+  return firstPart || 'Other';
+}
+
+function mechanicClass(mech) {
+  return MECHANIC_CLASSES[mech] || 'mech-other';
+}
+
+// THEME
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+document.getElementById('themeToggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
+});
+
+// COUNT-UP ANIMATION
+function countUp(element, target, duration = 800) {
+  const start = 0;
+  const startTime = performance.now();
+  function step(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.floor(start + (target - start) * eased);
+    element.textContent = value.toLocaleString();
+    if (progress < 1) requestAnimationFrame(step);
+    else element.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(step);
+}
 
 async function loadData() {
   try {
     const res = await fetch('games_data.json?t=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    allGames = data.games || [];
+    allGames = (data.games || []).map(g => ({ ...g, _mechanic: extractMechanic(g) }));
 
-    const lastUpdated = data.last_updated || '';
     document.getElementById('lastUpdated').textContent =
-      lastUpdated ? `Last updated: ${lastUpdated}` : 'No data yet';
+      data.last_updated ? `Updated ${data.last_updated}` : 'No data yet';
 
     const totalToday = data.total_fetched_today ?? data.total_fetched ?? 0;
     const iosToday = data.ios_fetched_today ?? data.ios_fetched ?? 0;
@@ -349,63 +1090,130 @@ async function loadData() {
     const relevantToday = data.total_relevant_today ?? data.total_relevant ?? 0;
     const onSite = data.total_games_on_site ?? allGames.length;
     const retentionDays = data.retention_days ?? 30;
+    const runDate = data.run_date || '';
+    const scannedTitle = runDate ? `Scanned ${formatDateLabel(runDate)}` : 'Scanned';
 
-    document.getElementById('stats').innerHTML = `
-      <div class="stat">
-        <div class="stat-label">Casual Games Scanned Today</div>
-        <div class="stat-value">${totalToday.toLocaleString()}</div>
-        <div class="stat-sub">games matching casual criteria</div>
+    document.getElementById('heroGrid').innerHTML = `
+      <div class="stat-card scanned">
+        <div class="stat-label">📡 ${escapeHtml(scannedTitle)}</div>
+        <div class="stat-value mono" id="statScanned">0</div>
+        <div class="stat-sub">
+          <span><span class="stat-sub-dot dot-ios"></span>iOS <strong>${iosToday.toLocaleString()}</strong></span>
+          <span><span class="stat-sub-dot dot-android"></span>Android <strong>${androidToday.toLocaleString()}</strong></span>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-label">iOS / Android</div>
-        <div class="stat-value">${iosToday} / ${androidToday}</div>
-        <div class="stat-sub">today's platform split</div>
+      <div class="stat-card match">
+        <div class="stat-label">🎯 Portfolio Match</div>
+        <div class="stat-value mono" id="statMatch">0</div>
+        <div class="stat-sub">fit Agave's mechanics</div>
       </div>
-      <div class="stat">
-        <div class="stat-label">Portfolio Match</div>
-        <div class="stat-value">${relevantToday}</div>
-        <div class="stat-sub">fit Agave's portfolio</div>
+      <div class="stat-card radar">
+        <div class="stat-label">📊 Total on Radar</div>
+        <div class="stat-value mono" id="statRadar">0</div>
+        <div class="stat-sub">for ${retentionDays} days</div>
       </div>
-      <div class="stat">
-        <div class="stat-label">On Radar (${retentionDays}d)</div>
-        <div class="stat-value">${onSite}</div>
-        <div class="stat-sub">cumulative relevant games</div>
+      <div class="chart-card">
+        <div class="chart-title">📈 New games · last 7 days</div>
+        ${renderBarChart()}
       </div>
     `;
 
+    countUp(document.getElementById('statScanned'), totalToday);
+    countUp(document.getElementById('statMatch'), relevantToday);
+    countUp(document.getElementById('statRadar'), onSite);
+
+    buildMechanicFilter();
     render();
   } catch (err) {
-    document.getElementById('lastUpdated').textContent = 'Error loading data: ' + err.message;
+    document.getElementById('lastUpdated').textContent = 'Error loading data';
     document.getElementById('gamesContainer').innerHTML =
-      `<div class="empty-state"><h3>Couldn't load data</h3><p>${err.message}</p></div>`;
+      `<div class="empty-state"><div class="empty-state-icon">⚠️</div><h3>Couldn't load data</h3><p>${escapeHtml(err.message)}</p></div>`;
   }
+}
+
+function renderBarChart() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today.getTime() - i * 86400000);
+    const iso = d.toISOString().split('T')[0];
+    days.push({ iso, label: d.toLocaleDateString('en', { weekday: 'short' }) });
+  }
+  const counts = days.map(d => ({
+    ...d,
+    count: allGames.filter(g => g.first_seen === d.iso).length
+  }));
+  const max = Math.max(1, ...counts.map(c => c.count));
+
+  const bars = counts.map((c, i) => {
+    const heightPct = (c.count / max) * 100;
+    const isToday = i === counts.length - 1;
+    return `<div class="bar ${isToday ? 'today' : ''}" style="height: ${Math.max(heightPct, 4)}%">
+      <div class="bar-tooltip">${c.count} on ${c.iso}</div>
+    </div>`;
+  }).join('');
+
+  const labels = counts.map((c, i) => {
+    const isToday = i === counts.length - 1;
+    return `<div class="bar-label ${isToday ? 'today-label' : ''}">${c.label}</div>`;
+  }).join('');
+
+  return `<div class="bar-chart">${bars}</div><div class="bar-labels">${labels}</div>`;
+}
+
+function formatDateLabel(iso) {
+  const parts = iso.split('-');
+  if (parts.length !== 3) return iso;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${parseInt(parts[2], 10)} ${months[parseInt(parts[1], 10) - 1]}`;
+}
+
+function buildMechanicFilter() {
+  const counts = {};
+  for (const g of allGames) {
+    const m = g._mechanic;
+    counts[m] = (counts[m] || 0) + 1;
+  }
+  const mechanics = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(e => e[0]);
+  const container = document.getElementById('mechanicFilter');
+  container.innerHTML = '<button class="pill active" data-mechanic="all">All</button>';
+  for (const m of mechanics) {
+    const btn = document.createElement('button');
+    btn.className = 'pill';
+    btn.dataset.mechanic = m;
+    btn.innerHTML = `${escapeHtml(m)}<span class="pill-count">${counts[m]}</span>`;
+    container.appendChild(btn);
+  }
+  container.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => {
+      container.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      filters.mechanic = p.dataset.mechanic;
+      render();
+    });
+  });
 }
 
 function getInstalls(game) {
   return parseInt(game.installs || game.installs_total || game.installs_last_day || 0, 10) || 0;
 }
-
 function formatInstalls(n) {
   if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
   return n.toString();
 }
-
 function getScoreClass(score) {
   if (score >= 80) return 'score-high';
   if (score >= 60) return 'score-mid';
   return 'score-low';
 }
-
 function platformBadge(platform) {
   const p = (platform || '').toLowerCase();
   if (p === 'ios') return '<span class="badge platform-ios">📱 iOS</span>';
   if (p === 'android') return '<span class="badge platform-android">🤖 Android</span>';
-  return `<span class="badge">${platform || '?'}</span>`;
+  return `<span class="badge">${escapeHtml(platform || '?')}</span>`;
 }
-
-function getIconUrl(game) {
-  return game.icon_url || game.icon || '';
-}
+function getIconUrl(game) { return game.icon_url || game.icon || ''; }
 
 function timeAgo(dateStr) {
   if (!dateStr) return '';
@@ -413,15 +1221,19 @@ function timeAgo(dateStr) {
   if (isNaN(seenDate)) return '';
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const diffMs = today - seenDate;
-  const diffDays = Math.floor(diffMs / 86400000);
-
+  const diffDays = Math.floor((today - seenDate) / 86400000);
   if (diffDays <= 0) return 'Today';
   if (diffDays === 1) return 'Yesterday';
-  if (diffDays < 7) return `${diffDays} days ago`;
-  if (diffDays < 14) return '1 week ago';
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-  return `${Math.floor(diffDays / 30)} months ago`;
+  if (diffDays < 7) return `${diffDays}d ago`;
+  if (diffDays < 14) return '1w ago';
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
+  return `${Math.floor(diffDays / 30)}mo ago`;
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
 }
 
 function renderCard(game) {
@@ -431,17 +1243,33 @@ function renderCard(game) {
   const initial = (game.name || '?').charAt(0).toUpperCase();
   const addedAgo = timeAgo(game.first_seen);
   const isNew = addedAgo === 'Today' || addedAgo === 'Yesterday';
+  const mechClass = mechanicClass(game._mechanic);
 
   const iconHTML = iconUrl
     ? `<img class="game-icon" src="${iconUrl}" onerror="this.outerHTML='<div class=&quot;game-icon-fallback&quot;>${initial}</div>'">`
     : `<div class="game-icon-fallback">${initial}</div>`;
 
-  const addedHTML = addedAgo
-    ? `<div class="added-tag ${isNew ? 'new' : ''}">Added ${addedAgo}</div>`
-    : '';
+  const addedHTML = addedAgo ? `<div class="added-tag ${isNew ? 'new' : ''}">${addedAgo}</div>` : '';
+
+  if (viewMode === 'list') {
+    return `
+      <div class="game-card ${mechClass}" onclick='openModal(${JSON.stringify(game).replace(/'/g, "&apos;")})'>
+        ${iconHTML}
+        <div class="game-info">
+          <div class="game-name">${escapeHtml(game.name || '?')}</div>
+          <div class="game-publisher">${escapeHtml(game.publisher || '?')}</div>
+        </div>
+        ${platformBadge(game.platform)}
+        <span class="badge installs">${formatInstalls(installs)}</span>
+        <span class="badge ${getScoreClass(score)}">${score}</span>
+        <span class="badge mechanic-badge extra-meta">${escapeHtml(game._mechanic)}</span>
+        ${addedHTML}
+      </div>
+    `;
+  }
 
   return `
-    <div class="game-card" onclick='openModal(${JSON.stringify(game).replace(/'/g, "&apos;")})'>
+    <div class="game-card ${mechClass}" onclick='openModal(${JSON.stringify(game).replace(/'/g, "&apos;")})'>
       ${addedHTML}
       <div class="game-header">
         ${iconHTML}
@@ -453,46 +1281,67 @@ function renderCard(game) {
       <div class="game-meta">
         ${platformBadge(game.platform)}
         <span class="badge installs">${formatInstalls(installs)} installs</span>
-        <span class="badge ${getScoreClass(score)}">${score}/100</span>
-        ${game.mechanic ? `<span class="badge">${escapeHtml(String(game.reason || game.mechanic).split('|')[0].replace('Mechanic:', '').trim())}</span>` : ''}
+        <span class="badge ${getScoreClass(score)}">${score}</span>
+        <span class="badge mechanic-badge">${escapeHtml(game._mechanic)}</span>
       </div>
     </div>
   `;
 }
 
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[c]));
-}
-
 function render() {
   const container = document.getElementById('gamesContainer');
+  container.className = viewMode === 'list' ? 'games-list' : 'games-grid';
+
   let filtered = allGames.filter(g => {
     if (filters.platform !== 'all' && (g.platform || '').toLowerCase() !== filters.platform) return false;
+    if (filters.mechanic !== 'all' && g._mechanic !== filters.mechanic) return false;
     if (parseInt(g.score || 0, 10) < filters.minScore) return false;
+    if (getInstalls(g) < filters.minInstalls) return false;
     if (filters.search) {
       const q = filters.search.toLowerCase();
-      const name = (g.name || '').toLowerCase();
-      const pub = (g.publisher || '').toLowerCase();
-      if (!name.includes(q) && !pub.includes(q)) return false;
+      if (!(g.name || '').toLowerCase().includes(q) && !(g.publisher || '').toLowerCase().includes(q)) return false;
     }
-    if (filters.days > 0) {
+    if (filters.specificDate) {
+      if ((g.first_seen || '') !== filters.specificDate) return false;
+    } else if (filters.days > 0) {
       const seen = g.first_seen || g.last_seen;
       if (!seen) return false;
-      const cutoff = new Date(Date.now() - filters.days * 86400000);
-      if (new Date(seen + 'T00:00:00') < cutoff) return false;
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const seenDate = new Date(seen + 'T00:00:00');
+      const diffDays = Math.floor((today - seenDate) / 86400000);
+      if (filters.days === 1 && diffDays !== 0) return false;
+      else if (filters.days === 2 && diffDays !== 1) return false;
+      else if (filters.days > 2 && diffDays >= filters.days) return false;
     }
     return true;
   });
 
-  filtered.sort((a, b) => getInstalls(b) - getInstalls(a));
+  if (filters.sort === 'installs') {
+    filtered.sort((a, b) => getInstalls(b) - getInstalls(a));
+  } else if (filters.sort === 'recent') {
+    filtered.sort((a, b) => {
+      const da = a.first_seen || '', db = b.first_seen || '';
+      if (db !== da) return db.localeCompare(da);
+      return getInstalls(b) - getInstalls(a);
+    });
+  } else if (filters.sort === 'score') {
+    filtered.sort((a, b) => {
+      const sa = parseInt(a.score || 0, 10), sb = parseInt(b.score || 0, 10);
+      if (sb !== sa) return sb - sa;
+      return getInstalls(b) - getInstalls(a);
+    });
+  }
+
+  document.getElementById('resultsCount').innerHTML =
+    `Showing <strong>${filtered.length}</strong> of <strong>${allGames.length}</strong> games`;
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="empty-state"><h3>No games match your filters</h3><p>Try changing the filters above.</p></div>`;
+    container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🔍</div><h3>No games match your filters</h3><p>Try changing the filters above.</p></div>`;
     return;
   }
   container.innerHTML = filtered.map(renderCard).join('');
+  container.classList.add('fade-in');
+  setTimeout(() => container.classList.remove('fade-in'), 300);
 }
 
 function openModal(game) {
@@ -501,10 +1350,11 @@ function openModal(game) {
   const iconUrl = getIconUrl(game);
   const initial = (game.name || '?').charAt(0).toUpperCase();
   const addedAgo = timeAgo(game.first_seen);
+  const mechClass = mechanicClass(game._mechanic);
 
   const iconHTML = iconUrl
     ? `<img class="modal-icon" src="${iconUrl}" onerror="this.style.display='none'">`
-    : `<div class="game-icon-fallback" style="width:80px;height:80px;font-size:32px">${initial}</div>`;
+    : `<div class="modal-icon-fallback">${initial}</div>`;
 
   const screenshots = Array.isArray(game.screenshots) ? game.screenshots.filter(s => s) : [];
   const screenshotsHTML = screenshots.length
@@ -524,31 +1374,33 @@ function openModal(game) {
     : '';
 
   const storeUrl = game.store_url || '';
-  const storeBtn = storeUrl ? `<a class="btn" href="${storeUrl}" target="_blank">📲 Open in Store</a>` : '';
+  const storeBtn = storeUrl ? `<a class="btn" href="${storeUrl}" target="_blank">Open in Store →</a>` : '';
 
   const addedDateHTML = addedAgo
-    ? `<div class="added-tag" style="position: static; display: inline-block; margin-top: 8px;">Added ${addedAgo}</div>`
+    ? `<div class="added-tag" style="position: static; display: inline-block; margin-top: 6px;">${addedAgo}</div>`
     : '';
 
   document.getElementById('modalBody').innerHTML = `
-    <div class="modal-header">
-      ${iconHTML}
-      <div>
-        <div class="modal-title">${escapeHtml(game.name || '?')}</div>
-        <div class="modal-publisher">${escapeHtml(game.publisher || '?')}</div>
-        <div class="game-meta" style="margin-top:8px">
-          ${platformBadge(game.platform)}
-          <span class="badge installs">${formatInstalls(installs)} installs</span>
-          <span class="badge ${getScoreClass(score)}">${score}/100</span>
-          ${game.mechanic ? `<span class="badge">${escapeHtml(String(game.reason || game.mechanic).split('|')[0].replace('Mechanic:', '').trim())}</span>` : ''}
+    <div class="${mechClass}">
+      <div class="modal-header">
+        ${iconHTML}
+        <div>
+          <div class="modal-title">${escapeHtml(game.name || '?')}</div>
+          <div class="modal-publisher">${escapeHtml(game.publisher || '?')}</div>
+          <div class="game-meta" style="margin-top:10px">
+            ${platformBadge(game.platform)}
+            <span class="badge installs">${formatInstalls(installs)} installs</span>
+            <span class="badge ${getScoreClass(score)}">${score}/100</span>
+            <span class="badge mechanic-badge">${escapeHtml(game._mechanic)}</span>
+          </div>
+          ${addedDateHTML}
         </div>
-        ${addedDateHTML}
       </div>
+      ${reasonHTML}
+      ${descriptionHTML}
+      ${screenshotsHTML}
+      <div class="modal-buttons">${storeBtn}</div>
     </div>
-    ${reasonHTML}
-    ${descriptionHTML}
-    ${screenshotsHTML}
-    <div class="modal-buttons">${storeBtn}</div>
   `;
   document.getElementById('gameModal').classList.add('active');
 }
@@ -561,36 +1413,70 @@ document.getElementById('gameModal').addEventListener('click', e => {
   if (e.target.id === 'gameModal') closeModal();
 });
 
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.getElementById('searchBox').focus();
+  }
+});
+
 document.getElementById('searchBox').addEventListener('input', e => {
   filters.search = e.target.value;
   render();
 });
 
-document.querySelectorAll('#platformFilter .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('#platformFilter .pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    filters.platform = p.dataset.platform;
+function bindPills(containerId, key, parser) {
+  document.querySelectorAll(`#${containerId} .pill`).forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll(`#${containerId} .pill`).forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      filters[key] = parser ? parser(p.dataset[key]) : p.dataset[key];
+      if (containerId === 'dateFilter') {
+        filters.specificDate = '';
+        document.getElementById('datePicker').value = '';
+        document.getElementById('clearDate').style.display = 'none';
+      }
+      render();
+    });
+  });
+}
+
+bindPills('platformFilter', 'platform');
+bindPills('scoreFilter', 'minScore', v => parseInt(v, 10));
+bindPills('installsFilter', 'minInstalls', v => parseInt(v, 10));
+bindPills('dateFilter', 'days', v => parseInt(v, 10));
+bindPills('sortFilter', 'sort');
+
+document.getElementById('datePicker').addEventListener('change', e => {
+  filters.specificDate = e.target.value;
+  filters.days = 0;
+  document.querySelectorAll('#dateFilter .pill').forEach(x => x.classList.remove('active'));
+  document.querySelector('#dateFilter .pill[data-days="0"]').classList.add('active');
+  document.getElementById('clearDate').style.display = e.target.value ? 'inline-block' : 'none';
+  render();
+});
+
+document.getElementById('clearDate').addEventListener('click', () => {
+  filters.specificDate = '';
+  document.getElementById('datePicker').value = '';
+  document.getElementById('clearDate').style.display = 'none';
+  render();
+});
+
+document.querySelectorAll('.view-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.view-btn').forEach(x => x.classList.remove('active'));
+    btn.classList.add('active');
+    viewMode = btn.dataset.view;
     render();
   });
 });
 
-document.querySelectorAll('#scoreFilter .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('#scoreFilter .pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    filters.minScore = parseInt(p.dataset.score, 10);
-    render();
-  });
-});
-
-document.querySelectorAll('#dateFilter .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    document.querySelectorAll('#dateFilter .pill').forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    filters.days = parseInt(p.dataset.days, 10);
-    render();
-  });
+document.getElementById('toggleFilters').addEventListener('click', () => {
+  const section = document.getElementById('filterSection');
+  const isCollapsed = section.classList.toggle('collapsed');
+  document.getElementById('toggleFiltersText').textContent = isCollapsed ? 'Show Filters' : 'Hide Filters';
 });
 
 loadData();
