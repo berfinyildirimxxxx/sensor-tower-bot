@@ -217,7 +217,7 @@
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.3fr 1fr 1fr;
     gap: 16px;
     margin-bottom: 16px;
   }
@@ -1091,11 +1091,13 @@ async function loadData() {
     const onSite = data.total_games_on_site ?? allGames.length;
     const retentionDays = data.retention_days ?? 30;
     const runDate = data.run_date || '';
-    const scannedTitle = runDate ? `Scanned ${formatDateLabel(runDate)}` : 'Scanned';
+    const dateLabel = runDate ? formatDateLabel(runDate) : '';
+    const scannedTitle = dateLabel ? `Scanned ${dateLabel}` : 'Scanned';
+    const matchTitle = dateLabel ? `Portfolio Match · ${dateLabel}` : 'Portfolio Match';
 
     document.getElementById('heroGrid').innerHTML = `
       <div class="stat-card scanned">
-        <div class="stat-label">📡 ${escapeHtml(scannedTitle)}</div>
+        <div class="stat-label">${escapeHtml(scannedTitle)}</div>
         <div class="stat-value mono" id="statScanned">0</div>
         <div class="stat-sub">
           <span><span class="stat-sub-dot dot-ios"></span>iOS <strong>${iosToday.toLocaleString()}</strong></span>
@@ -1103,18 +1105,14 @@ async function loadData() {
         </div>
       </div>
       <div class="stat-card match">
-        <div class="stat-label">🎯 Portfolio Match</div>
+        <div class="stat-label">${escapeHtml(matchTitle)}</div>
         <div class="stat-value mono" id="statMatch">0</div>
         <div class="stat-sub">fit Agave's mechanics</div>
       </div>
       <div class="stat-card radar">
-        <div class="stat-label">📊 Total on Radar</div>
+        <div class="stat-label">Total on Radar</div>
         <div class="stat-value mono" id="statRadar">0</div>
         <div class="stat-sub">for ${retentionDays} days</div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">📈 New games · last 7 days</div>
-        ${renderBarChart()}
       </div>
     `;
 
@@ -1196,7 +1194,14 @@ function buildMechanicFilter() {
 }
 
 function getInstalls(game) {
-  return parseInt(game.installs || game.installs_total || game.installs_last_day || 0, 10) || 0;
+  const raw = game.installs ?? game.installs_total ?? game.installs_last_day ?? 0;
+  const n = parseInt(raw, 10);
+  return isNaN(n) ? 0 : n;
+}
+function getScore(game) {
+  const raw = game.score ?? 0;
+  const n = parseInt(raw, 10);
+  return isNaN(n) ? 0 : n;
 }
 function formatInstalls(n) {
   if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
@@ -1238,7 +1243,7 @@ function escapeHtml(str) {
 
 function renderCard(game) {
   const installs = getInstalls(game);
-  const score = parseInt(game.score || 0, 10);
+  const score = getScore(game);
   const iconUrl = getIconUrl(game);
   const initial = (game.name || '?').charAt(0).toUpperCase();
   const addedAgo = timeAgo(game.first_seen);
@@ -1295,7 +1300,7 @@ function render() {
   let filtered = allGames.filter(g => {
     if (filters.platform !== 'all' && (g.platform || '').toLowerCase() !== filters.platform) return false;
     if (filters.mechanic !== 'all' && g._mechanic !== filters.mechanic) return false;
-    if (parseInt(g.score || 0, 10) < filters.minScore) return false;
+    if (getScore(g) < filters.minScore) return false;
     if (getInstalls(g) < filters.minInstalls) return false;
     if (filters.search) {
       const q = filters.search.toLowerCase();
@@ -1326,7 +1331,7 @@ function render() {
     });
   } else if (filters.sort === 'score') {
     filtered.sort((a, b) => {
-      const sa = parseInt(a.score || 0, 10), sb = parseInt(b.score || 0, 10);
+      const sa = getScore(a), sb = getScore(b);
       if (sb !== sa) return sb - sa;
       return getInstalls(b) - getInstalls(a);
     });
@@ -1346,7 +1351,7 @@ function render() {
 
 function openModal(game) {
   const installs = getInstalls(game);
-  const score = parseInt(game.score || 0, 10);
+  const score = getScore(game);
   const iconUrl = getIconUrl(game);
   const initial = (game.name || '?').charAt(0).toUpperCase();
   const addedAgo = timeAgo(game.first_seen);
