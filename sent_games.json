@@ -2679,6 +2679,206 @@
       "store_url": "https://play.google.com/store/apps/details?id=com.domino.association",
       "platform": "android",
       "sent_at": "2026-05-08T15:54:43.317616Z"
+    },
+    "6760331863": {
+      "name": "Mahjong Jam: Tile Match",
+      "fid": "6760331863",
+      "app_id": "6760331863",
+      "store_url": "https://apps.apple.com/app/id6760331863",
+      "platform": "ios",
+      "sent_at": "2026-05-09T15:25:13.744492Z"
+    },
+    "6758056604": {
+      "name": "Dot Paint - ASMR Flow Puzzle",
+      "fid": "6758056604",
+      "app_id": "6758056604",
+      "store_url": "https://apps.apple.com/app/id6758056604",
+      "platform": "ios",
+      "sent_at": "2026-05-09T15:25:14.216815Z"
+    },
+    "6760389476": {
+      "name": "Color Puzzle Jam -Car Out Rush",
+      "fid": "6760389476",
+      "app_id": "6760389476",
+      "store_url": "https://apps.apple.com/app/id6760389476",
+      "platform": "ios",
+      "sent_at": "2026-05-09T15:25:14.896837Z"
+    },
+    "6757842718": {
+      "name": "Juicy Blast - 3D Match & Music",
+      "fid": "6757842718",
+      "app_id": "6757842718",
+      "store_url": "https://apps.apple.com/app/id6757842718",
+      "platform": "ios",
+      "sent_at": "2026-05-09T15:25:16.392918Z"
+    },
+    "6760517672": {
+      "name": "Screw Blast: Shooter Factory",
+      "fid": "6760517672",
+      "app_id": "6760517672",
+      "store_url": "https://apps.apple.com/app/id6760517672",
+      "platform": "ios",
+      "sent_at": "2026-05-09T15:25:16.945956Z"
+    },
+    "6758867106": {
+      "name": "Another Shadow",
+      "fid": "6758867106",
+      "app_id": "6758867106",
+      "store_url": "https://apps.apple.com/app/id6758867106",
+      "platform": "ios",
+      "sent_at": "2026-05-09T15:25:24.591330Z"
+    },
+    "com.eyestorm.demonpetmaze": {
+      "name": "Demon Pet Maze",
+      "fid": "com.eyestorm.demonpetmaze",
+      "app_id": "com.eyestorm.demonpetmaze",
+      "store_url": "https://play.google.com/store/apps/details?id=com.eyestorm.demonpetmaze",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:25.076115Z"
+    },
+    "com.CatSortMatch.sort": {
+      "name": "Cat Sort: Match Connect",
+      "fid": "com.CatSortMatch.sort",
+      "app_id": "com.CatSortMatch.sort",
+      "store_url": "https://play.google.com/store/apps/details?id=com.CatSortMatch.sort",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:26.121445Z"
+    },
+    "com.vorelia.wordlond.lexstack": {
+      "name": "Wordlond Stack Logic",
+      "fid": "com.vorelia.wordlond.lexstack",
+      "app_id": "com.vorelia.wordlond.lexstack",
+      "store_url": "https://play.google.com/store/apps/details?id=com.vorelia.wordlond.lexstack",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:26.873729Z"
+    },
+    "com.x.blockpathescape": {
+      "name": "Block Path Escape",
+      "fid": "com.x.blockpathescape",
+      "app_id": "com.x.blockpathescape",
+      "store_url": "https://play.google.com/store/apps/details?id=com.x.blockpathescape",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:27.404297Z"
+    },
+    "com.flipthecards.kasjdfaf": {
+      "name": "Everyday Memory Game",
+      "fid": "com.flipthecards.kasjdfaf",
+      "app_id": "com.flipthecards.kasjdfaf",
+      "store_url": "https://play.google.com/store/apps/details?id=com.flipthecards.kasjdfaf",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:28.178517Z"
+    },
+    "com.eastsidegames.tpbmatch": {
+      "name": "Trailer Park Boys Match",
+      "fid": "com.eastsidegames.tpbmatch",
+      "app_id": "com.eastsidegames.tpbmatch",
+      "store_url": "https://play.google.com/store/apps/details?id=com.eastsidegames.tpbmatch",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:28.887241Z"
+    },
+    "com.pandorio.mergebazar": {
+      "name": "Merge Bazar",
+      "fid": "com.pandorio.mergebazar",
+      "app_id": "com.pandorio.mergebazar",
+      "store_url": "https://play.google.com/store/apps/details?id=com.pandorio.mergebazar",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:29.568794Z"
+    },
+    "com.treasurepick.spsoql": {
+      "name": "Treasure Pick",
+      "fid": "com.treasurepick.spsoql",
+      "app_id": "com.treasurepick.spsoql",
+      "store_url": "https://play.google.com/store/apps/details?id=com.treasurepick.spsoql",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:30.933339Z"
+    },
+    "com.tdd.sortile": {
+      "name": "Sortile",
+      "fid": "com.tdd.sortile",
+      "app_id": "com.tdd.sortile",
+      "store_url": "https://play.google.com/store/apps/details?id=com.tdd.sortile",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:31.851729Z"
+    },
+    "com.dkg.jigpuzzle": {
+      "name": "Jigsaw Master: Puzzle Game",
+      "fid": "com.dkg.jigpuzzle",
+      "app_id": "com.dkg.jigpuzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.dkg.jigpuzzle",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:32.312111Z"
+    },
+    "com.FeyInteractive.RescueDuck": {
+      "name": "Rescue Duck",
+      "fid": "com.FeyInteractive.RescueDuck",
+      "app_id": "com.FeyInteractive.RescueDuck",
+      "store_url": "https://play.google.com/store/apps/details?id=com.FeyInteractive.RescueDuck",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:32.910601Z"
+    },
+    "com.foldreach.boardabcde": {
+      "name": "Fold Reach",
+      "fid": "com.foldreach.boardabcde",
+      "app_id": "com.foldreach.boardabcde",
+      "store_url": "https://play.google.com/store/apps/details?id=com.foldreach.boardabcde",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:34.043315Z"
+    },
+    "com.glitchgames.miniescapes.infinitypool": {
+      "name": "Mini Escapes: Infinity Pool",
+      "fid": "com.glitchgames.miniescapes.infinitypool",
+      "app_id": "com.glitchgames.miniescapes.infinitypool",
+      "store_url": "https://play.google.com/store/apps/details?id=com.glitchgames.miniescapes.infinitypool",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:34.632521Z"
+    },
+    "com.ExitPortalMaze.oiwekjfdg": {
+      "name": "Exit Portal Maze Game",
+      "fid": "com.ExitPortalMaze.oiwekjfdg",
+      "app_id": "com.ExitPortalMaze.oiwekjfdg",
+      "store_url": "https://play.google.com/store/apps/details?id=com.ExitPortalMaze.oiwekjfdg",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:35.735345Z"
+    },
+    "com.kelimax.app": {
+      "name": "KeliMax - Word Battle Game",
+      "fid": "com.kelimax.app",
+      "app_id": "com.kelimax.app",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kelimax.app",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:36.983875Z"
+    },
+    "il.co.kitapp.daily.crossword": {
+      "name": "תשחץ יומי: תשחצים ומשחקי מילים",
+      "fid": "il.co.kitapp.daily.crossword",
+      "app_id": "il.co.kitapp.daily.crossword",
+      "store_url": "https://play.google.com/store/apps/details?id=il.co.kitapp.daily.crossword",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:38.036289Z"
+    },
+    "com.word.solitaire.journey": {
+      "name": "Word Trails: Word Associations",
+      "fid": "com.word.solitaire.journey",
+      "app_id": "com.word.solitaire.journey",
+      "store_url": "https://play.google.com/store/apps/details?id=com.word.solitaire.journey",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:38.544741Z"
+    },
+    "com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona": {
+      "name": "كلمات متقاطعة - تحدي الأذكياء",
+      "fid": "com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
+      "app_id": "com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
+      "store_url": "https://play.google.com/store/apps/details?id=com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:39.388607Z"
+    },
+    "com.LoomABSoft.SquimpHunt": {
+      "name": "Aces Hunt Match Pop",
+      "fid": "com.LoomABSoft.SquimpHunt",
+      "app_id": "com.LoomABSoft.SquimpHunt",
+      "store_url": "https://play.google.com/store/apps/details?id=com.LoomABSoft.SquimpHunt",
+      "platform": "android",
+      "sent_at": "2026-05-09T15:25:39.999732Z"
     }
   }
 }
