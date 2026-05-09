@@ -120,20 +120,17 @@ def _build_all_games_row(game: dict[str, Any]) -> list[str]:
 
 
 def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
-    """Write scored relevant games to 'Relevant - YYYY-MM-DD' tab.
-
-    Expects flat format: each item has name, publisher, platform, score, mechanic, etc.
-    directly on the dict (no nested 'game' key).
+    """Write portfolio-match games to 'Portfolio Match - YYYY-MM-DD' tab.
 
     Returns the sheet URL on success, None on failure.
     """
     if not scored_games:
-        logger.info("No relevant games to write to Google Sheets.")
+        logger.info("No portfolio-match games to write to Google Sheets.")
         return None
 
     try:
         spreadsheet = _load_spreadsheet()
-        tab_name = f"Relevant - {datetime.utcnow().strftime('%Y-%m-%d')}"
+        tab_name = f"Portfolio Match - {datetime.utcnow().strftime('%Y-%m-%d')}"
         headers = [
             "Game Name",
             "Developer",
@@ -141,9 +138,9 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
             "Country",
             "Release Date",
             "Total Installs",
-            "AI Score",
+            "Score",
             "Mechanic",
-            "AI Reason",
+            "Reason",
             "Store URL",
         ]
         worksheet = _get_or_create_worksheet(
@@ -162,25 +159,25 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
         )
         rows = [_build_relevant_row(item) for item in sorted_games]
         worksheet.append_rows(rows, value_input_option="RAW")
-        logger.info("Wrote %d relevant games to sheet tab '%s'.", len(rows), tab_name)
+        logger.info("Wrote %d portfolio-match games to sheet tab '%s'.", len(rows), tab_name)
         return spreadsheet.url
     except Exception as exc:
-        logger.error("Failed to write relevant games to Google Sheets: %s", exc)
+        logger.error("Failed to write portfolio-match games to Google Sheets: %s", exc)
         return None
 
 
 def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
-    """Write ALL fetched games (iOS + Android, no filter) to 'All Games - YYYY-MM-DD' tab.
+    """Write ALL fetched games (iOS + Android, no filter) to 'Scanned - YYYY-MM-DD' tab.
 
     Sorted by total installs descending. Never crashes — logs errors.
     """
     if not games:
-        logger.info("No fetched games to write to all-games sheet.")
+        logger.info("No fetched games to write to scanned-games sheet.")
         return
 
     try:
         spreadsheet = _load_spreadsheet()
-        tab_name = f"All Games - {datetime.utcnow().strftime('%Y-%m-%d')}"
+        tab_name = f"Scanned - {datetime.utcnow().strftime('%Y-%m-%d')}"
         headers = [
             "Game Name",
             "Developer",
@@ -207,7 +204,7 @@ def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
         rows = [_build_all_games_row(game) for game in sorted_games]
         worksheet.append_rows(rows, value_input_option="RAW")
         logger.info(
-            "Wrote %d total games to sheet tab '%s'.", len(rows), tab_name
+            "Wrote %d total scanned games to sheet tab '%s'.", len(rows), tab_name
         )
     except Exception as exc:
-        logger.error("Failed to write all games to Google Sheets: %s", exc)
+        logger.error("Failed to write scanned games to Google Sheets: %s", exc)
