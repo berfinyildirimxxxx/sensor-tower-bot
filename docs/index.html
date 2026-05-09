@@ -352,9 +352,9 @@ async function loadData() {
 
     document.getElementById('stats').innerHTML = `
       <div class="stat">
-        <div class="stat-label">Scanned Today</div>
+        <div class="stat-label">Casual Games Scanned Today</div>
         <div class="stat-value">${totalToday.toLocaleString()}</div>
-        <div class="stat-sub">games matching base criteria</div>
+        <div class="stat-sub">games matching casual criteria</div>
       </div>
       <div class="stat">
         <div class="stat-label">iOS / Android</div>
@@ -364,12 +364,12 @@ async function loadData() {
       <div class="stat">
         <div class="stat-label">Portfolio Match</div>
         <div class="stat-value">${relevantToday}</div>
-        <div class="stat-sub">fit Agave's mechanics</div>
+        <div class="stat-sub">fit Agave's portfolio</div>
       </div>
       <div class="stat">
         <div class="stat-label">On Radar (${retentionDays}d)</div>
         <div class="stat-value">${onSite}</div>
-        <div class="stat-sub">cumulative unique games</div>
+        <div class="stat-sub">cumulative relevant games</div>
       </div>
     `;
 
