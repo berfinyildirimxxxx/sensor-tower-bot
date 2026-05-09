@@ -1431,12 +1431,14 @@ document.getElementById('searchBox').addEventListener('input', e => {
   render();
 });
 
-function bindPills(containerId, key, parser) {
+function bindPills(containerId, key, datasetKey, parser) {
   document.querySelectorAll(`#${containerId} .pill`).forEach(p => {
     p.addEventListener('click', () => {
       document.querySelectorAll(`#${containerId} .pill`).forEach(x => x.classList.remove('active'));
       p.classList.add('active');
-      filters[key] = parser ? parser(p.dataset[key]) : p.dataset[key];
+      const rawValue = p.dataset[datasetKey];
+      filters[key] = parser ? parser(rawValue) : rawValue;
+      console.log(`Filter changed: ${key} = ${filters[key]} (raw: ${rawValue})`);
       if (containerId === 'dateFilter') {
         filters.specificDate = '';
         document.getElementById('datePicker').value = '';
@@ -1447,11 +1449,11 @@ function bindPills(containerId, key, parser) {
   });
 }
 
-bindPills('platformFilter', 'platform');
-bindPills('scoreFilter', 'minScore', v => parseInt(v, 10));
-bindPills('installsFilter', 'minInstalls', v => parseInt(v, 10));
-bindPills('dateFilter', 'days', v => parseInt(v, 10));
-bindPills('sortFilter', 'sort');
+bindPills('platformFilter', 'platform', 'platform');
+bindPills('scoreFilter', 'minScore', 'score', v => parseInt(v, 10) || 0);
+bindPills('installsFilter', 'minInstalls', 'installs', v => parseInt(v, 10) || 0);
+bindPills('dateFilter', 'days', 'days', v => parseInt(v, 10) || 0);
+bindPills('sortFilter', 'sort', 'sort');
 
 document.getElementById('datePicker').addEventListener('change', e => {
   filters.specificDate = e.target.value;
