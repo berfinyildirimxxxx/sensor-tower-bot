@@ -142,40 +142,28 @@ def send_summary_message(
     ios_fetched: int = 0,
     android_fetched: int = 0,
 ) -> bool:
-    """Short, clear daily summary — one block, scannable."""
+    """Daily summary — each stat on its own line."""
 
-    # Line 1: title
-    title = f" *Daily Casual Game Scan  {run_date}*"
+    lines = [f"📊 *Daily Casual Game Scan — {run_date}*", ""]
 
-    # Line 2: the three key numbers in one row
-    stats_parts = []
     if total_fetched > 0:
-        stats_parts.append(f"🔍 *{total_fetched:,}* casual games scanned")
+        lines.append(f"🔍 *{total_fetched:,}* casual games scanned")
     if relevant_count > 0:
-        stats_parts.append(f" *{relevant_count}* 🎯 portfolio match")
-    stats_parts.append(f"✅ *{game_count}* New Today")
-    stats_line = " · ".join(stats_parts)
+        lines.append(f"🎯 *{relevant_count}* portfolio match")
+    lines.append(f"🆕 *{game_count}* new today")
 
-    # Line 3: platform breakdown (small, italic)
-    platform_line = ""
     if ios_fetched or android_fetched:
-        platform_line = f"_🍎 iOS: {ios_fetched:,} · 🤖 Android: {android_fetched:,}_"
+        lines.append("")
+        lines.append(f"🍎 iOS: *{ios_fetched:,}*")
+        lines.append(f"🤖 Android: *{android_fetched:,}*")
 
-    # Line 4: links
-    links = []
+    lines.append("")
     if sheet_url:
-        links.append(f"📁 <{sheet_url}|Google Sheet>")
+        lines.append(f"📁 <{sheet_url}|Google Sheet>")
     web_url = "https://berfinyildirimxxxx.github.io/sensor-tower-bot"
-    links.append(f"🌐 <{web_url}|Radar Dashboard>")
-    links_line = " · ".join(links)
-
-    # Combine
-    text_parts = [title, stats_line]
-    if platform_line:
-        text_parts.append(platform_line)
-    text_parts.append(links_line)
+    lines.append(f"🌐 <{web_url}|Radar Dashboard>")
 
     blocks = [
-        {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(text_parts)}},
+        {"type": "section", "text": {"type": "mrkdwn", "text": "\n".join(lines)}},
     ]
     return _post_blocks(blocks)
