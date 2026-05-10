@@ -2879,6 +2879,174 @@
       "store_url": "https://play.google.com/store/apps/details?id=com.LoomABSoft.SquimpHunt",
       "platform": "android",
       "sent_at": "2026-05-09T15:25:39.999732Z"
+    },
+    "6761172064": {
+      "name": "Want to Borrow the Manga",
+      "fid": "6761172064",
+      "app_id": "6761172064",
+      "store_url": "https://apps.apple.com/app/id6761172064",
+      "platform": "ios",
+      "sent_at": "2026-05-10T16:16:20.056656Z"
+    },
+    "6759790324": {
+      "name": "Color Man Puzzle",
+      "fid": "6759790324",
+      "app_id": "6759790324",
+      "store_url": "https://apps.apple.com/app/id6759790324",
+      "platform": "ios",
+      "sent_at": "2026-05-10T16:16:22.453451Z"
+    },
+    "6761248786": {
+      "name": "Fairytale Jigsaw Puzzles",
+      "fid": "6761248786",
+      "app_id": "6761248786",
+      "store_url": "https://apps.apple.com/app/id6761248786",
+      "platform": "ios",
+      "sent_at": "2026-05-10T16:16:25.625625Z"
+    },
+    "6760826208": {
+      "name": "Grid Patch: Logic Puzzle",
+      "fid": "6760826208",
+      "app_id": "6760826208",
+      "store_url": "https://apps.apple.com/app/id6760826208",
+      "platform": "ios",
+      "sent_at": "2026-05-10T16:16:28.546852Z"
+    },
+    "6755419642": {
+      "name": "Vanished Puzzle Quest",
+      "fid": "6755419642",
+      "app_id": "6755419642",
+      "store_url": "https://apps.apple.com/app/id6755419642",
+      "platform": "ios",
+      "sent_at": "2026-05-10T16:16:29.383917Z"
+    },
+    "com.midnight.bbq.lady.puzzle": {
+      "name": "Midnight BBQ: Heat Rush",
+      "fid": "com.midnight.bbq.lady.puzzle",
+      "app_id": "com.midnight.bbq.lady.puzzle",
+      "store_url": "https://play.google.com/store/apps/details?id=com.midnight.bbq.lady.puzzle",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:30.732079Z"
+    },
+    "com.kite.pixelmaze": {
+      "name": "Pixel Maze",
+      "fid": "com.kite.pixelmaze",
+      "app_id": "com.kite.pixelmaze",
+      "store_url": "https://play.google.com/store/apps/details?id=com.kite.pixelmaze",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:31.390688Z"
+    },
+    "com.zen.jigsaw.puzzles": {
+      "name": "Peaceful Jigsaw – Puzzle Game",
+      "fid": "com.zen.jigsaw.puzzles",
+      "app_id": "com.zen.jigsaw.puzzles",
+      "store_url": "https://play.google.com/store/apps/details?id=com.zen.jigsaw.puzzles",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:31.933954Z"
+    },
+    "com.oddlatent.tilewisp": {
+      "name": "Tile Wisp",
+      "fid": "com.oddlatent.tilewisp",
+      "app_id": "com.oddlatent.tilewisp",
+      "store_url": "https://play.google.com/store/apps/details?id=com.oddlatent.tilewisp",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:33.009680Z"
+    },
+    "com.casual.puzzle.level.snake.jam": {
+      "name": "Snake Block Jam",
+      "fid": "com.casual.puzzle.level.snake.jam",
+      "app_id": "com.casual.puzzle.level.snake.jam",
+      "store_url": "https://play.google.com/store/apps/details?id=com.casual.puzzle.level.snake.jam",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:33.536652Z"
+    },
+    "com.Lsvg.Colorful": {
+      "name": "58H VeletRush",
+      "fid": "com.Lsvg.Colorful",
+      "app_id": "com.Lsvg.Colorful",
+      "store_url": "https://play.google.com/store/apps/details?id=com.Lsvg.Colorful",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:34.870961Z"
+    },
+    "com.candycountquest.game": {
+      "name": "Candy Count Quest",
+      "fid": "com.candycountquest.game",
+      "app_id": "com.candycountquest.game",
+      "store_url": "https://play.google.com/store/apps/details?id=com.candycountquest.game",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:36.073594Z"
+    },
+    "com.masterpiece.mpga": {
+      "name": "Piece Master Game",
+      "fid": "com.masterpiece.mpga",
+      "app_id": "com.masterpiece.mpga",
+      "store_url": "https://play.google.com/store/apps/details?id=com.masterpiece.mpga",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:37.170145Z"
+    },
+    "com.geniusgames.al": {
+      "name": "Fruits Spin Reels",
+      "fid": "com.geniusgames.al",
+      "app_id": "com.geniusgames.al",
+      "store_url": "https://play.google.com/store/apps/details?id=com.geniusgames.al",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:38.202262Z"
+    },
+    "com.suleymancakal.kelime_oyunu": {
+      "name": "Kelime Örgüsü: Kelime Tamamla",
+      "fid": "com.suleymancakal.kelime_oyunu",
+      "app_id": "com.suleymancakal.kelime_oyunu",
+      "store_url": "https://play.google.com/store/apps/details?id=com.suleymancakal.kelime_oyunu",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:39.034274Z"
+    },
+    "com.wanpasfas.nkytlgk": {
+      "name": "Grazing Field Sweep",
+      "fid": "com.wanpasfas.nkytlgk",
+      "app_id": "com.wanpasfas.nkytlgk",
+      "store_url": "https://play.google.com/store/apps/details?id=com.wanpasfas.nkytlgk",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:40.137884Z"
+    },
+    "com.mildfactory.look": {
+      "name": "LOOK 脱出ゲーム",
+      "fid": "com.mildfactory.look",
+      "app_id": "com.mildfactory.look",
+      "store_url": "https://play.google.com/store/apps/details?id=com.mildfactory.look",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:41.119393Z"
+    },
+    "appculturequizzcom.wpapp": {
+      "name": "Culture Quizz",
+      "fid": "appculturequizzcom.wpapp",
+      "app_id": "appculturequizzcom.wpapp",
+      "store_url": "https://play.google.com/store/apps/details?id=appculturequizzcom.wpapp",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:42.404421Z"
+    },
+    "com.organizer.kelimetahmin": {
+      "name": "Hintio Word - Kelime Tahmin",
+      "fid": "com.organizer.kelimetahmin",
+      "app_id": "com.organizer.kelimetahmin",
+      "store_url": "https://play.google.com/store/apps/details?id=com.organizer.kelimetahmin",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:43.099411Z"
+    },
+    "in.playsimple.wordconnect.association.dt": {
+      "name": "2026 Word Connect Association",
+      "fid": "in.playsimple.wordconnect.association.dt",
+      "app_id": "in.playsimple.wordconnect.association.dt",
+      "store_url": "https://play.google.com/store/apps/details?id=in.playsimple.wordconnect.association.dt",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:44.032701Z"
+    },
+    "com.stabile.lafortunagiraADV": {
+      "name": "La Fortuna Gira: Ruota Quiz IA",
+      "fid": "com.stabile.lafortunagiraADV",
+      "app_id": "com.stabile.lafortunagiraADV",
+      "store_url": "https://play.google.com/store/apps/details?id=com.stabile.lafortunagiraADV",
+      "platform": "android",
+      "sent_at": "2026-05-10T16:16:45.007335Z"
     }
   }
 }
