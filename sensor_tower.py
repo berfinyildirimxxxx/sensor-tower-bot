@@ -262,6 +262,47 @@ def _fetch_metadata(
 
 
 
+def _fetch_taxonomy(
+    platform: str, app_ids: list[str], auth_token: str
+) -> dict[str, dict[str, Any]]:
+    taxonomy_by_id: dict[str, dict[str, Any]] = {}
+    url = f"{BASE_URL}/v1/{platform}/apps/taxonomy"
+    for batch in _chunked(app_ids, METADATA_BATCH_SIZE):
+        params: dict[str, Any] = {
+            "auth_token": auth_token,
+            "app_ids[]": batch,
+        }
+        data = _get_json(url, params)
+        if data is None:
+            continue
+        logger.info(
+            "taxonomy platform=%s batch_size=%d: type=%s preview=%s",
+            platform, len(batch), type(data).__name__,
+            str(data)[:300],
+        )
+        items: list[Any] = []
+        if isinstance(data, list):
+            items = data
+        elif isinstance(data, dict):
+            for key in ("apps", "data", "results"):
+                if isinstance(data.get(key), list):
+                    items = data[key]
+                    break
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            raw_id = (
+                item.get("app_id") or item.get("aid")
+                or item.get("id") or item.get("package_name")
+            )
+            if raw_id is None:
+                continue
+            intel_data = item.get("game_intel_data") or item
+            taxonomy_by_id[str(raw_id)] = intel_data
+    logger.info("taxonomy complete platform=%s: %d apps.", platform, len(taxonomy_by_id))
+    return taxonomy_by_id
+
+
 def _combine_game_data(
     platform: str,
     app_id: str,
@@ -354,7 +395,10 @@ def _combine_game_data(
         "installs_last_day": total_installs,
         "country": str(installs.get("country", "WW") or "WW"),
         "launch_date": launch_date,
-
+        "intel_category": intel_category,
+        "intel_genre": intel_genre,
+        "intel_sub_genre": intel_sub_genre,
+        "intel_theme": intel_theme,
     }
 
 
@@ -451,14 +495,21 @@ def fetch_new_games(
             logger.warning("No metadata for platform=%s.", platform)
             continue
 
+        taxonomy_by_id = _fetch_taxonomy(
+            platform=platform,
+            app_ids=surviving_ids,
+            auth_token=config.sensor_tower_api_key,
+        )
+
         for app_id in surviving_ids:
             metadata = metadata_by_id.get(app_id)
             installs = install_map.get(app_id)
             if metadata is None or installs is None:
                 continue
 
+            intel = taxonomy_by_id.get(app_id)
             game_data = _combine_game_data(
-                platform, app_id, installs, metadata,
+                platform, app_id, installs, metadata, intel=intel,
             )
 
             launch_raw = game_data.get("launch_date", "")
