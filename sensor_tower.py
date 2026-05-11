@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 import logging
+import threading
 import time
 from typing import Any
 from urllib.parse import urlencode
@@ -48,6 +49,7 @@ APP_IDS_BATCH_SIZE = 50
 METADATA_BATCH_SIZE = 100
 
 _last_request_time: float = 0.0
+_rate_lock = threading.Lock()
 
 
 def _chunked(items: list[str], size: int) -> list[list[str]]:
@@ -68,11 +70,12 @@ def _build_log_url(url: str, params: dict[str, Any]) -> str:
 def _throttled_get(url: str, params: dict[str, Any]) -> requests.Response:
     global _last_request_time
     min_interval = 1.0 / MAX_REQUESTS_PER_SECOND
-    elapsed = time.monotonic() - _last_request_time
-    if elapsed < min_interval:
-        time.sleep(min_interval - elapsed)
+    with _rate_lock:
+        elapsed = time.monotonic() - _last_request_time
+        if elapsed < min_interval:
+            time.sleep(min_interval - elapsed)
+        _last_request_time = time.monotonic()
     response = requests.get(url, params=params, timeout=30)
-    _last_request_time = time.monotonic()
     usage_count = response.headers.get("x-api-usage-count")
     usage_limit = response.headers.get("x-api-usage-limit")
     if usage_count is not None:
@@ -405,11 +408,120 @@ def _combine_game_data(
 
 
 
+def _fetch_platform_games(
+    platform: str,
+    category_ids: list[str],
+    release_start_date: str,
+    install_end_date: str,
+    cutoff_date: Any,
+    max_installs: int | None,
+    auth_token: str,
+) -> list[dict[str, Any]]:
+    platform_min = MIN_INSTALLS.get(platform, 500)
+    platform_app_ids: list[str] = []
+    seen_app_ids: set[str] = set()
+
+    unique_category_ids = list(dict.fromkeys(cat.lower() for cat in category_ids))
+
+    for category_id in unique_category_ids:
+        app_ids = _fetch_app_ids_for_category(
+            platform=platform,
+            category_id=category_id,
+            start_date=release_start_date,
+            auth_token=auth_token,
+        )
+        for app_id in app_ids:
+            if app_id not in seen_app_ids:
+                seen_app_ids.add(app_id)
+                platform_app_ids.append(app_id)
+
+    if not platform_app_ids:
+        logger.info("No app IDs found for platform=%s.", platform)
+        return []
+
+    logger.info("Platform=%s: %d unique app IDs.", platform, len(platform_app_ids))
+
+    install_map = _fetch_install_totals(
+        platform=platform,
+        app_ids=platform_app_ids,
+        start_date=release_start_date,
+        end_date=install_end_date,
+        auth_token=auth_token,
+    )
+
+    if not install_map:
+        logger.warning("No install data for platform=%s.", platform)
+        return []
+
+    surviving_ids: list[str] = []
+    below_threshold = above_threshold = 0
+    for app_id, install_data in install_map.items():
+        total = int(install_data.get("installs_total", 0) or 0)
+        if total < platform_min:
+            below_threshold += 1
+            continue
+        if max_installs is not None and total > max_installs:
+            above_threshold += 1
+            continue
+        surviving_ids.append(app_id)
+
+    logger.info(
+        "Platform=%s: %d passed filter (below=%d above_cap=%d).",
+        platform, len(surviving_ids), below_threshold, above_threshold,
+    )
+
+    if not surviving_ids:
+        return []
+
+    metadata_by_id = _fetch_metadata(
+        platform=platform,
+        app_ids=surviving_ids,
+        auth_token=auth_token,
+    )
+
+    if not metadata_by_id:
+        logger.warning("No metadata for platform=%s.", platform)
+        return []
+
+    taxonomy_by_id = _fetch_taxonomy(
+        platform=platform,
+        app_ids=surviving_ids,
+        auth_token=auth_token,
+    )
+
+    games: list[dict[str, Any]] = []
+    for app_id in surviving_ids:
+        metadata = metadata_by_id.get(app_id)
+        installs = install_map.get(app_id)
+        if metadata is None or installs is None:
+            continue
+
+        intel = taxonomy_by_id.get(app_id)
+        game_data = _combine_game_data(
+            platform, app_id, installs, metadata, intel=intel,
+        )
+
+        launch_raw = game_data.get("launch_date", "")
+        if launch_raw:
+            try:
+                launch_date = datetime.fromisoformat(str(launch_raw).split("T")[0]).date()
+                if launch_date < cutoff_date:
+                    continue
+            except ValueError:
+                pass
+
+        games.append(game_data)
+
+    return games
+
+
 def fetch_new_games(
     max_installs: int | None = 550,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
     """Fetch games released in last N days with install thresholds."""
+    import concurrent.futures
+
     try:
         config = load_config()
     except RuntimeError as exc:
@@ -425,108 +537,39 @@ def fetch_new_games(
         release_start_date, install_end_date, max_installs,
     )
 
-    results: list[dict[str, Any]] = []
+    def _fetch(args: tuple) -> list[dict[str, Any]]:
+        platform, category_ids = args
+        return _fetch_platform_games(
+            platform=platform,
+            category_ids=category_ids,
+            release_start_date=release_start_date,
+            install_end_date=install_end_date,
+            cutoff_date=cutoff_date,
+            max_installs=max_installs,
+            auth_token=config.sensor_tower_api_key,
+        )
+
+    all_games: list[dict[str, Any]] = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+        futures = {
+            executor.submit(_fetch, (platform, category_ids)): platform
+            for platform, category_ids in PUZZLE_CATEGORY_IDS.items()
+        }
+        for future in concurrent.futures.as_completed(futures):
+            platform = futures[future]
+            try:
+                all_games.extend(future.result())
+            except Exception as exc:
+                logger.error("Platform=%s fetch failed: %s", platform, exc)
+
     seen_store_urls: set[str] = set()
-
-    for platform, category_ids in PUZZLE_CATEGORY_IDS.items():
-        platform_min = MIN_INSTALLS.get(platform, 500)
-        platform_app_ids: list[str] = []
-        seen_app_ids: set[str] = set()
-
-        unique_category_ids = list(dict.fromkeys(cat.lower() for cat in category_ids))
-
-        for category_id in unique_category_ids:
-            app_ids = _fetch_app_ids_for_category(
-                platform=platform,
-                category_id=category_id,
-                start_date=release_start_date,
-                auth_token=config.sensor_tower_api_key,
-            )
-            for app_id in app_ids:
-                if app_id not in seen_app_ids:
-                    seen_app_ids.add(app_id)
-                    platform_app_ids.append(app_id)
-
-        if not platform_app_ids:
-            logger.info("No app IDs found for platform=%s.", platform)
+    results: list[dict[str, Any]] = []
+    for game in all_games:
+        store_url = game.get("store_url", "")
+        if store_url in seen_store_urls:
             continue
-
-        logger.info("Platform=%s: %d unique app IDs.", platform, len(platform_app_ids))
-
-        install_map = _fetch_install_totals(
-            platform=platform,
-            app_ids=platform_app_ids,
-            start_date=release_start_date,
-            end_date=install_end_date,
-            auth_token=config.sensor_tower_api_key,
-        )
-
-        if not install_map:
-            logger.warning("No install data for platform=%s.", platform)
-            continue
-
-        surviving_ids: list[str] = []
-        below_threshold = above_threshold = 0
-        for app_id, install_data in install_map.items():
-            total = int(install_data.get("installs_total", 0) or 0)
-            if total < platform_min:
-                below_threshold += 1
-                continue
-            if max_installs is not None and total > max_installs:
-                above_threshold += 1
-                continue
-            surviving_ids.append(app_id)
-
-        logger.info(
-            "Platform=%s: %d passed filter (below=%d above_cap=%d).",
-            platform, len(surviving_ids), below_threshold, above_threshold,
-        )
-
-        if not surviving_ids:
-            continue
-
-        metadata_by_id = _fetch_metadata(
-            platform=platform,
-            app_ids=surviving_ids,
-            auth_token=config.sensor_tower_api_key,
-        )
-
-        if not metadata_by_id:
-            logger.warning("No metadata for platform=%s.", platform)
-            continue
-
-        taxonomy_by_id = _fetch_taxonomy(
-            platform=platform,
-            app_ids=surviving_ids,
-            auth_token=config.sensor_tower_api_key,
-        )
-
-        for app_id in surviving_ids:
-            metadata = metadata_by_id.get(app_id)
-            installs = install_map.get(app_id)
-            if metadata is None or installs is None:
-                continue
-
-            intel = taxonomy_by_id.get(app_id)
-            game_data = _combine_game_data(
-                platform, app_id, installs, metadata, intel=intel,
-            )
-
-            launch_raw = game_data.get("launch_date", "")
-            if launch_raw:
-                try:
-                    launch_date = datetime.fromisoformat(str(launch_raw).split("T")[0]).date()
-                    if launch_date < cutoff_date:
-                        continue
-                except ValueError:
-                    pass
-
-            store_url = game_data.get("store_url", "")
-            if store_url in seen_store_urls:
-                continue
-            seen_store_urls.add(store_url)
-
-            results.append(game_data)
+        seen_store_urls.add(store_url)
+        results.append(game)
 
     logger.info("Total games fetched: %d", len(results))
     return results
