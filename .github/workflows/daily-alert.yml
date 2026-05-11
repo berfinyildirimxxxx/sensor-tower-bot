@@ -21,6 +21,7 @@ jobs:
       GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
       GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SENSORTOWER_SESSION: ${{ secrets.SENSORTOWER_SESSION }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
