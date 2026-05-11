@@ -261,44 +261,6 @@ def _fetch_metadata(
     return metadata_by_id
 
 
-def _fetch_game_intel(
-    platform: str, app_ids: list[str], auth_token: str
-) -> dict[str, dict[str, Any]]:
-    """Fetch Sensor Tower game_intel_data (genre taxonomy) via app.sensortower.com.
-
-    Returns a dict of app_id → game_intel_data containing:
-      - sub_genre: {"name": "Block"} / {"name": "Match-3"} etc.
-      - genre:     {"name": "Puzzle"}
-      - category:  {"name": "Lifestyle & Puzzle"}
-      - theme:     {"name": "Bubbles / Tiles / Colors"}
-
-    Only iOS app IDs work for this endpoint. Android-only apps are skipped.
-    Rate-limited to 3 req/sec to avoid hitting app.sensortower.com limits.
-    """
-    intel: dict[str, dict[str, Any]] = {}
-    # Android package names won't work — skip them
-    ios_ids = [aid for aid in app_ids if aid.isdigit()]
-    if not ios_ids:
-        return intel
-
-    logger.info("Fetching game_intel for %d iOS apps...", len(ios_ids))
-    for i, app_id in enumerate(ios_ids):
-        url = f"{APP_URL}/api/ios/apps/{app_id}"
-        params: dict[str, Any] = {"auth_token": auth_token, "country": "US"}
-        try:
-            data = _get_json(url, params)
-            if isinstance(data, dict) and "game_intel_data" in data:
-                intel[app_id] = data["game_intel_data"]
-        except Exception as exc:
-            logger.warning("game_intel failed for app_id=%s: %s", app_id, exc)
-        # Rate limit: 3 req/sec for app.sensortower.com
-        time.sleep(0.35)
-        if (i + 1) % 50 == 0:
-            logger.info("game_intel progress: %d/%d", i + 1, len(ios_ids))
-
-    logger.info("game_intel complete: %d/%d apps have taxonomy data.", len(intel), len(ios_ids))
-    return intel
-
 
 def _combine_game_data(
     platform: str,
@@ -392,12 +354,11 @@ def _combine_game_data(
         "installs_last_day": total_installs,
         "country": str(installs.get("country", "WW") or "WW"),
         "launch_date": launch_date,
-        # Taxonomy fields directly accessible on the game object
-        "intel_sub_genre": intel_sub_genre,
-        "intel_genre": intel_genre,
-        "intel_category": intel_category,
-        "intel_theme": intel_theme,
+
     }
+
+
+
 
 
 def fetch_new_games(
@@ -490,18 +451,8 @@ def fetch_new_games(
             logger.warning("No metadata for platform=%s.", platform)
             continue
 
-        # Fetch game taxonomy (sub_genre, genre, theme) — iOS only
-        intel_by_id: dict[str, dict[str, Any]] = {}
-        if platform == "ios":
-            try:
-                intel_by_id = _fetch_game_intel(
-                    platform=platform,
-                    app_ids=surviving_ids,
-                    auth_token=config.sensor_tower_api_key,
-                )
-                logger.info("game_intel: %d apps have taxonomy.", len(intel_by_id))
-            except Exception as exc:
-                logger.warning("game_intel fetch failed: %s", exc)
+        # Fetch game taxonomy via session cookie (enterprise)
+        intel_by_id = _fetch_game_intel(app_ids=surviving_ids)
 
         for app_id in surviving_ids:
             metadata = metadata_by_id.get(app_id)
