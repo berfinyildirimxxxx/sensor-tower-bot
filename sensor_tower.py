@@ -19,10 +19,24 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
     "ios": [
         "7012",  # Games/Puzzle
         "7003",  # Games/Casual
+        "7019",  # Games/Word
+        "7004",  # Games/Board
+        "7009",  # Games/Family
+        "7018",  # Games/Trivia
+
     ],
     "android": [
         "game_puzzle",
         "game_casual",
+        "game_word",
+        "game_board",
+        "game_trivia",
+        "game_arcade",
+        "game_card",
+        "game_educational",
+        "game_family",
+
+        
     ],
 }
 
@@ -555,7 +569,7 @@ def _fetch_platform_games(
 
 
 def fetch_new_games(
-    max_installs: int | None = 550,
+    max_installs: int | None = 5000,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
     """Fetch games released in last N days with install thresholds."""
