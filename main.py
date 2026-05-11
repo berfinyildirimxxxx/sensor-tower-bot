@@ -187,9 +187,15 @@ def main() -> int:
     logger.info("After cross-platform merge: %d unique games", len(merged))
 
     # 3) Score everything — no threshold filter
+    # If Sensor Tower provides intel_sub_genre, use it as mechanic (more accurate)
     scored: list[dict[str, Any]] = []
     for g in merged:
         score, mechanic, reason = score_game(g)
+        # Override mechanic with Sensor Tower's own sub_genre if available
+        intel_sub = str(g.get("intel_sub_genre") or "").strip()
+        if intel_sub and intel_sub != "N/A":
+            mechanic = intel_sub
+            reason = f"ST sub_genre: {intel_sub}; {reason}"
         scored.append({**g, "score": score, "mechanic": mechanic, "reason": reason})
 
     logger.info("Scored %d games", len(scored))
