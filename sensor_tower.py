@@ -36,13 +36,13 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
     ],
 }
 
-# Platform-specific install thresholds
 MIN_INSTALLS: dict[str, int] = {
     "ios": 500,
     "android": 500,
 }
 
 BASE_URL = "https://api.sensortower.com"
+APP_URL = "https://app.sensortower.com"
 MAX_REQUESTS_PER_SECOND = 5.0
 APP_IDS_BATCH_SIZE = 50
 METADATA_BATCH_SIZE = 100
@@ -51,20 +51,18 @@ _last_request_time: float = 0.0
 
 
 def _chunked(items: list[str], size: int) -> list[list[str]]:
-    return [items[index : index + size] for index in range(0, len(items), size)]
+    return [items[i: i + size] for i in range(0, len(items), size)]
 
 
 def _sanitize_params(params: dict[str, Any]) -> dict[str, Any]:
-    sanitized = dict(params)
-    sanitized.pop("auth_token", None)
-    return sanitized
+    s = dict(params)
+    s.pop("auth_token", None)
+    return s
 
 
 def _build_log_url(url: str, params: dict[str, Any]) -> str:
-    sanitized = _sanitize_params(params)
-    if not sanitized:
-        return url
-    return f"{url}?{urlencode(sanitized, doseq=True)}"
+    s = _sanitize_params(params)
+    return f"{url}?{urlencode(s, doseq=True)}" if s else url
 
 
 def _throttled_get(url: str, params: dict[str, Any]) -> requests.Response:
@@ -96,11 +94,11 @@ def _get_json(url: str, params: dict[str, Any]) -> Any | None:
                 body_preview = exc.response.text[:500]
             except Exception:
                 pass
-        logger.error("Sensor Tower HTTP error for %s status=%s body=%s", log_url, status_code, body_preview)
+        logger.error("ST HTTP error %s status=%s body=%s", log_url, status_code, body_preview)
     except requests.RequestException as exc:
-        logger.error("Sensor Tower request failed for %s error=%s", log_url, exc)
+        logger.error("ST request failed %s error=%s", log_url, exc)
     except ValueError as exc:
-        logger.error("Sensor Tower returned invalid JSON for %s error=%s", log_url, exc)
+        logger.error("ST invalid JSON %s error=%s", log_url, exc)
     return None
 
 
@@ -117,13 +115,13 @@ def _fetch_app_ids_for_category(
     }
     data = _get_json(url, params)
     logger.info(
-        "app_ids response for platform=%s category=%s: type=%s preview=%s",
+        "app_ids platform=%s category=%s: type=%s preview=%s",
         platform, category_id, type(data).__name__,
         str(data)[:300] if data is not None else "None",
     )
     app_ids: list[str] = []
     if isinstance(data, list):
-        app_ids = [str(app_id) for app_id in data if app_id]
+        app_ids = [str(a) for a in data if a]
     elif isinstance(data, dict):
         for key in ("app_ids", "ids", "apps", "data", "results"):
             if key in data and isinstance(data[key], list):
@@ -133,25 +131,15 @@ def _fetch_app_ids_for_category(
                     for item in data[key]
                 ]
                 break
-    logger.info("Category %s on %s: found %d app IDs (start_date=%s)", category_id, platform, len(app_ids), start_date)
-    return [aid for aid in app_ids if aid]
+    logger.info("Category %s on %s: %d app IDs", category_id, platform, len(app_ids))
+    return [a for a in app_ids if a]
 
 
 def _fetch_install_totals(
-    platform: str,
-    app_ids: list[str],
-    start_date: str,
-    end_date: str,
-    auth_token: str,
+    platform: str, app_ids: list[str], start_date: str, end_date: str, auth_token: str,
 ) -> dict[str, dict[str, Any]]:
-    """Fetch CUMULATIVE install totals since release, summed across all countries and days.
-
-    iOS:     returns 'cc' for country, 'iu' for installs — uses countries[]=WW (already summed)
-    Android: returns 'c' for country, 'u' for installs — per country rows, we sum them all
-    """
     install_map: dict[str, dict[str, Any]] = {}
     url = f"{BASE_URL}/v1/{platform}/sales_report_estimates"
-
     batches = _chunked(app_ids, APP_IDS_BATCH_SIZE)
     for batch_idx, batch in enumerate(batches):
         params: dict[str, Any] = {
@@ -161,19 +149,14 @@ def _fetch_install_totals(
             "date_granularity": "daily",
             "app_ids[]": batch,
         }
-        # iOS: WW gives pre-summed worldwide total
-        # Android: no WW support — we get per-country rows and sum ourselves
         if platform == "ios":
             params["countries[]"] = ["WW"]
-
         data = _get_json(url, params)
         logger.info(
             "install_totals platform=%s batch=%d/%d type=%s preview=%s",
-            platform, batch_idx + 1, len(batches),
-            type(data).__name__,
+            platform, batch_idx + 1, len(batches), type(data).__name__,
             str(data)[:200] if data is not None else "None",
         )
-
         if not isinstance(data, list):
             if isinstance(data, dict):
                 for key in ("data", "results", "estimates"):
@@ -181,48 +164,29 @@ def _fetch_install_totals(
                         data = data[key]
                         break
             if not isinstance(data, list):
-                logger.warning(
-                    "Unexpected install response for platform=%s batch=%d; skipping. type=%s",
-                    platform, batch_idx + 1, type(data).__name__,
-                )
+                logger.warning("Unexpected install response platform=%s batch=%d", platform, batch_idx + 1)
                 continue
-
         for row in data:
             if not isinstance(row, dict):
                 continue
-
             app_id = str(row.get("aid") or row.get("app_id") or row.get("id") or "")
             if not app_id:
                 continue
-
-            # iOS uses 'iu', Android uses 'u' — check both
             installs = int(
-                row.get("iu")       # iOS field
-                or row.get("u")     # Android field
-                or row.get("units")
-                or row.get("downloads")
-                or row.get("installs")
-                or 0
+                row.get("iu") or row.get("u") or row.get("units")
+                or row.get("downloads") or row.get("installs") or 0
             )
-            # iOS uses 'cc', Android uses 'c' — check both
             country_code = str(
-                row.get("cc")       # iOS field
-                or row.get("c")     # Android field
-                or row.get("country")
-                or "WW"
+                row.get("cc") or row.get("c") or row.get("country") or "WW"
             )
-
             existing = install_map.setdefault(
-                app_id,
-                {"installs_total": 0, "country": "WW", "top_country_installs": -1},
+                app_id, {"installs_total": 0, "country": "WW", "top_country_installs": -1},
             )
-            # Sum ALL rows — critical for Android which sends one row per country per day
             existing["installs_total"] += installs
             if installs > int(existing["top_country_installs"]):
                 existing["country"] = country_code
                 existing["top_country_installs"] = installs
-
-    logger.info("install_totals complete platform=%s: %d apps with data.", platform, len(install_map))
+    logger.info("install_totals complete platform=%s: %d apps.", platform, len(install_map))
     return install_map
 
 
@@ -244,7 +208,7 @@ def _extract_keywords(raw_value: Any) -> list[str]:
     if isinstance(raw_value, list):
         return [str(item) for item in raw_value if item]
     if isinstance(raw_value, str) and raw_value:
-        return [part.strip() for part in raw_value.split(",") if part.strip()]
+        return [p.strip() for p in raw_value.split(",") if p.strip()]
     return []
 
 
@@ -278,13 +242,13 @@ def _fetch_metadata(
         }
         data = _get_json(url, params)
         logger.info(
-            "metadata response for platform=%s batch_size=%d: type=%s preview=%s",
+            "metadata platform=%s batch_size=%d: type=%s preview=%s",
             platform, len(batch), type(data).__name__,
             str(data)[:300] if data is not None else "None",
         )
         items = _extract_metadata_items(data)
         if not items:
-            logger.warning("Empty or failed metadata batch for platform=%s; skipping.", platform)
+            logger.warning("Empty metadata batch platform=%s", platform)
             continue
         for item in items:
             raw_id = (
@@ -297,20 +261,53 @@ def _fetch_metadata(
     return metadata_by_id
 
 
+def _fetch_game_intel(
+    platform: str, app_ids: list[str], auth_token: str
+) -> dict[str, dict[str, Any]]:
+    """Fetch Sensor Tower game_intel_data (genre taxonomy) via app.sensortower.com.
+
+    Returns a dict of app_id → game_intel_data containing:
+      - sub_genre: {"name": "Block"} / {"name": "Match-3"} etc.
+      - genre:     {"name": "Puzzle"}
+      - category:  {"name": "Lifestyle & Puzzle"}
+      - theme:     {"name": "Bubbles / Tiles / Colors"}
+
+    Only iOS app IDs work for this endpoint. Android-only apps are skipped.
+    Rate-limited to 3 req/sec to avoid hitting app.sensortower.com limits.
+    """
+    intel: dict[str, dict[str, Any]] = {}
+    # Android package names won't work — skip them
+    ios_ids = [aid for aid in app_ids if aid.isdigit()]
+    if not ios_ids:
+        return intel
+
+    logger.info("Fetching game_intel for %d iOS apps...", len(ios_ids))
+    for i, app_id in enumerate(ios_ids):
+        url = f"{APP_URL}/api/ios/apps/{app_id}"
+        params: dict[str, Any] = {"auth_token": auth_token, "country": "US"}
+        try:
+            data = _get_json(url, params)
+            if isinstance(data, dict) and "game_intel_data" in data:
+                intel[app_id] = data["game_intel_data"]
+        except Exception as exc:
+            logger.warning("game_intel failed for app_id=%s: %s", app_id, exc)
+        # Rate limit: 3 req/sec for app.sensortower.com
+        time.sleep(0.35)
+        if (i + 1) % 50 == 0:
+            logger.info("game_intel progress: %d/%d", i + 1, len(ios_ids))
+
+    logger.info("game_intel complete: %d/%d apps have taxonomy data.", len(intel), len(ios_ids))
+    return intel
+
+
 def _combine_game_data(
     platform: str,
     app_id: str,
     installs: dict[str, Any],
     metadata: dict[str, Any],
+    intel: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    category_name = str(
-        metadata.get("category") or metadata.get("primary_genre")
-        or metadata.get("genre") or ""
-    )
-    description = str(
-        metadata.get("description") or metadata.get("app_description")
-        or metadata.get("short_description") or ""
-    )
+    # --- Basic metadata ---
     publisher = str(
         metadata.get("publisher") or metadata.get("publisher_name")
         or metadata.get("developer") or ""
@@ -320,6 +317,27 @@ def _combine_game_data(
         metadata.get("release_date") or metadata.get("first_release_date")
         or metadata.get("published_at") or ""
     )
+
+    # --- Rich description: combine all text fields ---
+    description = " ".join(filter(None, [
+        str(metadata.get("description") or ""),
+        str(metadata.get("short_description") or ""),
+        str(metadata.get("promo_text") or ""),
+        str(metadata.get("subtitle") or ""),
+    ])).strip()
+
+    # --- Category: prefer array form, fall back to string ---
+    raw_cats = metadata.get("categories") or []
+    if isinstance(raw_cats, list) and raw_cats:
+        # numeric IDs are useless, only keep string category names
+        cat_names = [str(c) for c in raw_cats if not str(c).isdigit()]
+        category_name = " ".join(cat_names)
+    else:
+        category_name = str(
+            metadata.get("category") or metadata.get("primary_genre")
+            or metadata.get("genre") or ""
+        )
+
     screenshots = _normalize_screenshots(
         metadata.get("screenshots") or metadata.get("screenshot_urls") or []
     )
@@ -328,18 +346,34 @@ def _combine_game_data(
         metadata.get("subcategories") or metadata.get("genres")
         or metadata.get("genre_names") or []
     )
-    total_installs = int(installs.get("installs_total", 0) or 0)
 
-    # Icon URL — Sensor Tower returns it under various field names depending on platform/version
+    # subtitle as extra subcategory signal
+    subtitle = str(metadata.get("subtitle") or "").strip()
+    if subtitle and subtitle not in subcategories:
+        subcategories = [subtitle] + subcategories
+
+    total_installs = int(installs.get("installs_total", 0) or 0)
     icon_url = str(
-        metadata.get("icon_url")
-        or metadata.get("icon")
-        or metadata.get("app_icon")
-        or metadata.get("icon_url_512")
-        or metadata.get("icon_url_100")
-        or metadata.get("icon_url_60")
-        or ""
+        metadata.get("icon_url") or metadata.get("icon") or metadata.get("app_icon")
+        or metadata.get("icon_url_512") or metadata.get("icon_url_100")
+        or metadata.get("icon_url_60") or ""
     )
+
+    # --- Game Intel (Sensor Tower taxonomy) ---
+    intel = intel or {}
+    intel_category  = str((intel.get("category")  or {}).get("name") or "")
+    intel_genre     = str((intel.get("genre")      or {}).get("name") or "")
+    intel_sub_genre = str((intel.get("sub_genre")  or {}).get("name") or "")
+    intel_theme     = str((intel.get("theme")      or {}).get("name") or "")
+
+    # Inject taxonomy tags into subcategories so relevance.py picks them up
+    taxonomy_tags = [
+        t for t in [intel_sub_genre, intel_genre, intel_category, intel_theme]
+        if t and t != "N/A"
+    ]
+    if taxonomy_tags:
+        # Prepend — highest priority for relevance scoring
+        subcategories = list(dict.fromkeys(taxonomy_tags + subcategories))
 
     return {
         "fid": app_id,
@@ -355,9 +389,14 @@ def _combine_game_data(
         "screenshots": screenshots,
         "icon_url": icon_url,
         "installs_total": total_installs,
-        "installs_last_day": total_installs,  # legacy key
+        "installs_last_day": total_installs,
         "country": str(installs.get("country", "WW") or "WW"),
         "launch_date": launch_date,
+        # Taxonomy fields directly accessible on the game object
+        "intel_sub_genre": intel_sub_genre,
+        "intel_genre": intel_genre,
+        "intel_category": intel_category,
+        "intel_theme": intel_theme,
     }
 
 
@@ -365,16 +404,11 @@ def fetch_new_games(
     max_installs: int | None = 50000,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
-    """Fetch games released in last release_lookback_days with platform-specific install thresholds.
-
-    iOS:     min 500 installs (worldwide, pre-summed by Sensor Tower)
-    Android: min 200 installs (summed across all countries by us)
-    Max:     50,000 installs for both platforms
-    """
+    """Fetch games released in last N days with install thresholds."""
     try:
         config = load_config()
     except RuntimeError as exc:
-        logger.error("Unable to load Sensor Tower configuration: %s", exc)
+        logger.error("Unable to load config: %s", exc)
         return []
 
     cutoff_date = (datetime.utcnow() - timedelta(days=release_lookback_days)).date()
@@ -382,9 +416,8 @@ def fetch_new_games(
     install_end_date = datetime.utcnow().date().isoformat()
 
     logger.info(
-        "Fetching games: release_start=%s install_end=%s ios_min=%d android_min=%d max=%s",
-        release_start_date, install_end_date,
-        MIN_INSTALLS["ios"], MIN_INSTALLS["android"], max_installs,
+        "Fetching games: release_start=%s install_end=%s max=%s",
+        release_start_date, install_end_date, max_installs,
     )
 
     results: list[dict[str, Any]] = []
@@ -410,10 +443,10 @@ def fetch_new_games(
                     platform_app_ids.append(app_id)
 
         if not platform_app_ids:
-            logger.info("No app IDs found for platform=%s in the lookback window.", platform)
+            logger.info("No app IDs found for platform=%s.", platform)
             continue
 
-        logger.info("Platform=%s: collected %d unique app IDs across all categories.", platform, len(platform_app_ids))
+        logger.info("Platform=%s: %d unique app IDs.", platform, len(platform_app_ids))
 
         install_map = _fetch_install_totals(
             platform=platform,
@@ -423,15 +456,12 @@ def fetch_new_games(
             auth_token=config.sensor_tower_api_key,
         )
 
-        logger.info("Platform=%s: install data returned for %d apps.", platform, len(install_map))
-
         if not install_map:
-            logger.warning("No install data found for platform=%s.", platform)
+            logger.warning("No install data for platform=%s.", platform)
             continue
 
         surviving_ids: list[str] = []
-        below_threshold = 0
-        above_threshold = 0
+        below_threshold = above_threshold = 0
         for app_id, install_data in install_map.items():
             total = int(install_data.get("installs_total", 0) or 0)
             if total < platform_min:
@@ -443,12 +473,11 @@ def fetch_new_games(
             surviving_ids.append(app_id)
 
         logger.info(
-            "Platform=%s: %d apps passed install filter (min=%d, below=%d, above_cap=%d).",
-            platform, len(surviving_ids), platform_min, below_threshold, above_threshold,
+            "Platform=%s: %d passed filter (below=%d above_cap=%d).",
+            platform, len(surviving_ids), below_threshold, above_threshold,
         )
 
         if not surviving_ids:
-            logger.info("No apps met the install threshold for platform=%s.", platform)
             continue
 
         metadata_by_id = _fetch_metadata(
@@ -458,8 +487,21 @@ def fetch_new_games(
         )
 
         if not metadata_by_id:
-            logger.warning("No metadata returned for platform=%s.", platform)
+            logger.warning("No metadata for platform=%s.", platform)
             continue
+
+        # Fetch game taxonomy (sub_genre, genre, theme) — iOS only
+        intel_by_id: dict[str, dict[str, Any]] = {}
+        if platform == "ios":
+            try:
+                intel_by_id = _fetch_game_intel(
+                    platform=platform,
+                    app_ids=surviving_ids,
+                    auth_token=config.sensor_tower_api_key,
+                )
+                logger.info("game_intel: %d apps have taxonomy.", len(intel_by_id))
+            except Exception as exc:
+                logger.warning("game_intel fetch failed: %s", exc)
 
         for app_id in surviving_ids:
             metadata = metadata_by_id.get(app_id)
@@ -467,17 +509,16 @@ def fetch_new_games(
             if metadata is None or installs is None:
                 continue
 
-            game_data = _combine_game_data(platform, app_id, installs, metadata)
+            game_data = _combine_game_data(
+                platform, app_id, installs, metadata,
+                intel=intel_by_id.get(app_id),
+            )
 
             launch_raw = game_data.get("launch_date", "")
             if launch_raw:
                 try:
                     launch_date = datetime.fromisoformat(str(launch_raw).split("T")[0]).date()
                     if launch_date < cutoff_date:
-                        logger.debug(
-                            "Skipping %s — launch_date %s older than cutoff %s",
-                            game_data.get("name"), launch_date, cutoff_date,
-                        )
                         continue
                 except ValueError:
                     pass
@@ -489,5 +530,5 @@ def fetch_new_games(
 
             results.append(game_data)
 
-    logger.info("Total games fetched across all platforms: %d", len(results))
+    logger.info("Total games fetched: %d", len(results))
     return results
