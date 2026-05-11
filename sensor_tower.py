@@ -451,9 +451,6 @@ def fetch_new_games(
             logger.warning("No metadata for platform=%s.", platform)
             continue
 
-        # Fetch game taxonomy via session cookie (enterprise)
-        intel_by_id = _fetch_game_intel(app_ids=surviving_ids)
-
         for app_id in surviving_ids:
             metadata = metadata_by_id.get(app_id)
             installs = install_map.get(app_id)
@@ -462,7 +459,6 @@ def fetch_new_games(
 
             game_data = _combine_game_data(
                 platform, app_id, installs, metadata,
-                intel=intel_by_id.get(app_id),
             )
 
             launch_raw = game_data.get("launch_date", "")
