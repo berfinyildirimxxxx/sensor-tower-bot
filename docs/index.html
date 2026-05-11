@@ -332,8 +332,7 @@
   }
   /* Color-coded active pills per group */
   .pills[data-group="platform"] .pill.active { background: var(--purple); border-color: var(--purple); color: white; box-shadow: 0 0 0 3px var(--purple-soft); }
-  .pills[data-group="mechanic"] .pill.active { background: var(--orange); border-color: var(--orange); color: white; box-shadow: 0 0 0 3px var(--orange-soft); }
-  .pills[data-group="score"] .pill.active { background: var(--green); border-color: var(--green); color: white; box-shadow: 0 0 0 3px var(--green-soft); }
+  .pills[data-group="category"] .pill.active { background: var(--orange); border-color: var(--orange); color: white; box-shadow: 0 0 0 3px var(--orange-soft); }
   .pills[data-group="release"] .pill.active { background: var(--amber); border-color: var(--amber); color: white; }
   .pills[data-group="added"] .pill.active { background: var(--pink); border-color: var(--pink); color: white; }
   .pills[data-group="sort"] .pill.active { background: var(--indigo); border-color: var(--indigo); color: white; }
@@ -590,10 +589,10 @@
     </div>
   </section>
 
-  <!-- MECHANIC BAND (horizontal, just below stats) -->
+  <!-- CATEGORY BAND -->
   <section class="mech-band">
-    <div class="mech-band-label">Mechanic</div>
-    <div class="pills" data-group="mechanic" id="mechPills"></div>
+    <div class="mech-band-label">Category</div>
+    <div class="pills" data-group="category" id="categoryPills"></div>
   </section>
 
   <!-- FILTER BAR -->
@@ -616,21 +615,6 @@
           <button class="pill active" data-platform="all">All</button>
           <button class="pill" data-platform="ios">iOS</button>
           <button class="pill" data-platform="android">Android</button>
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <span class="filter-label fl-score">Min Score</span>
-        <div class="pills" data-group="score" id="scorePills">
-          <button class="pill active" data-score="0">All</button>
-          <button class="pill" data-score="0">0</button>
-          <button class="pill" data-score="30">30+</button>
-          <button class="pill" data-score="40">40+</button>
-          <button class="pill" data-score="50">50+</button>
-          <button class="pill" data-score="60">60+</button>
-          <button class="pill" data-score="70">70+</button>
-          <button class="pill" data-score="80">80+</button>
-          <button class="pill" data-score="90">90+</button>
         </div>
       </div>
 
@@ -662,7 +646,6 @@
         <div class="pills" data-group="sort" id="sortPills">
           <button class="pill active" data-sort="installs">Most installs</button>
           <button class="pill" data-sort="added">Newest added</button>
-          <button class="pill" data-sort="score">Highest score</button>
           <button class="pill" data-sort="released">Newest released</button>
         </div>
       </div>
@@ -687,8 +670,7 @@ let allGames = [];
 let dataMeta = {};
 const filters = {
   platform: 'all',
-  mechanic: 'all',
-  minScore: 0,
+  category: 'all',
   release: 'all',
   added: 'all',
   addedDate: null,
@@ -789,7 +771,7 @@ async function loadData() {
     sheetBtn.href = data.sheet_url || SHEET_URL;
     sheetBtn.style.display = '';
 
-    buildMechPills();
+    buildCategoryPills();
     bindFilters();
     render();
   } catch (e) {
@@ -798,32 +780,39 @@ async function loadData() {
   }
 }
 
-// ---------- mechanic pills (auto from data) ----------
-function buildMechPills() {
-  // Only count games with score > 0 for mechanic pills (relevant games only)
-  const counts = new Map();
-  const relevantGames = allGames.filter(g => getScore(g) > 0);
-  relevantGames.forEach(g => {
-    const m = (g.mechanic || 'Other').trim() || 'Other';
-    counts.set(m, (counts.get(m) || 0) + 1);
-  });
-  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+// ---------- category pills (from intel_category in data) ----------
+const CATEGORY_ORDER = ['Puzzle','Casual','Word','Board','Family','Trivia','Arcade','Card','Educational'];
 
-  const container = document.getElementById('mechPills');
+function buildCategoryPills() {
+  const counts = new Map();
+  allGames.forEach(g => {
+    const cat = (g.intel_category || '').trim();
+    if (cat) counts.set(cat, (counts.get(cat) || 0) + 1);
+  });
+
+  // Sort by our predefined order first, then alphabetically for any extras
+  const sorted = [...counts.entries()].sort((a, b) => {
+    const ai = CATEGORY_ORDER.indexOf(a[0]);
+    const bi = CATEGORY_ORDER.indexOf(b[0]);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return a[0].localeCompare(b[0]);
+  });
+
+  const container = document.getElementById('categoryPills');
   container.innerHTML = '';
 
-  // "All" shows everything (including score=0)
   const allBtn = document.createElement('button');
   allBtn.className = 'pill active';
-  allBtn.dataset.mechanic = 'all';
+  allBtn.dataset.category = 'all';
   allBtn.innerHTML = `All <span class="count">${allGames.length}</span>`;
   container.appendChild(allBtn);
 
-  // Each mechanic pill only shows relevant games (score > 0)
   sorted.forEach(([name, count]) => {
     const b = document.createElement('button');
     b.className = 'pill';
-    b.dataset.mechanic = name;
+    b.dataset.category = name;
     b.innerHTML = `${name} <span class="count">${count}</span>`;
     container.appendChild(b);
   });
@@ -839,8 +828,7 @@ function bindFilters() {
       pill.classList.add('active');
       const g = group.dataset.group;
       if (g === 'platform') filters.platform = pill.dataset.platform;
-      if (g === 'mechanic') filters.mechanic = pill.dataset.mechanic;
-      if (g === 'score') filters.minScore = parseInt(pill.dataset.score, 10) || 0;
+      if (g === 'category') filters.category = pill.dataset.category;
       if (g === 'release') filters.release = pill.dataset.release;
       if (g === 'added') { filters.added = pill.dataset.added; filters.addedDate = null; document.getElementById('datePick').value = ''; }
       if (g === 'sort') filters.sort = pill.dataset.sort;
@@ -886,11 +874,7 @@ function setView(v) {
 function applyFilters() {
   return allGames.filter(g => {
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
-    if (filters.mechanic !== 'all') {
-      if ((g.mechanic || 'Other') !== filters.mechanic) return false;
-      if (getScore(g) === 0) return false; // mechanic seçiliyken sadece relevant oyunlar
-    }
-    if (getScore(g) < filters.minScore) return false;
+    if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
 
     if (filters.release !== 'all') {
       const r = daysAgo(g.launch_date);
@@ -919,7 +903,6 @@ function sortGames(games) {
   const s = filters.sort;
   return [...games].sort((a, b) => {
     if (s === 'installs') return getInstalls(b) - getInstalls(a);
-    if (s === 'score') return getScore(b) - getScore(a);
     if (s === 'added') return (b.first_seen || '').localeCompare(a.first_seen || '');
     if (s === 'released') return (b.launch_date || '').localeCompare(a.launch_date || '');
     return 0;
@@ -945,16 +928,15 @@ function render() {
 }
 
 function renderCard(g, i) {
-  const score = getScore(g);
   const installs = getInstalls(g);
   const plats = getPlatforms(g);
   const addLbl = addedLabel(g);
   const isNew = daysAgo(g.first_seen) <= 1;
 
   const iconHtml = g.icon_url
-    ? `<img src="${escapeAttr(g.icon_url)}" alt="" onerror="this.parentNode.innerHTML='${(g.name||'?').charAt(0).toUpperCase()}'; this.parentNode.style.background='${pickIconColor(g.mechanic)}';" />`
+    ? `<img src="${escapeAttr(g.icon_url)}" alt="" onerror="this.parentNode.innerHTML='${(g.name||'?').charAt(0).toUpperCase()}'; this.parentNode.style.background='${pickIconColor(g.intel_category)}';" />`
     : `<span>${(g.name || '?').charAt(0).toUpperCase()}</span>`;
-  const iconStyle = g.icon_url ? '' : `background:${pickIconColor(g.mechanic)};`;
+  const iconStyle = g.icon_url ? '' : `background:${pickIconColor(g.intel_category)};`;
 
   const platformBadges = plats.map(p => {
     const name = String(p.platform || '').toLowerCase();
@@ -976,8 +958,6 @@ function renderCard(g, i) {
       <div class="badges">
         ${platformBadges}
         <span class="badge installs">${fmtInstalls(installs)} installs</span>
-        <span class="badge ${scoreBadgeClass(score)}">${score}/100</span>
-        <span class="badge mechanic">${escapeHtml(g.mechanic || 'Other')}</span>
         ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
         ${g.intel_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
       </div>
@@ -986,16 +966,13 @@ function renderCard(g, i) {
   `;
 }
 
-function pickIconColor(mech) {
+function pickIconColor(cat) {
   const map = {
-    'Match-3': '#dc2626', 'Sort Puzzle': '#7c3aed', 'Hidden Object': '#d97706',
-    'Jigsaw': '#db2777', 'Mahjong': '#0891b2', 'Word': '#16a34a',
-    'Block / Hex': '#2563eb', 'Merge': '#ea580c', 'Escape Room': '#9333ea',
-    'Solitaire': '#0d9488', 'Sudoku / Logic': '#65a30d',
-    'Racing': '#475569', 'Shooter': '#475569', 'Casino': '#475569',
-    'RPG': '#475569', 'Sports': '#475569', 'Other': '#78716c',
+    'Puzzle': '#7c3aed', 'Casual': '#ea580c', 'Word': '#16a34a',
+    'Board': '#0891b2', 'Family': '#db2777', 'Trivia': '#d97706',
+    'Arcade': '#dc2626', 'Card': '#0d9488', 'Educational': '#2563eb',
   };
-  return map[mech] || '#78716c';
+  return map[cat] || '#78716c';
 }
 
 // ---------- modal ----------
@@ -1016,13 +993,11 @@ function openModal(g) {
 
   const iconHtml = g.icon_url
     ? `<img src="${escapeAttr(g.icon_url)}" alt="" />`
-    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${pickIconColor(g.mechanic)};color:white;font-size:32px;font-weight:700;">${(g.name||'?').charAt(0).toUpperCase()}</div>`;
+    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${pickIconColor(g.intel_category)};color:white;font-size:32px;font-weight:700;">${(g.name||'?').charAt(0).toUpperCase()}</div>`;
 
   const screenshots = (g.screenshots || []).slice(0, 6).map(s =>
     `<img src="${escapeAttr(s)}" alt="" onerror="this.style.display='none'" />`
   ).join('');
-
-  const score = getScore(g);
 
   document.getElementById('modal').innerHTML = `
     <div class="modal-head">
@@ -1031,8 +1006,8 @@ function openModal(g) {
         <h2 class="modal-title">${escapeHtml(g.name || 'Unknown')}</h2>
         <p class="modal-publisher">${escapeHtml(g.publisher || '—')}</p>
         <div class="badges">
-          <span class="badge ${scoreBadgeClass(score)}">${score}/100</span>
-          <span class="badge mechanic">${escapeHtml(g.mechanic || 'Other')}</span>
+          ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
+          ${g.intel_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
         </div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>

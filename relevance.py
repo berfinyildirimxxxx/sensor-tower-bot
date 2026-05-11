@@ -227,7 +227,9 @@ def score_game(game: dict[str, Any]) -> tuple[int, str, str]:
     """Score a game for Agave portfolio relevance.
 
     Returns (score 0-100, mechanic_label, reason).
+    Scoring disabled — returns neutral until new relevance logic is added.
     """
+    return 0, "Other", ""
     name_text, title_text, full_text = _texts(game)
 
     best_mechanic: str | None = None
