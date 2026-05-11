@@ -411,9 +411,10 @@ def _combine_game_data(
     intel_sub_genre = str((intel.get("sub_genre")  or {}).get("name") or "")
     intel_theme     = str((intel.get("theme")      or {}).get("name") or "")
 
-    # Fallback: use source category (most reliable) → metadata genre → mapped category
-    if not intel_sub_genre:
-        intel_sub_genre = source_category or meta_genre or category_name
+    # Fallback for category only — source_category is category-level, not sub_genre
+    if not intel_category:
+        intel_category = source_category or meta_genre or category_name
+    # intel_sub_genre intentionally left empty if taxonomy API returned nothing
 
     # Inject taxonomy tags into subcategories so relevance.py picks them up
     taxonomy_tags = [
