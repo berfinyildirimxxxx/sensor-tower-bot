@@ -189,8 +189,17 @@ def main() -> int:
     # 3) Score everything — no threshold filter
     scored: list[dict[str, Any]] = []
     for g in merged:
-        score, mechanic, reason = score_game(g)
-        scored.append({**g, "score": score, "mechanic": mechanic, "reason": reason})
+        result = score_game(g)
+        scored.append({
+            **g,
+            "score":               result["score"],
+            "mechanic":            result["mechanic"],
+            "mechanic_confidence": result["mechanic_confidence"],
+            "mechanic_signals":    result["mechanic_signals"],
+            "secondary_mechanics": result["secondary_mechanics"],
+            "mechanic_family":     result["mechanic_family"],
+            "reason":              result["reason"],
+        })
 
     logger.info("Scored %d games", len(scored))
 

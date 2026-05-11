@@ -208,7 +208,7 @@
   .dot.ios { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
   .dot.android { background: var(--green); box-shadow: 0 0 6px var(--green); }
 
-  /* ============ MECHANIC BAND ============ */
+  /* ============ CATEGORY / MECHANIC BANDS ============ */
   .mech-band {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -228,8 +228,13 @@
     content: ''; width: 6px; height: 6px; border-radius: 50%;
     background: var(--orange);
   }
+  #mechanicBand .mech-band-label::before { background: var(--blue); }
   .mech-pills {
     display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .pills[data-group="mechanic"] .pill.active {
+    background: var(--blue); border-color: var(--blue); color: white;
+    box-shadow: 0 0 0 3px var(--blue-soft);
   }
 
   /* ============ FILTER BAR ============ */
@@ -595,6 +600,12 @@
     <div class="pills" data-group="category" id="categoryPills"></div>
   </section>
 
+  <!-- MECHANIC BAND — shown only when a category is selected -->
+  <section class="mech-band" id="mechanicBand" style="display:none;">
+    <div class="mech-band-label">Mechanic</div>
+    <div class="pills" data-group="mechanic" id="mechanicPills"></div>
+  </section>
+
   <!-- FILTER BAR -->
   <section class="filter-bar">
     <div class="search-row">
@@ -671,6 +682,7 @@ let dataMeta = {};
 const filters = {
   platform: 'all',
   category: 'all',
+  mechanic: 'all',
   release: 'all',
   added: 'all',
   addedDate: null,
@@ -780,8 +792,15 @@ async function loadData() {
   }
 }
 
-// ---------- category pills (from intel_category in data) ----------
+// ---------- category pills ----------
 const CATEGORY_ORDER = ['Puzzle','Casual','Word','Board','Family','Trivia','Arcade','Card','Educational'];
+
+const MECHANIC_ORDER = [
+  'Match Swap','Match Blast','Match Chain','Match Merge 2','Match Merge 3','Match Pair',
+  'Sort','Block','Screw','Bubble Shooter','Hidden Objects','Jigsaw',
+  'Physics','Maze','Numbers','Riddle','Real-Time Puzzle',
+  'Environmental','Word','Trivia','Other Puzzle',
+];
 
 function buildCategoryPills() {
   const counts = new Map();
@@ -790,7 +809,6 @@ function buildCategoryPills() {
     if (cat) counts.set(cat, (counts.get(cat) || 0) + 1);
   });
 
-  // Sort by our predefined order first, then alphabetically for any extras
   const sorted = [...counts.entries()].sort((a, b) => {
     const ai = CATEGORY_ORDER.indexOf(a[0]);
     const bi = CATEGORY_ORDER.indexOf(b[0]);
@@ -818,6 +836,55 @@ function buildCategoryPills() {
   });
 }
 
+// ---------- mechanic pills (rebuilt when category changes) ----------
+function buildMechanicPills(category) {
+  const band = document.getElementById('mechanicBand');
+  const container = document.getElementById('mechanicPills');
+
+  if (category === 'all') {
+    band.style.display = 'none';
+    filters.mechanic = 'all';
+    return;
+  }
+
+  // Count mechanics within the selected category
+  const pool = allGames.filter(g => (g.intel_category || '') === category);
+  const counts = new Map();
+  pool.forEach(g => {
+    const m = (g.mechanic || 'Other Puzzle').trim();
+    counts.set(m, (counts.get(m) || 0) + 1);
+  });
+
+  if (!counts.size) { band.style.display = 'none'; return; }
+
+  const sorted = [...counts.entries()].sort((a, b) => {
+    const ai = MECHANIC_ORDER.indexOf(a[0]);
+    const bi = MECHANIC_ORDER.indexOf(b[0]);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return b[1] - a[1]; // by count descending for unknowns
+  });
+
+  container.innerHTML = '';
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'pill active';
+  allBtn.dataset.mechanic = 'all';
+  allBtn.innerHTML = `All <span class="count">${pool.length}</span>`;
+  container.appendChild(allBtn);
+
+  sorted.forEach(([name, count]) => {
+    const b = document.createElement('button');
+    b.className = 'pill';
+    b.dataset.mechanic = name;
+    b.innerHTML = `${escapeHtml(name)} <span class="count">${count}</span>`;
+    container.appendChild(b);
+  });
+
+  band.style.display = '';
+}
+
 // ---------- bind filter pills ----------
 function bindFilters() {
   document.querySelectorAll('.pills').forEach(group => {
@@ -828,7 +895,12 @@ function bindFilters() {
       pill.classList.add('active');
       const g = group.dataset.group;
       if (g === 'platform') filters.platform = pill.dataset.platform;
-      if (g === 'category') filters.category = pill.dataset.category;
+      if (g === 'category') {
+        filters.category = pill.dataset.category;
+        filters.mechanic = 'all';
+        buildMechanicPills(filters.category);
+      }
+      if (g === 'mechanic') filters.mechanic = pill.dataset.mechanic;
       if (g === 'release') filters.release = pill.dataset.release;
       if (g === 'added') { filters.added = pill.dataset.added; filters.addedDate = null; document.getElementById('datePick').value = ''; }
       if (g === 'sort') filters.sort = pill.dataset.sort;
@@ -875,6 +947,7 @@ function applyFilters() {
   return allGames.filter(g => {
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
     if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
+    if (filters.mechanic !== 'all' && (g.mechanic || 'Other Puzzle') !== filters.mechanic) return false;
 
     if (filters.release !== 'all') {
       const r = daysAgo(g.launch_date);
@@ -959,7 +1032,7 @@ function renderCard(g, i) {
         ${platformBadges}
         <span class="badge installs">${fmtInstalls(installs)} installs</span>
         ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-        ${g.intel_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+        ${g.mechanic && g.mechanic !== 'Other Puzzle' ? `<span class="badge mechanic">${escapeHtml(g.mechanic)}</span>` : ''}
       </div>
       ${g.launch_date ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>` : ''}
     </div>
@@ -1007,7 +1080,8 @@ function openModal(g) {
         <p class="modal-publisher">${escapeHtml(g.publisher || '—')}</p>
         <div class="badges">
           ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.intel_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+          ${g.mechanic ? `<span class="badge mechanic">${escapeHtml(g.mechanic)}${g.mechanic_confidence ? ` <span style="opacity:0.65;font-size:10px;">${g.mechanic_confidence}%</span>` : ''}</span>` : ''}
+          ${g.mechanic_family && g.mechanic_family !== 'Other' ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.mechanic_family)}</span>` : ''}
         </div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1025,7 +1099,16 @@ function openModal(g) {
           ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
         </div>
       </div>` : ''}
-    ${g.reason ? `<div class="modal-desc" style="font-size:11px;color:var(--text-soft);">Why this score: ${escapeHtml(g.reason)}</div>` : ''}
+    ${g.mechanic ? `
+      <div style="margin-top:14px;padding:12px;background:var(--surface-2);border-radius:10px;font-size:12px;">
+        <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">🎮 Mechanic Classification</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
+          <span style="padding:3px 8px;background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-border);border-radius:5px;font-weight:600;">${escapeHtml(g.mechanic)}${g.mechanic_confidence ? ` · ${g.mechanic_confidence}%` : ''}</span>
+          ${(g.secondary_mechanics || []).map(m => `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">also: ${escapeHtml(m)}</span>`).join('')}
+        </div>
+        ${g.reason ? `<div style="font-size:11px;color:var(--text-soft);font-family:'JetBrains Mono',monospace;">${escapeHtml(g.reason)}</div>` : ''}
+      </div>` : ''}
+    ${g.reason && !g.mechanic ? `<div class="modal-desc" style="font-size:11px;color:var(--text-soft);">Why this score: ${escapeHtml(g.reason)}</div>` : ''}
   `;
   document.getElementById('modalBackdrop').classList.add('open');
 }
