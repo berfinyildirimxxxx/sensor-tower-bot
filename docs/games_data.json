@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-11 18:16 UTC",
+  "last_updated": "2026-05-11 18:22 UTC",
   "run_date": "2026-05-11",
   "retention_days": 30,
   "sheet_url": "https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit",
@@ -9321,8 +9321,10 @@
       "name": "Mzotv",
       "publisher": "Ngoc Phong Rieu Vuong",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Casual",
+      "subcategories": [
+        "Casual"
+      ],
       "description": "Mzotv Solitaire presents a refreshing twist on the traditional card game, inviting you into a serene and contemplative retreat. Set your own pace by opting to draw one or three cards per turn. Boasting unlimited undo capabilities, an auto-complete feature, and daily offline challenges to hone your skills, it's the perfect companion for both beginners and experienced players craving a peaceful respite.\n\nThis solitary journey encourages forward-thinking and purposeful play as you construct foundation sequences using a standard deck. With straightforward rules yet rich depth, each game evolves into a tranquil yet profoundly engaging experience.",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6760661840",
@@ -9337,7 +9339,7 @@
       "launch_date": "2026-03-18T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Casual",
       "intel_theme": "",
       "platforms": [
         {
@@ -9361,8 +9363,10 @@
       "name": "谐音梗猜成语-看图答题脑筋急转弯",
       "publisher": "曾飞 徐",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "《谐音梗猜成语》是一款把看图、谐音梗和成语闯关巧妙结合的轻松益智游戏。每一关都会给你一组趣味画面，你需要先从图片中发现线索，再通过谐音联想，猜出对应的成语答案。上手简单，却常常让人一边思考一边忍不住会心一笑。\n这里没有枯燥的死记硬背，只有充满脑洞的图片提示、恰到好处的文字巧思，以及猜中瞬间的爽快成就感。无论你是喜欢成语、热衷文字游戏，还是单纯想找一款能随时玩上几关的休闲小游戏，都能在这里收获乐趣。\n\n游戏特色：\n- 看图联想 + 谐音猜成语，玩法新鲜有趣\n- 关卡循序渐进，轻松上手又富有挑战\n- 脑洞图片搭配巧妙答案，过程欢乐不断\n- 猜对后可查看解析，理解每个关卡的设计巧思\n- 遇到卡关也有提示帮助，游玩体验更顺畅\n- 适合碎片时间放松，也适合和朋友一起挑战\n\n来试试你的观察力、联想力和成语储备，看看你能闯到第几关。每一次灵光一闪，都是一次让人上头的猜谜乐趣。",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6760779273",
@@ -9378,7 +9382,7 @@
       "launch_date": "2026-03-24T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -9402,8 +9406,10 @@
       "name": "Shan Koe Mee",
       "publisher": "Recon Tech (Game Unit)",
       "platform": "android",
-      "category": "game_card game",
-      "subcategories": [],
+      "category": "Card",
+      "subcategories": [
+        "Card"
+      ],
       "description": "This mini-game was sponsored by M9 Asia Myanmar.<br><br>Designed for fans of strategy and luck, this version is built strictly for entertainment. No real money, no risks—just pure, offline gameplay against our smart AI. Whether you’re a seasoned pro or a beginner looking to learn the rules, this app offers the perfect digital playground.<br><br>🃏 How to Play<br>The rules stay true to the Myanmar traditions you know and love:<br><br>The Deck: Played with a standard 52-card deck.<br><br>The Deal: Every player starts with 2 cards.<br><br>The Score: Your score is the remainder of the sum of your cards divided by 10.<br><br>Example: If you have a 7 and an 8 (Total = 15), your score is 5.<br><br>The \"Koe\" (9) or \"Eight\": If your initial two cards total 8 or 9, it’s a showdown! Everyone reveals their cards, and the highest score wins the round.<br><br>The Draw: Feeling unlucky? If your score is lower than 4, you have the option to draw one additional card to boost your total.<br><br>🌟 Key Features<br>100% Free to Play: No real money involved. Play for fun, anytime, anywhere.<br><br>Play Offline: No internet? No problem. Challenge our computer AI and sharpen your skills.<br><br>Smooth Gameplay: Enjoy clean graphics and an intuitive interface designed for a seamless mobile experience.<br><br>Authentic Rules: Perfectly mirrors the traditional Myanmar scoring system.<br><br>💡 Why Choose Our Shan Koe Mee?<br>This app is perfect for those who want to enjoy the cultural heritage of Myanmar gaming without the pressure of gambling. It’s a game of wits, luck, and quick thinking!<br><br>Download now and see if you can hit a 9! Shan Koe Mee - The most beloved card mini-game right on your phone",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.mnineasia.shankoemeev2",
@@ -9428,7 +9434,7 @@
       "launch_date": "",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Card",
       "intel_theme": "",
       "platforms": [
         {
@@ -9452,8 +9458,9 @@
       "name": "Wonly – Word Party Guess Game",
       "publisher": "Sergei Neprimerov",
       "platform": "ios",
-      "category": "",
+      "category": "Trivia",
       "subcategories": [
+        "Family",
         "Word Guessing Game for Groups"
       ],
       "description": "New word packs every month! Challenge your friends — can \nyou explain \"ocean\" using only words starting with S?\n\nExplain any word using ONLY words that start with S.\nThat's the rule. That's the whole game.\nAnd it's harder than it sounds.\n\nWonly is the party game your friends will want to play \nagain. And again. And again.\n\n\nHOW IT WORKS\n\nOne player gets a secret word. They have to describe it \nto their team using only words starting with S.\nNo synonyms. No cheating. Just your brain and \n60 seconds on the clock.\n\n\"OCEAN? Salty. Seriously deep. Somehow scary. \nSwim somewhere safe.\"\n\nPass the phone. Next player. Next word. Keep laughing.\n\n\nTHREE LEVELS OF CHAOS\n\n— Easy: Letter S only. Thousands of words. \n  Feels manageable. It's not.\n— Hard: Letters S, P, B. You'll pause a lot.\n— Impossible: Letters W, G, F, H. \n  Pure survival mode.\n\n\nPERFECT FOR\n\n— Game nights with friends\n— Icebreakers at parties  \n— Road trips and travel\n— Family gatherings\n— Office team-building\n— Bachelorette and birthday parties\n— Date nights\n— Any moment you need a laugh\n\n\nPASS &amp; PLAY — ONE DEVICE, UP TO 20 PLAYERS\n\nNo accounts. No lobbies. No setup.\nJust one phone. Pass it around. \nWorks with 2 to 20 players.\n\n\nALWAYS FRESH CONTENT\n\nNew themed word packs added every month — delivered \nstraight to your game. You'll never run out of things \nto guess, laugh at, and argue about.\n\nCurrent packs include:\n— Movies &amp; TV\n— Adults Only (18+)\n— Holiday Special\n— Sports Edition\n— Office Party\n— And more coming every month\n\n\nWONLY PREMIUM\n\n— Unlimited words and all difficulty levels\n— All current and future word packs\n— Zero ads during gameplay\n— Try free for 3 days, then $19.99/year \n  (just $0.29/week)\n\nOr unlock everything forever with Wonly Lifetime.\n\n\nTHE PARTY GAME THAT FITS IN YOUR POCKET\n\nWhether it's a chill game night, a rowdy bachelorette, \nor a long car ride — Wonly gets the whole group laughing \nwithin 30 seconds. Guaranteed.\n\nDownload Wonly. Gather your people. Start guessing.\n\n\nPrivacy Policy: https://onewordgame.app/privacy.html\nTerms of Use: https://onewordgame.app/terms.html 60 seconds. One letter. Explain \"ocean\" using only words starting with P. Wonly — the party game friends want to play again. 3 days free, up to 12 players. Word Guessing Game for Groups",
@@ -9475,7 +9482,7 @@
       "launch_date": "2026-04-10T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Family",
       "intel_theme": "",
       "platforms": [
         {
@@ -9499,8 +9506,9 @@
       "name": "My Dream Pizza-Pizza Go!",
       "publisher": "Sophia Louise Ngata",
       "platform": "ios",
-      "category": "",
+      "category": "Trivia",
       "subcategories": [
+        "Trivia",
         "Build Your Dream Restaurant"
       ],
       "description": "This is an engaging simulation game where players take on the role of a pizza shop owner, managing every aspect of the business to build a pizza empire. From accepting customer orders and crafting delicious pizzas to overseeing staff and ensuring smooth kitchen operations, the game challenges players to think quickly and stay organized. As profits grow, players can upgrade equipment, improve the restaurant's appearance, and even expand to new locations to develop their brand. Each level increases in difficulty, pushing players to balance speed, quality, and customer satisfaction to achieve success. Build Your Dream Restaurant",
@@ -9518,7 +9526,7 @@
       "launch_date": "2026-03-16T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -9542,8 +9550,10 @@
       "name": "Under the Danish Crown",
       "publisher": "cephus13nw",
       "platform": "android",
-      "category": "game_educational game",
-      "subcategories": [],
+      "category": "Educational",
+      "subcategories": [
+        "Educational"
+      ],
       "description": "Copenhagen is known for its royal palaces, elegant squares, and historic streets. Yet beyond the well-known landmarks lies a quieter and more intriguing side of the city — peaceful inner courtyards, historic passageways, architectural details, and places shaped by centuries of Danish history.<br><br>Under the Danish Crown invites you to explore Copenhagen from a different perspective.<br><br>Instead of following only traditional tourist routes, you can discover refined courtyards, learn the stories behind historic buildings, and explore the architectural layers that define the Danish capital. Each featured location reveals part of Copenhagen’s cultural and urban heritage.<br><br>Whether you are planning a walk through the historic center or simply enjoy learning about European architecture and history, this guide offers a calm and thoughtful way to experience the city.<br><br>Courtyard Explorer<br><br>Browse a carefully selected collection of hidden courtyards and historic inner spaces across Copenhagen. Each location includes detailed descriptions and background insights to help you better understand its architectural and historical context.<br><br>Interactive Map<br><br>Navigate the city with an interactive map highlighting all featured courtyards and heritage locations. Easily locate nearby places and explore different districts of Copenhagen.<br><br>Surprise Discovery<br><br>Let the app suggest your next destination. This feature randomly reveals a location in the city, turning every walk into a small architectural discovery.<br><br>Saved Places<br><br>Save the locations you find most interesting and create your own personal list for future visits.<br><br>Stories of Copenhagen<br><br>Learn about Danish royal heritage, architectural traditions, and the cultural evolution of the city through curated stories and insights.<br><br>Copenhagen Street Quiz<br><br>Test your knowledge of the city’s streets and architecture. View real street scenes and choose the correct location from multiple options in a simple and engaging format.<br><br>Copenhagen holds many stories behind its gates, arches, and quiet courtyards.<br>Explore thoughtfully and discover the city beneath the Danish Crown. Discover Copenhagen’s hidden courtyards, royal heritage, quiet architectural gem",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.UndertheDanishCrown",
@@ -9564,7 +9574,7 @@
       "launch_date": "2026-04-02T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Educational",
       "intel_theme": "",
       "platforms": [
         {
@@ -9588,8 +9598,9 @@
       "name": "SPielatus",
       "publisher": "PASCAL MICHAEL AMBERG",
       "platform": "ios",
-      "category": "",
+      "category": "Board",
       "subcategories": [
+        "Board",
         "Your game round organizer"
       ],
       "description": "SPielatus – Your Game Night Organizer\n\nYou know the problem: Organizing a game night means endless messages across different chats, missed dates, and the eternal question \"Who's available when?\". SPielatus solves exactly that.\n\nFLEXIBLE SCHEDULING\nPropose multiple possible dates for your game night. Your fellow players sign up for the dates that work for them. Once the minimum number of participants is reached, the session is automatically confirmed – no more follow-ups needed. Optionally with waitlist support.\n\nGROUP-BASED ORGANIZATION\nCreate groups for your different gaming circles – whether it's the weekly game night or the big annual session. Manage members, assign roles, and decide who can create game rounds or comment. Groups can be public, closed, or completely private.\n\nWhen creating a game round, you decide which of your groups it will be published to – or whether it should be publicly visible to everyone.\n\nPOLLS &amp; VOTING\nStart polls directly in game rounds or in groups: Which game should we play? Who's bringing snacks? Which day should we meet? Three voting modes (single choice, top-3 ranking, multiple choice), anonymous voting possible, game options directly from BoardGameGeek or your group's collection.\n\nINTEGRATION WITH BGG &amp; BGSTATS\nLink your BoardGameGeek account and bring all the game intelligence into the app:\n• Your BGG collection is automatically imported and kept up to date\n• Group collection: See which games are available in the group and who owns them\n• Wish system: Mark games (including individual expansions) you'd like to play\n• BGG poll options: Pick games with image and info directly from BGG\n• BGStats import: Load a play file (.bgsplay) into a round – scores, winner and duration are taken over\n• BGStats export: Log the result in BGStats with one tap – game, players, date and venue are pre-filled\n• Record results manually: Even without BGStats, you can capture scores &amp; winner directly\n\nNOTIFICATIONS UNDER CONTROL\nOver 40 configurable notification types keep you up to date – from new rounds in your groups to signups, waitlist movements and poll results, all the way to invitations and schedule conflicts. All granularly toggleable. The Action Center additionally bundles everything waiting for a decision from you.\n\nMORE FEATURES\n• Calendar export: Transfer confirmed and provisional dates directly to your device calendar\n• Calendar subscription: iCal feed in Google Calendar, Apple Calendar or Outlook – new rounds and changes update automatically (two separate feeds for your own rounds and available group rounds)\n• Result history: Game results remain accessible in every completed round\n• Venue offers: Players can offer their place as the meeting location\n• Conflict detection: Warnings for overlapping schedules\n• Personal round defaults: Presets for new rounds (player counts, start time, duration etc.)\n• Poll templates: Save recurring polls as personal templates\n• Multilingual: German, English, French, Spanish\n\nBY GAMERS FOR GAMERS\nSPielatus was developed out of real need – by a board gamer who knew exactly these problems. The app is 100% free, ad-free, and respects your privacy.\n\nQuestions or feedback? Write to us at support@spielatus.ch\n\nStop the scheduling chaos and focus on what matters: playing together. Your game round organizer",
@@ -9613,7 +9624,7 @@
       "launch_date": "2026-03-15T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Board",
       "intel_theme": "",
       "platforms": [
         {
@@ -9637,8 +9648,10 @@
       "name": "Sopa de Letras",
       "publisher": "Jose Luis Meza Bustamante",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "Are you a true word master? 🧠✨<br>Word Search has arrived, the most complete and challenging word search game! Test your visual acuity and expand your vocabulary through hundreds of levels designed to keep your brain sharp.<br><br>What makes this Word Search game special?<br><br>500 Themed Levels: Enjoy 10 different categories including Animals, Technology, Space, Cooking, and more. The challenge increases every 5 levels!<br><br>Expert Mode: Looking for a real challenge? Expert Mode tests even the most seasoned players with larger grids and more difficult hidden words.<br><br>Daily and Weekly Missions: Complete objectives every day to earn coins and energy. Don't miss the Weekly Mission with massive rewards!<br><br>Energy System: Manage your energy to keep playing. If you run out, you can replenish it while resting or by completing missions! Special Effects: Enjoy a unique visual experience with coin showers, energy beams, and, if you make it to the end... the legendary Rainbow Mode!<br><br>Customization: Play comfortably in Dark Mode and control the sound effects and music to your liking.<br><br>Train your brain anywhere. Word Search is perfect for relaxing or challenging your friends. Can you unlock all 100 achievements and become number one?<br><br>Download Word Search now and start your word-search adventure! Find words, beat 500 levels, become an expert and train your mind!",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.jlmb.sopaletras",
@@ -9655,7 +9668,7 @@
       "launch_date": "2026-03-22T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -9669,7 +9682,7 @@
       ],
       "score": 40,
       "mechanic": "Word",
-      "reason": "'word game' in description",
+      "reason": "'word search' in description",
       "first_seen": "2026-05-11",
       "last_seen": "2026-05-11"
     },
@@ -9679,8 +9692,9 @@
       "name": "Tawla 31 Live",
       "publisher": "Mohamed Ghoneim",
       "platform": "ios",
-      "category": "",
+      "category": "Board",
       "subcategories": [
+        "Board",
         "Play Tawla with Friends"
       ],
       "description": "The authentic Tawla 31 experience. A Middle Eastern classic, played across the world.\n\nRemember playing Tawla with friends at the café? From Cairo to Beirut, Istanbul to Dubai — Tawla brings people together. Now you can play the real Tawla 31 with friends and family anywhere in the world.\n\nWARNING: This is Tawla 31. Rules are different from standard backgammon and other tavla variants.\n\nTawla 31 is a popular Middle Eastern backgammon variant, related to other tavla-style games but with its own authentic rules and scoring.\n\nREAL TAWLA 31 RULES\n• No hitting - race to bear off first\n• Opening requirement - lead checker must cross first\n• First to 31 points wins the match\n• Doubles give you 4 moves, not 2\n\nPLAY WITH ANYONE\n• Share a link or QR code to invite friends\n• Play across devices and platforms\n• Auto-reconnect if you lose connection\n• Continue your match anytime\n\nBUILT FOR THE REGION\n• Full Arabic and English support\n• Right-to-left interface done right\n• Intuitive tap or drag controls\n\nPURE SKILL, NO GAMBLING\n• No gambling, no real money, no betting, no cash-out\n• Just pure Tawla skill and luck\n• Free to play forever\n\nFEATURES\n• Beautiful dark theme board\n• Sound effects for dice and moves\n• Match statistics and history\n• Play online with friends anywhere\n• Play offline with friends on the same device (pass-and-play)\n• Practice mode works offline\n\nPrivacy Policy: https://tawla31.live/privacy.html\n\nWhether you're in Cairo, London, Istanbul, or New York - bring the café to your pocket.\n\nDownload now and challenge your friends! Play authentic Tawla 31 with friends worldwide. A Middle Eastern classic loved everywhere. Free forever! Play Tawla with Friends",
@@ -9705,7 +9719,7 @@
       "launch_date": "2026-03-15T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Board",
       "intel_theme": "",
       "platforms": [
         {
@@ -9729,8 +9743,10 @@
       "name": "我要当学霸-找汉字",
       "publisher": "Miracle Game",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Puzzle",
+      "subcategories": [
+        "Word"
+      ],
       "description": "《我要当学霸》是一款轻松上手的汉字找字闯关游戏。每一关都会呈现由多个汉字笔画交织而成的图形，你需要仔细观察，从中找出所有隐藏的常用字，才能成功通关。",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6760877544",
@@ -9742,7 +9758,7 @@
       "launch_date": "2026-03-24T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -9766,8 +9782,10 @@
       "name": "تحدي الصور - ألغاز الذكاء",
       "publisher": "CodMaker",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "Picture Challenge - Brain Teasers offers a unique experience, testing your focus and observation skills in a fun and engaging group environment.<br><br>The game involves displaying a variety of images for short periods. Perfect for families, friends, and even educational groups, it's an offline game, easy to use, and suitable for all ages.<br><br>Whether you're looking for visual concentration games or offline games, this game offers both fun and educational value.<br><br>Find the meaning of two pictures and choose the word in this simple and fun puzzle game for everyone.<br><br>How to play: • Two pictures appear in each level. • Think about the connection between them and guess the word (the answer). • Write the letters in their correct places and check your answer. • Earn points for each correct answer and progress through the levels.<br><br>Game features: • Multiple levels with diverse picture and word puzzles • Points and hint system: Reveal a letter or a hint for the answer • Clear Arabic interface suitable for all ages • Fun single-player game that can be played anytime<br>Who is this game for? • Fans of puzzle and brain games • Those looking for educational and entertaining Arabic games • Family and children (with adult assistance when needed) Test your focus and decoding abilities",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.codmaker.tahadisowar",
@@ -9785,7 +9803,7 @@
       "launch_date": "2026-03-29T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -9809,8 +9827,10 @@
       "name": "Fine Sum Quest",
       "publisher": "Laihe Network",
       "platform": "android",
-      "category": "game_puzzle game",
-      "subcategories": [],
+      "category": "Puzzle",
+      "subcategories": [
+        "Puzzle"
+      ],
       "description": "This is a quiet and comfortable casual game that creates an immersive experience with a peaceful atmosphere. The style is simple and natural, suitable for relaxing in free time. This is a lovely and healing casual game.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.ejdgiew.ekrie.eituie",
@@ -9827,7 +9847,7 @@
       "launch_date": "2026-03-12T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -9839,9 +9859,9 @@
           "country": "ID"
         }
       ],
-      "score": 16,
+      "score": 8,
       "mechanic": "Other",
-      "reason": "general signals only: puzzle game, casual game",
+      "reason": "general signals only: casual game",
       "first_seen": "2026-05-11",
       "last_seen": "2026-05-11"
     },
@@ -9851,8 +9871,10 @@
       "name": "Trivia Code Words",
       "publisher": "The Appsters Ltd",
       "platform": "android",
-      "category": "game_trivia game",
-      "subcategories": [],
+      "category": "Trivia",
+      "subcategories": [
+        "Trivia"
+      ],
       "description": "Love word games and trivia? Welcome to Trivia Code Words - the addictive puzzle game that challenges your brain with clever clues and hidden letter patterns!<br><br>HOW TO PLAY:<br>🔤 See a category clue (like \"OCEAN MAMMAL\")<br>🧩 View the letter pattern (D_____N)<br>🎯 Guess the answer (DOLPHIN!)<br>Fill in the blanks using your knowledge and word skills. Sounds simple? Think again!<br>GAME FEATURES:<br>✨ Thousands of challenging puzzles<br>🌍 Categories from movies, geography, food, celebrities, history &amp; more<br>📈 Progressive difficulty - start easy, master the hard ones<br>💡 Helpful hints when you're stuck<br>🎮 Play offline anytime, anywhere<br>🏆 Track your progress and achievements<br>CATEGORIES INCLUDE:<br><br>Movies &amp; TV Shows<br>Famous People &amp; Celebrities<br>Geography &amp; World Capitals<br>Food &amp; Cooking<br>Animals &amp; Nature<br>Sports &amp; Entertainment<br>Science &amp; Technology<br>And many more!<br><br>WHY YOU'LL LOVE IT:<br>🧠 Train your brain with fun trivia<br>⚡ Quick gameplay - perfect for short breaks<br>🎓 Learn new facts while playing<br>🆓 Free to play with optional hints<br>👨‍👩‍👧‍👦 Family-friendly content for all ages<br>PERFECT FOR:<br><br>Trivia enthusiasts who love testing their knowledge<br>Word game fans looking for a fresh challenge<br>Anyone who enjoys crosswords, word searches, or quiz games<br>Players who want to learn while having fun<br><br>Start with simple 5-letter words and work your way up to complex multi-word answers. Can you crack every code?<br>Download Trivia Code Words now and put your trivia skills to the test! Crack the Code. Guess the Answer. Master the Trivia!",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.appsters.triviacodewords",
@@ -9883,7 +9905,7 @@
       "launch_date": "2026-03-30T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -9907,8 +9929,10 @@
       "name": "Muslim Kids: Learn & Fun",
       "publisher": "Saad Abdullah / Islam World",
       "platform": "android",
-      "category": "game_educational game",
-      "subcategories": [],
+      "category": "Educational",
+      "subcategories": [
+        "Educational"
+      ],
       "description": "Muslim Kids: Learn &amp; Fun – The Ultimate Islamic Quiz Adventure!<br><br>Welcome to a world of learning and joy! Muslim Kids: Learn &amp; Fun is a beautifully designed Islamic educational game created specifically for young minds to explore their faith in a fun, engaging, and interactive way.<br><br>Features of the Game:<br><br>Daily Quizzes: Learn something new every day about Islam, the Quran, Seerah of the Prophet (PBUH), and Islamic history.<br>Play Zone: Explore different categories and unlock levels as you gain more knowledge.<br>Battle Mode: Challenge friends or random players in real-time Islamic trivia battles!<br>Missions &amp; Rewards: Complete daily missions, earn coins, and unlock exciting badges to track your progress.<br>Kid-Friendly Interface: Vibrant colors, smooth animations, and a safe environment for your children.<br>What Your Child Will Learn:<br><br>Pillars of Islam and Articles of Faith.<br>Stories of the Prophets and Quranic stories.<br>Daily Adhkar, Duas, and Sunnah.<br>Islamic values, ethics, and manners.<br>Why Choose Muslim Kids: Learn &amp; Fun? Our mission is to make Islamic learning an enjoyable experience for every child. Whether it's at home or on the go, our app provides the perfect balance of education and entertainment (Edutainment).<br><br>Download now and start your child's journey to becoming a young Muslim scholar. Interactive Islamic quiz game for kids to learn about Islam, Quran and Prophets.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.muslim.kids",
@@ -9933,7 +9957,7 @@
       "launch_date": "2026-03-15T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Educational",
       "intel_theme": "",
       "platforms": [
         {
@@ -9957,8 +9981,9 @@
       "name": "Bible Jigsaw Puzzles",
       "publisher": "Joy Star Games",
       "platform": "ios",
-      "category": "",
+      "category": "Casual",
       "subcategories": [
+        "Puzzle",
         "Peaceful Moments of Faith"
       ],
       "description": "Bible Jigsaw Puzzles – Relaxing Christian Puzzle Game\n\nBible Jigsaw Puzzles is a relaxing and inspiring puzzle game that brings the beauty of the Bible to life through stunning artwork. If you enjoy solving jigsaw puzzles, exploring meaningful scenes, and relaxing through peaceful gameplay, this game is perfect for you.\n\nFeaturing thousands of beautifully designed puzzles inspired by biblical stories and sacred landscapes, Bible Jigsaw Puzzles allows you to experience the timeless beauty of faith piece by piece. Discover peaceful countryside scenes, ancient villages, symbolic Christian imagery, and artistic interpretations of classic Bible moments.\n\nEach puzzle is designed to create a calm and enjoyable puzzle experience while celebrating the beauty and inspiration found in the Bible.\n\nGame Features\n\nThousands of Beautiful Bible-Themed Puzzles\nExplore a large collection of high-quality puzzles inspired by biblical stories, sacred landscapes, churches, villages, and peaceful nature scenes.\n\nRegular Puzzle Updates\nNew puzzles are added regularly so you always have fresh and inspiring scenes to solve.\n\nAdjustable Difficulty Levels\nChoose the number of pieces that best suits your puzzle style — from relaxing quick puzzles to more detailed challenges.\n\nRelaxing Puzzle Gameplay\nEnjoy a calm and immersive puzzle experience designed to help you relax, focus, and unwind.\n\nSmooth and Easy Controls\nSimple drag-and-drop mechanics and smooth zoom controls make puzzle solving natural and enjoyable.\n\nAuto-Save Progress\nYour progress is saved automatically so you can continue your puzzle anytime.\n\nPeaceful Sounds and Cozy Atmosphere\nGentle sounds and relaxing visuals create a comfortable environment while you solve puzzles.\n\nWhether you are a puzzle lover or someone looking for a peaceful and meaningful way to relax, Bible Jigsaw Puzzles offers a beautiful puzzle experience inspired by timeless biblical themes.\n\nDownload Bible Jigsaw Puzzles today and enjoy a relaxing puzzle journey through inspiring biblical scenes.\n\nSubscription pricing and terms\n\nThere are no subscribed items in the app.\n\nTerms of Use\nhttps://joystar.pro/terms\n\nPrivacy Policy\nhttps://joystar.pro/privacy.html Peaceful Moments of Faith",
@@ -9980,7 +10005,7 @@
       "launch_date": "2026-03-12T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -10004,8 +10029,9 @@
       "name": "Another Shadow",
       "publisher": "Dark Dome",
       "platform": "ios",
-      "category": "",
+      "category": "Puzzle",
       "subcategories": [
+        "Puzzle",
         "Escape a dark ancient curse"
       ],
       "description": "Bastian and Carissa have moved into a new home experiencing paranormal events. But it is not the house that hosts these specters. The shadow of an ancient curse has returned and it won't go away until he gets what he wants, Bastian's life to enslave him in darkness. Bastian has been trapped in the dark. Can Carissa find a way to bring him back to their world?\n\nAnother Shadow is the sixth chapter in Hidden Town escape room games series. You will have to interact between two characters in this mysterious point and click suspense thriller adventure. But remember, what you do in one world will affect the other, so make the right decisions.\n\nThe Dark Dome escape room games can be played in any order, you will be able to see how the stories in each chapter connect to reveal the mysteries of Hidden Town. This escape puzzle episode has connections to The Ghost Case and Haunted Laia and Escape from the Shadows.\n\n- What you will find in this horror escape mystery game:\n\nA large number of puzzles and riddles to solve within each world of the house and within a memory of one of the characters.\n\nA mysterious, exciting and captivating suspense detective story with new characters.\n\nStunning art and a deep soundtrack will fully immerse you in this interactive story.\n\nAn alternate achievement: Find all 9 shadows hidden throughout the entire suspense thriller game. Look for them everywhere, they can be where you least imagine.\n\n- Premium Version:\nPurchasing the Premium Version of this horror mystery game you will have access to a secret scene where you can play a parallel story of Hidden Town with additional puzzles and riddles. Also, all ads are removed from the point and click game and you will have access to all hints without seeing ads.\n\n- How to play this horror escape mystery game:\nInteract with objects and characters in the environment by touching them. Find hidden objects, use the inventory items on game objects or combine them to create a new item that helps you advance in the detective story. Test your wits and solve mystery puzzle in this haunted house.\n\nFind Hidden Objects: Unveil Secrets Lurking in the Shadows\n\nEngage your keen eye and sharp mind as you scour each eerie room for hidden objects. Every item you find brings you one step closer to unlocking the chilling secrets concealed within the haunted house. Can you unravel the tangled web of clues before it's too late?\n\n“Immerse yourself in the enigmatic stories of the Dark Dome escape games and reveal all its secrets. There are still many mysteries to be unraveled in Hidden Town.\" Discover a mysterious puzzle adventure full of secrets. Escape a dark ancient curse",
@@ -10026,7 +10052,7 @@
       "launch_date": "2026-03-13T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -10050,8 +10076,10 @@
       "name": "Scoredle",
       "publisher": "Scoredle",
       "platform": "android",
-      "category": "game_trivia game",
-      "subcategories": [],
+      "category": "Trivia",
+      "subcategories": [
+        "Trivia"
+      ],
       "description": "🎯⚽ Test Your Football Knowledge with Scoredle! ⚽🎯<br><br>The ultimate Premier League quiz game featuring 7,400+ players and 5 exciting game modes. Perfect for football fans who want to prove their knowledge!<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>🎮 5 UNIQUE GAME MODES<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>⚡ FOOTBALL DARTS 301<br>Hit the perfect score by naming players! Start at 301 points and subtract player stats (goals, assists, appearances) to reach exactly zero. Strategic thinking meets football knowledge.<br>• 95 unique questions<br>• Club-based &amp; nationality-based challenges<br>• Multiple stat types: goals, assists, appearances<br><br>📋 CLASSIC MODE<br>Name the top 10 players in various Premier League categories. Can you name the all-time goalscorers? The players with most assists? Most appearances?<br>• 52 curated lists<br>• All-time PL records<br>• Goals, assists, appearances &amp; more<br>• Club-specific rankings<br><br>🏃 CAREER PATH<br>Guess the player from their club history! See the timeline of clubs a player represented and identify the football legend. Clubs are revealed one by one.<br>• 167 career challenges<br>• Historic &amp; current players<br>• From youth clubs to final moves<br><br>⚽ MISSING XI<br>Guess the starting lineup from famous Premier League matches! Can you remember the XIs from iconic games? Test your memory of legendary teams.<br>• Historic matches<br>• Memorable lineups<br>• Formation-based gameplay<br><br>❓ WHO ARE YA?<br>Identify players from progressive clues about their career, stats, and achievements. Each guess reveals more information.<br>• Detailed player profiles<br>• Progressive hint system<br>• Learn as you play<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>✨ KEY FEATURES<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>✓ 7,400+ Premier League players in database<br>✓ 300+ total questions across all modes<br>✓ Daily challenges in Football Darts &amp; Career Path<br>✓ Completely offline play supported<br>✓ Dark mode &amp; light mode<br>✓ Clean, modern interface<br>✓ Track your scores &amp; progress<br>✓ No ads whatsoever<br>✓ No account required<br>✓ No in-app purchases<br>✓ Regular content updates<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>🏅 PERFECT FOR<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>• Premier League enthusiasts<br>• Football trivia lovers<br>• Casual quiz game fans<br>• Soccer statistics nerds<br>• Fans who want to test their knowledge<br>• Anyone who loves the beautiful game<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>💡 HOW TO PLAY<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>FOOTBALL DARTS 301:<br>Start at 301 points. Type player names whose stat totals subtract from your score. Aim for exactly 0 (or within -10). Strategic play required!<br><br>CLASSIC MODE:<br>Name all 10 players in a ranked list. Can you get them all? Order doesn't matter, just knowledge!<br><br>CAREER PATH:<br>See clubs revealed one by one. Guess the player who played for all those teams. Fewer clubs revealed = higher score!<br><br>MISSING XI:<br>Identify all 11 players from a famous match lineup. The fewer guesses, the better!<br><br>WHO ARE YA?:<br>Progressive clues about a mystery player. The fewer guesses, the better your score. Learn fascinating football facts!<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>🔒 PRIVACY &amp; SAFETY<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>• No personal data collected<br>• Anonymous analytics only (Firebase)<br>• No ads or trackers<br>• GDPR &amp; CCPA compliant<br>• Suitable for all ages (PEGI 3)<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>🌟 WHY SCOREDLE?<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>✓ Most comprehensive PL player database<br>✓ Five engaging game modes<br>✓ Regular content updates<br>✓ Completely free, no ads<br>✓ Works offline<br>✓ Respects your privacy<br>✓ Built by football fans, for football fans<br><br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br>🎯 COMING SOON<br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>• More Football Darts questions (targeting 160 total)<br>• Additional Career Path players<br>• More Missing XI matches<br>• Leaderboards (opt-in)<br>• More leagues beyond Premier League<br><br>━━━━━━━━━━━━━━━━━━━━━━━━<br><br>Download Scoredle now and prove you're the ultimate football knowledge champion!<br><br>For support or feedback: scoredlefun@gmail.com<br>Privacy Policy: https://scoredle.fun/privacy<br>Website: https://scoredle.fun<br><br>#Football #PremierLeague #Quiz #Trivia #Soccer #EPL #FootballQuiz Test your football knowledge with 5 unique quiz modes",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.scoredle.app",
@@ -10071,7 +10099,7 @@
       "launch_date": "2026-03-12T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -10095,8 +10123,10 @@
       "name": "Geolea",
       "publisher": "Stargraf Agency",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Casual",
+      "subcategories": [
+        "Trivia"
+      ],
       "description": "GEOLEA : quiz Géographie : 1 000 questions, sur la géographie du monde et de la France\n\nPlongez au cœur de la géographie avec GEOLEA, une application de quiz conçue pour apprendre, réviser et tester ses connaissances, du niveau collège à la culture générale.\n\nL’application GEOLEA – Quiz Géographie couvre les grands thèmes de la géographie mondiale et française : pays, capitales, régions, reliefs, climats, océans et continents. Elle propose 5 niveaux de difficulté, avec un quiz évolutif ou personnalisable. Elle constitue un outil efficace pour (re)découvrir la géographie, dans une interface simple, rapide et intuitive, SANS INSCRIPTION NI PUBLICITÉ.\n\nEn mode solo, GEOLEA permet de progresser à son rythme, de suivre ses scores et de renforcer ses connaissances. En mode multijoueur, affrontez vos amis et testez votre niveau en direct !\n\nPensée comme un jeu éducatif, GEOLEA s’adresse aussi bien aux élèves (collège, lycée) qu’aux adultes et aux passionnés de géographie.\n\nCONTENU :\n\n    Géographie du monde\n    Géographie de la France\n    Capitales et pays\n    Régions et territoires\n    Culture géographique\n\nFONCTIONNALITÉS :\n\n    5 niveaux de difficulté\n    Quiz évolutif ou personnalisable\n    Suivi des scores\n    Mode solo et multijoueur\n\nPOURQUOI GEOLEA ?\n\n    Interface simple, rapide et intuitive\n    Apprentissage efficace\n    Sans inscription\n    Sans publicité\n    Sans collecte de données",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6761361691",
@@ -10114,7 +10144,7 @@
       "launch_date": "2026-04-01T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -10138,8 +10168,10 @@
       "name": "OrbBlaze: Fire Marble Shooter",
       "publisher": "MO MAGDY ( AL OSTORRA )",
       "platform": "android",
-      "category": "game_arcade game",
-      "subcategories": [],
+      "category": "Arcade",
+      "subcategories": [
+        "Arcade"
+      ],
       "description": "OrbBlaze – The Ultimate Marble Shooter Adventure<br>Step into a blazing world of fire and ancient power in OrbBlaze, the addictive marble shooter puzzle game inspired by classic arcade legends!<br>Aim, shoot and match 3 or more glowing orbs to stop the fiery chain before it reaches the end. Test your reflexes, strategy and precision in fast-paced temple arenas filled with lava, mystery and explosive action.<br> How to Play<br>• Tap to aim and shoot<br>• Match 3+ marbles of the same color<br>• Create combos for massive explosions<br>• Stop the rolling orb chain before it's too late<br> Game Features<br> Fast-paced marble shooting gameplay<br> Stunning lava and fire effects<br> Smooth controls and satisfying combos<br> Challenging levels that test your strategy<br> Power-ups and explosive special orbs<br> Perfect for fans of classic arcade puzzle games<br>Whether you're a casual player or a puzzle master, OrbBlaze delivers thrilling action, colorful explosions and addictive gameplay in every level.<br>Can you master the fire and conquer the temple?<br>Download OrbBlaze now and start the ultimate marble shooter challenge! Match blazing orbs in this fast-paced marble shooter",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.idolmedia360.OrbBlaze",
@@ -10169,7 +10201,7 @@
       "launch_date": "2026-03-12T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Arcade",
       "intel_theme": "",
       "platforms": [
         {
@@ -10193,8 +10225,10 @@
       "name": "10-20-30: Card Sum",
       "publisher": "SoftStyle",
       "platform": "android",
-      "category": "game_card game",
-      "subcategories": [],
+      "category": "Card",
+      "subcategories": [
+        "Card"
+      ],
       "description": "Master the Art of Addition in 102030: The Strategic Card Solitaire!<br><br>Looking for a fresh challenge that tests your brain and sharpens your strategy? Welcome to 102030, a unique and addictive addition-based solitaire game that combines classic card mechanics with a rewarding mathematical twist.<br><br>THE GOAL Your objective is simple but engaging: Clear all cards from the board and the deck. To do this, select exactly three cards from the ends of the columns (top or bottom) whose values sum up to exactly 10, 20, or 30.<br><br>Can you clear the columns before you run out of moves?<br><br>HOW TO PLAY<br><br>1.Deal: Cards are distributed into four columns.<br>2.Select: Choose three cards from the top or bottom ends of any single column.<br>3.Sum: If the total value is 10, 20, or 30, those cards are removed.<br>4.Win: Clear the entire deck and all four columns to claim victory!<br><br>WHY YOU’LL LOVE 102030<br><br>• Brain-Boosting Strategy: This isn't just about luck. Plan your moves and think ahead to ensure you don’t get stuck with a full column.<br>• Detailed Statistics: Track your progress like a pro! Monitor your win rate, best times, longest streaks, and your unique \"Luck Score\" based on your initial deals.<br>• Modern &amp; Fluid UI: Experience smooth animations, high-quality custom card designs (Jack, Queen, and King), and satisfying visual effects when you clear a column.<br>• Powerful Tools:<br>     ◦ Smart Hints: Stuck? Let the auto-hint system guide your next move.<br>     ◦ Undo System: Made a mistake? Quickly backtrack and try a different strategy.<br>• Performance Optimized: Built with the latest Android technology for a smooth, battery-friendly experience that doesn't heat up your device.<br><br>FEATURES AT A GLANCE<br><br>• Classic solitaire feel with a fresh \"Addition Puzzle\" mechanic.<br>• Global High Scores: Compete for the fastest times and highest scores.<br>• Customizable Experience: Toggle sounds, haptic feedback, and auto-hint timers.<br>• Ad-Free Experience: Remove advertisements via a simple one-time purchase for uninterrupted play.<br>• Play Anywhere: Perfect for quick breaks or long strategic sessions. Play offline anytime!<br><br>Whether you are a fan of Solitaire, Spider, or Sudoku, 102030 offers a relaxing yet mentally stimulating experience that will keep you coming back for \"just one more round.\"<br><br>Download 102030 today and start clearing those columns!<br><br>Developed by Soft Style. <br>Support: support@softstyle.cc Addictive math solitaire! Sum 3 cards to 10, 20 or 30 to clear the board.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.softstyle.card102030",
@@ -10216,7 +10250,7 @@
       "launch_date": "2026-04-04T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Card",
       "intel_theme": "",
       "platforms": [
         {
@@ -10240,8 +10274,9 @@
       "name": "Dino Merge: Jurassic Zoo",
       "publisher": "MAD PIXEL",
       "platform": "ios",
-      "category": "",
+      "category": "Puzzle",
       "subcategories": [
+        "Puzzle",
         "Build your own dinosaur park"
       ],
       "description": "Dino Merge: Jurassic Zoo Game – Merge Match 3 Game set in Dinosaur era!\n\nEmbark on a prehistoric adventure in Dino Merge: Jurassic Zoo, and immerse yourself in the land before humans!\n\nBuild your dream camp on a mysterious Mesozoic island. Merge dinosaur eggs, hatch adorable dinos, and restore the land to create your perfect sanctuary.\n\nMerge &amp; Match! \nCombine 3 items to create new &amp; useful treasures. Merge eggs to hatch dinosaurs, heal land, and unlock new creatures. From Triceratops to T-Rex, grow your own dinosaur park.\n\nBuild Your Perfect Camp\nDesign, decorate, and expand your island. Collect resources, clear fog, and manage your buildings. Create a cozy camp filled with life, growth, and adventure.\n\nDiscover Dinosaurs\nUnlock rare species like allosaurus, baryonyx, velociraptor, kentrosaurus, giganotosaurus, and more. Explore fossils, bones, and the history of the Jurassic world.\n\nRelax &amp; Play\nEnjoy a casual matching game with puzzle challenges, daily rewards, and relaxing gameplay. Play offline anytime, earn coins and gems, and progress at your own pace.\n\nFeatures \n\nMerge dinosaurs, cute pre-historic animals, and magic items\nHeal land and uncover hidden secrets\nComplete quests and challenging levels\nHatch eggs, merge babies, and grow your dino zoo\n\nCollect rewards, unlock treasures, and expand your island\n\nPerfect for fans of merge games, puzzle games, simulation, and casual adventures. Whether you love dinosaurs, crafting, or cozy building, Dino Merge: Jurassic Zoo Game brings fun, discovery, and creativity together.\n\nStart your journey today. Merge, build, and explore the land of dinosaurs! Build your own dinosaur park",
@@ -10263,7 +10298,7 @@
       "launch_date": "2026-03-15T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -10287,8 +10322,10 @@
       "name": "Bubble Shooter: Bubble Pop",
       "publisher": "NextGen App Studios",
       "platform": "android",
-      "category": "game_board game",
-      "subcategories": [],
+      "category": "Board",
+      "subcategories": [
+        "Board"
+      ],
       "description": "<b>Bubble Shooter: Bubble Pop</b><br><br>Bubble Shooter: Bubble Pop is a fun, relaxing, and highly addictive puzzle game where you aim, match, and pop colorful bubbles. Enjoy classic bubble shooter gameplay combined with smooth controls, exciting levels, and satisfying bubble pop effects.<br><br>If you enjoy bubble shooter games or love bubble pop puzzles, this game delivers the perfect balance of challenge and relaxation.<br><br>Classic Bubble Shooter Gameplay<br><br>Experience the timeless bubble shooter mechanics that players love:<br><br>• Aim and shoot bubbles with precision<br>• Match three or more bubbles to pop<br>• Clear the board to complete each level<br>• Create satisfying bubble pop combos<br><br>The gameplay is simple to understand, yet challenging enough to keep you engaged for hours.<br><br>Addictive Bubble Pop Levels<br><br>Discover hundreds of carefully designed bubble pop levels that test your strategy and accuracy.<br><br>• Beginner-friendly early levels<br>• Challenging stages as you progress<br>• Gradually increasing difficulty<br>• Smooth and rewarding progression<br><br>Each stage introduces a fresh bubble shooter challenge, keeping the experience exciting and dynamic.<br><br>Relaxing and Enjoyable Puzzle Experience<br><br>Bubble Shooter: Bubble Pop is designed to provide stress-free entertainment.<br><br>• Calm and smooth gameplay<br>• Bright and colorful bubble graphics<br>• Fluid animations<br>• Easy tap controls<br><br>Play during short breaks or long sessions. The game is perfect for relaxing while keeping your mind active.<br><br>Special Features<br><br>• Classic bubble shooter mode<br>• Satisfying bubble pop combo system<br>• Colorful and vibrant bubble designs<br>• Strategic aiming mechanics<br>• Offline play supported<br>• Lightweight and optimized performance<br><br>Enjoy a seamless bubble shooter experience anytime, anywhere.<br><br>Improve Focus and Strategy<br><br>Bubble pop puzzles are not only entertaining but also help sharpen your mind.<br><br>• Improve focus and concentration<br>• Strengthen strategic thinking<br>• Enhance problem-solving skills<br>• Practice precision aiming<br><br>Bubble shooter games are suitable for players of all ages who enjoy fun and smart gameplay.<br><br>Why Choose Bubble Shooter: Bubble Pop?<br><br>• Easy to learn and play<br>• Addictive bubble pop mechanics<br>• Smooth and responsive controls<br>• No complicated rules<br>• Designed for all skill levels<br><br>Whether you are looking for a relaxing bubble pop game or a classic bubble shooter challenge, this game provides hours of enjoyable puzzle action.<br><br>How to Play<br><br>Aim carefully toward matching bubbles<br><br>Shoot and match three or more bubbles<br><br>Clear all bubbles from the board<br><br>Complete the level with the highest score<br><br>Use fewer shots and plan smart moves to achieve better results.<br><br>Regular Updates<br><br>We continuously improve Bubble Shooter: Bubble Pop by adding new levels, enhancing performance, and refining gameplay for a smoother experience.<br><br>Download now and enjoy a classic bubble shooter adventure filled with exciting bubble pop challenges. Classic bubble shooter game with fun bubble pop puzzle levels",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.bubble.pop.bubbleshooter",
@@ -10307,7 +10344,7 @@
       "launch_date": "2026-04-09T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Board",
       "intel_theme": "",
       "platforms": [
         {
@@ -10331,8 +10368,10 @@
       "name": "كلمات متقاطعة - تحدي الأذكياء",
       "publisher": "ringtones apps Pro",
       "platform": "android",
-      "category": "game_trivia game",
-      "subcategories": [],
+      "category": "Trivia",
+      "subcategories": [
+        "Trivia"
+      ],
       "description": "Looking for a game that combines fun and learning? The \"Crosswords\" app is the perfect choice to train your brain and test your knowledge in various fields in a fun and engaging way, suitable for all ages.<br><br>We offer a modern and improved version of the beloved classic \"Crosswords\" game, carefully designed to provide a variety of smart questions covering general knowledge, history, geography, sports, and science.<br><br>🌟 Game Features: • Diverse and Comprehensive Questions: Constantly updated questions and brain teasers to ensure endless enjoyment. • User-Friendly and Comfortable Interface: A modern and attractive design with eye-friendly colors for a smooth gameplay experience. • Daily Challenges: Levels of increasing difficulty, starting easy and progressing to levels that challenge even the sharpest minds. • Multiple Help Options: Reveal letters, skip questions, or show hints to help you solve difficult puzzles. Enjoy the game anytime, anywhere, even offline.<br><br>🧠 Game Benefits:<br><br>Activates memory, stimulates the brain for quick thinking, and develops analytical skills.<br><br>Enrich your vocabulary and knowledge with new and useful information every day.<br><br>Relieve stress and spend your free time in a fun and beneficial way.<br><br>If you love brain games, puzzles, crosswords, or word games, this game is designed especially for you.<br><br>Download \"Crosswords\" now and start your journey of challenge and knowledge! A fun Arabic crossword puzzle game! Test your general knowledge and sharpen your mind every day.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
@@ -10355,7 +10394,7 @@
       "launch_date": "2026-04-02T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -10379,8 +10418,10 @@
       "name": "شد حيلك | لعبة تحدي واسئله",
       "publisher": "Shdhelek",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Trivia",
+      "subcategories": [
+        "Trivia"
+      ],
       "description": "شِدّ حيْلك هي لعبة أسئلة وتحدي جماعي بنظام الفرق، تقدم تجربة ترفيهية تنافسية مناسبة للجلسات العائلية وتجمعات الأصدقاء. تعتمد اللعبة على أسلوب سؤال وجواب حيث يمكن اللعب من فريقين إلى 6 فرق في نفس الجلسة.\n\nإذا كنت تبحث عن لعبة سين جيم أو لعبة أسئلة جماعية، فإن شِدّ حيْلك توفر تجربة متكاملة تجمع بين التحدي والمتعة وسرعة التفكير.\n\nنظام اللعب:\nتعتمد اللعبة على نظام سؤال وجواب بزمن محدد (90 ثانية لكل سؤال)، حيث يتنافس كل فريق للإجابة الصحيحة قبل انتهاء الوقت وكسب النقاط.\n\nالمحتوى:\nتضم اللعبة أكثر من 200 فئة متنوعة تشمل الثقافة العامة، الرياضة، التاريخ، الإسلاميات، الجغرافيا، والترفيه. كما تتنوع الأسئلة بين نصوص، صور، مقاطع صوتية، ومقاطع فيديو لزيادة التفاعل أثناء اللعب.\n\nمزايا التحدي:\nتوفر اللعبة أدوات تساعد على زيادة التنافس مثل التلميحات، تمديد وقت الإجابة، ومضاعفة النقاط، مما يجعل كل جولة أكثر حماسًا بين الفرق.\n\nتجربة الاستخدام:\nتتميز اللعبة بواجهة سهلة الاستخدام، مع مذيع صوتي يعلن الأسئلة ومؤثرات صوتية تعزز أجواء التحدي الجماعي.\n\nمميزات إضافية:\nتوفر اللعبة فئات مجانية للبدء، وتدعم أنظمة الدفع عبر Apple Pay و Google Pay، كما تعمل على الهواتف المحمولة والأجهزة اللوحية.\n\nشِدّ حيْلك مناسبة لمن يبحث عن لعبة أسئلة، لعبة سين جيم، لعبة جماعية، أو تجربة سؤال وجواب تناسب الجلسات والمناسبات.\n\nابدأ الآن واستمتع بتجربة تحدي معرفي ممتعة بين الأصدقاء والعائلة.",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6744923044",
@@ -10392,7 +10433,7 @@
       "launch_date": "",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -10416,8 +10457,10 @@
       "name": "Geolea - Quiz Géographie",
       "publisher": "Stargraf Agency",
       "platform": "android",
-      "category": "game_trivia game",
-      "subcategories": [],
+      "category": "Trivia",
+      "subcategories": [
+        "Trivia"
+      ],
       "description": "GEOLEA: Geography Quiz: 1,000 questions on world and French geography<br><br>Dive into the heart of geography with GEOLEA, a quiz app designed to learn, review, and test your knowledge, from middle school level to general knowledge.<br><br>The GEOLEA – Geography Quiz app covers the major themes of world and French geography: countries, capitals, regions, landforms, climates, oceans, and continents. It offers 5 difficulty levels, with a progressive or customizable quiz. It's an effective tool for (re)discovering geography in a simple, fast, and intuitive interface, with NO REGISTRATION OR ADS REQUIRED.<br><br>In single-player mode, GEOLEA allows you to progress at your own pace, track your scores, and reinforce your knowledge. In multiplayer mode, challenge your friends and test your level live!<br><br>Designed as an educational game, GEOLEA is aimed at students (middle and high school), adults, and geography enthusiasts alike.<br><br>CONTENT:<br><br>World Geography<br>Geography of France<br>Capitals and Countries<br>Regions and Territories<br>Geographical Culture<br><br>FEATURES:<br><br>5 difficulty levels<br>Evolving or customizable quizzes<br>Score tracking<br>Single and multiplayer modes<br><br>WHY GEOLEA?<br><br>Simple, fast, and intuitive interface<br>Effective learning<br>No registration required<br>No ads<br>No data collection 1,000 geography questions: world and France",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.geolea.app",
@@ -10445,7 +10488,7 @@
       "launch_date": "2026-03-30T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Trivia",
       "intel_theme": "",
       "platforms": [
         {
@@ -10469,8 +10512,10 @@
       "name": "La Fortuna Gira: Ruota Quiz IA",
       "publisher": "AStabile",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "Welcome to La Fortuna Spin, the ultimate word and luck game that will test your general knowledge, your intuition, and... your lucky stars! Spin the colorful wheel, guess the consonants, buy the vowels, and reveal the hidden phrase.<br><br>🌟 TWO UNMISSABLE GAME MODES<br>• 🌍 Global Challenge: Take on the board alone and amass a mind-blowing prize pool! Your earnings will be saved online. Will you climb the Monthly World Ranking or enter the legendary Hall of Fame of champions?<br><br>Or...<br><br>• 🛋️ Play with Friends: The perfect night out! Challenge up to 3 friends or family members on the same device. Pass the phone around and find out who the real star of the room is!<br><br>🎡 THE WHEEL SPINS... WHAT WILL COME OUT?<br>Hold your breath as the wheel slows down. Will you win a rich cash prize, the precious \"Double\" slice, or will you encounter the dreaded \"Pass\" and \"Bankrupt\"? Play strategically: if luck turns against you, you might get a \"second chance\" to save your turn!<br><br>🧠 INFINITE PHRASES THANKS TO ARTIFICIAL INTELLIGENCE<br>Forget games where the same phrases are always repeated. Our \"author\" is a highly advanced Artificial Intelligence that generates new and original phrases in real time! It covers dozens of fascinating topics: Arthouse Cinema, the '80s and '90s, Science, Mysteries, Italian Traditions, and much more.<br><br>⚡ RISK AND WIN MORE<br>Do you already know the phrase on the board but there are still many hidden spaces? Solve it early! Thanks to the Courage Bonus, the more hidden letters you quickly guess, the bigger your final prize will be.<br>But be careful: if you get it wrong, the penalty is very steep!<br><br>🗣️ A REAL PRESENTER IN YOUR POCKET<br>A unique immersive experience! Thanks to the integrated voice audio, a presenter (you can choose between a male or female voice) will read the clues, comment on your moves, and encourage you throughout the game. Can't use audio? No problem, you can also play in silent mode or with sound effects only.<br><br>🎁 LIVE EVENTS AND SURPRISES<br>Keep your eyes peeled! The game, the slices, the wheel, and the potential winnings are constantly updated with messages that appear at the start of a new game or in the center of the wheel, directly from the \"DIRECTOR,\" special events, weekends with doubled prize pools, and surprise rules that will change the game.<br><br>Test your vocabulary, challenge your luck, and show everyone who is the undisputed champion of the board.<br><br>Download La Fortuna Gira now and... may luck be with you! 🍀 Spin the wheel, guess the sentence, and climb the leaderboard! Infinite sentences with AI",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.stabile.lafortunagiraADV",
@@ -10505,7 +10550,7 @@
       "launch_date": "2026-03-14T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -10517,9 +10562,9 @@
           "country": "IT"
         }
       ],
-      "score": 40,
-      "mechanic": "Word",
-      "reason": "'word game' in description",
+      "score": 0,
+      "mechanic": "Other",
+      "reason": "no relevant keywords found",
       "first_seen": "2026-05-11",
       "last_seen": "2026-05-11"
     },
@@ -10529,8 +10574,9 @@
       "name": "Golfle: Daily Cave Golf",
       "publisher": "Ian Lewis",
       "platform": "ios",
-      "category": "",
+      "category": "Casual",
       "subcategories": [
+        "Casual",
         "Under Par, Underground"
       ],
       "description": "Under par, underground.\n\nTry your hand at a unique daily course of nine holes.\n\nShare your scorecard with your friends and compete to win the day!\n\nWhether you play once per day, or as many times as you need to get the perfect run, there's a challenge to be found here for everyone.\n\nOur game has no microtransactions, no lootboxes, and the daily mode will ALWAYS be free. Unlock the full game to:\n- Explore the golf caves at your leisure in endless mode -- what will you find down there?\n- Use practice mode to refine your skills -- before attempting the daily mode again to show off how much you've improved.\n- Replay past days -- go back in time to settle the score.\n- See how you compare against the rest of the world -- to feel either great, or terrible, about how you've been playing.\n- Customise your ball -- that's right we've got you covered for both customisable skins and colours. A unique daily course of nine holes. Compete with your friends to win the day! Under Par, Underground",
@@ -10552,7 +10598,7 @@
       "launch_date": "2026-03-23T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Casual",
       "intel_theme": "",
       "platforms": [
         {
@@ -10576,8 +10622,10 @@
       "name": "WordTrail: Word Guess Puzzle",
       "publisher": "Talha Dev",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "🎯 WordTrail — The Daily Word Guessing Game You Won't Put Down<br>Love Wordle? WordTrail takes the word guessing game you love and adds daily challenges, progressive levels, and an unscramble mode — all in one free brain puzzle game.<br>Guess the hidden 5-letter word before your chances run out. Use color clues to narrow it down and follow the trail to the answer!<br>🟢 Green — Right letter, right spot<br>🟡 Yellow — Right letter, wrong spot<br>⬜ Gray — Not in the word<br>Simple to learn. Impossible to stop.<br>━━━━━━━━━━━━━━━━━━<br>🔥 GAME MODES<br>━━━━━━━━━━━━━━━━━━<br>📅 Daily Trail<br>A fresh mystery word every single day. Solve it, share your result, and compete with word lovers worldwide. Your streak is always waiting.<br>🏆 Trail Levels<br>Hundreds of progressive word puzzle levels from beginner to expert. Every level unlocks new words and bigger brain rewards.<br>🔀 Unscramble the Trail<br>Letters are jumbled — rearrange them to find the hidden word. A satisfying twist that tests your word instincts like no other puzzle game.<br>━━━━━━━━━━━━━━━━━━<br>⭐ FEATURES<br>━━━━━━━━━━━━━━━━━━<br>✅ Daily word challenge — new puzzle every day<br>✅ Level-based progression — beginner to expert<br>✅ Unscramble mode — rearrange letters to find the word<br>✅ Play offline — no WiFi needed<br>✅ Dark mode for night play<br>✅ Auto-save — pause and resume anytime<br>✅ Stats &amp; streaks — track your wins<br>✅ Works on phones and tablets<br>━━━━━━━━━━━━━━━━━━<br>🧠 WHY WORDTRAIL?<br>━━━━━━━━━━━━━━━━━━<br>Most word games give you a puzzle. WordTrail gives you a journey. Whether you're a Wordle fan looking for more, a crossword lover wanting something fresher, or a word scramble enthusiast — WordTrail is your daily brain workout.<br>Perfect for fans of:<br>🔤 Wordle &amp; daily word guessing games<br>🔤 Word scramble &amp; unscramble games<br>🔤 Crossword &amp; word connect puzzles<br>🔤 Brain training &amp; mind games<br>🔤 5-letter word games &amp; vocabulary builders<br>━━━━━━━━━━━━━━━━━━<br>🏅 WHO IS WORDTRAIL FOR?<br>━━━━━━━━━━━━━━━━━━<br>🎓 Students expanding vocabulary daily<br>💼 Professionals who love a quick brain boost<br>👨‍👩‍👧 Families sharing a fun word game together<br>🌍 Language learners practicing English words<br>━━━━━━━━━━━━━━━━━━<br>📥 DOWNLOAD WORDTRAIL FREE<br>━━━━━━━━━━━━━━━━━━<br>The trail is set. The word is hidden. Can you find it?<br>Download WordTrail — your free daily word puzzle game starts now. 🏆 Guess the hidden word! Wordle-style daily puzzle with levels &amp; unscramble. Free",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.wordtrail.app",
@@ -10600,7 +10648,7 @@
       "launch_date": "2026-03-21T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -10624,8 +10672,10 @@
       "name": "Whot: Naija Card Game",
       "publisher": "Matatu",
       "platform": "android",
-      "category": "game_card game",
-      "subcategories": [],
+      "category": "Card",
+      "subcategories": [
+        "Card"
+      ],
       "description": "Ready to play the ultimate digital version of Nigerian’s most beloved card game? Whot Naija brings the authentic, fast-paced thrill of the classic card game straight to your phone. Whether you are a seasoned player who knows exactly when to drop a Joker, or a beginner looking to learn, whot naija is the only card game app you need to rule the table like a true card lord.<br>Play your cards right, block your opponents, and be the first to clear your hand to claim your title as the ultimate  champion! Play the classic Nigerian whot card game!, offline, &amp; non-stop fun",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.matatu.pro",
@@ -10640,7 +10690,7 @@
       "launch_date": "2026-03-24T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Card",
       "intel_theme": "",
       "platforms": [
         {
@@ -10664,8 +10714,10 @@
       "name": "초초초초밥 : 협동디펜스",
       "publisher": "BUMHEE KIM",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Casual",
+      "subcategories": [
+        "Casual"
+      ],
       "description": "\"지금까지 이런 맛은 없었다. 이것은 디펜스인가 초밥인가!\"\n\n몰려오는 배고픈 적들로부터 우리들의 소중한 레시피를 지켜라! [초초초초밥 : 협동디펜스]는 친구와 함께 전략을 세워 적을 막아내는 실시간 협동 디펜스 게임입니다.\n\n게임 특징\n\n2인 실시간 협동 플레이 혼자서는 막을 수 없습니다! 동료와 함께 덱을 구성하고 시너지를 발휘하세요. 한 명은 딜러, 한 명은 서포터? 아니면 극강의 화력 조합? 최고의 파트너와 함께 도전하세요!\n\n세상에서 제일 신선한 초밥 유닛 연어, 새우, 광어, 계란말이까지! 귀엽지만 강력한 초밥 영웅들을 소환하고 합치세요. 합칠수록 더 강력하고 맛있는(?) 초밥으로 진화합니다.\n\n전략과 운의 절묘한 조화 같은 초밥을 합쳐 등급을 올리고, 필드를 채우세요. 매 판 달라지는 상황 속에서 빠른 판단력과 전략적인 증강 선택이 승패를 가릅니다. 당신의 '운'을 시험해 보세요!\n\n다채로운 보스와 기믹 단순히 막기만 하는 디펜스는 그만! 강력한 스킬을 사용하는 보스 몬스터와 방해 공작을 이겨내야 합니다.\n\n랭킹 시스템 누가 최고의 초밥 마스터인가? 다른 유저들과 경쟁하고 더 높은 랭킹에 도전하여 특별한 보상을 획득하세요.",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6758930080",
@@ -10682,7 +10734,7 @@
       "launch_date": "2026-03-20T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Casual",
       "intel_theme": "",
       "platforms": [
         {
@@ -10706,8 +10758,10 @@
       "name": "Линго Россия Онлайн Игра слова",
       "publisher": "fasonbit",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "<b>Уверены в своём словарном запасе, скорости мышления и стратегическом уме? Тогда познакомьтесь с первой настоящей онлайн-дуэлью слов в России — <b>Линго Россия Онлайн</b>! Забудьте про обычные головоломки — пришло время сразиться с реальными соперниками!</b><br><br><br><br><b>🎮 КАК ИГРАТЬ?</b><br><br><b>Правила простые, но борьба будет напряжённой!</b> Твоя цель — <b>угадать скрытое слово быстрее соперника</b>. Но будь внимателен: <b>время ограничено</b>, и <b>каждый ход имеет значение!</b><br><br>1. <b>Начни игру:</b> Нажми кнопку <b>«Играть»</b> и через несколько секунд система подберёт тебе <b>живого соперника твоего уровня</b>.<br>2. <b>Сделай предположение:</b> Введи слово — <b>клавиатура полностью в твоём распоряжении!</b><br>3. <b>Следи за подсказками:</b> Цвета букв помогут понять, насколько ты близок к ответу:<br>🟢 <b>ЗЕЛЁНАЯ КЛЕТКА:</b> <b>Отлично!</b> Буква есть в слове и стоит <b>на правильном месте</b>.<br>🟡 <b>ЖЁЛТАЯ КЛЕТКА:</b> <b>Хороший ход!</b> Буква есть в слове, но находится <b>не на своём месте</b>.<br>⚪ <b>СЕРАЯ КЛЕТКА:</b> <b>К сожалению</b>, такой буквы в слове <b>нет</b>.<br>4. <b>Используй свой ход с умом:</b> Когда наступает твоя очередь, нужно <b>думать быстро</b>. Если время истечёт — <b>ты пропустишь ход!</b><br>5. <b>Победа за тобой:</b> Будь <b>быстрее и умнее соперников</b>, угадай слово, <b>набирай очки</b> и <b>поднимайся в рейтингах!</b><br><br><b>🌟 ПОЧЕМУ ИМЕННО ЛИНГО РОССИЯ ОНЛАЙН?</b><br><br><b>Надоели обычные одиночные словесные игры без настоящего соперничества?</b> Мы предлагаем <b>живой, динамичный и постоянно меняющийся игровой опыт</b>.<br><br><b>⚔️ РЕАЛЬНЫЙ MULTIPLAYER В РЕАЛЬНОМ ВРЕМЕНИ:</b> Устали играть против ботов? Здесь вы можете встретить <b>реальных игроков</b> — например, <b>Анну из Москвы</b>, <b>Дмитрия из Санкт-Петербурга</b> или <b>Алексея из Екатеринбурга</b>. <b>Настоящие эмоции, настоящая скорость и настоящая конкуренция!</b><br><br><b>🧠 ТРЕНИРОВКА МОЗГА И РАЗВИТИЕ:</b> Игра отлично подходит для <b>поддержания активности мозга</b>. Расширяйте <b>словарный запас</b> и одновременно развивайте <b>логическое и аналитическое мышление</b>.<br><br><b>⚡ МГНОВЕННЫЙ ПОДБОР СОПЕРНИКА:</b> Благодаря мощной серверной инфраструктуре вам <b>не придётся ждать</b>. Нажмите <b>«Играть»</b> — и вы <b>сразу окажетесь в игре</b>.<br><br><b>🎨 СТИЛЬНЫЙ И УДОБНЫЙ ДИЗАЙН:</b> <b>Современный и интуитивный интерфейс</b>, который <b>не утомляет глаза</b>. Поддержка <b>тёмной темы</b> позволяет комфортно играть <b>в любое время суток</b>.<br><br><b>🇷🇺 АДАПТИРОВАНО ДЛЯ РУССКОГО ЯЗЫКА:</b> Игра создана <b>с учётом особенностей русского языка</b>. <b>Тысячи слов</b> из актуальных словарей обеспечивают <b>честную и увлекательную игру</b>.<br><br><b>🎯 КОМУ ПОДОЙДЁТ ИГРА?</b><br><br><b>🧩 Любителям головоломок:</b> Отличная альтернатива для тех, кто любит <b>кроссворды, сканворды и словесные задачи</b>.<br><br><b>🔤 Поклонникам словесных игр:</b> Если вам нравятся <b>Wordle, словесные викторины или игры на угадывание слов</b> — здесь вы найдёте <b>настоящий соревновательный вызов</b>.<br><br><b>👨‍👩‍👧 Игрокам любого возраста:</b> <b>Простые правила</b>, <b>отсутствие насилия</b> и <b>дружелюбный игровой процесс</b> делают игру подходящей для всех — <b>от детей до взрослых</b>. Играй в Линго онлайн против соперников! Самая конкурентная игра слов в России.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.fasonbit.lingo_russia",
@@ -10735,7 +10789,7 @@
       "launch_date": "",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -10749,7 +10803,7 @@
       ],
       "score": 40,
       "mechanic": "Word",
-      "reason": "'word game' in description",
+      "reason": "'wordle' in description",
       "first_seen": "2026-05-11",
       "last_seen": "2026-05-11"
     },
@@ -10759,8 +10813,10 @@
       "name": "OPPower Triple Triad Game",
       "publisher": "OnePiecePower",
       "platform": "android",
-      "category": "game_card game",
-      "subcategories": [],
+      "category": "Card",
+      "subcategories": [
+        "Card"
+      ],
       "description": "Relive the adventure in the world of Piracy with a gameplay system inspired by Triple Triad. Create your own pirate crew, recruit new and powerful nakama, conquer treasures along the way, and face every challenge until you reach the legendary Treasure and become the Pirate King. 🏴‍☠️⚓💎 Build your crew, challenge the seas with Triple Triad and become the Pirate King!",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.oppower.op_triple_triad",
@@ -10781,7 +10837,7 @@
       "launch_date": "2026-03-29T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Card",
       "intel_theme": "",
       "platforms": [
         {
@@ -10805,8 +10861,10 @@
       "name": "Word Search: English & Kurdish",
       "publisher": "Create Image Studio",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "Find English and Kurdish (Kurmanji dialect) words by scanning horizontally, vertically, and diagonally in this fun word search puzzle game. Find English and Kurdish words in all directions. A fun word search game.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.englishwordsearch.englishwordsearch",
@@ -10831,7 +10889,7 @@
       "launch_date": "2026-04-07T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -10843,9 +10901,9 @@
           "country": "IQ"
         }
       ],
-      "score": 48,
+      "score": 88,
       "mechanic": "Word",
-      "reason": "'word game' in description; bonus: puzzle game",
+      "reason": "'word search' in name/subtitle; bonus: puzzle game",
       "first_seen": "2026-05-11",
       "last_seen": "2026-05-11"
     },
@@ -10855,8 +10913,9 @@
       "name": "Bible Trivia Quiz Game - Logos",
       "publisher": "Chimpanzee, LLC",
       "platform": "ios",
-      "category": "",
+      "category": "Word",
       "subcategories": [
+        "Word",
         "Biblical Games &amp; Word Puzzles"
       ],
       "description": "\"In the beginning was the Word (logos).\" Experience God’s Word through fun, meaningful, and completely ad-free Bible trivia &amp; Word games for all ages.\n\nDISCOVER THE CONTEXT\nGo beyond simple answers. Read the Scripture behind each question, explore historical context, and save favorites to revisit later. Every question is a chance to learn more and grow deeper in God’s Word.\n\nLEVELS OR FREE PLAY\nTake on 100+ levels that grow more challenging as you progress, or jump into Free Play and choose the questions you want to focus on. Play casually, sharpen your knowledge, or challenge yourself to master them all.\n\nCUSTOMIZE BY BOOK\nStudy your way by filtering questions by specific books of the Bible. With even more questions on the way, you can build personalized question banks focused on Bible characters, topics, or the books you want to know better.\n\nTRACK YOUR PROGRESS\nSee where you’re strongest and where you can grow. Detailed Bible stats help you track your progress by book and give you a clearer picture of your knowledge over time. (NO ADS) Develop a curiosity for God's word without disruptive ads in this beautiful, minimalist app! Play through 150+ levels that will test your bible knowledge! Biblical Games &amp; Word Puzzles",
@@ -10877,7 +10936,7 @@
       "launch_date": "2026-03-23T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -10901,8 +10960,10 @@
       "name": "Lg111",
       "publisher": "BdTech Solution",
       "platform": "android",
-      "category": "game_card game",
-      "subcategories": [],
+      "category": "Card",
+      "subcategories": [
+        "Card"
+      ],
       "description": "Disclaimer:<br>This game does not offer real-money gambling or real-cash rewards.<br>Intended for adult audiences aged 21 and older for entertainment purposes only.<br>Performance or achievements in this game do not guarantee similar results in real-money gambling.<br>\"Coins\" and \"Bonus\" are virtual in-game currencies with no real-world monetary value, cannot be exchanged for real money, and may only be obtained or redeemed within the game.<br>The objective of the game is to form sets and runs of cards, and to get rid of all the cards in your hand before the other players.Each turn, players can draw a card from the stock pile or pick up a card from the discard pile and then discard a card from their hand.Sets consist of three or four cards of the same rank (e.g. A-A-A-A), and runs are three or more cards of the same suit in sequence (e.g. J-Q-K).The game ends when a player has no cards left in their hand or when the stock pile runs out. Sets consist of three or four cards of the same rank.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.aquaticplantmatch.game",
@@ -10919,7 +10980,7 @@
       "launch_date": "2026-03-13T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Card",
       "intel_theme": "",
       "platforms": [
         {
@@ -10943,8 +11004,10 @@
       "name": "Word Slide",
       "publisher": "VGam.es",
       "platform": "android",
-      "category": "game_puzzle game",
-      "subcategories": [],
+      "category": "Puzzle",
+      "subcategories": [
+        "Puzzle"
+      ],
       "description": "🧩 WORD SLIDE — Where Tetris Meets Crosswords!<br><br>Discover a fresh twist on word puzzles! Drag and slide blocks filled with syllables across the grid to form complete words. It's simple to learn, challenging to master, and endlessly satisfying.<br><br>✨ UNIQUE GAMEPLAY<br><br>Combine the spatial strategy of sliding puzzles with the brain-teasing fun of word games. Each level is a mini crossword waiting to be solved — one slide at a time.<br><br>🎯 HOW TO PLAY<br><br>  • Drag blocks containing syllables across the grid<br>  • Align syllables in the right order to form words<br>  • Complete all words to clear the level<br>  • Plan your moves — some blocks only slide one direction!<br><br>📈 HUNDREDS OF LEVELS<br><br>Start easy and work your way up through increasingly clever puzzles. New mechanics and challenges await as you advance!<br><br>💡 PERFECT FOR<br><br>  • Word game lovers<br>  • Puzzle enthusiasts<br>  • Casual gamers looking for a brain workout<br>  • Anyone who enjoys crosswords, Scrabble, or sliding puzzles<br><br>Train your brain, expand your vocabulary, and enjoy the satisfaction of watching words click into place. Download Word Slide now and start sliding! Slide syllable blocks to form words in this unique word puzzle adventure!",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.vgames.wordslide",
@@ -10962,7 +11025,7 @@
       "launch_date": "2026-03-17T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -10974,9 +11037,9 @@
           "country": "CA"
         }
       ],
-      "score": 60,
+      "score": 56,
       "mechanic": "Word",
-      "reason": "'word puzzle' in description; bonus: puzzle game",
+      "reason": "'word puzzle' in description; bonus: puzzle adventure",
       "first_seen": "2026-05-11",
       "last_seen": "2026-05-11"
     },
@@ -10986,8 +11049,10 @@
       "name": "Dominoes - Classic Board Game",
       "publisher": "Aceline Games",
       "platform": "android",
-      "category": "game_board game",
-      "subcategories": [],
+      "category": "Board",
+      "subcategories": [
+        "Board"
+      ],
       "description": "DOMINOES — The Ultimate Classic Board Game, Free to Play!<br><br>Love dominoes? You've found your perfect domino game! Whether you play online or offline without Wi-Fi, this free Dominoes game brings the timeless tile game experience straight to your phone or tablet.<br><br>🏆 WHY PLAYERS LOVE THIS DOMINOS GAME:<br>Classic Domino Game Modes — Play All Fives, Block, and Draw Dominoes, the most popular game modes loved by millions worldwide.<br><br>Offline Mode — No internet? No problem! Enjoy the full domino board game experience anywhere, anytime — perfect for travel or downtime.<br><br>Easy to Learn — New to dominoes? Our interactive tutorial walks you through the rules in minutes. Master the classic tile game fast!<br><br>Beautiful Board Design — Enjoy smooth animations, crisp tile graphics, and an intuitive UI designed for all screen sizes.<br><br>Events &amp; Rewards — Compete in weekly domino events, earn chips, climb leaderboards, and unlock exclusive rewards.<br><br>🎯 DOMINO GAME MODES:<br>🔹 Draw Dominoes: Match tiles on either open end of the board. Draw from the boneyard if you're out of moves. The most relaxing way to play!<br>🔹 Block Dominoes: Can't play? Pass your turn! A fast and strategic version perfect for competitive players.<br>🔹 All Fives Dominoes: Score points every time the open ends add up to a multiple of 5. The most tactical and rewarding domino mode!<br><br>📱 DESIGNED FOR EVERY PLAYER:<br>Whether you're a casual player looking for a relaxing brain game or a competitive strategist chasing the top spot on the global leaderboard, this free Dominoes board game has something for everyone. Play solo, with friends, or against the world!<br><br>Download Dominoes now — it's 100% FREE! Join millions of players and start your domino journey today. Play free Dominoes! Classic board game — online, offline no Wifi needed.",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.dominos.free.dice.game",
@@ -11016,7 +11081,7 @@
       "launch_date": "2026-04-19T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Board",
       "intel_theme": "",
       "platforms": [
         {
@@ -11040,8 +11105,10 @@
       "name": "Aces Hunt Match Pop",
       "publisher": "LoomAnBloom",
       "platform": "android",
-      "category": "game_casual game",
-      "subcategories": [],
+      "category": "Casual",
+      "subcategories": [
+        "Casual"
+      ],
       "description": "Enter a fast-paced world of animals, reflexes, and legendary dragons!<br><br>**Aces Hunt Match Pop** is a fun and addictive casual game where your speed and accuracy are put to the test. Identify the correct animal, drag it quickly into the cave, and score points before time runs out!<br><br>🐾 **How to Play**<br><br>* Watch the target animal name<br>* Quickly find the matching animal<br>* Drag it into the cave to score<br>* Be careful — too many mistakes and the game ends!<br><br>🐉 **Special Dragon Feature**<br>Not just ordinary animals! Rare dragon creatures may appear, bringing an exciting twist to your gameplay. Stay sharp and don’t miss them!<br><br>⚡ **Game Features**<br><br>* Simple and intuitive drag-and-drop gameplay<br>* Increasing difficulty as you progress<br>* Cute and colorful animal designs<br>* Special dragon elements for extra fun<br>* Lightweight and smooth performance<br><br>🎯 **Perfect for everyone**<br>Whether you're looking to relax or challenge your reflexes, this game is easy to learn but hard to master.<br><br>Download now and start your dragon hunting adventure! **Aces Hunt Match Pop** is a fun and addictive casual game",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.LoomABSoft.SquimpHunt",
@@ -11056,7 +11123,7 @@
       "launch_date": "2026-03-12T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Casual",
       "intel_theme": "",
       "platforms": [
         {
@@ -11080,8 +11147,10 @@
       "name": "Domino Association",
       "publisher": "MCZ Apps developer",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "Domino Association is a relaxing and engaging word puzzle that challenges your mind through clever connections and satisfying logic.<br><br>On the board, you’ll find domino tiles — but instead of numbers, each half contains a word. Every word belongs to a specific category. Your goal is to match words by their shared category and clear all the tiles from the board.<br>Simple to learn, yet deeply satisfying to master, each level invites you to slow down, think clearly, and enjoy the process of finding the right connections.<br><br>How to Play:<br><br>- Search words that belong to the same category<br>- Tap on domino tiles to match them<br>- Clear all dominoes to complete the level<br>- Some tiles may block others, so the order of your moves matters. As levels progress, new categories and more complex layouts will test your attention and logic.<br><br><br>Think in Associations<br>Success comes from recognizing patterns and relationships between words. Some matches are obvious, while others require a bit more thought. Take your time and enjoy the “aha” moments as everything clicks into place.<br><br>Why You’ll Love It:<br><br>- Relaxing word gameplay with a fresh twist<br>- Clever category-based matching mechanics<br>- Clean, easy-to-read design for a comfortable experience<br>- Perfect balance of challenge and calm<br>- Ideal levels for daily mental exercise<br><br><br>Whether you’re unwinding after a long day or keeping your mind sharp, Domino Association offers a peaceful and rewarding puzzle experience built around the joy of words and logic. Match words by associations. Solve puzzles!",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.domino.association",
@@ -11109,7 +11178,7 @@
       "launch_date": "2026-04-21T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -11133,8 +11202,9 @@
       "name": "Merge Balls: Sports Arena",
       "publisher": "Dinh Vu Thi",
       "platform": "ios",
-      "category": "",
+      "category": "Puzzle",
       "subcategories": [
+        "Puzzle",
         "Drop Balls And Merge Bigger"
       ],
       "description": "Merge Balls: Sports Arena is an exciting arcade sports game where strategy meets fast-paced action!\nMerge matching balls to create stronger ones, unlock powerful upgrades, and dominate the arena.\n\nStep into a vibrant sports battlefield with smooth controls, satisfying merge mechanics,\nand nonstop competitive energy. The bigger the merge, the higher the score!\n\n*GAME FEATURES:\n- Addictive merge gameplay mechanics\n- Smooth and responsive controls\n- Fast-paced sports arena action\n- Unlock upgrades and powerful balls\n- Compete for high scores and rewards\n- Colorful visuals and dynamic effects\n\nWhether you play casually or competitively, every match delivers thrilling moments.\nMerge smart, score big, and become the ultimate arena champion! Drop Balls And Merge Bigger",
@@ -11154,7 +11224,7 @@
       "launch_date": "2026-03-16T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -11178,8 +11248,9 @@
       "name": "Beyond the Room",
       "publisher": "Dark Dome",
       "platform": "ios",
-      "category": "",
+      "category": "Puzzle",
       "subcategories": [
+        "Puzzle",
         "Escape a haunted building"
       ],
       "description": "A building in the town has been abandoned for six years. No one wants to inhabit it due to its dark past. There are stories of rituals, witchcraft, and murders. Could they just be rumors?\n\nDarien feels a lot of curiosity about entering and exploring the building, but he has been having nightmares every time he approaches. One night, he receives signals from the fifth floor. Lights flicker on and off, and mysterious silhouettes appear in the window. He senses that someone needs help and decides to go in to investigate. Is it a good idea to go in alone?\n\n\"Beyond the Room\" is the eighth game in the Dark Dome escape game series. Embark on this mysterious interactive adventure full of puzzles and riddles as you try to investigate the world of spirits. Dark Dome games can be played in any order, allowing you to gradually unravel the mystery of Hidden Town with its interconnected stories in each chapter. This game has a brief connection to \"Nowhere House\" and opens a new storyline for the town.\n\nWithin this point-and-click horror game, you'll find: \nA multitude of intricate puzzles and challenging puzzles distributed on the different floors of the abandoned building as you try to rescue the trapped girl and reveal the end of the plot. \nYou'll be captivated and very impressed by the suspenseful story and emotional moments with new characters that will bring more adventures to the enigmatic town. \nAn amazing selection of music accompanied by beautiful art that will fully immerse you in this interactive adventure. \n\nAn extra challenge: Find the 10 hidden shadows in each of the corners and unexpected places. Some will present a great challenge, so develop your mental skills to the fullest to find them all.\n\nPremium Version: \nBy purchasing the Premium Version of this escape game, you'll have access to an additional scene with an enigmatic parallel story that will unravel more mysteries to solve in Hidden Town. In this story, we offer you more puzzles and challenges to test your wits. Additionally, with this purchase, all ads in this point-and-click game will be removed, and you'll have direct and unlimited access to hints.\n\nHow to play this suspenseful escape game: \nSimply tap objects on the screen to interact with them. Find useful hidden objects. Some objects can be combined to create a new one. Pay close attention to the eerie environment to discover which object may be useful in your quest to advance the story. \n\nChallenge your intellect and solve challenging puzzles along the way. Download the escape game \"Beyond the Room\" and get ready to immerse yourself in the suspense of this mysterious interactive horror adventure and experience some scares. Demonstrate your skills by reaching the end of the story and uncovering the truth before becoming another victim of this haunted building. \n\n\"Dive into the enigmatic tales of Dark Dome escape games and discover all their secrets. Hidden Town still holds countless mysteries waiting to be uncovered.\" Discover a mysterious puzzle adventure full of secrets. Escape a haunted building",
@@ -11200,7 +11271,7 @@
       "launch_date": "2026-03-13T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -11224,8 +11295,10 @@
       "name": "Gale Current",
       "publisher": "佛山市钱能齐科技有限公司",
       "platform": "android",
-      "category": "game_puzzle game",
-      "subcategories": [],
+      "category": "Puzzle",
+      "subcategories": [
+        "Puzzle"
+      ],
       "description": "A card-matching puzzle game set in an offshore island wind farm control station where gentle bovine guardians roam coastal pastures. Players match wind energy and cattle-themed symbols across three difficulty levels to calibrate turbines and train cognitive recall. The deep ocean blue and teal color palette creates a serene yet engaging island atmosphere with animated wave motion effects. Twelve achievement milestones track progress from Island Intern to Power Plant Chief, with all calibration records stored locally for long-term performance monitoring. Match island symbols to power the grid",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.nyn.GaleCurrent",
@@ -11242,7 +11315,7 @@
       "launch_date": "2026-03-18T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Puzzle",
       "intel_theme": "",
       "platforms": [
         {
@@ -11266,8 +11339,10 @@
       "name": "谐音梗猜成语-看图答题脑筋急转弯",
       "publisher": "5Game",
       "platform": "android",
-      "category": "game_word game",
-      "subcategories": [],
+      "category": "Word",
+      "subcategories": [
+        "Word"
+      ],
       "description": "\"Guess the Idiom with Homophones\" is a casual puzzle game that cleverly combines picture-based puzzles with brain teasers. Here, you'll use fun picture clues and clever homophone associations to complete idiom guessing challenges! As a single-player game suitable for all ages, it helps you pass the time and exercises your brain. There's no tedious memorization, only the satisfying sense of accomplishment of guessing correctly!<br><br>【Core Gameplay and Features】<br><br>- Picture Association, Creative Idiom Guessing: Breaking away from the monotony of traditional word games, this game perfectly blends picture-based puzzles with homophones, offering fresh and fun gameplay. Every level completion is a flash of inspiration!<br><br>- Numerous Levels, Gradually Increasing: A carefully designed casual challenge mode, from easy to very challenging, caters to the puzzle-solving needs of different players.<br><br>- Hilarious Pictures, Non-stop Fun: Mind-blowing pictures paired with clever idiom answers will make you smile during the puzzle game, providing stress relief and relaxation.<br><br>- Helpful Hints and Detailed Explanations: Don't be afraid of getting stuck on those brain teasers! The game's built-in hint function helps you smoothly pass each level. After guessing correctly, you can also view the explanation to understand the clever design of each level.<br><br>【Why Choose \"Phonetic Idiom Guessing Game\"?】<br><br>- Play Anytime, Anywhere, Offline: This is a purely offline game, requiring no internet connection, perfect for playing a few levels during your commute, waiting for the bus, or other short breaks.<br><br>- Educational and Entertaining, Improve Vocabulary: Whether you're a seasoned player who loves word puzzles or a user who wants to learn idioms, you can expand your idiom repertoire in a relaxed atmosphere.<br><br>- Social Interaction, Enjoy with Friends: Encountered a brilliant pun? Share it with your friends with one click, test their observation and association skills, and see who is the true idiom guessing master!<br><br>Download \"Phonetic Idiom Guessing Game\" now and test your association, observation, and idiom knowledge! Challenge your imagination and see how far you can go! Every flash of inspiration brings an addictive and fun puzzle-solving experience. Hilarious puns combined with picture-based idiom guessing! This is a relaxing and educational casual puzzle game. Put your brain to work and experience word-based challenges, enjoying the fun of brain teasers anytime, anywhere!",
       "keywords": [],
       "store_url": "https://play.google.com/store/apps/details?id=com.zengfei.pun.idiom",
@@ -11289,7 +11364,7 @@
       "launch_date": "2026-03-21T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Word",
       "intel_theme": "",
       "platforms": [
         {
@@ -11313,8 +11388,10 @@
       "name": "WikiGacha",
       "publisher": "Oasys Wallet 株式会社",
       "platform": "ios",
-      "category": "",
-      "subcategories": [],
+      "category": "Casual",
+      "subcategories": [
+        "Casual"
+      ],
       "description": "知らなかった世界に出会える、知識カードコレクションゲーム。\n\nWikiGachaは、オンライン百科事典のランダムな記事をカードに変換するガチャゲームです。パックを開封すると、さまざまなジャンルの記事が6段階のレアリティ（C〜LR）のカードとして登場。記事の内容に基づいてATK・DEFが決まるユニークなカードを集めて、自分だけのコレクションを作りましょう。\n\n■ ガチャで知識と出会う\n毎日届くパックを開けて、新しいカードをゲット。10回に1回は高レアリティ確定の金パックが出現します。\n\n■ コレクションを充実させよう\n集めたカードは図鑑に保存。レアリティでフィルターして、お気に入りのカードを見つけましょう。気になる記事はそのままブラウザで読むことができます。\n\n■ カードバトルで腕試し\nコレクションからカードを選んでオートバトル。ATKとDEFの合計値で勝敗が決まります。\n\n■ デイリーミッション\n毎日5つのミッションをクリアして、追加パックを獲得。遊ぶほどコレクションが広がります。\n\n本アプリはWikimedia Foundationの公開APIを利用していますが、Wikimedia Foundationが承認・提供するものではありません。",
       "keywords": [],
       "store_url": "https://apps.apple.com/app/id6760274510",
@@ -11326,7 +11403,7 @@
       "launch_date": "2026-03-17T00:00:00Z",
       "intel_category": "",
       "intel_genre": "",
-      "intel_sub_genre": "",
+      "intel_sub_genre": "Casual",
       "intel_theme": "",
       "platforms": [
         {
