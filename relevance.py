@@ -78,6 +78,7 @@ MECHANICS: dict[str, dict] = {
             "tetromino", "hexa puzzle", "hex puzzle", "hexagon puzzle", "tangram",
             "block blast", "block fit", "wood puzzle", "brick puzzle", "hex block",
             "fill the grid", "block drop puzzle", "wooden puzzle", "block game puzzle",
+            "pixel block", "pixel block puzzle", "block puzzle game",
         ],
         "weak": ["tetris", "hexagon", "blocks puzzle"],
         "negative": [],
@@ -105,6 +106,21 @@ MECHANICS: dict[str, dict] = {
         "weak": ["eco game", "nature game", "garden game"],
         "negative": [],
         "priors": ["Casual", "Family"],
+    },
+
+    "Escape Room": {
+        "strong": [
+            "escape room", "room escape", "escape the room", "escape puzzle",
+            "mystery room", "locked room", "can you escape", "escape challenge",
+            "escape adventure", "escape mystery", "escape house", "escape game",
+            "point and click", "detective puzzle", "mystery puzzle",
+            "room mystery", "100 rooms", "100 doors", "mystery escape",
+            "adventure escape", "escape island",
+        ],
+        "weak": ["escape room", "adventure puzzle"],
+        # "escape the maze" belongs to Maze, not Escape Room
+        "negative": ["escape the maze", "maze escape"],
+        "priors": ["Puzzle", "Casual"],
     },
 
     "Hidden Objects": {
@@ -162,7 +178,9 @@ MECHANICS: dict[str, dict] = {
             "merge magic", "merge two", "merge same", "merge identical",
             "double merge", "merge adventure", "merge and upgrade",
             "merge master", "merge defense", "merge to unlock",
-            "combine and merge", "2048",
+            "combine and merge", "2048", "merge tile", "merge tiles",
+            "number merge", "merge numbers", "merge number", "double tile",
+            "merge kingdom", "merge empire", "merge story",
         ],
         "weak": ["merge game", "combine identical"],
         "negative": ["triple merge", "merge three", "merge 3", "triple match"],
@@ -191,8 +209,24 @@ MECHANICS: dict[str, dict] = {
             "shisen-sho", "mahjong solitaire", "mahjong puzzle",
         ],
         "weak": ["mahjong", "tile pairs"],
-        "negative": [],
+        # "solitaire" alone belongs to the Solitaire mechanic
+        "negative": ["klondike", "freecell", "spider solitaire", "tripeaks"],
         "priors": ["Puzzle", "Casual", "Board"],
+    },
+
+    "Solitaire": {
+        "strong": [
+            "solitaire", "klondike", "freecell", "spider solitaire",
+            "tripeaks", "tri peaks", "tri-peaks", "pyramid solitaire",
+            "golf solitaire", "card solitaire", "patience game", "solitaire card",
+            "solitaire puzzle", "card patience", "solitaire classic",
+            "solitaire collection", "solitaire adventure", "daily solitaire",
+            "undo solitaire", "offline solitaire",
+        ],
+        "weak": ["solitaire", "patience"],
+        # mahjong solitaire is actually a tile-matching game → Match Pair
+        "negative": ["mahjong solitaire"],
+        "priors": ["Card", "Casual", "Board"],
     },
 
     "Match Swap": {
@@ -221,13 +255,24 @@ MECHANICS: dict[str, dict] = {
 
     "Numbers": {
         "strong": [
-            "sudoku", "nonogram", "picross", "kakuro", "hitori",
+            # sudoku family
+            "sudoku", "sudoku puzzle", "daily sudoku", "sudoku classic",
+            "sudoku master", "sudoku challenge", "sudoku brain",
+            # other logic number puzzles
+            "nonogram", "picross", "kakuro", "hitori", "kenken",
+            "fillomino", "slitherlink", "numberlink",
+            # generic number puzzle
             "number puzzle", "math puzzle", "number game", "number fill",
             "number chain", "number connect", "fill in numbers", "number grid",
             "math game", "arithmetic puzzle", "number logic",
-            "math challenge", "calculation puzzle",
+            "math challenge", "calculation puzzle", "number brain",
+            # pixel / color-by-number (mechanic is identical: fill cells by number)
+            "color by number", "colour by number", "paint by number",
+            "pixel art color", "pixel color", "pixel coloring",
+            "number coloring", "color pixel", "pixel art puzzle",
+            "color by num", "pixel paint",
         ],
-        "weak": ["sudoku", "numbers game", "math game"],
+        "weak": ["sudoku", "numbers game", "math game", "pixel art"],
         "negative": [],
         "priors": ["Puzzle", "Board", "Educational"],
     },
@@ -332,7 +377,7 @@ CATEGORY_FALLBACK: dict[str, str] = {
     "Board":       "Other Puzzle",
     "Family":      "Other Puzzle",
     "Arcade":      "Real-Time Puzzle",
-    "Card":        "Other Puzzle",
+    "Card":        "Solitaire",      # card store category → most likely solitaire
     "Educational": "Numbers",
 }
 
@@ -354,6 +399,8 @@ MECHANIC_FAMILIES: dict[str, str] = {
     "Jigsaw":           "Casual",
     "Hidden Objects":   "Casual",
     "Environmental":    "Casual",
+    "Escape Room":      "Casual",
+    "Solitaire":        "Card",
     "Bubble Shooter":   "Arcade",
     "Real-Time Puzzle": "Arcade",
     "Word":             "Language",
@@ -397,12 +444,15 @@ def _normalize(text: str) -> str:
 
 
 def _keyword_in(text: str, kw: str) -> bool:
-    """Word-boundary check for both single tokens and multi-word phrases.
+    """Left-anchored word-boundary match — plurals and suffixes included.
 
-    Uses \\b anchors on both ends so 'pop the bubble' does not match inside
-    'pop the bubbles', and 'sort' does not match inside 'sorted' or 'sorting'.
+    Leading \\b prevents matching inside longer words (e.g. 'sort' won't fire
+    on 'assorted').  No trailing \\b so 'block' also matches 'blocks',
+    'bubble' matches 'bubbles', 'escape' matches 'escaped', etc.
+    Multi-word phrases follow the same rule: 'hidden object' matches
+    'hidden objects', 'merge tile' matches 'merge tiles'.
     """
-    return bool(re.search(rf'\b{re.escape(kw)}\b', text))
+    return bool(re.search(rf'\b{re.escape(kw)}', text))
 
 
 # ---------------------------------------------------------------------------
