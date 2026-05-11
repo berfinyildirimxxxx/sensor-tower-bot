@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-05-11 17:33 UTC",
+  "last_updated": "2026-05-11 17:50 UTC",
   "run_date": "2026-05-11",
   "retention_days": 30,
   "sheet_url": "https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit",
-  "total_fetched_today": 263,
-  "ios_fetched_today": 88,
-  "android_fetched_today": 177,
+  "total_fetched_today": 44,
+  "ios_fetched_today": 18,
+  "android_fetched_today": 26,
   "total_games_on_site": 263,
   "games": [
     {
