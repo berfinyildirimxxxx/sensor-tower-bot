@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SENSOR_TOWER_API_KEY: ${{ secrets.SENSOR_TOWER_API_KEY }}
+      SENSORTOWER_SESSION: ${{ secrets.SENSORTOWER_SESSION }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
