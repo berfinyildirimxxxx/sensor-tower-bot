@@ -23,7 +23,6 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
         "7004",  # Games/Board
         "7009",  # Games/Family
         "7018",  # Games/Trivia
-
     ],
     "android": [
         "game_puzzle",
@@ -35,8 +34,6 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
         "game_card",
         "game_educational",
         "game_family",
-
-        
     ],
 }
 
