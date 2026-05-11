@@ -18,26 +18,23 @@
     --text-secondary: #525252;
     --text-tertiary: #a3a3a3;
 
-    /* Cactus theme — agave colors */
     --cactus-orange: #d97548;
     --cactus-orange-light: #fce8df;
     --cactus-orange-dark: #b85a30;
     --cactus-green: #5a9b4a;
     --cactus-green-light: #e6f1e2;
 
-    /* Filter accent colors (each filter group has its own) */
     --c-platform: #8b5cf6;
-    --c-platform-bg: #f3eeff;
     --c-mechanic: #d97548;
-    --c-mechanic-bg: #fce8df;
     --c-score: #10b981;
-    --c-score-bg: #d1fae5;
-    --c-installs: #3b82f6;
-    --c-installs-bg: #dbeafe;
     --c-date: #ec4899;
-    --c-date-bg: #fce7f3;
+    --c-release: #f59e0b;
     --c-sort: #6366f1;
-    --c-sort-bg: #e0e7ff;
+    --c-installs: #3b82f6;
+
+    --c-platform-bg: #f3eeff;
+    --c-score-bg: #d1fae5;
+    --c-installs-bg: #dbeafe;
 
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
     --shadow: 0 4px 12px rgba(0,0,0,0.06);
@@ -56,8 +53,6 @@
     --purple-text: #6b21a8;
     --amber-bg: #fffbeb;
     --amber-text: #92400e;
-    --pink-bg: #fdf2f8;
-    --pink-text: #9d174d;
   }
   [data-theme="dark"] {
     --bg: #0a0a0a;
@@ -73,25 +68,14 @@
     --cactus-orange-light: #3a1f15;
     --cactus-orange-dark: #d97548;
     --cactus-green: #7ab86a;
-    --cactus-green-light: #1a2e15;
 
-    --c-platform: #a78bfa;
     --c-platform-bg: #2a1f4a;
-    --c-mechanic: #ea8a5e;
-    --c-mechanic-bg: #3a1f15;
-    --c-score: #34d399;
     --c-score-bg: #0f3a2c;
-    --c-installs: #60a5fa;
     --c-installs-bg: #142e54;
-    --c-date: #f472b6;
-    --c-date-bg: #3a1428;
-    --c-sort: #818cf8;
-    --c-sort-bg: #1f2654;
 
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
     --shadow: 0 4px 12px rgba(0,0,0,0.4);
     --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
-    --shadow-glow: 0 0 0 4px rgba(234, 138, 94, 0.15);
 
     --green-bg: #064e3b;
     --green-text: #6ee7b7;
@@ -105,34 +89,31 @@
     --purple-text: #d8b4fe;
     --amber-bg: #422006;
     --amber-text: #fbbf24;
-    --pink-bg: #500724;
-    --pink-text: #f9a8d4;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     transition: background 0.2s, color 0.2s;
-    font-feature-settings: 'cv11', 'ss01';
   }
   .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
 
-  /* TOPBAR with gradient accent line */
+  /* TOPBAR */
   .topbar {
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border);
-    padding: 16px 32px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 60;
     backdrop-filter: blur(12px);
     background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
   }
@@ -141,30 +122,17 @@
     position: absolute;
     left: 0; right: 0; bottom: -1px;
     height: 2px;
-    background: linear-gradient(90deg,
-      var(--cactus-orange) 0%,
-      var(--cactus-orange-dark) 25%,
-      var(--cactus-green) 65%,
-      var(--c-platform) 100%);
+    background: linear-gradient(90deg, var(--cactus-orange) 0%, var(--cactus-green) 60%, var(--c-platform) 100%);
     opacity: 0.7;
   }
   .brand { display: flex; align-items: center; gap: 12px; }
   .brand-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--cactus-orange) 0%, var(--cactus-orange-dark) 100%);
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--cactus-orange), var(--cactus-orange-dark));
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
+    font-size: 20px;
     box-shadow: 0 4px 12px rgba(217, 117, 72, 0.25);
-    position: relative;
-    overflow: hidden;
-  }
-  .brand-icon::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
-    pointer-events: none;
   }
   .brand-text h1 {
     font-size: 15px;
@@ -181,47 +149,133 @@
     margin-top: -2px;
   }
   .topbar-actions { display: flex; align-items: center; gap: 8px; }
+  .sheet-btn {
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .sheet-btn:hover {
+    background: var(--cactus-green-light);
+    border-color: var(--cactus-green);
+    color: var(--cactus-green);
+  }
   .icon-btn {
-    width: 36px; height: 36px;
+    width: 34px; height: 34px;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--bg-secondary);
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
     color: var(--text-secondary);
-    font-size: 16px;
+    font-size: 15px;
     transition: all 0.15s;
   }
   .icon-btn:hover {
     background: var(--cactus-orange-light);
     border-color: var(--cactus-orange);
-    color: var(--cactus-orange-dark);
     transform: rotate(-8deg);
   }
 
-  /* HERO STATS */
-  .hero {
-    padding: 32px 32px 0;
+  /* LAYOUT: SIDEBAR + MAIN */
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
     max-width: 1600px;
     margin: 0 auto;
-    position: relative;
+    gap: 24px;
+    padding: 24px;
   }
-  .hero::before {
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; padding: 16px; }
+    .sidebar { position: static !important; max-height: none !important; }
+  }
+
+  /* SIDEBAR — sticky mechanic panel */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    align-self: start;
+  }
+  .sidebar-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sidebar-title::before {
     content: '';
-    position: absolute;
-    top: -20px; left: 10%; right: 10%;
-    height: 200px;
-    background: radial-gradient(ellipse at center, rgba(217, 117, 72, 0.08), transparent 70%);
-    pointer-events: none;
-    z-index: -1;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--c-mechanic);
   }
+  .mechanic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .mechanic-item {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.12s;
+  }
+  .mechanic-item:hover {
+    background: color-mix(in srgb, var(--c-mechanic) 8%, transparent);
+    color: var(--text);
+  }
+  .mechanic-item.active {
+    background: var(--c-mechanic);
+    color: white;
+    font-weight: 600;
+  }
+  .mechanic-item .count {
+    font-size: 11px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* MAIN AREA */
+  .main { min-width: 0; }
+
+  /* HERO STATS */
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
   }
-  @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) { .hero-grid { grid-template-columns: 1fr; } }
 
   .stat-card {
@@ -255,7 +309,6 @@
     background: radial-gradient(circle, var(--cactus-orange-light), transparent 70%);
     pointer-events: none;
   }
-  .stat-card.match { --card-color: var(--cactus-green); }
   .stat-card.radar { --card-color: var(--c-installs); }
 
   .stat-label {
@@ -264,19 +317,15 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
     position: relative;
     z-index: 1;
   }
   .stat-value {
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 800;
     margin-top: 6px;
     line-height: 1;
     letter-spacing: -0.025em;
-    font-variant-numeric: tabular-nums;
     position: relative;
     z-index: 1;
   }
@@ -286,7 +335,6 @@
     margin-top: 10px;
     display: flex;
     gap: 14px;
-    align-items: center;
     position: relative;
     z-index: 1;
   }
@@ -299,101 +347,15 @@
   .dot-ios { background: var(--c-platform); box-shadow: 0 0 6px var(--c-platform); }
   .dot-android { background: var(--cactus-green); box-shadow: 0 0 6px var(--cactus-green); }
 
-  /* CHART CARD */
-  .chart-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px 22px;
-    position: relative;
-    overflow: hidden;
-  }
-  .chart-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--c-date);
-  }
-  .chart-title {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 12px;
-  }
-  .bar-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 6px;
-    height: 60px;
-    margin-bottom: 6px;
-  }
-  .bar {
-    flex: 1;
-    background: linear-gradient(180deg,
-      color-mix(in srgb, var(--text-secondary) 70%, transparent) 0%,
-      color-mix(in srgb, var(--text-secondary) 30%, transparent) 100%);
-    border-radius: 4px 4px 2px 2px;
-    min-height: 4px;
-    position: relative;
-    transition: all 0.15s;
-    cursor: pointer;
-  }
-  .bar:hover {
-    background: linear-gradient(180deg, var(--text) 0%, color-mix(in srgb, var(--text) 50%, transparent) 100%);
-    transform: scaleY(1.05);
-  }
-  .bar.today {
-    background: linear-gradient(180deg, var(--cactus-orange) 0%, var(--cactus-orange-dark) 100%);
-    box-shadow: 0 0 16px rgba(217, 117, 72, 0.4);
-    animation: pulseBar 2.5s ease-in-out infinite;
-  }
-  @keyframes pulseBar {
-    0%, 100% { box-shadow: 0 0 16px rgba(217, 117, 72, 0.4); }
-    50% { box-shadow: 0 0 24px rgba(217, 117, 72, 0.7); }
-  }
-  .bar-tooltip {
-    position: absolute;
-    bottom: calc(100% + 6px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--text);
-    color: var(--bg);
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.15s;
-  }
-  .bar:hover .bar-tooltip { opacity: 1; }
-  .bar-labels {
-    display: flex;
-    gap: 6px;
-    font-size: 10px;
-    color: var(--text-tertiary);
-    font-weight: 500;
-  }
-  .bar-label { flex: 1; text-align: center; }
-  .bar-label.today-label { color: var(--cactus-orange); font-weight: 700; }
-
   /* CONTROLS */
-  .controls-wrap {
-    padding: 0 32px;
-    max-width: 1600px;
-    margin: 0 auto;
-  }
   .controls {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 16px 20px;
+    margin-bottom: 16px;
     position: sticky;
-    top: 78px;
+    top: 80px;
     z-index: 40;
     backdrop-filter: blur(12px);
     background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
@@ -421,7 +383,6 @@
   .search-box:focus {
     outline: none;
     border-color: var(--cactus-orange);
-    background-color: var(--bg-secondary);
     box-shadow: var(--shadow-glow);
   }
   .toggle-filters {
@@ -434,9 +395,6 @@
     font-weight: 500;
     color: var(--text);
     font-family: inherit;
-    display: flex;
-    align-items: center;
-    gap: 6px;
     transition: all 0.15s;
   }
   .toggle-filters:hover { border-color: var(--cactus-orange); color: var(--cactus-orange-dark); }
@@ -447,11 +405,7 @@
     gap: 14px 24px;
   }
   .filter-section.collapsed { display: none; }
-  .filter-block {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .filter-block { display: flex; flex-direction: column; gap: 8px; }
   .filter-label {
     font-size: 11px;
     font-weight: 600;
@@ -498,27 +452,17 @@
     border-color: var(--filter-color, var(--text));
     box-shadow: 0 2px 8px color-mix(in srgb, var(--filter-color, var(--text)) 30%, transparent);
   }
-  .pill-count {
-    font-size: 10.5px;
-    opacity: 0.6;
-    margin-left: 4px;
-    font-variant-numeric: tabular-nums;
-  }
-  .pill.active .pill-count { opacity: 0.85; }
 
-  /* Filter group color assignments */
   #platformFilter { --filter-color: var(--c-platform); }
-  #mechanicFilter { --filter-color: var(--c-mechanic); }
   #scoreFilter { --filter-color: var(--c-score); }
-  #installsFilter { --filter-color: var(--c-installs); }
   #dateFilter { --filter-color: var(--c-date); }
+  #releaseFilter { --filter-color: var(--c-release); }
   #sortFilter { --filter-color: var(--c-sort); }
 
   #platformFilterLabel { --filter-color: var(--c-platform); }
-  #mechanicFilterLabel { --filter-color: var(--c-mechanic); }
   #scoreFilterLabel { --filter-color: var(--c-score); }
-  #installsFilterLabel { --filter-color: var(--c-installs); }
   #dateFilterLabel { --filter-color: var(--c-date); }
+  #releaseFilterLabel { --filter-color: var(--c-release); }
   #sortFilterLabel { --filter-color: var(--c-sort); }
 
   .date-picker {
@@ -531,7 +475,6 @@
     color: var(--text);
     cursor: pointer;
   }
-  .date-picker:focus { outline: none; border-color: var(--c-date); }
   .clear-link {
     background: none;
     border: none;
@@ -542,18 +485,15 @@
     font-family: inherit;
     padding: 4px;
   }
-  .clear-link:hover { color: var(--c-date); }
 
   /* RESULT BAR */
   .result-bar {
-    padding: 16px 32px 8px;
-    max-width: 1600px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: var(--text-secondary);
     font-size: 13px;
+    margin-bottom: 12px;
   }
   .result-count strong { color: var(--text); font-weight: 700; }
   .view-toggle {
@@ -583,21 +523,12 @@
   }
 
   /* GAMES */
-  .games-wrap {
-    padding: 8px 32px 40px;
-    max-width: 1600px;
-    margin: 0 auto;
-  }
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 14px;
   }
-  .games-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+  .games-list { display: flex; flex-direction: column; gap: 6px; }
   .game-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
@@ -608,19 +539,6 @@
     position: relative;
     overflow: hidden;
   }
-  .game-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 13px;
-    background: linear-gradient(135deg,
-      color-mix(in srgb, var(--mech-color, var(--cactus-orange)) 4%, transparent),
-      transparent 60%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .game-card:hover::before { opacity: 1; }
   .game-card:hover {
     border-color: color-mix(in srgb, var(--mech-color, var(--cactus-orange)) 40%, var(--border));
     transform: translateY(-3px);
@@ -653,25 +571,21 @@
   .game-header {
     display: flex;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     padding-right: 80px;
-    position: relative;
-    z-index: 1;
   }
   .game-icon, .game-icon-fallback {
-    width: 56px;
-    height: 56px;
-    border-radius: 13px;
+    width: 54px; height: 54px;
+    border-radius: 12px;
     flex-shrink: 0;
   }
   .game-icon { background: var(--bg); object-fit: cover; box-shadow: var(--shadow-sm); }
   .game-icon-fallback {
     background: linear-gradient(135deg, var(--mech-color, #6366f1), color-mix(in srgb, var(--mech-color, #6366f1) 70%, #000));
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     font-weight: 700;
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--mech-color, #6366f1) 30%, transparent);
   }
   .game-info { flex: 1; min-width: 0; }
   .game-name {
@@ -690,13 +604,20 @@
     white-space: nowrap;
     margin-top: 2px;
   }
+  .game-release {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .game-release strong { color: var(--text-secondary); font-weight: 500; }
   .game-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     margin-top: 8px;
-    position: relative;
-    z-index: 1;
   }
   .badge {
     font-size: 10.5px;
@@ -711,8 +632,9 @@
   .badge.score-high { background: var(--green-bg); color: var(--green-text); border-color: transparent; }
   .badge.score-mid { background: var(--amber-bg); color: var(--amber-text); border-color: transparent; }
   .badge.score-low { background: var(--red-bg); color: var(--red-text); border-color: transparent; }
+  .badge.score-zero { background: var(--bg); color: var(--text-tertiary); border-color: var(--border); }
   .badge.platform-ios { background: var(--c-platform-bg); color: var(--c-platform); border-color: transparent; }
-  .badge.platform-android { background: var(--c-score-bg); color: var(--c-score); border-color: transparent; }
+  .badge.platform-android { background: var(--c-score-bg); color: var(--cactus-green); border-color: transparent; }
   .badge.installs { background: var(--c-installs-bg); color: var(--c-installs); border-color: transparent; }
   .badge.mechanic-badge {
     background: color-mix(in srgb, var(--mech-color, var(--c-mechanic)) 12%, transparent);
@@ -720,7 +642,6 @@
     border-color: transparent;
   }
 
-  /* Mechanic colors */
   .mech-match3 { --mech-color: #ef4444; }
   .mech-hidden { --mech-color: #f59e0b; }
   .mech-sort { --mech-color: #8b5cf6; }
@@ -738,33 +659,30 @@
   /* LIST VIEW */
   .games-list .game-card {
     display: grid;
-    grid-template-columns: 48px 1fr auto auto auto auto;
-    gap: 16px;
+    grid-template-columns: 44px 1fr auto auto auto auto auto;
+    gap: 14px;
     align-items: center;
     padding: 10px 16px;
     transform: none !important;
   }
   .games-list .game-card:hover { transform: none !important; }
   .games-list .game-icon, .games-list .game-icon-fallback {
-    width: 40px; height: 40px; font-size: 16px; border-radius: 9px;
+    width: 38px; height: 38px; font-size: 15px; border-radius: 9px;
   }
   .games-list .game-header { display: contents; }
   .games-list .game-info { padding-right: 0; }
+  .games-list .game-release { display: none; }
   .games-list .added-tag { position: static; white-space: nowrap; }
   .games-list .game-meta { margin-top: 0; flex-wrap: nowrap; }
-  @media (max-width: 800px) {
-    .games-list .game-card { grid-template-columns: 40px 1fr auto; }
-    .games-list .extra-meta { display: none; }
-  }
 
   .empty-state {
     text-align: center;
-    padding: 80px 32px;
+    padding: 60px 32px;
     color: var(--text-tertiary);
     grid-column: 1 / -1;
   }
-  .empty-state-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
-  .empty-state h3 { font-size: 16px; margin-bottom: 6px; color: var(--text); font-weight: 600; }
+  .empty-state-icon { font-size: 42px; margin-bottom: 12px; opacity: 0.4; }
+  .empty-state h3 { font-size: 15px; margin-bottom: 4px; color: var(--text); font-weight: 600; }
   .empty-state p { font-size: 13px; }
 
   /* MODAL */
@@ -796,57 +714,33 @@
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
-  .modal-header { display: flex; gap: 16px; margin-bottom: 24px; }
+  .modal-header { display: flex; gap: 16px; margin-bottom: 22px; }
   .modal-icon, .modal-icon-fallback {
-    width: 76px; height: 76px;
-    border-radius: 16px;
-    flex-shrink: 0;
+    width: 76px; height: 76px; border-radius: 16px; flex-shrink: 0;
   }
   .modal-icon-fallback {
     background: linear-gradient(135deg, var(--mech-color, #6366f1), color-mix(in srgb, var(--mech-color, #6366f1) 70%, #000));
     display: flex; align-items: center; justify-content: center;
-    font-size: 28px;
-    color: white;
-    font-weight: 700;
+    font-size: 28px; color: white; font-weight: 700;
   }
-  .modal-title {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
+  .modal-title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
   .modal-publisher { color: var(--text-tertiary); margin-top: 2px; font-size: 13px; }
-  .modal-section { margin-bottom: 22px; }
+  .modal-section { margin-bottom: 20px; }
   .modal-section-title {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 600; color: var(--text-tertiary);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
   }
-  .modal-section-content {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--text-secondary);
-  }
-  .screenshots {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-  }
+  .modal-section-content { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
+  .screenshots { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; }
   .screenshots img {
-    height: 280px;
-    border-radius: 12px;
-    flex-shrink: 0;
-    border: 1px solid var(--border);
+    height: 280px; border-radius: 12px; flex-shrink: 0; border: 1px solid var(--border);
   }
   .modal-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
   .btn {
     padding: 10px 18px;
     border-radius: 9px;
     border: none;
-    background: linear-gradient(135deg, var(--cactus-orange) 0%, var(--cactus-orange-dark) 100%);
+    background: linear-gradient(135deg, var(--cactus-orange), var(--cactus-orange-dark));
     color: white;
     font-size: 13px;
     font-weight: 600;
@@ -856,32 +750,21 @@
     align-items: center;
     gap: 6px;
     font-family: inherit;
-    transition: all 0.15s;
     box-shadow: 0 4px 12px rgba(217, 117, 72, 0.25);
+    transition: all 0.15s;
   }
-  .btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(217, 117, 72, 0.35);
-  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(217, 117, 72, 0.35); }
   .close-btn {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    color: var(--text-secondary);
+    position: absolute; top: 16px; right: 20px;
+    background: var(--bg); border: 1px solid var(--border);
+    width: 32px; height: 32px; border-radius: 8px;
+    font-size: 16px; cursor: pointer; color: var(--text-secondary);
     display: flex; align-items: center; justify-content: center;
     transition: all 0.15s;
   }
   .close-btn:hover {
-    background: var(--red-bg);
-    color: var(--red-text);
-    border-color: transparent;
-    transform: rotate(90deg);
+    background: var(--red-bg); color: var(--red-text);
+    border-color: transparent; transform: rotate(90deg);
   }
 
   .fade-in { animation: fadeIn 0.3s ease-out; }
@@ -902,100 +785,109 @@
     </div>
   </div>
   <div class="topbar-actions">
+    <a href="#" class="sheet-btn" id="sheetBtn" target="_blank">
+      📁 Google Sheet
+    </a>
     <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
   </div>
 </div>
 
-<div class="hero">
-  <div class="hero-grid" id="heroGrid"></div>
-</div>
-
-<div class="controls-wrap">
-  <div class="controls">
-    <div class="search-row">
-      <input type="text" class="search-box" id="searchBox" placeholder="Search by name or publisher…">
-      <button class="toggle-filters" id="toggleFilters">
-        <span id="toggleFiltersText">Hide Filters</span>
+<div class="layout">
+  <!-- SIDEBAR: Mechanic categories -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Mechanic</div>
+    <div class="mechanic-list" id="mechanicList">
+      <button class="mechanic-item active" data-mechanic="all">
+        <span>All</span><span class="count" id="mechAllCount">0</span>
       </button>
     </div>
-    <div class="filter-section" id="filterSection">
+  </aside>
 
-      <div class="filter-block">
-        <span class="filter-label" id="platformFilterLabel">Platform</span>
-        <div class="pill-group" id="platformFilter">
-          <button class="pill active" data-platform="all">All</button>
-          <button class="pill" data-platform="ios">📱 iOS</button>
-          <button class="pill" data-platform="android">🤖 Android</button>
-        </div>
+  <!-- MAIN -->
+  <main class="main">
+    <div class="hero-grid" id="heroGrid"></div>
+
+    <div class="controls">
+      <div class="search-row">
+        <input type="text" class="search-box" id="searchBox" placeholder="Search by name or publisher…">
+        <button class="toggle-filters" id="toggleFilters">
+          <span id="toggleFiltersText">Hide Filters</span>
+        </button>
       </div>
+      <div class="filter-section" id="filterSection">
 
-      <div class="filter-block" style="grid-column: span 2;">
-        <span class="filter-label" id="mechanicFilterLabel">Mechanic</span>
-        <div class="pill-group" id="mechanicFilter">
-          <button class="pill active" data-mechanic="all">All</button>
+        <div class="filter-block">
+          <span class="filter-label" id="platformFilterLabel">Platform</span>
+          <div class="pill-group" id="platformFilter">
+            <button class="pill active" data-platform="all">All</button>
+            <button class="pill" data-platform="ios">📱 iOS</button>
+            <button class="pill" data-platform="android">🤖 Android</button>
+          </div>
         </div>
-      </div>
 
-      <div class="filter-block">
-        <span class="filter-label" id="scoreFilterLabel">Min Score</span>
-        <div class="pill-group" id="scoreFilter">
-          <button class="pill active" data-score="0">All</button>
-          <button class="pill" data-score="60">60+</button>
-          <button class="pill" data-score="70">70+</button>
-          <button class="pill" data-score="80">80+</button>
-          <button class="pill" data-score="90">90+</button>
+        <div class="filter-block">
+          <span class="filter-label" id="scoreFilterLabel">Min Score</span>
+          <div class="pill-group" id="scoreFilter">
+            <button class="pill active" data-score="0">All</button>
+            <button class="pill" data-score="30">30+</button>
+            <button class="pill" data-score="40">40+</button>
+            <button class="pill" data-score="50">50+</button>
+            <button class="pill" data-score="60">60+</button>
+            <button class="pill" data-score="70">70+</button>
+            <button class="pill" data-score="80">80+</button>
+            <button class="pill" data-score="90">90+</button>
+          </div>
         </div>
-      </div>
 
-      <div class="filter-block">
-        <span class="filter-label" id="installsFilterLabel">Min Installs</span>
-        <div class="pill-group" id="installsFilter">
-          <button class="pill active" data-installs="0">All</button>
-          <button class="pill" data-installs="500">500+</button>
-          <button class="pill" data-installs="10000">10K+</button>
-          <button class="pill" data-installs="20000">20K+</button>
-          <button class="pill" data-installs="30000">30K+</button>
-          <button class="pill" data-installs="40000">40K+</button>
+        <div class="filter-block">
+          <span class="filter-label" id="releaseFilterLabel">Release Date</span>
+          <div class="pill-group" id="releaseFilter">
+            <button class="pill active" data-release="0">All</button>
+            <button class="pill" data-release="7">Last 7 days</button>
+            <button class="pill" data-release="30">Last 30 days</button>
+            <button class="pill" data-release="60">Last 60 days</button>
+            <input type="date" class="date-picker" id="releaseDatePicker">
+            <button class="clear-link" id="clearReleaseDate" style="display:none">Clear</button>
+          </div>
         </div>
-      </div>
 
-      <div class="filter-block" style="grid-column: span 2;">
-        <span class="filter-label" id="dateFilterLabel">Date Added</span>
-        <div class="pill-group" id="dateFilter">
-          <button class="pill active" data-days="0">All</button>
-          <button class="pill" data-days="1">Today</button>
-          <button class="pill" data-days="2">Yesterday</button>
-          <button class="pill" data-days="3">3 days</button>
-          <button class="pill" data-days="7">7 days</button>
-          <button class="pill" data-days="14">14 days</button>
-          <input type="date" class="date-picker" id="datePicker">
-          <button class="clear-link" id="clearDate" style="display:none">Clear</button>
+        <div class="filter-block">
+          <span class="filter-label" id="dateFilterLabel">Date Added</span>
+          <div class="pill-group" id="dateFilter">
+            <button class="pill active" data-days="0">All</button>
+            <button class="pill" data-days="1">Today</button>
+            <button class="pill" data-days="2">Yesterday</button>
+            <button class="pill" data-days="3">3 days</button>
+            <button class="pill" data-days="7">7 days</button>
+            <button class="pill" data-days="14">14 days</button>
+            <input type="date" class="date-picker" id="datePicker">
+            <button class="clear-link" id="clearDate" style="display:none">Clear</button>
+          </div>
         </div>
-      </div>
 
-      <div class="filter-block">
-        <span class="filter-label" id="sortFilterLabel">Sort By</span>
-        <div class="pill-group" id="sortFilter">
-          <button class="pill active" data-sort="installs">Most Installs</button>
-          <button class="pill" data-sort="recent">Newest</button>
-          <button class="pill" data-sort="score">Highest Score</button>
+        <div class="filter-block">
+          <span class="filter-label" id="sortFilterLabel">Sort By</span>
+          <div class="pill-group" id="sortFilter">
+            <button class="pill active" data-sort="installs">Most Installs</button>
+            <button class="pill" data-sort="recent">Newest</button>
+            <button class="pill" data-sort="score">Highest Score</button>
+            <button class="pill" data-sort="release">Latest Release</button>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="result-bar">
-  <div class="result-count" id="resultsCount">Loading…</div>
-  <div class="view-toggle">
-    <button class="view-btn active" data-view="grid">⊞ Grid</button>
-    <button class="view-btn" data-view="list">☰ List</button>
-  </div>
-</div>
+    <div class="result-bar">
+      <div class="result-count" id="resultsCount">Loading…</div>
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="grid">⊞ Grid</button>
+        <button class="view-btn" data-view="list">☰ List</button>
+      </div>
+    </div>
 
-<div class="games-wrap">
-  <div id="gamesContainer" class="games-grid"></div>
+    <div id="gamesContainer" class="games-grid"></div>
+  </main>
 </div>
 
 <div class="modal" id="gameModal">
@@ -1008,29 +900,26 @@
 <script>
 let allGames = [];
 let filters = {
-  platform: 'all', mechanic: 'all', minScore: 0, minInstalls: 0,
-  days: 0, specificDate: '', search: '', sort: 'installs'
+  platform: 'all', mechanic: 'all', minScore: 0,
+  days: 0, specificDate: '',
+  releaseDays: 0, specificReleaseDate: '',
+  search: '', sort: 'installs'
 };
 let viewMode = 'grid';
+
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/' +
+  (typeof GOOGLE_SHEET_ID !== 'undefined' ? GOOGLE_SHEET_ID : '') +
+  '/edit';
 
 const MECHANIC_KEYWORDS = [
   'Match-3', 'Hidden Object', 'Sort', 'Jigsaw', 'Mahjong', 'Tile Connect',
   'Word', 'Block', 'Hex', 'Merge', 'Escape Room', 'Casual Puzzle'
 ];
-
 const MECHANIC_CLASSES = {
-  'Match-3': 'mech-match3',
-  'Hidden Object': 'mech-hidden',
-  'Sort': 'mech-sort',
-  'Jigsaw': 'mech-jigsaw',
-  'Mahjong': 'mech-mahjong',
-  'Tile Connect': 'mech-tile',
-  'Word': 'mech-word',
-  'Block': 'mech-block',
-  'Hex': 'mech-hex',
-  'Merge': 'mech-merge',
-  'Escape Room': 'mech-escape',
-  'Casual Puzzle': 'mech-casual'
+  'Match-3': 'mech-match3', 'Hidden Object': 'mech-hidden', 'Sort': 'mech-sort',
+  'Jigsaw': 'mech-jigsaw', 'Mahjong': 'mech-mahjong', 'Tile Connect': 'mech-tile',
+  'Word': 'mech-word', 'Block': 'mech-block', 'Hex': 'mech-hex',
+  'Merge': 'mech-merge', 'Escape Room': 'mech-escape', 'Casual Puzzle': 'mech-casual'
 };
 
 function extractMechanic(game) {
@@ -1041,10 +930,7 @@ function extractMechanic(game) {
   const firstPart = text.split('|')[0].replace('Mechanic:', '').trim();
   return firstPart || 'Other';
 }
-
-function mechanicClass(mech) {
-  return MECHANIC_CLASSES[mech] || 'mech-other';
-}
+function mechanicClass(mech) { return MECHANIC_CLASSES[mech] || 'mech-other'; }
 
 // THEME
 const savedTheme = localStorage.getItem('theme') || 'light';
@@ -1058,16 +944,13 @@ document.getElementById('themeToggle').addEventListener('click', () => {
   document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
 });
 
-// COUNT-UP ANIMATION
 function countUp(element, target, duration = 800) {
-  const start = 0;
+  if (!element) return;
   const startTime = performance.now();
   function step(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
+    const progress = Math.min((now - startTime) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    const value = Math.floor(start + (target - start) * eased);
-    element.textContent = value.toLocaleString();
+    element.textContent = Math.floor(target * eased).toLocaleString();
     if (progress < 1) requestAnimationFrame(step);
     else element.textContent = target.toLocaleString();
   }
@@ -1084,16 +967,21 @@ async function loadData() {
     document.getElementById('lastUpdated').textContent =
       data.last_updated ? `Updated ${data.last_updated}` : 'No data yet';
 
-    const totalToday = data.total_fetched_today ?? data.total_fetched ?? 0;
-    const iosToday = data.ios_fetched_today ?? data.ios_fetched ?? 0;
-    const androidToday = data.android_fetched_today ?? data.android_fetched ?? 0;
-    const relevantToday = data.total_relevant_today ?? data.total_relevant ?? 0;
+    // Sheet button URL — falls back to a generic Drive link
+    const sheetId = data.sheet_id || '';
+    const sheetUrl = sheetId
+      ? `https://docs.google.com/spreadsheets/d/${sheetId}/edit`
+      : 'https://drive.google.com/';
+    document.getElementById('sheetBtn').href = sheetUrl;
+
+    const totalToday = data.total_fetched_today ?? 0;
+    const iosToday = data.ios_fetched_today ?? 0;
+    const androidToday = data.android_fetched_today ?? 0;
     const onSite = data.total_games_on_site ?? allGames.length;
     const retentionDays = data.retention_days ?? 30;
     const runDate = data.run_date || '';
     const dateLabel = runDate ? formatDateLabel(runDate) : '';
-    const scannedTitle = dateLabel ? `Scanned ${dateLabel}` : 'Scanned';
-    const matchTitle = dateLabel ? `Portfolio Match · ${dateLabel}` : 'Portfolio Match';
+    const scannedTitle = dateLabel ? `Scanned ${dateLabel}` : 'Scanned Today';
 
     document.getElementById('heroGrid').innerHTML = `
       <div class="stat-card scanned">
@@ -1104,60 +992,22 @@ async function loadData() {
           <span><span class="stat-sub-dot dot-android"></span>Android <strong>${androidToday.toLocaleString()}</strong></span>
         </div>
       </div>
-      <div class="stat-card match">
-        <div class="stat-label">${escapeHtml(matchTitle)}</div>
-        <div class="stat-value mono" id="statMatch">0</div>
-        <div class="stat-sub">fit Agave's mechanics</div>
-      </div>
       <div class="stat-card radar">
         <div class="stat-label">Total on Radar</div>
         <div class="stat-value mono" id="statRadar">0</div>
         <div class="stat-sub">for ${retentionDays} days</div>
       </div>
     `;
-
     countUp(document.getElementById('statScanned'), totalToday);
-    countUp(document.getElementById('statMatch'), relevantToday);
     countUp(document.getElementById('statRadar'), onSite);
 
-    buildMechanicFilter();
+    buildMechanicSidebar();
     render();
   } catch (err) {
     document.getElementById('lastUpdated').textContent = 'Error loading data';
     document.getElementById('gamesContainer').innerHTML =
       `<div class="empty-state"><div class="empty-state-icon">⚠️</div><h3>Couldn't load data</h3><p>${escapeHtml(err.message)}</p></div>`;
   }
-}
-
-function renderBarChart() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const days = [];
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date(today.getTime() - i * 86400000);
-    const iso = d.toISOString().split('T')[0];
-    days.push({ iso, label: d.toLocaleDateString('en', { weekday: 'short' }) });
-  }
-  const counts = days.map(d => ({
-    ...d,
-    count: allGames.filter(g => g.first_seen === d.iso).length
-  }));
-  const max = Math.max(1, ...counts.map(c => c.count));
-
-  const bars = counts.map((c, i) => {
-    const heightPct = (c.count / max) * 100;
-    const isToday = i === counts.length - 1;
-    return `<div class="bar ${isToday ? 'today' : ''}" style="height: ${Math.max(heightPct, 4)}%">
-      <div class="bar-tooltip">${c.count} on ${c.iso}</div>
-    </div>`;
-  }).join('');
-
-  const labels = counts.map((c, i) => {
-    const isToday = i === counts.length - 1;
-    return `<div class="bar-label ${isToday ? 'today-label' : ''}">${c.label}</div>`;
-  }).join('');
-
-  return `<div class="bar-chart">${bars}</div><div class="bar-labels">${labels}</div>`;
 }
 
 function formatDateLabel(iso) {
@@ -1167,25 +1017,42 @@ function formatDateLabel(iso) {
   return `${parseInt(parts[2], 10)} ${months[parseInt(parts[1], 10) - 1]}`;
 }
 
-function buildMechanicFilter() {
+function formatReleaseDate(iso) {
+  if (!iso) return '';
+  const cleaned = String(iso).split('T')[0];
+  const parts = cleaned.split('-');
+  if (parts.length !== 3) return cleaned;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${parseInt(parts[2], 10)} ${months[parseInt(parts[1], 10) - 1]} ${parts[0]}`;
+}
+
+function buildMechanicSidebar() {
   const counts = {};
   for (const g of allGames) {
     const m = g._mechanic;
     counts[m] = (counts[m] || 0) + 1;
   }
   const mechanics = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(e => e[0]);
-  const container = document.getElementById('mechanicFilter');
-  container.innerHTML = '<button class="pill active" data-mechanic="all">All</button>';
+  const container = document.getElementById('mechanicList');
+  container.innerHTML = '';
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'mechanic-item active';
+  allBtn.dataset.mechanic = 'all';
+  allBtn.innerHTML = `<span>All</span><span class="count">${allGames.length}</span>`;
+  container.appendChild(allBtn);
+
   for (const m of mechanics) {
     const btn = document.createElement('button');
-    btn.className = 'pill';
+    btn.className = 'mechanic-item';
     btn.dataset.mechanic = m;
-    btn.innerHTML = `${escapeHtml(m)}<span class="pill-count">${counts[m]}</span>`;
+    btn.innerHTML = `<span>${escapeHtml(m)}</span><span class="count">${counts[m]}</span>`;
     container.appendChild(btn);
   }
-  container.querySelectorAll('.pill').forEach(p => {
+
+  container.querySelectorAll('.mechanic-item').forEach(p => {
     p.addEventListener('click', () => {
-      container.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      container.querySelectorAll('.mechanic-item').forEach(x => x.classList.remove('active'));
       p.classList.add('active');
       filters.mechanic = p.dataset.mechanic;
       render();
@@ -1208,8 +1075,9 @@ function formatInstalls(n) {
   return n.toString();
 }
 function getScoreClass(score) {
-  if (score >= 80) return 'score-high';
-  if (score >= 60) return 'score-mid';
+  if (score === 0) return 'score-zero';
+  if (score >= 70) return 'score-high';
+  if (score >= 40) return 'score-mid';
   return 'score-low';
 }
 function platformBadge(platform) {
@@ -1224,8 +1092,7 @@ function timeAgo(dateStr) {
   if (!dateStr) return '';
   const seenDate = new Date(dateStr + 'T00:00:00');
   if (isNaN(seenDate)) return '';
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
   const diffDays = Math.floor((today - seenDate) / 86400000);
   if (diffDays <= 0) return 'Today';
   if (diffDays === 1) return 'Yesterday';
@@ -1249,11 +1116,11 @@ function renderCard(game) {
   const addedAgo = timeAgo(game.first_seen);
   const isNew = addedAgo === 'Today' || addedAgo === 'Yesterday';
   const mechClass = mechanicClass(game._mechanic);
+  const releaseDate = formatReleaseDate(game.launch_date);
 
   const iconHTML = iconUrl
     ? `<img class="game-icon" src="${iconUrl}" onerror="this.outerHTML='<div class=&quot;game-icon-fallback&quot;>${initial}</div>'">`
     : `<div class="game-icon-fallback">${initial}</div>`;
-
   const addedHTML = addedAgo ? `<div class="added-tag ${isNew ? 'new' : ''}">${addedAgo}</div>` : '';
 
   if (viewMode === 'list') {
@@ -1262,12 +1129,12 @@ function renderCard(game) {
         ${iconHTML}
         <div class="game-info">
           <div class="game-name">${escapeHtml(game.name || '?')}</div>
-          <div class="game-publisher">${escapeHtml(game.publisher || '?')}</div>
+          <div class="game-publisher">${escapeHtml(game.publisher || '?')} · ${escapeHtml(releaseDate || '?')}</div>
         </div>
         ${platformBadge(game.platform)}
         <span class="badge installs">${formatInstalls(installs)}</span>
         <span class="badge ${getScoreClass(score)}">${score}</span>
-        <span class="badge mechanic-badge extra-meta">${escapeHtml(game._mechanic)}</span>
+        <span class="badge mechanic-badge">${escapeHtml(game._mechanic)}</span>
         ${addedHTML}
       </div>
     `;
@@ -1281,6 +1148,7 @@ function renderCard(game) {
         <div class="game-info">
           <div class="game-name">${escapeHtml(game.name || '?')}</div>
           <div class="game-publisher">${escapeHtml(game.publisher || '?')}</div>
+          ${releaseDate ? `<div class="game-release">📅 Released <strong>${escapeHtml(releaseDate)}</strong></div>` : ''}
         </div>
       </div>
       <div class="game-meta">
@@ -1297,26 +1165,41 @@ function render() {
   const container = document.getElementById('gamesContainer');
   container.className = viewMode === 'list' ? 'games-list' : 'games-grid';
 
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+
   let filtered = allGames.filter(g => {
     if (filters.platform !== 'all' && (g.platform || '').toLowerCase() !== filters.platform) return false;
     if (filters.mechanic !== 'all' && g._mechanic !== filters.mechanic) return false;
     if (getScore(g) < filters.minScore) return false;
-    if (getInstalls(g) < filters.minInstalls) return false;
     if (filters.search) {
       const q = filters.search.toLowerCase();
       if (!(g.name || '').toLowerCase().includes(q) && !(g.publisher || '').toLowerCase().includes(q)) return false;
     }
+
+    // Date Added filter
     if (filters.specificDate) {
       if ((g.first_seen || '') !== filters.specificDate) return false;
     } else if (filters.days > 0) {
       const seen = g.first_seen || g.last_seen;
       if (!seen) return false;
-      const today = new Date(); today.setHours(0, 0, 0, 0);
       const seenDate = new Date(seen + 'T00:00:00');
       const diffDays = Math.floor((today - seenDate) / 86400000);
       if (filters.days === 1 && diffDays !== 0) return false;
       else if (filters.days === 2 && diffDays !== 1) return false;
       else if (filters.days > 2 && diffDays >= filters.days) return false;
+    }
+
+    // Release Date filter
+    if (filters.specificReleaseDate) {
+      const rel = String(g.launch_date || '').split('T')[0];
+      if (rel !== filters.specificReleaseDate) return false;
+    } else if (filters.releaseDays > 0) {
+      const releaseRaw = String(g.launch_date || '').split('T')[0];
+      if (!releaseRaw) return false;
+      const releaseDate = new Date(releaseRaw + 'T00:00:00');
+      if (isNaN(releaseDate)) return false;
+      const diffDays = Math.floor((today - releaseDate) / 86400000);
+      if (diffDays > filters.releaseDays) return false;
     }
     return true;
   });
@@ -1333,6 +1216,12 @@ function render() {
     filtered.sort((a, b) => {
       const sa = getScore(a), sb = getScore(b);
       if (sb !== sa) return sb - sa;
+      return getInstalls(b) - getInstalls(a);
+    });
+  } else if (filters.sort === 'release') {
+    filtered.sort((a, b) => {
+      const da = String(a.launch_date || ''), db = String(b.launch_date || '');
+      if (db !== da) return db.localeCompare(da);
       return getInstalls(b) - getInstalls(a);
     });
   }
@@ -1356,6 +1245,7 @@ function openModal(game) {
   const initial = (game.name || '?').charAt(0).toUpperCase();
   const addedAgo = timeAgo(game.first_seen);
   const mechClass = mechanicClass(game._mechanic);
+  const releaseDate = formatReleaseDate(game.launch_date);
 
   const iconHTML = iconUrl
     ? `<img class="modal-icon" src="${iconUrl}" onerror="this.style.display='none'">`
@@ -1367,23 +1257,19 @@ function openModal(game) {
        <div class="screenshots">${screenshots.map(s => `<img src="${s}" alt="screenshot">`).join('')}</div></div>`
     : '';
 
-  const description = game.description || game.short_description || '';
+  const description = game.description || '';
   const descriptionHTML = description
     ? `<div class="modal-section"><div class="modal-section-title">Description</div>
        <div class="modal-section-content">${escapeHtml(description)}</div></div>`
     : '';
 
   const reasonHTML = game.reason
-    ? `<div class="modal-section"><div class="modal-section-title">Why relevant</div>
+    ? `<div class="modal-section"><div class="modal-section-title">Why this score</div>
        <div class="modal-section-content">${escapeHtml(game.reason)}</div></div>`
     : '';
 
   const storeUrl = game.store_url || '';
   const storeBtn = storeUrl ? `<a class="btn" href="${storeUrl}" target="_blank">Open in Store →</a>` : '';
-
-  const addedDateHTML = addedAgo
-    ? `<div class="added-tag" style="position: static; display: inline-block; margin-top: 6px;">${addedAgo}</div>`
-    : '';
 
   document.getElementById('modalBody').innerHTML = `
     <div class="${mechClass}">
@@ -1392,13 +1278,13 @@ function openModal(game) {
         <div>
           <div class="modal-title">${escapeHtml(game.name || '?')}</div>
           <div class="modal-publisher">${escapeHtml(game.publisher || '?')}</div>
+          ${releaseDate ? `<div class="game-release" style="margin-top:6px">📅 Released <strong>${escapeHtml(releaseDate)}</strong></div>` : ''}
           <div class="game-meta" style="margin-top:10px">
             ${platformBadge(game.platform)}
             <span class="badge installs">${formatInstalls(installs)} installs</span>
             <span class="badge ${getScoreClass(score)}">${score}/100</span>
             <span class="badge mechanic-badge">${escapeHtml(game._mechanic)}</span>
           </div>
-          ${addedDateHTML}
         </div>
       </div>
       ${reasonHTML}
@@ -1410,14 +1296,11 @@ function openModal(game) {
   document.getElementById('gameModal').classList.add('active');
 }
 
-function closeModal() {
-  document.getElementById('gameModal').classList.remove('active');
-}
+function closeModal() { document.getElementById('gameModal').classList.remove('active'); }
 
 document.getElementById('gameModal').addEventListener('click', e => {
   if (e.target.id === 'gameModal') closeModal();
 });
-
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
   if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
@@ -1431,18 +1314,23 @@ document.getElementById('searchBox').addEventListener('input', e => {
   render();
 });
 
-function bindPills(containerId, key, datasetKey, parser) {
+function bindPills(containerId, filterKey, datasetKey, parser) {
   document.querySelectorAll(`#${containerId} .pill`).forEach(p => {
     p.addEventListener('click', () => {
       document.querySelectorAll(`#${containerId} .pill`).forEach(x => x.classList.remove('active'));
       p.classList.add('active');
       const rawValue = p.dataset[datasetKey];
-      filters[key] = parser ? parser(rawValue) : rawValue;
-      console.log(`Filter changed: ${key} = ${filters[key]} (raw: ${rawValue})`);
+      filters[filterKey] = parser ? parser(rawValue) : rawValue;
+      // Reset specific dates when clicking pills
       if (containerId === 'dateFilter') {
         filters.specificDate = '';
         document.getElementById('datePicker').value = '';
         document.getElementById('clearDate').style.display = 'none';
+      }
+      if (containerId === 'releaseFilter') {
+        filters.specificReleaseDate = '';
+        document.getElementById('releaseDatePicker').value = '';
+        document.getElementById('clearReleaseDate').style.display = 'none';
       }
       render();
     });
@@ -1451,10 +1339,11 @@ function bindPills(containerId, key, datasetKey, parser) {
 
 bindPills('platformFilter', 'platform', 'platform');
 bindPills('scoreFilter', 'minScore', 'score', v => parseInt(v, 10) || 0);
-bindPills('installsFilter', 'minInstalls', 'installs', v => parseInt(v, 10) || 0);
 bindPills('dateFilter', 'days', 'days', v => parseInt(v, 10) || 0);
+bindPills('releaseFilter', 'releaseDays', 'release', v => parseInt(v, 10) || 0);
 bindPills('sortFilter', 'sort', 'sort');
 
+// Date pickers
 document.getElementById('datePicker').addEventListener('change', e => {
   filters.specificDate = e.target.value;
   filters.days = 0;
@@ -1463,11 +1352,25 @@ document.getElementById('datePicker').addEventListener('change', e => {
   document.getElementById('clearDate').style.display = e.target.value ? 'inline-block' : 'none';
   render();
 });
-
 document.getElementById('clearDate').addEventListener('click', () => {
   filters.specificDate = '';
   document.getElementById('datePicker').value = '';
   document.getElementById('clearDate').style.display = 'none';
+  render();
+});
+
+document.getElementById('releaseDatePicker').addEventListener('change', e => {
+  filters.specificReleaseDate = e.target.value;
+  filters.releaseDays = 0;
+  document.querySelectorAll('#releaseFilter .pill').forEach(x => x.classList.remove('active'));
+  document.querySelector('#releaseFilter .pill[data-release="0"]').classList.add('active');
+  document.getElementById('clearReleaseDate').style.display = e.target.value ? 'inline-block' : 'none';
+  render();
+});
+document.getElementById('clearReleaseDate').addEventListener('click', () => {
+  filters.specificReleaseDate = '';
+  document.getElementById('releaseDatePicker').value = '';
+  document.getElementById('clearReleaseDate').style.display = 'none';
   render();
 });
 
