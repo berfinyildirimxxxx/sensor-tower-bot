@@ -362,7 +362,7 @@ def _combine_game_data(
 
 
 def fetch_new_games(
-    max_installs: int | None = 50000,
+    max_installs: int | None = 550,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
     """Fetch games released in last N days with install thresholds."""
