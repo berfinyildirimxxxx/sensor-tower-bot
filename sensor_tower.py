@@ -42,6 +42,26 @@ MIN_INSTALLS: dict[str, int] = {
     "android": 500,
 }
 
+CATEGORY_DISPLAY: dict[str, str] = {
+    # iOS numeric IDs
+    "7012": "Puzzle",
+    "7003": "Casual",
+    "7019": "Word",
+    "7004": "Board",
+    "7009": "Family",
+    "7018": "Trivia",
+    # Android category slugs
+    "game_puzzle": "Puzzle",
+    "game_casual": "Casual",
+    "game_word": "Word",
+    "game_board": "Board",
+    "game_trivia": "Trivia",
+    "game_arcade": "Arcade",
+    "game_card": "Card",
+    "game_educational": "Educational",
+    "game_family": "Family",
+}
+
 BASE_URL = "https://api.sensortower.com"
 APP_URL = "https://app.sensortower.com"
 MAX_REQUESTS_PER_SECOND = 5.0
@@ -312,6 +332,7 @@ def _combine_game_data(
     installs: dict[str, Any],
     metadata: dict[str, Any],
     intel: dict[str, Any] | None = None,
+    source_category: str = "",
 ) -> dict[str, Any]:
     # --- Basic metadata ---
     publisher = str(
@@ -332,17 +353,29 @@ def _combine_game_data(
         str(metadata.get("subtitle") or ""),
     ])).strip()
 
-    # --- Category: prefer array form, fall back to string ---
+    # --- Category: map raw IDs to display names ---
+    def _map_cat(raw: str) -> str:
+        return CATEGORY_DISPLAY.get(raw.strip(), "") if raw.strip().isdigit() or raw.strip().startswith("game_") else raw.strip()
+
     raw_cats = metadata.get("categories") or []
     if isinstance(raw_cats, list) and raw_cats:
-        # numeric IDs are useless, only keep string category names
-        cat_names = [str(c) for c in raw_cats if not str(c).isdigit()]
-        category_name = " ".join(cat_names)
+        cat_names = [_map_cat(str(c)) for c in raw_cats]
+        cat_names = [c for c in cat_names if c and c.lower() not in ("games", "game", "")]
+        category_name = cat_names[0] if cat_names else ""
     else:
-        category_name = str(
+        raw_cat = str(
             metadata.get("category") or metadata.get("primary_genre")
             or metadata.get("genre") or ""
         )
+        category_name = _map_cat(raw_cat) if raw_cat else ""
+
+    # Try richer genre fields iOS/Android may return
+    meta_genre = str(
+        metadata.get("primary_genre_name") or metadata.get("genre_name")
+        or metadata.get("primary_genre") or ""
+    ).strip()
+    if meta_genre.lower() in ("games", "game", ""):
+        meta_genre = ""
 
     screenshots = _normalize_screenshots(
         metadata.get("screenshots") or metadata.get("screenshot_urls") or []
@@ -372,13 +405,16 @@ def _combine_game_data(
     intel_sub_genre = str((intel.get("sub_genre")  or {}).get("name") or "")
     intel_theme     = str((intel.get("theme")      or {}).get("name") or "")
 
+    # Fallback: use source category (most reliable) → metadata genre → mapped category
+    if not intel_sub_genre:
+        intel_sub_genre = source_category or meta_genre or category_name
+
     # Inject taxonomy tags into subcategories so relevance.py picks them up
     taxonomy_tags = [
         t for t in [intel_sub_genre, intel_genre, intel_category, intel_theme]
         if t and t != "N/A"
     ]
     if taxonomy_tags:
-        # Prepend — highest priority for relevance scoring
         subcategories = list(dict.fromkeys(taxonomy_tags + subcategories))
 
     return {
@@ -420,6 +456,7 @@ def _fetch_platform_games(
     platform_min = MIN_INSTALLS.get(platform, 500)
     platform_app_ids: list[str] = []
     seen_app_ids: set[str] = set()
+    app_id_to_category: dict[str, str] = {}
 
     unique_category_ids = list(dict.fromkeys(cat.lower() for cat in category_ids))
 
@@ -430,10 +467,13 @@ def _fetch_platform_games(
             start_date=release_start_date,
             auth_token=auth_token,
         )
+        display_cat = CATEGORY_DISPLAY.get(category_id, "")
         for app_id in app_ids:
             if app_id not in seen_app_ids:
                 seen_app_ids.add(app_id)
                 platform_app_ids.append(app_id)
+                if display_cat:
+                    app_id_to_category[app_id] = display_cat
 
     if not platform_app_ids:
         logger.info("No app IDs found for platform=%s.", platform)
@@ -498,7 +538,9 @@ def _fetch_platform_games(
 
         intel = taxonomy_by_id.get(app_id)
         game_data = _combine_game_data(
-            platform, app_id, installs, metadata, intel=intel,
+            platform, app_id, installs, metadata,
+            intel=intel,
+            source_category=app_id_to_category.get(app_id, ""),
         )
 
         launch_raw = game_data.get("launch_date", "")
