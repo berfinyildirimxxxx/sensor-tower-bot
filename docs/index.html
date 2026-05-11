@@ -978,6 +978,7 @@ function renderCard(g, i) {
         <span class="badge installs">${fmtInstalls(installs)} installs</span>
         <span class="badge ${scoreBadgeClass(score)}">${score}/100</span>
         <span class="badge mechanic">${escapeHtml(g.mechanic || 'Other')}</span>
+        ${g.intel_sub_genre && g.intel_sub_genre !== g.mechanic ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
       </div>
       ${g.launch_date ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>` : ''}
     </div>
@@ -1038,6 +1039,16 @@ function openModal(g) {
     ${g.description ? `<p class="modal-desc">${escapeHtml(g.description)}</p>` : ''}
     <div class="modal-platforms">${platHtml}</div>
     ${screenshots ? `<div class="screenshots">${screenshots}</div>` : ''}
+    ${(g.intel_sub_genre || g.intel_genre || g.intel_category) ? `
+      <div style="margin-top:14px;padding:12px;background:var(--surface-2);border-radius:10px;font-size:12px;">
+        <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">📊 Sensor Tower Taxonomy</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          ${g.intel_sub_genre ? `<span style="padding:3px 8px;background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);border-radius:5px;font-weight:600;">Sub-genre: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+          ${g.intel_genre ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Genre: ${escapeHtml(g.intel_genre)}</span>` : ''}
+          ${g.intel_category ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Category: ${escapeHtml(g.intel_category)}</span>` : ''}
+          ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
+        </div>
+      </div>` : ''}
     ${g.reason ? `<div class="modal-desc" style="font-size:11px;color:var(--text-soft);">Why this score: ${escapeHtml(g.reason)}</div>` : ''}
   `;
   document.getElementById('modalBackdrop').classList.add('open');
