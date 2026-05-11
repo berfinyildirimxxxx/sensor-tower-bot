@@ -15,6 +15,7 @@ class Config:
 
     sensor_tower_api_key: str
     slack_webhook_url: str
+    sensortower_session: str = ""
 
 
 def _get_required_env_var(name: str) -> str:
@@ -33,4 +34,5 @@ def load_config() -> Config:
     return Config(
         sensor_tower_api_key=_get_required_env_var("SENSOR_TOWER_API_KEY"),
         slack_webhook_url=_get_required_env_var("SLACK_WEBHOOK_URL"),
+        sensortower_session=os.environ.get("SENSORTOWER_SESSION", ""),
     )

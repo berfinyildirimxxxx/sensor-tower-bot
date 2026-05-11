@@ -285,45 +285,51 @@ def _fetch_metadata(
 
 
 
-def _fetch_taxonomy(
-    platform: str, app_ids: list[str], auth_token: str
+def _fetch_game_intel(
+    platform: str, app_ids: list[str], session_cookie: str
 ) -> dict[str, dict[str, Any]]:
-    taxonomy_by_id: dict[str, dict[str, Any]] = {}
-    url = f"{BASE_URL}/v1/{platform}/apps/taxonomy"
-    for batch in _chunked(app_ids, METADATA_BATCH_SIZE):
-        params: dict[str, Any] = {
-            "auth_token": auth_token,
-            "app_ids[]": batch,
-        }
-        data = _get_json(url, params)
-        if data is None:
-            continue
-        logger.info(
-            "taxonomy platform=%s batch_size=%d: type=%s preview=%s",
-            platform, len(batch), type(data).__name__,
-            str(data)[:300],
-        )
-        items: list[Any] = []
-        if isinstance(data, list):
-            items = data
-        elif isinstance(data, dict):
-            for key in ("apps", "data", "results"):
-                if isinstance(data.get(key), list):
-                    items = data[key]
-                    break
-        for item in items:
-            if not isinstance(item, dict):
-                continue
-            raw_id = (
-                item.get("app_id") or item.get("aid")
-                or item.get("id") or item.get("package_name")
-            )
-            if raw_id is None:
-                continue
-            intel_data = item.get("game_intel_data") or item
-            taxonomy_by_id[str(raw_id)] = intel_data
-    logger.info("taxonomy complete platform=%s: %d apps.", platform, len(taxonomy_by_id))
-    return taxonomy_by_id
+    """Fetch game_intel_data via app.sensortower.com per-app endpoint (session cookie auth)."""
+    intel_by_id: dict[str, dict[str, Any]] = {}
+    if not session_cookie:
+        logger.info("game_intel skipped: no SENSORTOWER_SESSION set")
+        return intel_by_id
+
+    headers = {
+        "Cookie": f"sensor_tower_session={session_cookie}; locale=en",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        "Referer": "https://app.sensortower.com/",
+    }
+
+    global _last_request_time
+    for app_id in app_ids:
+        url = f"{APP_URL}/api/{platform}/apps/{app_id}"
+        min_interval = 1.0 / MAX_REQUESTS_PER_SECOND
+        with _rate_lock:
+            elapsed = time.monotonic() - _last_request_time
+            if elapsed < min_interval:
+                time.sleep(min_interval - elapsed)
+            _last_request_time = time.monotonic()
+        try:
+            r = requests.get(url, params={"country": "US"}, headers=headers, timeout=15)
+            if r.status_code == 200:
+                data = r.json()
+                if isinstance(data, dict):
+                    intel = data.get("game_intel_data")
+                    if intel:
+                        intel_by_id[app_id] = intel
+            else:
+                logger.debug("game_intel app_id=%s status=%d", app_id, r.status_code)
+        except Exception as exc:
+            logger.warning("game_intel app_id=%s error=%s", app_id, exc)
+
+    logger.info("game_intel complete platform=%s: %d/%d apps.", platform, len(intel_by_id), len(app_ids))
+    return intel_by_id
 
 
 def _combine_game_data(
@@ -452,6 +458,7 @@ def _fetch_platform_games(
     cutoff_date: Any,
     max_installs: int | None,
     auth_token: str,
+    session_cookie: str = "",
 ) -> list[dict[str, Any]]:
     platform_min = MIN_INSTALLS.get(platform, 500)
     platform_app_ids: list[str] = []
@@ -523,10 +530,10 @@ def _fetch_platform_games(
         logger.warning("No metadata for platform=%s.", platform)
         return []
 
-    taxonomy_by_id = _fetch_taxonomy(
+    taxonomy_by_id = _fetch_game_intel(
         platform=platform,
         app_ids=surviving_ids,
-        auth_token=auth_token,
+        session_cookie=session_cookie,
     )
 
     games: list[dict[str, Any]] = []
@@ -589,6 +596,7 @@ def fetch_new_games(
             cutoff_date=cutoff_date,
             max_installs=max_installs,
             auth_token=config.sensor_tower_api_key,
+            session_cookie=config.sensortower_session,
         )
 
     all_games: list[dict[str, Any]] = []
