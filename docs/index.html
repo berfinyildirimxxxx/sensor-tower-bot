@@ -800,22 +800,26 @@ async function loadData() {
 
 // ---------- mechanic pills (auto from data) ----------
 function buildMechPills() {
+  // Only count games with score > 0 for mechanic pills (relevant games only)
   const counts = new Map();
-  allGames.forEach(g => {
+  const relevantGames = allGames.filter(g => getScore(g) > 0);
+  relevantGames.forEach(g => {
     const m = (g.mechanic || 'Other').trim() || 'Other';
     counts.set(m, (counts.get(m) || 0) + 1);
   });
-  // Sort: portfolio-relevant ones first (those with any score>=30 in group), then by count
   const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
 
   const container = document.getElementById('mechPills');
   container.innerHTML = '';
+
+  // "All" shows everything (including score=0)
   const allBtn = document.createElement('button');
   allBtn.className = 'pill active';
   allBtn.dataset.mechanic = 'all';
   allBtn.innerHTML = `All <span class="count">${allGames.length}</span>`;
   container.appendChild(allBtn);
 
+  // Each mechanic pill only shows relevant games (score > 0)
   sorted.forEach(([name, count]) => {
     const b = document.createElement('button');
     b.className = 'pill';
@@ -882,7 +886,10 @@ function setView(v) {
 function applyFilters() {
   return allGames.filter(g => {
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
-    if (filters.mechanic !== 'all' && (g.mechanic || 'Other') !== filters.mechanic) return false;
+    if (filters.mechanic !== 'all') {
+      if ((g.mechanic || 'Other') !== filters.mechanic) return false;
+      if (getScore(g) === 0) return false; // mechanic seçiliyken sadece relevant oyunlar
+    }
     if (getScore(g) < filters.minScore) return false;
 
     if (filters.release !== 'all') {
