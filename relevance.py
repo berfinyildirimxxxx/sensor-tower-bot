@@ -4,278 +4,217 @@ Scoring philosophy:
 - Mechanic-specific keyword groups give HIGH scores (these are exact matches)
 - General puzzle/casual signals give MEDIUM scores
 - Negative keywords (shooters, casino, etc.) give heavy penalties
-- Score is capped at 100
-- Scores below 30 are forced to 0 (noise) but the game's actual genre
-  (Racing, Shooter, Casino, RPG, Sports, etc.) is still labeled so the
-  HTML can filter by it.
+- Score is capped 0-100
 """
 
 from __future__ import annotations
-
-import re
 from typing import Any
 
-# =============================================================================
-# Agave-relevant mechanics (positive scoring)
-# =============================================================================
 
-MECHANIC_GROUPS: dict[str, dict[str, Any]] = {
+# ─── MECHANIC GROUPS ─────────────────────────────────────────────────────────
+# Each group: if ANY keyword matches → base weight points
+# All keywords use exact substring match on lowercased combined text
+
+MECHANIC_GROUPS: dict[str, dict] = {
     "Hidden Object": {
         "keywords": [
-            "hidden object", "find object", "find hidden", "seek and find",
-            "search and find", "spot the difference", "find the difference",
-            "i spy", "where's", "scene investigation", "detective scene",
+            "hidden object", "hidden objects", "find the hidden", "spot the difference",
+            "seek and find", "search and find", "find hidden", "object hunt",
+            "hidden items", "hidden things", "find the", "spot the", "find all",
+            "hidden scene", "hidden picture", "eye spy", "i spy", "seek find",
         ],
-        "weight": 35,
+        "weight": 40,
     },
     "Sort Puzzle": {
         "keywords": [
-            "sort puzzle", "color sort", "water sort", "ball sort", "sort it",
-            "sorting game", "sort the", "tube sort", "pour sort", "liquid sort",
+            "sort puzzle", "sorting puzzle", "color sort", "colour sort", "water sort",
+            "blob sort", "tile sort", "stack sort", "yarn sort", "hex sort",
+            "pipe sort", "sand sort", "liquid sort", "ball sort", "fruit sort",
+            "candy sort", "object sort", "sort the", "sort and", "sorting game",
+            "sort balls", "sort water", "pour water",
         ],
-        "weight": 35,
+        "weight": 40,
     },
     "Match-3": {
         "keywords": [
-            "match 3", "match-3", "match three", "candy match", "jewel match",
-            "gem match", "bubble match", "tile match", "swap match", "blast",
-            "crush saga", "puzzle blast", "bubble shooter",
+            "match-3", "match 3", "match three", "match and blast", "blast puzzle",
+            "pop blast", "jewel blast", "jewel match", "gem blast", "gem match",
+            "candy crush", "royal match", "tile match", "match tiles",
+            "bubble blast", "bubble pop", "bubble shooter",
+            "match gems", "match jewels", "match candy", "match fruit",
+            "match stars", "match items", "match and collect",
         ],
-        "weight": 30,
+        "weight": 38,
     },
     "Jigsaw": {
         "keywords": [
-            "jigsaw", "jig saw", "puzzle pieces", "picture puzzle",
-            "fit pieces", "puzzle fit",
+            "jigsaw", "jig saw", "jigsaw puzzle", "puzzle pieces", "picture puzzle",
+            "photo puzzle", "image puzzle", "mosaic puzzle", "assemble puzzle",
+            "piece together", "jigsaw pieces",
         ],
-        "weight": 35,
+        "weight": 40,
     },
     "Merge": {
         "keywords": [
-            "merge puzzle", "merge game", "merge mansion", "merge dragons",
-            "merge magic", "combine merge", "evolve merge", "merge two",
+            "merge puzzle", "merge game", "merge items", "merge objects",
+            "merge and collect", "merge to evolve", "merge dragons", "merge mansion",
+            "merge magic", "merge adventure", "merge two", "merge same",
+            "merge identical", "double merge", "merge chain",
         ],
-        "weight": 30,
+        "weight": 38,
     },
     "Mahjong": {
         "keywords": [
-            "mahjong", "tile connect", "onet", "tile match connect",
-            "pair tiles", "matching tiles", "mahjongg",
+            "mahjong", "mahjongg", "mah jong", "mah-jong",
+            "tile connect", "onet connect", "pair matching", "tile pairing",
+            "connect tiles", "tile elimination", "shisen-sho",
         ],
-        "weight": 35,
+        "weight": 40,
     },
     "Word": {
         "keywords": [
-            "word game", "word puzzle", "word search", "wordsearch", "crossword",
-            "word connect", "word link", "anagram", "word stack", "word swipe",
-            "spell word", "letter puzzle", "scrabble", "word cookies",
+            "word puzzle", "word game", "word search", "wordsearch", "word find",
+            "crossword", "word cross", "anagram", "scrambled words", "word scramble",
+            "boggle", "letter puzzle", "spelling game", "vocabulary game",
+            "word connect", "word link", "word chain", "word stack",
+            "word cookies", "typeshift", "wordle",
         ],
-        "weight": 35,
+        "weight": 40,
     },
     "Block / Hex": {
         "keywords": [
-            "block puzzle", "hex puzzle", "wooden block", "tetris", "blockudoku",
-            "block blast", "hexa", "hex blocks", "wood block",
+            "block puzzle", "hex puzzle", "hexagon puzzle", "wood block",
+            "wooden block", "block fit", "block drop", "block fill",
+            "tetris", "tetromino", "block game", "tangram",
+            "hexa puzzle", "hex block", "block and fill",
         ],
-        "weight": 30,
+        "weight": 38,
     },
     "Escape Room": {
         "keywords": [
-            "escape room", "room escape", "escape puzzle", "mystery escape",
-            "escape mystery", "puzzle escape",
+            "escape room", "room escape", "escape puzzle", "escape game",
+            "mystery room", "escape the room", "point and click",
+            "adventure puzzle", "escape adventure",
         ],
-        "weight": 30,
+        "weight": 38,
     },
     "Solitaire": {
         "keywords": [
-            "solitaire", "klondike", "spider solitaire", "freecell",
-            "tripeaks", "card solitaire", "patience card",
+            "solitaire", "klondike", "freecell", "spider solitaire",
+            "tripeaks", "tri peaks", "pyramid solitaire", "golf solitaire",
+            "card solitaire", "patience",
         ],
-        "weight": 25,
+        "weight": 35,
     },
     "Sudoku / Logic": {
         "keywords": [
-            "sudoku", "nonogram", "picross", "kakuro", "logic puzzle",
-            "number puzzle", "minesweeper",
+            "sudoku", "nonogram", "picross", "hitori", "kakuro",
+            "number puzzle", "logic puzzle", "brain puzzle", "iq puzzle",
+            "number game", "math puzzle",
         ],
-        "weight": 25,
+        "weight": 35,
     },
 }
 
-# General puzzle/casual signals — small boost when present
+# General puzzle/casual signals — each adds +8, capped at +20
 GENERAL_PUZZLE_KEYWORDS = [
-    "puzzle", "casual", "brain teaser", "brain training", "relaxing puzzle",
-    "puzzle game", "casual puzzle", "mind game", "logic game", "tap puzzle",
+    "puzzle", "casual", "relaxing", "brain teaser", "brain training",
+    "family friendly", "easy to play", "simple gameplay", "tap to",
+    "swipe to", "drag and drop", "addictive puzzle", "fun puzzle",
+    "puzzle adventure", "puzzle challenge", "puzzle game",
 ]
 GENERAL_PUZZLE_WEIGHT = 8
+GENERAL_PUZZLE_CAP = 20
 
-# =============================================================================
-# Non-relevant categories (we still label them so HTML can filter)
-# =============================================================================
-
-NON_RELEVANT_CATEGORIES: dict[str, list[str]] = {
-    "Racing": [
-        "racing", "race car", "drift", "car race", "motorcycle race",
-        "kart racing", "bike race", "drag racing", "rally",
-    ],
-    "Shooter": [
-        "shooter", "shooting", "fps", "first person shooter",
-        "third person shooter", "gun game", "battle royale", "sniper",
-    ],
-    "Casino": [
-        "casino", "slots", "slot machine", "poker", "blackjack", "roulette",
-        "bingo", "lottery", "wheel of fortune",
-    ],
-    "RPG": [
-        "rpg", "role playing", "role-playing", "mmorpg", "jrpg",
-        "turn based rpg", "action rpg", "fantasy rpg",
-    ],
-    "Sports": [
-        "soccer", "football", "basketball", "baseball", "tennis", "golf",
-        "cricket", "boxing", "mma", "wrestling", "sports game",
-    ],
-    "Action / Arcade": [
-        "action game", "arcade", "platformer", "runner", "endless runner",
-        "fighting game", "beat em up",
-    ],
-    "Simulation": [
-        "simulator", "tycoon", "farming sim", "life simulator", "city builder",
-        "construction simulator", "truck simulator",
-    ],
-    "Strategy": [
-        "strategy game", "rts", "tower defense", "real time strategy",
-        "war strategy", "4x strategy",
-    ],
-    "Idle / Clicker": [
-        "idle game", "clicker", "incremental game", "afk game",
-        "idle tycoon", "tap tap",
-    ],
-    "Card / Board": [
-        "card game", "deck builder", "ccg", "tcg", "trading card",
-        "board game", "chess", "checkers",
-    ],
-}
-
-# Hard penalties — these never belong in Agave's portfolio
+# Negative keywords — each subtracts 30 points
 NEGATIVE_KEYWORDS = [
-    "casino", "slots", "slot machine", "poker", "blackjack", "roulette",
-    "bingo", "lottery", "gambling", "betting", "sportsbook",
-    "shooter", "fps", "battle royale", "sniper",
-    "horror", "scary", "gore",
-    "dating sim", "adult", "18+",
+    "shooter", "first person shooter", "fps", "battle royale",
+    "war game", "military", "sniper", "gun game",
+    "racing game", "car racing", "drift race", "kart race",
+    "casino", "slot machine", "poker", "blackjack", "gambling", "betting",
+    "horror", "scary", "gore", "violent",
+    "mmorpg", "moba", "real time strategy", "tower defense",
+    "dating sim", "visual novel",
 ]
-NEGATIVE_PENALTY = -40
+NEGATIVE_WEIGHT = -30
 
 
-def _normalize_text(*fields: Any) -> str:
-    """Flatten game fields into a single lowercase searchable string."""
-    parts: list[str] = []
-    for field in fields:
-        if not field:
-            continue
-        if isinstance(field, list):
-            parts.extend(str(item) for item in field)
-        else:
-            parts.append(str(field))
+def _build_text(game: dict[str, Any]) -> str:
+    parts = [
+        str(game.get("name") or ""),
+        str(game.get("description") or ""),
+        str(game.get("category") or ""),
+        " ".join(game.get("subcategories") or []),
+        " ".join(game.get("keywords") or []),
+    ]
     return " ".join(parts).lower()
 
 
-def _count_keyword_hits(text: str, keywords: list[str]) -> int:
-    hits = 0
-    for kw in keywords:
-        # Use word-boundary match for short keywords to avoid false positives
-        if len(kw.split()) == 1 and len(kw) <= 4:
-            if re.search(rf"\b{re.escape(kw)}\b", text):
-                hits += 1
-        else:
-            if kw in text:
-                hits += 1
-    return hits
-
-
-def _detect_non_relevant_category(text: str) -> str | None:
-    """Return the best-matching non-relevant category, or None."""
-    best_category = None
-    best_hits = 0
-    for category, keywords in NON_RELEVANT_CATEGORIES.items():
-        hits = _count_keyword_hits(text, keywords)
-        if hits > best_hits:
-            best_hits = hits
-            best_category = category
-    return best_category if best_hits > 0 else None
-
-
 def score_game(game: dict[str, Any]) -> tuple[int, str, str]:
-    """Score a single game for Agave relevance.
+    """Score a game for Agave portfolio relevance.
 
-    Returns (score, mechanic_label, reason).
-    - score: int in [0, 100]. Anything below 30 is forced to 0 (noise).
-    - mechanic_label: best matching mechanic, or non-relevant category, or "Other".
-    - reason: short human-readable explanation.
+    Returns (score 0-100, mechanic_label, reason).
+    Scores below 60 are considered not relevant.
     """
-    text = _normalize_text(
-        game.get("name"),
-        game.get("description"),
-        game.get("category"),
-        game.get("subcategories"),
-        game.get("keywords"),
-    )
+    text = _build_text(game)
 
-    # 1) Match against Agave-relevant mechanics
+    # 1. Find best mechanic match
     best_mechanic: str | None = None
     best_mechanic_score = 0
-    matched_keywords: list[str] = []
+    best_mechanic_keyword: str | None = None
 
+    name_text = str(game.get("name") or "").lower()
     for mechanic, cfg in MECHANIC_GROUPS.items():
-        hits = _count_keyword_hits(text, cfg["keywords"])
-        if hits > 0:
-            mech_score = cfg["weight"] + (hits - 1) * 10
-            if mech_score > best_mechanic_score:
-                best_mechanic_score = mech_score
-                best_mechanic = mechanic
-                # Capture which keywords hit for the reason field
-                matched_keywords = [
-                    kw for kw in cfg["keywords"] if kw in text
-                ][:3]
+        for kw in cfg["keywords"]:
+            if kw in text:
+                # Prefer keyword that also matches the game name (more confident)
+                name_bonus = 5 if kw in name_text else 0
+                effective_score = cfg["weight"] + name_bonus
+                if effective_score > best_mechanic_score:
+                    best_mechanic_score = cfg["weight"]
+                    best_mechanic = mechanic
+                    best_mechanic_keyword = kw
+                break  # one match per group is enough
 
-    # 2) General puzzle/casual signal
-    general_hits = _count_keyword_hits(text, GENERAL_PUZZLE_KEYWORDS)
-    general_score = min(general_hits * GENERAL_PUZZLE_WEIGHT, 25)
+    # 2. General puzzle bonus
+    general_bonus = 0
+    general_hits = []
+    for kw in GENERAL_PUZZLE_KEYWORDS:
+        if kw in text:
+            general_bonus += GENERAL_PUZZLE_WEIGHT
+            general_hits.append(kw)
+            if general_bonus >= GENERAL_PUZZLE_CAP:
+                general_bonus = GENERAL_PUZZLE_CAP
+                break
 
-    # 3) Negative penalty
-    negative_hits = _count_keyword_hits(text, NEGATIVE_KEYWORDS)
-    negative_score = negative_hits * NEGATIVE_PENALTY
+    # 3. Negative penalty
+    negative_score = 0
+    negative_hits = []
+    for kw in NEGATIVE_KEYWORDS:
+        if kw in text:
+            negative_score += NEGATIVE_WEIGHT
+            negative_hits.append(kw)
 
-    # 4) Combine and cap
-    raw_score = best_mechanic_score + general_score + negative_score
-    final_score = max(0, min(100, raw_score))
+    # 4. Total score
+    raw = best_mechanic_score + general_bonus + negative_score
+    score = max(0, min(100, raw))
 
-    # 5) Decide label
-    if best_mechanic and final_score >= 30:
+    # 5. Build reason and label
+    if best_mechanic:
         mechanic_label = best_mechanic
-        reason_bits = []
-        if matched_keywords:
-            reason_bits.append(f"matched: {', '.join(matched_keywords)}")
+        reason_parts = [f"mechanic: {best_mechanic_keyword}"]
         if general_hits:
-            reason_bits.append(f"+{general_hits} general puzzle signal(s)")
+            reason_parts.append(f"puzzle signals: {', '.join(general_hits[:2])}")
         if negative_hits:
-            reason_bits.append(f"-{negative_hits} negative signal(s)")
-        reason = "; ".join(reason_bits) if reason_bits else "mechanic keywords matched"
+            reason_parts.append(f"penalties: {', '.join(negative_hits)}")
+        reason = "; ".join(reason_parts)
     else:
-        # Not relevant — try to label it with its actual genre so HTML can filter
-        non_relevant = _detect_non_relevant_category(text)
-        if non_relevant:
-            mechanic_label = non_relevant
-            reason = f"non-portfolio genre: {non_relevant.lower()}"
-        elif general_hits:
-            mechanic_label = "Other Casual"
-            reason = "general casual signals only, no strong mechanic match"
+        mechanic_label = "Other"
+        if general_hits:
+            reason = f"general puzzle signals only: {', '.join(general_hits[:3])}"
+        elif negative_hits:
+            reason = f"penalized: {', '.join(negative_hits)}"
         else:
-            mechanic_label = "Other"
-            reason = "no mechanic keywords matched"
+            reason = "no relevant keywords found"
 
-    # 6) Force scores below 30 to zero — they're noise (we still keep the label)
-    if final_score < 30:
-        final_score = 0
-
-    return final_score, mechanic_label, reason
+    return score, mechanic_label, reason
