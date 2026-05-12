@@ -208,7 +208,7 @@
   .dot.ios { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
   .dot.android { background: var(--green); box-shadow: 0 0 6px var(--green); }
 
-  /* ============ CATEGORY / MECHANIC BANDS ============ */
+  /* ============ GENRE BAND ============ */
   .mech-band {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -228,13 +228,36 @@
     content: ''; width: 6px; height: 6px; border-radius: 50%;
     background: var(--orange);
   }
-  #mechanicBand .mech-band-label::before { background: var(--blue); }
-  .mech-pills {
-    display: flex; flex-wrap: wrap; gap: 6px;
+  .mech-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* Genre pill with sub-genre hover dropdown */
+  .genre-wrap { position: relative; display: inline-block; }
+  .genre-wrap .pill { padding-right: 22px; }
+  .genre-wrap .pill::after {
+    content: '▾';
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    font-size: 9px; opacity: 0.5;
   }
-  .pills[data-group="mechanic"] .pill.active {
+  .subgenre-drop {
+    display: none;
+    position: absolute; top: calc(100% + 4px); left: 0; z-index: 20;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 8px;
+    min-width: 180px; max-width: 280px;
+    box-shadow: var(--shadow-lg);
+    flex-wrap: wrap; gap: 4px;
+  }
+  .genre-wrap:hover .subgenre-drop,
+  .genre-wrap.open    .subgenre-drop { display: flex; }
+  .subgenre-drop .pill { font-size: 11px; padding: 4px 8px; }
+  .subgenre-drop .pill.active {
     background: var(--blue); border-color: var(--blue); color: white;
-    box-shadow: 0 0 0 3px var(--blue-soft);
+  }
+  .pills[data-group="genre"] .pill.active {
+    background: var(--orange); border-color: var(--orange); color: white;
+    box-shadow: 0 0 0 3px var(--orange-soft);
   }
 
   /* ============ FILTER BAR ============ */
@@ -594,16 +617,10 @@
     </div>
   </section>
 
-  <!-- CATEGORY BAND -->
+  <!-- GENRE BAND (with sub-genre hover dropdowns) -->
   <section class="mech-band">
-    <div class="mech-band-label">Category</div>
-    <div class="pills" data-group="category" id="categoryPills"></div>
-  </section>
-
-  <!-- MECHANIC BAND — shown only when a category is selected -->
-  <section class="mech-band" id="mechanicBand" style="display:none;">
-    <div class="mech-band-label">Mechanic</div>
-    <div class="pills" data-group="mechanic" id="mechanicPills"></div>
+    <div class="mech-band-label">Genre</div>
+    <div class="pills" data-group="genre" id="genrePills"></div>
   </section>
 
   <!-- FILTER BAR -->
@@ -681,8 +698,8 @@ let allGames = [];
 let dataMeta = {};
 const filters = {
   platform: 'all',
-  category: 'all',
-  mechanic: 'all',
+  genre: 'all',
+  sub_genre: 'all',
   release: 'all',
   added: 'all',
   addedDate: null,
@@ -692,12 +709,6 @@ const filters = {
 let view = 'grid';
 
 // ---------- helpers ----------
-function getScore(g) {
-  const v = g.score;
-  if (typeof v === 'number') return v;
-  const n = parseInt(String(v), 10);
-  return isNaN(n) ? 0 : n;
-}
 function getInstalls(g) {
   const v = g.installs_total ?? g.installs;
   if (typeof v === 'number') return v;
@@ -712,7 +723,6 @@ function fmtInstalls(n) {
 }
 function fmtDate(s) {
   if (!s) return '';
-  // accept ISO date or full string
   const d = new Date(s);
   if (isNaN(d.getTime())) return s;
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -732,12 +742,6 @@ function addedLabel(g) {
   if (d < 30) return Math.floor(d / 7) + ' weeks ago';
   return d + 'd ago';
 }
-function scoreBadgeClass(s) {
-  if (s === 0) return 'score-zero';
-  if (s >= 70) return 'score-high';
-  if (s >= 40) return 'score-mid';
-  return 'score-low';
-}
 function getPlatforms(g) {
   if (Array.isArray(g.platforms) && g.platforms.length) return g.platforms;
   return [{
@@ -750,6 +754,9 @@ function getPlatforms(g) {
 function hasPlatform(g, p) {
   const plats = getPlatforms(g).map(x => String(x.platform).toLowerCase());
   return plats.some(x => x.includes(p));
+}
+function getGenre(g) {
+  return (g.st_genre || g.intel_category || '').trim();
 }
 
 // ---------- data load ----------
@@ -768,7 +775,6 @@ async function loadData() {
     dataMeta = data;
     document.getElementById('lastUpdated').textContent = 'Last updated: ' + (data.last_updated || '—');
 
-    // Scanned label with today's date
     const dateStr = data.run_date || new Date().toISOString().slice(0, 10);
     const lbl = fmtDate(dateStr);
     document.getElementById('scannedLabel').textContent = 'Scanned ' + lbl;
@@ -777,13 +783,12 @@ async function loadData() {
     document.getElementById('androidCount').textContent = (data.android_fetched_today || 0).toLocaleString();
     document.getElementById('radarValue').textContent = (data.total_games_on_site || allGames.length).toLocaleString();
 
-    // Sheet button
     const sheetBtn = document.getElementById('sheetBtn');
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit';
     sheetBtn.href = data.sheet_url || SHEET_URL;
     sheetBtn.style.display = '';
 
-    buildCategoryPills();
+    buildGenrePills();
     bindFilters();
     render();
   } catch (e) {
@@ -792,102 +797,97 @@ async function loadData() {
   }
 }
 
-// ---------- category pills ----------
-const CATEGORY_ORDER = ['Puzzle','Casual','Word','Board','Family','Trivia','Arcade','Card','Educational'];
-
-const MECHANIC_ORDER = [
-  'Match Swap','Match Blast','Match Chain','Match Merge 2','Match Merge 3','Match Pair',
-  'Sort','Block','Screw','Solitaire','Bubble Shooter','Hidden Objects','Jigsaw',
-  'Escape Room','Physics','Maze','Numbers','Riddle','Real-Time Puzzle',
-  'Environmental','Word','Trivia','Other Puzzle',
-];
-
-function buildCategoryPills() {
-  const counts = new Map();
+// ---------- genre pills with hover sub-genre dropdowns ----------
+function buildGenrePills() {
+  const genreMap = new Map();
   allGames.forEach(g => {
-    const cat = (g.intel_category || '').trim();
-    if (cat) counts.set(cat, (counts.get(cat) || 0) + 1);
+    const genre = getGenre(g);
+    if (!genre) return;
+    if (!genreMap.has(genre)) genreMap.set(genre, { count: 0, subgenres: new Map() });
+    const entry = genreMap.get(genre);
+    entry.count++;
+    const sub = (g.st_sub_genre || '').trim();
+    if (sub) entry.subgenres.set(sub, (entry.subgenres.get(sub) || 0) + 1);
   });
 
-  const sorted = [...counts.entries()].sort((a, b) => {
-    const ai = CATEGORY_ORDER.indexOf(a[0]);
-    const bi = CATEGORY_ORDER.indexOf(b[0]);
-    if (ai !== -1 && bi !== -1) return ai - bi;
-    if (ai !== -1) return -1;
-    if (bi !== -1) return 1;
-    return a[0].localeCompare(b[0]);
-  });
-
-  const container = document.getElementById('categoryPills');
+  const sorted = [...genreMap.entries()].sort((a, b) => b[1].count - a[1].count);
+  const container = document.getElementById('genrePills');
   container.innerHTML = '';
 
   const allBtn = document.createElement('button');
   allBtn.className = 'pill active';
-  allBtn.dataset.category = 'all';
+  allBtn.dataset.genre = 'all';
   allBtn.innerHTML = `All <span class="count">${allGames.length}</span>`;
   container.appendChild(allBtn);
 
-  sorted.forEach(([name, count]) => {
-    const b = document.createElement('button');
-    b.className = 'pill';
-    b.dataset.category = name;
-    b.innerHTML = `${name} <span class="count">${count}</span>`;
-    container.appendChild(b);
+  sorted.forEach(([genre, data]) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'genre-wrap';
+
+    const btn = document.createElement('button');
+    btn.className = 'pill';
+    btn.dataset.genre = genre;
+    btn.innerHTML = `${escapeHtml(genre)} <span class="count">${data.count}</span>`;
+    wrap.appendChild(btn);
+
+    if (data.subgenres.size) {
+      const drop = document.createElement('div');
+      drop.className = 'subgenre-drop';
+
+      const allSub = document.createElement('button');
+      allSub.className = 'pill';
+      allSub.dataset.subGenre = 'all';
+      allSub.dataset.parentGenre = genre;
+      allSub.innerHTML = `All <span class="count">${data.count}</span>`;
+      drop.appendChild(allSub);
+
+      [...data.subgenres.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([sub, count]) => {
+          const s = document.createElement('button');
+          s.className = 'pill';
+          s.dataset.subGenre = sub;
+          s.dataset.parentGenre = genre;
+          s.innerHTML = `${escapeHtml(sub)} <span class="count">${count}</span>`;
+          drop.appendChild(s);
+        });
+
+      wrap.appendChild(drop);
+    }
+
+    container.appendChild(wrap);
   });
-}
-
-// ---------- mechanic pills (rebuilt when category changes) ----------
-function buildMechanicPills(category) {
-  const band = document.getElementById('mechanicBand');
-  const container = document.getElementById('mechanicPills');
-
-  if (category === 'all') {
-    band.style.display = 'none';
-    filters.mechanic = 'all';
-    return;
-  }
-
-  // Count mechanics within the selected category
-  const pool = allGames.filter(g => (g.intel_category || '') === category);
-  const counts = new Map();
-  pool.forEach(g => {
-    const m = (g.mechanic || 'Other Puzzle').trim();
-    counts.set(m, (counts.get(m) || 0) + 1);
-  });
-
-  if (!counts.size) { band.style.display = 'none'; return; }
-
-  const sorted = [...counts.entries()].sort((a, b) => {
-    const ai = MECHANIC_ORDER.indexOf(a[0]);
-    const bi = MECHANIC_ORDER.indexOf(b[0]);
-    if (ai !== -1 && bi !== -1) return ai - bi;
-    if (ai !== -1) return -1;
-    if (bi !== -1) return 1;
-    return b[1] - a[1]; // by count descending for unknowns
-  });
-
-  container.innerHTML = '';
-
-  const allBtn = document.createElement('button');
-  allBtn.className = 'pill active';
-  allBtn.dataset.mechanic = 'all';
-  allBtn.innerHTML = `All <span class="count">${pool.length}</span>`;
-  container.appendChild(allBtn);
-
-  sorted.forEach(([name, count]) => {
-    const b = document.createElement('button');
-    b.className = 'pill';
-    b.dataset.mechanic = name;
-    b.innerHTML = `${escapeHtml(name)} <span class="count">${count}</span>`;
-    container.appendChild(b);
-  });
-
-  band.style.display = '';
 }
 
 // ---------- bind filter pills ----------
 function bindFilters() {
-  document.querySelectorAll('.pills').forEach(group => {
+  const genreContainer = document.getElementById('genrePills');
+  genreContainer.addEventListener('click', e => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+
+    if (pill.dataset.subGenre !== undefined) {
+      const parentGenre = pill.dataset.parentGenre;
+      filters.genre = parentGenre;
+      filters.sub_genre = pill.dataset.subGenre === 'all' ? 'all' : pill.dataset.subGenre;
+
+      genreContainer.querySelectorAll('.pill[data-genre]').forEach(p => p.classList.remove('active'));
+      const parentBtn = [...genreContainer.querySelectorAll('.pill[data-genre]')].find(p => p.dataset.genre === parentGenre);
+      if (parentBtn) parentBtn.classList.add('active');
+
+      genreContainer.querySelectorAll('.pill[data-sub-genre]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    } else if (pill.dataset.genre !== undefined) {
+      genreContainer.querySelectorAll('.pill[data-genre]').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      genreContainer.querySelectorAll('.pill[data-sub-genre]').forEach(p => p.classList.remove('active'));
+      filters.genre = pill.dataset.genre;
+      filters.sub_genre = 'all';
+    }
+    render();
+  });
+
+  document.querySelectorAll('.pills:not(#genrePills)').forEach(group => {
     group.addEventListener('click', e => {
       const pill = e.target.closest('.pill');
       if (!pill) return;
@@ -895,12 +895,6 @@ function bindFilters() {
       pill.classList.add('active');
       const g = group.dataset.group;
       if (g === 'platform') filters.platform = pill.dataset.platform;
-      if (g === 'category') {
-        filters.category = pill.dataset.category;
-        filters.mechanic = 'all';
-        buildMechanicPills(filters.category);
-      }
-      if (g === 'mechanic') filters.mechanic = pill.dataset.mechanic;
       if (g === 'release') filters.release = pill.dataset.release;
       if (g === 'added') { filters.added = pill.dataset.added; filters.addedDate = null; document.getElementById('datePick').value = ''; }
       if (g === 'sort') filters.sort = pill.dataset.sort;
@@ -925,7 +919,6 @@ function bindFilters() {
   document.getElementById('viewGrid').addEventListener('click', () => setView('grid'));
   document.getElementById('viewList').addEventListener('click', () => setView('list'));
 
-  // keyboard
   document.addEventListener('keydown', e => {
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
       e.preventDefault();
@@ -946,8 +939,8 @@ function setView(v) {
 function applyFilters() {
   return allGames.filter(g => {
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
-    if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
-    if (filters.mechanic !== 'all' && (g.mechanic || 'Other Puzzle') !== filters.mechanic) return false;
+    if (filters.genre !== 'all' && getGenre(g) !== filters.genre) return false;
+    if (filters.sub_genre !== 'all' && (g.st_sub_genre || '').trim() !== filters.sub_genre) return false;
 
     if (filters.release !== 'all') {
       const r = daysAgo(g.launch_date);
@@ -1005,11 +998,13 @@ function renderCard(g, i) {
   const plats = getPlatforms(g);
   const addLbl = addedLabel(g);
   const isNew = daysAgo(g.first_seen) <= 1;
+  const genre = getGenre(g);
+  const subGenre = (g.st_sub_genre || '').trim();
 
   const iconHtml = g.icon_url
-    ? `<img src="${escapeAttr(g.icon_url)}" alt="" onerror="this.parentNode.innerHTML='${(g.name||'?').charAt(0).toUpperCase()}'; this.parentNode.style.background='${pickIconColor(g.intel_category)}';" />`
+    ? `<img src="${escapeAttr(g.icon_url)}" alt="" onerror="this.parentNode.innerHTML='${(g.name||'?').charAt(0).toUpperCase()}'; this.parentNode.style.background='${pickIconColor(genre)}';" />`
     : `<span>${(g.name || '?').charAt(0).toUpperCase()}</span>`;
-  const iconStyle = g.icon_url ? '' : `background:${pickIconColor(g.intel_category)};`;
+  const iconStyle = g.icon_url ? '' : `background:${pickIconColor(genre)};`;
 
   const platformBadges = plats.map(p => {
     const name = String(p.platform || '').toLowerCase();
@@ -1031,26 +1026,27 @@ function renderCard(g, i) {
       <div class="badges">
         ${platformBadges}
         <span class="badge installs">${fmtInstalls(installs)} installs</span>
-        ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-        ${g.mechanic && g.mechanic !== 'Other Puzzle' ? `<span class="badge mechanic">${escapeHtml(g.mechanic)}</span>` : ''}
+        ${genre ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(genre)}</span>` : ''}
+        ${subGenre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(subGenre)}</span>` : ''}
       </div>
       ${g.launch_date ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>` : ''}
     </div>
   `;
 }
 
-function pickIconColor(cat) {
+function pickIconColor(genre) {
   const map = {
     'Puzzle': '#7c3aed', 'Casual': '#ea580c', 'Word': '#16a34a',
     'Board': '#0891b2', 'Family': '#db2777', 'Trivia': '#d97706',
     'Arcade': '#dc2626', 'Card': '#0d9488', 'Educational': '#2563eb',
   };
-  return map[cat] || '#78716c';
+  return map[genre] || '#78716c';
 }
 
 // ---------- modal ----------
 function openModal(g) {
   const plats = getPlatforms(g);
+  const genre = getGenre(g);
   const platHtml = plats.map(p => {
     const name = String(p.platform || '');
     const icon = name.toLowerCase().includes('ios') ? '📱' : '🤖';
@@ -1066,11 +1062,28 @@ function openModal(g) {
 
   const iconHtml = g.icon_url
     ? `<img src="${escapeAttr(g.icon_url)}" alt="" />`
-    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${pickIconColor(g.intel_category)};color:white;font-size:32px;font-weight:700;">${(g.name||'?').charAt(0).toUpperCase()}</div>`;
+    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${pickIconColor(genre)};color:white;font-size:32px;font-weight:700;">${(g.name||'?').charAt(0).toUpperCase()}</div>`;
 
   const screenshots = (g.screenshots || []).slice(0, 6).map(s =>
     `<img src="${escapeAttr(s)}" alt="" onerror="this.style.display='none'" />`
   ).join('');
+
+  const tagsFields = [
+    ['Genre',            g.st_genre],
+    ['Sub-genre',        g.st_sub_genre],
+    ['Theme',            g.st_theme],
+    ['Class',            g.st_class],
+    ['Product Model',    g.st_product_model],
+    ['Store Subcategory',g.st_store_subcategory],
+  ].filter(([, v]) => v);
+
+  const tagsHtml = tagsFields.length ? `
+    <div style="margin-top:14px;padding:12px;background:var(--surface-2);border-radius:10px;font-size:12px;">
+      <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">📊 Sensor Tower Tags</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        ${tagsFields.map(([label, val]) => `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;"><span style="color:var(--text-muted);font-size:10px;">${escapeHtml(label)}:</span> <strong>${escapeHtml(val)}</strong></span>`).join('')}
+      </div>
+    </div>` : '';
 
   document.getElementById('modal').innerHTML = `
     <div class="modal-head">
@@ -1079,9 +1092,8 @@ function openModal(g) {
         <h2 class="modal-title">${escapeHtml(g.name || 'Unknown')}</h2>
         <p class="modal-publisher">${escapeHtml(g.publisher || '—')}</p>
         <div class="badges">
-          ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.mechanic ? `<span class="badge mechanic">${escapeHtml(g.mechanic)}${g.mechanic_confidence ? ` <span style="opacity:0.65;font-size:10px;">${g.mechanic_confidence}%</span>` : ''}</span>` : ''}
-          ${g.mechanic_family && g.mechanic_family !== 'Other' ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.mechanic_family)}</span>` : ''}
+          ${genre ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(genre)}</span>` : ''}
+          ${g.st_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.st_sub_genre)}</span>` : ''}
         </div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1089,26 +1101,7 @@ function openModal(g) {
     ${g.description ? `<p class="modal-desc">${escapeHtml(g.description)}</p>` : ''}
     <div class="modal-platforms">${platHtml}</div>
     ${screenshots ? `<div class="screenshots">${screenshots}</div>` : ''}
-    ${(g.intel_category || g.intel_sub_genre || g.intel_genre || g.intel_theme) ? `
-      <div style="margin-top:14px;padding:12px;background:var(--surface-2);border-radius:10px;font-size:12px;">
-        <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">📊 Sensor Tower Taxonomy</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          ${g.intel_category ? `<span style="padding:3px 8px;background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);border-radius:5px;font-weight:600;">Category: ${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.intel_sub_genre ? `<span style="padding:3px 8px;background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);border-radius:5px;font-weight:600;">Sub-genre: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
-          ${g.intel_genre ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Genre: ${escapeHtml(g.intel_genre)}</span>` : ''}
-          ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
-        </div>
-      </div>` : ''}
-    ${g.mechanic ? `
-      <div style="margin-top:14px;padding:12px;background:var(--surface-2);border-radius:10px;font-size:12px;">
-        <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">🎮 Mechanic Classification</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
-          <span style="padding:3px 8px;background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-border);border-radius:5px;font-weight:600;">${escapeHtml(g.mechanic)}${g.mechanic_confidence ? ` · ${g.mechanic_confidence}%` : ''}</span>
-          ${(g.secondary_mechanics || []).map(m => `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">also: ${escapeHtml(m)}</span>`).join('')}
-        </div>
-        ${g.reason ? `<div style="font-size:11px;color:var(--text-soft);font-family:'JetBrains Mono',monospace;">${escapeHtml(g.reason)}</div>` : ''}
-      </div>` : ''}
-    ${g.reason && !g.mechanic ? `<div class="modal-desc" style="font-size:11px;color:var(--text-soft);">Why this score: ${escapeHtml(g.reason)}</div>` : ''}
+    ${tagsHtml}
   `;
   document.getElementById('modalBackdrop').classList.add('open');
 }
