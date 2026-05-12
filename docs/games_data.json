@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-05-12 23:04 UTC",
+  "last_updated": "2026-05-12 23:12 UTC",
   "run_date": "2026-05-12",
   "retention_days": 30,
   "sheet_url": "https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit",
-  "total_fetched_today": 1077,
-  "ios_fetched_today": 292,
-  "android_fetched_today": 816,
-  "total_games_on_site": 1077,
+  "total_fetched_today": 251,
+  "ios_fetched_today": 82,
+  "android_fetched_today": 172,
+  "total_games_on_site": 1083,
   "games": [
     {
       "fid": "6757250643",
@@ -6093,65 +6093,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "6760336172",
-      "app_id": "6760336172",
-      "name": "Imposter (Party Word Game)",
-      "publisher": "Roberto Garcia Pardo",
-      "platform": "android+ios",
-      "category": "Word",
-      "subcategories": [
-        "Find the liar in the group"
-      ],
-      "description": "Who is the impostor among your friends?\n\nFind the Impostor is the ultimate word, deception and deduction game for parties, gatherings and nights with friends. Read the clues, bluff like a pro and discover who is lying before it’s too late.\n\nGather your group, get ready to laugh and put your intuition to the test. Perfect to play at home, on trips or during any hangout with friends or family. A word game that turns any moment into a party. A true splash of wit and chaos that turns any moment into a party.\n\nHow does it work?\n\n1. Everyone sees the same secret word… except one player.\n2. That player only sees the word IMPOSTOR.\n3. Taking turns, each player says a word related to the secret word.\n4. The impostor must improvise and blend in without knowing the real word.\n5. After a few rounds, everyone votes for who they think the impostor is.\n\nCan you spot the liar before they fool the whole group?\n\nGame Features\n\n- Play locally with 3 to 20 players on a single device\n- More than 15 free categories: food, movies, animals, football, anime and much more\n- Hundreds of unique secret words across many different topics\n- No accounts, no registration and no Internet required\n- Perfect for kids, teenagers and adults\n- Add more impostors or activate a timer for each round\n- Create your own categories with custom words\n- Fully optimized design for iPhone and iPad\n\nThe perfect social game for parties\n\nFind the Impostor combines the best of word games, social games and group deduction:\n\n- Discover the liar and unmask the impostor\n- Defend yourself while trying to fool your friends\n- Laugh, argue and vote in every round\n- Ideal for small or large groups\n\nEvery match is different. Get ready for epic moments of tension, laughter and the classic “I knew it!”.\n\nOnline Multiplayer: Now you can also play the impostor game online with up to 20 players. Create a room, share the code and start playing in seconds, wherever you are. Perfect for playing remotely or over video calls.\n\nFamily-friendly and viral: Find the Impostor is a family game suitable for all ages: kids, teenagers and adults. It includes Kids Mode, with illustrations, educational content and simple words designed for children.\n\nCreated by Game of Shots — The Original Partyverse Studios. Words, deception and a splash of laughs. Find the impostor among your friends in this fun party word game full of bluffing, guessing and social chaos. Find the liar in the group",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6760336172",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/ObM3i36S-4SvsDYTahb72RMHV1Oz0oROkwONRsia8BlxI9MBdXZaa0sjxPf8HKW3E6WoZIgh9_9OJ0Zvhdp81w",
-        "https://play-lh.googleusercontent.com/1h0_VWNxhdNZNkX4eHVjAqnBrHSnL3tIMnqcl-NOlHNWLNLC9TzIDiVANEek8mT96I4_KkvGktrHeah724JUy4Q",
-        "https://play-lh.googleusercontent.com/5TahC_H3Kb8DrZgXGG6Pv8AntnPbozAvLVqQuWQHVBjvVQdCJ4xim5qoZAGPebQu6O2JhCRZEGcHKp0eA53mrA",
-        "https://play-lh.googleusercontent.com/BoCUpDP1dNVpt1sPGhXRdbN3NkEcVv9x0DMIPgPu9Jy2o1PRb4Ek4LpSKs5VeHEZQn43JmBwI-nzAjJZ3eLO",
-        "https://play-lh.googleusercontent.com/FZytxOch13d8BXOOCWdSZd6HuzbL3voorvFew4F5oN0pO0G3yi4H13egSazc31LTVazvRYl4VqySuruABra9rw",
-        "https://play-lh.googleusercontent.com/N5nbZtkog2wSSP8wKA-Q5Up4qf334ART9_TQLoHj50olgiKMksNnOXf746fH8uADnDezPexesGeo7k8xs9pKQA",
-        "https://play-lh.googleusercontent.com/l_B4NmFkXUsNxiqtuoiIA3G2qMq7BByjIuoekFuk8mO9xYwnAyNcvRQxZpg1wTRkkjhF4sqtIJ4EDbOVhb8WCQ",
-        "https://play-lh.googleusercontent.com/Gxkl93jEUoMXHU5t_fbPJm6Z91reyF3aJIm3bTq1OzPwgbtKm3zYM7Z50SeXUu88WAmKFi8bqmw10iB_Q9_xBw",
-        "https://play-lh.googleusercontent.com/FZytxOch13d8BXOOCWdSZd6HuzbL3voorvFew4F5oN0pO0G3yi4H13egSazc31LTVazvRYl4VqySuruABra9rw",
-        "https://play-lh.googleusercontent.com/N5nbZtkog2wSSP8wKA-Q5Up4qf334ART9_TQLoHj50olgiKMksNnOXf746fH8uADnDezPexesGeo7k8xs9pKQA",
-        "https://play-lh.googleusercontent.com/l_B4NmFkXUsNxiqtuoiIA3G2qMq7BByjIuoekFuk8mO9xYwnAyNcvRQxZpg1wTRkkjhF4sqtIJ4EDbOVhb8WCQ",
-        "https://play-lh.googleusercontent.com/Gxkl93jEUoMXHU5t_fbPJm6Z91reyF3aJIm3bTq1OzPwgbtKm3zYM7Z50SeXUu88WAmKFi8bqmw10iB_Q9_xBw"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/41/68/5c416801-a6f8-5f1e-db73-758c9891f3db/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/150x150bb.jpg",
-      "installs_total": 18377,
-      "country": "WW",
-      "launch_date": "2026-03-22T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Word",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6760336172",
-          "installs_total": 703,
-          "launch_date": "2026-04-05T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6760336172",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.onmobi.imposter",
-          "installs_total": 17674,
-          "launch_date": "2026-03-22T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.onmobi.imposter",
-          "country": "AR"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.rxgame.demonfh",
       "app_id": "com.rxgame.demonfh",
       "name": "Demon Fang Hunter",
@@ -6235,71 +6176,6 @@
           "launch_date": "2026-03-20T00:00:00Z",
           "store_url": "https://apps.apple.com/app/id6758203872",
           "country": "WW"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
-      "fid": "6761406464",
-      "app_id": "6761406464",
-      "name": "Urban Lore:Doppelganger Street",
-      "publisher": "Biginfive Co,.Ltd.",
-      "platform": "android+ios",
-      "category": "Casual",
-      "subcategories": [
-        "Which is the real one?"
-      ],
-      "description": "!Two people, but only one is real!<br>!Ask, observe, and doubt!<br>Players ask a variety of questions and compare the answers and reactions of the two figures. The same question, different answers. Awkward speech. Slightly mismatched memories. An unexplainable sense of unease. All of these are clues.<br>!Your choices reveal the truth!<br>Questions are limited, and you cannot ask everything. Choose your questions carefully and find the fake.<br>!Game Features!<br>A unique deduction system that compares two characters side by side<br>Interrogation gameplay based on question selection<br>A psychological game focused on noticing subtle differences<br>UI optimized for horizontal mobile screens<br>An immersive atmosphere filled with tension<br><br>Every choice becomes a clue, and every judgment leads to a result.<br>Now, uncover the real one. Who is the real one? Ask questions, read reactions, and expose the doppelganger.",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6761406464",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/WpLu71x2hJv_a-8W7IS-1DUAy6T92U5Rp_g1Sd2d3oE7s9wTeGv8Pd1zjsQEmjSP4cRmDpIJ-EU5_Eg1e5hsiQ",
-        "https://play-lh.googleusercontent.com/AA_q4jJgwvT2-3d2bYNe_ddLiV-yN44TkE1piYtJqIS5zdc9zUC29b4tP0Ff75-gcNk-zAxypHp8h2djmEZzsvI",
-        "https://play-lh.googleusercontent.com/gvDJ4hMmdmAwzNDiUGn9zPYKbZxxAPz8qnRZatzwIAsOgFhU5vF3jUQ59TbWYf7O9xlq9ybfURiJ-IygAPEs",
-        "https://play-lh.googleusercontent.com/3hRr85FYESNj6jg9NvbVHN39pjaj_j-4S8XiPe4jif7p1DHZyh4UT_o1xONJ2AxmrQr4lCTGSH-Non7tXbfqlg",
-        "https://play-lh.googleusercontent.com/kZGZHlSO0HNU2Rhqwolo9eKbKon6IZ5s-BanRNVz2GR-eI6FNXDnzrTk-mOEAv5uCKnYXI7tnVyueZG9QY9O9A",
-        "https://play-lh.googleusercontent.com/jTmOL_ZmejLe9EJ4BpZqVbpr3Wug_h2_H2_vcg-tsrh4u_gPuC4cOuX8l9rSo1T6DkT61F2r_uKaDc-_s2rQ",
-        "https://play-lh.googleusercontent.com/sfmZtMuyCq3Z5L-7JWJKjPnRA0GCUpVnwQCysnLhbIqexdRUGKBYyIxcZoilz9Ofmr7YxctUIMA9VzVHrBRYQQ",
-        "https://play-lh.googleusercontent.com/05ofkJkIxsoLxC7rdAUV_HnJBcm98HS6PDLxav8neTNqFkPnP39MMi0fEaX_WyRrJdOTaXMSPmbQb3oMk1qAtg",
-        "https://play-lh.googleusercontent.com/FgaW6SGHOu45y5bhRfSINE7jEM-bgfTrnsBFUSxD923dvFuHz5CtibA_81iHjdJQ2DUqR9qX7rnmQehdTqO-n5U",
-        "https://play-lh.googleusercontent.com/qwB5YEh2m-IR3y2J5-rb28I_wY0FwL7qJdm3uGCiUk7r70k39ABdx8auh0I1bNvlMZoxns4QekE1jE_lrYRB",
-        "https://play-lh.googleusercontent.com/ilpBI_iqLrCOl_fqiDkA1glGLRO-IQPlIXbprUr4S7rcfrQsKZgyWNLrSvZGH33TIGdu7XOzB5GZKJf2UYoCXQ",
-        "https://play-lh.googleusercontent.com/ECFZ9LHa2rQpDTUcYUHLl_P-SP3GEFCxjLauShEvcJj3EMLZSeZqf2kcklKnt6rTUofWR78BKfHrj9SJ_KPAAg",
-        "https://play-lh.googleusercontent.com/sfmZtMuyCq3Z5L-7JWJKjPnRA0GCUpVnwQCysnLhbIqexdRUGKBYyIxcZoilz9Ofmr7YxctUIMA9VzVHrBRYQQ",
-        "https://play-lh.googleusercontent.com/05ofkJkIxsoLxC7rdAUV_HnJBcm98HS6PDLxav8neTNqFkPnP39MMi0fEaX_WyRrJdOTaXMSPmbQb3oMk1qAtg",
-        "https://play-lh.googleusercontent.com/FgaW6SGHOu45y5bhRfSINE7jEM-bgfTrnsBFUSxD923dvFuHz5CtibA_81iHjdJQ2DUqR9qX7rnmQehdTqO-n5U",
-        "https://play-lh.googleusercontent.com/qwB5YEh2m-IR3y2J5-rb28I_wY0FwL7qJdm3uGCiUk7r70k39ABdx8auh0I1bNvlMZoxns4QekE1jE_lrYRB",
-        "https://play-lh.googleusercontent.com/ilpBI_iqLrCOl_fqiDkA1glGLRO-IQPlIXbprUr4S7rcfrQsKZgyWNLrSvZGH33TIGdu7XOzB5GZKJf2UYoCXQ",
-        "https://play-lh.googleusercontent.com/ECFZ9LHa2rQpDTUcYUHLl_P-SP3GEFCxjLauShEvcJj3EMLZSeZqf2kcklKnt6rTUofWR78BKfHrj9SJ_KPAAg"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7a/ab/80/7aab806d-93fb-a364-8312-0982ebe7b145/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/150x150bb.jpg",
-      "installs_total": 17774,
-      "country": "WW",
-      "launch_date": "2026-03-31T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Trivia",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6761406464",
-          "installs_total": 712,
-          "launch_date": "2026-04-02T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6761406464",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.biginfive.doppelganger",
-          "installs_total": 17062,
-          "launch_date": "2026-03-31T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.biginfive.doppelganger",
-          "country": "KR"
         }
       ],
       "first_seen": "2026-05-12",
@@ -7711,6 +7587,226 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "6760779273",
+      "app_id": "6760779273",
+      "name": "谐音梗猜成语-看图答题脑筋急转弯",
+      "publisher": "曾飞 徐",
+      "platform": "android+ios",
+      "category": "Word",
+      "subcategories": [],
+      "description": "<b>Уверены в своём словарном запасе, скорости мышления и стратегическом уме? Тогда познакомьтесь с первой настоящей онлайн-дуэлью слов в России — <b>Линго Россия Онлайн</b>! Забудьте про обычные головоломки — пришло время сразиться с реальными соперниками!</b><br><br><br><br><b>🎮 КАК ИГРАТЬ?</b><br><br><b>Правила простые, но борьба будет напряжённой!</b> Твоя цель — <b>угадать скрытое слово быстрее соперника</b>. Но будь внимателен: <b>время ограничено</b>, и <b>каждый ход имеет значение!</b><br><br>1. <b>Начни игру:</b> Нажми кнопку <b>«Играть»</b> и через несколько секунд система подберёт тебе <b>живого соперника твоего уровня</b>.<br>2. <b>Сделай предположение:</b> Введи слово — <b>клавиатура полностью в твоём распоряжении!</b><br>3. <b>Следи за подсказками:</b> Цвета букв помогут понять, насколько ты близок к ответу:<br>🟢 <b>ЗЕЛЁНАЯ КЛЕТКА:</b> <b>Отлично!</b> Буква есть в слове и стоит <b>на правильном месте</b>.<br>🟡 <b>ЖЁЛТАЯ КЛЕТКА:</b> <b>Хороший ход!</b> Буква есть в слове, но находится <b>не на своём месте</b>.<br>⚪ <b>СЕРАЯ КЛЕТКА:</b> <b>К сожалению</b>, такой буквы в слове <b>нет</b>.<br>4. <b>Используй свой ход с умом:</b> Когда наступает твоя очередь, нужно <b>думать быстро</b>. Если время истечёт — <b>ты пропустишь ход!</b><br>5. <b>Победа за тобой:</b> Будь <b>быстрее и умнее соперников</b>, угадай слово, <b>набирай очки</b> и <b>поднимайся в рейтингах!</b><br><br><b>🌟 ПОЧЕМУ ИМЕННО ЛИНГО РОССИЯ ОНЛАЙН?</b><br><br><b>Надоели обычные одиночные словесные игры без настоящего соперничества?</b> Мы предлагаем <b>живой, динамичный и постоянно меняющийся игровой опыт</b>.<br><br><b>⚔️ РЕАЛЬНЫЙ MULTIPLAYER В РЕАЛЬНОМ ВРЕМЕНИ:</b> Устали играть против ботов? Здесь вы можете встретить <b>реальных игроков</b> — например, <b>Анну из Москвы</b>, <b>Дмитрия из Санкт-Петербурга</b> или <b>Алексея из Екатеринбурга</b>. <b>Настоящие эмоции, настоящая скорость и настоящая конкуренция!</b><br><br><b>🧠 ТРЕНИРОВКА МОЗГА И РАЗВИТИЕ:</b> Игра отлично подходит для <b>поддержания активности мозга</b>. Расширяйте <b>словарный запас</b> и одновременно развивайте <b>логическое и аналитическое мышление</b>.<br><br><b>⚡ МГНОВЕННЫЙ ПОДБОР СОПЕРНИКА:</b> Благодаря мощной серверной инфраструктуре вам <b>не придётся ждать</b>. Нажмите <b>«Играть»</b> — и вы <b>сразу окажетесь в игре</b>.<br><br><b>🎨 СТИЛЬНЫЙ И УДОБНЫЙ ДИЗАЙН:</b> <b>Современный и интуитивный интерфейс</b>, который <b>не утомляет глаза</b>. Поддержка <b>тёмной темы</b> позволяет комфортно играть <b>в любое время суток</b>.<br><br><b>🇷🇺 АДАПТИРОВАНО ДЛЯ РУССКОГО ЯЗЫКА:</b> Игра создана <b>с учётом особенностей русского языка</b>. <b>Тысячи слов</b> из актуальных словарей обеспечивают <b>честную и увлекательную игру</b>.<br><br><b>🎯 КОМУ ПОДОЙДЁТ ИГРА?</b><br><br><b>🧩 Любителям головоломок:</b> Отличная альтернатива для тех, кто любит <b>кроссворды, сканворды и словесные задачи</b>.<br><br><b>🔤 Поклонникам словесных игр:</b> Если вам нравятся <b>Wordle, словесные викторины или игры на угадывание слов</b> — здесь вы найдёте <b>настоящий соревновательный вызов</b>.<br><br><b>👨‍👩‍👧 Игрокам любого возраста:</b> <b>Простые правила</b>, <b>отсутствие насилия</b> и <b>дружелюбный игровой процесс</b> делают игру подходящей для всех — <b>от детей до взрослых</b>. Играй в Линго онлайн против соперников! Самая конкурентная игра слов в России.",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6760779273",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/Shr_oAI0OmZfQ3xvng7CI3lfZUGJfrnn5Z03I8Sl0BK6ZkOPrFAYcPxNLkDusxR7i4ctYhLUcISAIFCsS8fxIw",
+        "https://play-lh.googleusercontent.com/TG86YuPeRrVBPuW8HS7FTPyRSYhY8MCYQ9MZHDt9I6BzkCqVez-rex7OZ4pMh_Co2hVGu_LvpNBuvKARGkDV",
+        "https://play-lh.googleusercontent.com/edbH0W3VwabhGYczCvUcdnKbFGxw7BOPR3AKR81Pz-A7yc_DOLAxYs6XwoWD6bU82vV7Zp9FQ3iw17qWW0_pY6M",
+        "https://play-lh.googleusercontent.com/FIG3WOsuGHXEgM5c_l-RPWejJ2glPGSGhDy1Y7RUQZzyBG8Sobjq9rdpbdga2EB3zysCYIrrCGEbopC9fP6wMA",
+        "https://play-lh.googleusercontent.com/Jf9rwavM37agqdUYeyFvZ-sjz156dgnNzO-PsH_l3tFnJEi-677zMInvuY6e6h-ErP3VbN5-Q70WvKc-0LlxlA",
+        "https://play-lh.googleusercontent.com/vMhXlijxFeAeaA0qfRjRwmZ5YB4DBWKlvLsiqo_LhWXqGOzl0fDQHNT7Uqtgjq5OzLjKF7vch9QL_tl-lTQN",
+        "https://play-lh.googleusercontent.com/3mwStYzyTpRUTAxLBtH-NLeMM2pqFWNXz5FCI_zlPv6zwBfh1_aq9ZUyULzTxRdBjlwaM7mJE5VARk6RIvUR",
+        "https://play-lh.googleusercontent.com/K2DpMjTYV0Pqz3laYde5YgjYOkWpa9-iN7gbgo5bRwCn6zB9O-XjSmg7LBemAVZI6uS_LZl2oRpWddDWXeFKeG0",
+        "https://play-lh.googleusercontent.com/gUHJWe0XdJ2dnUofTWfFy5bbZp-EynXCijmcrRpXkDtG17xbxlJC1gW6WMt0lUhYykjKU0Vswze1rINFkV29",
+        "https://play-lh.googleusercontent.com/NIuX8NkIp4YXtTBBy3Q1HeMAdBND0OnX7VFR_uNybXeB9iypgmsMlMKDoLOPGy782tPp-6H6y6Sk1IBV7gTVzw",
+        "https://play-lh.googleusercontent.com/vMhXlijxFeAeaA0qfRjRwmZ5YB4DBWKlvLsiqo_LhWXqGOzl0fDQHNT7Uqtgjq5OzLjKF7vch9QL_tl-lTQN",
+        "https://play-lh.googleusercontent.com/3mwStYzyTpRUTAxLBtH-NLeMM2pqFWNXz5FCI_zlPv6zwBfh1_aq9ZUyULzTxRdBjlwaM7mJE5VARk6RIvUR",
+        "https://play-lh.googleusercontent.com/K2DpMjTYV0Pqz3laYde5YgjYOkWpa9-iN7gbgo5bRwCn6zB9O-XjSmg7LBemAVZI6uS_LZl2oRpWddDWXeFKeG0",
+        "https://play-lh.googleusercontent.com/gUHJWe0XdJ2dnUofTWfFy5bbZp-EynXCijmcrRpXkDtG17xbxlJC1gW6WMt0lUhYykjKU0Vswze1rINFkV29",
+        "https://play-lh.googleusercontent.com/NIuX8NkIp4YXtTBBy3Q1HeMAdBND0OnX7VFR_uNybXeB9iypgmsMlMKDoLOPGy782tPp-6H6y6Sk1IBV7gTVzw"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/2e/fe/4b2efed9-6d80-357f-0230-336d0b85e872/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/150x150bb.jpg",
+      "installs_total": 15232,
+      "country": "WW",
+      "launch_date": "2026-03-20T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Puzzle",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6760779273",
+          "installs_total": 566,
+          "launch_date": "2026-03-24T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6760779273",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6760877544",
+          "installs_total": 541,
+          "launch_date": "2026-03-24T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6760877544",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6760963687",
+          "installs_total": 867,
+          "launch_date": "2026-03-24T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6760963687",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6758930080",
+          "installs_total": 515,
+          "launch_date": "2026-03-20T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6758930080",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6760642743",
+          "installs_total": 991,
+          "launch_date": "",
+          "store_url": "https://apps.apple.com/app/id6760642743",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6760828033",
+          "installs_total": 786,
+          "launch_date": "",
+          "store_url": "https://apps.apple.com/app/id6760828033",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6757996244",
+          "installs_total": 847,
+          "launch_date": "2026-03-24T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6757996244",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6761376510",
+          "installs_total": 895,
+          "launch_date": "2026-04-01T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6761376510",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6761698463",
+          "installs_total": 723,
+          "launch_date": "2026-04-07T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6761698463",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6760367652",
+          "installs_total": 679,
+          "launch_date": "2026-03-22T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6760367652",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6744923044",
+          "installs_total": 541,
+          "launch_date": "",
+          "store_url": "https://apps.apple.com/app/id6744923044",
+          "country": "WW"
+        },
+        {
+          "platform": "ios",
+          "app_id": "6763592058",
+          "installs_total": 967,
+          "launch_date": "2026-04-28T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6763592058",
+          "country": "WW"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.fasonbit.lingo_russia",
+          "installs_total": 517,
+          "launch_date": "",
+          "store_url": "https://play.google.com/store/apps/details?id=com.fasonbit.lingo_russia",
+          "country": "BY"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.hc.text_cultivation",
+          "installs_total": 630,
+          "launch_date": "2026-03-23T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.hc.text_cultivation",
+          "country": "TW"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.zengfei.pun.idiom",
+          "installs_total": 513,
+          "launch_date": "2026-03-21T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.zengfei.pun.idiom",
+          "country": "TW"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.codmaker.tahadisowar",
+          "installs_total": 541,
+          "launch_date": "2026-03-29T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.codmaker.tahadisowar",
+          "country": "IQ"
+        },
+        {
+          "platform": "android",
+          "app_id": "il.co.kitapp.daily.crossword",
+          "installs_total": 960,
+          "launch_date": "2026-05-04T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=il.co.kitapp.daily.crossword",
+          "country": "IL"
+        },
+        {
+          "platform": "android",
+          "app_id": "net.toybee.poikatsuquiz",
+          "installs_total": 790,
+          "launch_date": "",
+          "store_url": "https://play.google.com/store/apps/details?id=net.toybee.poikatsuquiz",
+          "country": "JP"
+        },
+        {
+          "platform": "android",
+          "app_id": "niqat.elabakra",
+          "installs_total": 588,
+          "launch_date": "2026-03-29T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=niqat.elabakra",
+          "country": "EG"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
+          "installs_total": 537,
+          "launch_date": "2026-04-02T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.crossword.arabic.wasla2.wasla1.wasla.picturequiz.crosswordnew.waslagame.arabicpuzzle.uncrossed.rashfa.zytoona",
+          "country": "YE"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.waslagame9.flag.quiz",
+          "installs_total": 674,
+          "launch_date": "2026-04-04T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.waslagame9.flag.quiz",
+          "country": "YE"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.maisara.hareeq",
+          "installs_total": 564,
+          "launch_date": "2026-04-16T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.maisara.hareeq",
+          "country": "QA"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "com.queencardbattle.ipyh.an",
       "app_id": "com.queencardbattle.ipyh.an",
       "name": "Eternal Girls : Battle Card",
@@ -8422,83 +8518,6 @@
           "launch_date": "2026-03-27T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.beremo.quizei",
           "country": "TR"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
-      "fid": "com.cyber.cybertrivia",
-      "app_id": "com.cyber.cybertrivia",
-      "name": "Rainbet",
-      "publisher": "Irfi BSN",
-      "platform": "android",
-      "category": "Trivia",
-      "subcategories": [],
-      "description": "🧮 Rainbet - Timed Arithmetic Challenge!<br>Rainbet is a quick arithmetic game built for focused practice sessions. Start a run, answer as many expressions as you can, and watch your score climb while the timer counts down. Rainbet is designed to be simple, clear, and repeatable: open the game, begin a timed round, and focus on accuracy and speed.<br>In Rainbet, each round lasts 60 seconds and starts with 3 lives. Every correct answer adds points and increases your correct count - a wrong answer costs a life. When the timer reaches zero or you run out of lives, Rainbet ends the session and shows your results.<br>🎯 How Rainbet Works<br>Rainbet generates randomised questions using addition (+), subtraction (-), and multiplication (×). You type your answer, submit, and immediately move on to the next question. This fast loop makes Rainbet a great way to sharpen mental math habits in short bursts, whether you have one minute between tasks or want a few rounds of focused training. It is the best brain game for quick math practice in the US.<br>After each run, rainbet shows your last score and your accuracy (correct answers out of total questions). Rainbet also keeps long-term statistics so you can measure progress across sessions: your best score, how many games you played, and your average score. These stats help you set realistic personal targets and notice improvement over time.<br>📊 Statistics and Progress<br>Rainbet is ideal for anyone who enjoys classic arithmetic challenges: addition practice, subtraction drills, and quick multiplication exercises. Because the questions are randomised, each rainbet round feels fresh while staying familiar and easy to understand. The goal is straightforward: keep your score rising, protect your lives, and stay calm under the countdown. This is more than a game - it is an intellectual challenge for the brain.<br>Use Rainbet as a daily brain warm-up, a quick focus reset, or a lightweight math trainer. Play once for a fast check-in, or replay multiple rounds and try to beat your best score. rainbet rewards consistent practice: the more you play, the easier it becomes to answer confidently and reduce mistakes.<br>🏆 Rainbet Features<br>If you are looking for a clean mental math game with a timer, a score system, and clear session statistics, Rainbet keeps everything in one place without distractions. Start, answer, improve - rainbet turns arithmetic into a simple, repeatable challenge you can come back to anytime.<br>Rainbet uses a straightforward scoring model: correct answers add points (10 per correct) and increase your correct-answer count. Wrong answers do not add points, but they reduce your remaining lives and still count toward the total number of questions answered, so accuracy matters as much as speed.<br>Questions in Rainbet are generated on the fly with small, readable numbers (typically 1 to 20) across three operations: +, -, and ×. Because the next expression appears immediately after you submit an answer, the game stays fast and focused, encouraging quick recall and steady improvement.<br>What you can do in rainbet:<br><br>Play a timed round (60 seconds) and try to beat your personal best.<br>Answer randomised arithmetic questions (+, -, ×) and score points for correctness.<br>Manage 3 lives - mistakes reduce lives and can end the round early.<br>Review your last run: score and accuracy (correct answers / total questions).<br>Track long-term stats: best score, games played, and average score.<br><br>Rainbet is designed for quick practice sessions: replay rounds, push your high score higher, and track progress through stored results and statistics. Start now and discover how much fun it is to be smart! Rainbet timed math game with score, lives, and stats - play now!!",
-      "keywords": [],
-      "store_url": "https://play.google.com/store/apps/details?id=com.cyber.cybertrivia",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/2ogTMJkn5A7PVGNWdzDcKtZx3TD_ObbgDPVqdaPU0RXvY4CfBK4mzdMEjBRNQk0iCCMg3xLBaXPQ8ThNEQGV",
-        "https://play-lh.googleusercontent.com/1A_2idLWdOVmdfRdeuh5BzQzyMwn6nNYr9LHGRe39xJo5VmBzWLJYrk42Ik0w_L1khsSaVA1nuXZ2R-67O7e",
-        "https://play-lh.googleusercontent.com/zMM3PiBVvJEQlXsk-fXgel6EAsLyp9aItU4t8mea2Nq9mwZFrjfyGSZ29-I7gGc3IoVaEDzevkGaGa46thLHaQ",
-        "https://play-lh.googleusercontent.com/4662O9dmNTNLR52ae3yKK_uXjmbWHl1h-V4JtEYY-LRg6jchV3DL99EFU6qI8KzXt8WWESI58d5V6xX6OO23",
-        "https://play-lh.googleusercontent.com/2ogTMJkn5A7PVGNWdzDcKtZx3TD_ObbgDPVqdaPU0RXvY4CfBK4mzdMEjBRNQk0iCCMg3xLBaXPQ8ThNEQGV",
-        "https://play-lh.googleusercontent.com/1A_2idLWdOVmdfRdeuh5BzQzyMwn6nNYr9LHGRe39xJo5VmBzWLJYrk42Ik0w_L1khsSaVA1nuXZ2R-67O7e",
-        "https://play-lh.googleusercontent.com/zMM3PiBVvJEQlXsk-fXgel6EAsLyp9aItU4t8mea2Nq9mwZFrjfyGSZ29-I7gGc3IoVaEDzevkGaGa46thLHaQ",
-        "https://play-lh.googleusercontent.com/4662O9dmNTNLR52ae3yKK_uXjmbWHl1h-V4JtEYY-LRg6jchV3DL99EFU6qI8KzXt8WWESI58d5V6xX6OO23"
-      ],
-      "icon_url": "https://play-lh.googleusercontent.com/vPQJK7Ii6aB5UKLY5rK2LCpi6ZaW_eNM5E7jshTicLNBDFJkpPCKkU8Zph7CU8SN3Xi5oOeJmXvmvPmCGslVKQI=s150",
-      "installs_total": 13775,
-      "country": "CI",
-      "launch_date": "2026-03-15T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Trivia",
-      "platforms": [
-        {
-          "platform": "android",
-          "app_id": "com.cyber.cybertrivia",
-          "installs_total": 925,
-          "launch_date": "2026-03-19T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.cyber.cybertrivia",
-          "country": "CI"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.kicktiming.getsfoots",
-          "installs_total": 5465,
-          "launch_date": "2026-03-21T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.kicktiming.getsfoots",
-          "country": "CI"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.yuigjkfjmbplruitjjjg.asdoglpe.vbneroik.polqwrth",
-          "installs_total": 4214,
-          "launch_date": "2026-03-15T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.yuigjkfjmbplruitjjjg.asdoglpe.vbneroik.polqwrth",
-          "country": "CM"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.mazegameapp.mathgame",
-          "installs_total": 2620,
-          "launch_date": "2026-03-18T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.mazegameapp.mathgame",
-          "country": "ZA"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.gamepairsapp.mypairsapp",
-          "installs_total": 551,
-          "launch_date": "2026-03-26T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.gamepairsapp.mypairsapp",
-          "country": "CL"
         }
       ],
       "first_seen": "2026-05-12",
@@ -9617,56 +9636,6 @@
           "launch_date": "2026-03-13T00:00:00Z",
           "store_url": "https://apps.apple.com/app/id6759778301",
           "country": "WW"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
-      "fid": "com.girajyonoslotes.app",
-      "app_id": "com.girajyonoslotes.app",
-      "name": "Yono Slots",
-      "publisher": "GIRRAJA FUTURE COACHING CLASSES",
-      "platform": "android",
-      "category": "Card",
-      "subcategories": [],
-      "description": "Spin Game Zone – Fun &amp; Rewarding Experience<br><br>Welcome to Spin Game Zone!<br>Enjoy exciting spin wheel and slot games designed for fun, entertainment, and rewarding gameplay.<br><br>🎯 Game Modes<br>🎡 Spin Wheel<br>Spin the wheel and test your luck<br>Win coins, bonuses, and exciting rewards<br>Try daily spins and enjoy surprises<br>🎰 Slot Game (Fruit Slots)<br>Classic slot machine experience<br>Match symbols and win rewards<br>Smooth animations and engaging gameplay Spin wheel &amp; play slots game to win coins and enjoy fun gameplay",
-      "keywords": [],
-      "store_url": "https://play.google.com/store/apps/details?id=com.girajyonoslotes.app",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/E5CQFDgzRd7rSFJUp48lcd3Kt5w7bpAsSdRd1lWAjJ-0ycNm4o2m2DuRhQeqCtkTNYwqhz57D6Zyp9r7xZerNw",
-        "https://play-lh.googleusercontent.com/5Lm9qjlGL92lWY6cBCjOPk19uC_Q7MaRwQ7vvFFNu7ZQrg5qcK4D5Ig2D9-RtPXZH36K5dAy-raM8KbMPgP4",
-        "https://play-lh.googleusercontent.com/-kZjLeDT12haMGwOaFH3cgPfLXCi3fl_tiMDdmQ3NXklaDleCrvRm618JSZ4q6OsSI_N2DcJJAmk84yBbAvQ6w",
-        "https://play-lh.googleusercontent.com/NNeIyWtRPhz9F2t0QdM4xDnuMahpOAMl2Pm6leOzooLW7Pm_pRGwGfXnxY4z8vO1VX3KBwc16RmiwxF481GAvw",
-        "https://play-lh.googleusercontent.com/tSe0vOJsGpF1GfzZG7JhbAsTPczCTybTh5wZQaeLShRcEj1xFcgCbF0a2cB98N0P2jq5KYsWNPUv_H1Z9adhNRg"
-      ],
-      "icon_url": "https://play-lh.googleusercontent.com/tzwsot96QcWCWNeZaIJEzhT5HrWkn9urRzPfM2SwQ0uvSoLaHoIvmOp6fmcpDQ94BDPswVGLJChfDdxP7enD5A=s150",
-      "installs_total": 11772,
-      "country": "IN",
-      "launch_date": "2026-03-16T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Card",
-      "platforms": [
-        {
-          "platform": "android",
-          "app_id": "com.girajyonoslotes.app",
-          "installs_total": 994,
-          "launch_date": "2026-03-16T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.girajyonoslotes.app",
-          "country": "IN"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.sonugetyonoslotos.app",
-          "installs_total": 10778,
-          "launch_date": "2026-04-11T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.sonugetyonoslotos.app",
-          "country": "IN"
         }
       ],
       "first_seen": "2026-05-12",
@@ -11528,63 +11497,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "com.iconsgameball.footbalunciwe",
-      "app_id": "com.iconsgameball.footbalunciwe",
-      "name": "1xbet",
-      "publisher": "RED TREIDINH",
-      "platform": "android",
-      "category": "Puzzle",
-      "subcategories": [],
-      "description": "Welcome to the 1xbet!<br>Step into a mysterious carnival where golden lights flicker against the night sky and every card hides a secret. Fairy Fair City is a memory matching game set within a dark, enchanted fairground. If you are looking to escape the stress of the real world, this magical realm offers a pure cognitive challenge! Players explore twelve handcrafted stages, each named after a different corner of the carnival, from the Entrance Gate to the Grand Finale.<br><br>Test Your Memory Under Pressure<br>The challenge is simple yet demanding: reveal pairs of hidden carnival symbols before the clock runs out. Every stage raises the stakes with larger grids and tighter time limits. In this enchanted atmosphere, flipping an unknown card feels like making a thrilling 1x bet on your own memory and intuition! A three-star rating system rewards sharp recall and swift decisions, pushing players to refine their strategy on every attempt.<br><br>Premium Black &amp; Gold Aesthetics<br>The entire experience is wrapped in a striking black and gold visual identity, with custom illustrated cards, animated transitions, and atmospheric backgrounds that bring the fairy fair to life. Built with a smooth, responsive interface, it delivers a polished experience that rivals any premium 1xbet application. No two sessions feel the same thanks to randomized card placement across all levels.<br><br>Disclaimer: Pure Brain Puzzle (No Gambling)<br>We believe in absolute transparency for our players. If your recent search history includes looking for a specific 1xbet app, browsing various 1xbet apps, or if you just typed 1хбет or 1xbet, you have discovered a beautifully crafted, stress-free alternative.<br>Please note: Fairy Fair City is a 100% skill-based memory puzzle game. * It is NOT a 1xbet betting app and contains absolutely no real-money gambling, sports betting, or financial payouts.<br><br>We have no affiliation with the 1xbet apps original network.<br><br>Fairy Fair City offers a distinctive blend of classic card matching mechanics and richly themed presentation. It is designed for players who appreciate both visual craft and genuine cognitive challenge. Enter the carnival today and uncover the secrets of the cards! 1xbet is a memory matching game set within a dark enchanted fairground",
-      "keywords": [],
-      "store_url": "https://play.google.com/store/apps/details?id=com.iconsgameball.footbalunciwe",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/JszrkjahaUCJH6wD8YGVAx1Pfb6XxXzklcSzJwTpnVsdlhRc9Sg8KiBmmXkdJ-jLao2Jd-y47ZIC-C0jJkCM9A",
-        "https://play-lh.googleusercontent.com/NPccQv_y_4vo2eEhJWkQAv3s3X3vjbncr-5jjavAVq426v8ykY_-psoMo2STSMAffDjduFXDCaLGMoa8Uhxe6Q",
-        "https://play-lh.googleusercontent.com/tfu4lHnnDLqnHUsk0hdSqLhItaB8QQCyBva3flwY5nWVtf4BQasWRwBKSFzJmCufVQ0wFcm0DOsQlhcj_OCp",
-        "https://play-lh.googleusercontent.com/3o-vn-GHd_Vfol1OoqZQqEB9T2RC8Mv4WmU4QzTomtReA52ozOvqK1yAFgxSXs8xwu-enNy2i02qTN7CebJrog"
-      ],
-      "icon_url": "https://play-lh.googleusercontent.com/cpvV1jthh_8BOb9qMNBiH6-qwH5GTP_3IXPkNaYR-R0u8R1lJIHY4a-HpIoJhkGSnfVLq9AybzgvwBBfMMIx3A=s150",
-      "installs_total": 9580,
-      "country": "BD",
-      "launch_date": "2026-03-15T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Puzzle",
-      "platforms": [
-        {
-          "platform": "android",
-          "app_id": "com.iconsgameball.footbalunciwe",
-          "installs_total": 565,
-          "launch_date": "2026-03-15T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.iconsgameball.footbalunciwe",
-          "country": "BD"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.fairgoinggcity.tulesgame",
-          "installs_total": 4298,
-          "launch_date": "2026-03-21T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.fairgoinggcity.tulesgame",
-          "country": "IN"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.rushteendo.playgowin",
-          "installs_total": 4717,
-          "launch_date": "2026-03-21T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.rushteendo.playgowin",
-          "country": "IN"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.fusee.DinoEra",
       "app_id": "com.fusee.DinoEra",
       "name": "Dino.io: New Era",
@@ -12229,58 +12141,6 @@
           "launch_date": "",
           "store_url": "https://play.google.com/store/apps/details?id=com.hangdkdd.candyteng",
           "country": "IN"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
-      "fid": "6757417830",
-      "app_id": "6757417830",
-      "name": "Word Box: Association",
-      "publisher": "Yalla Technology FZ-LLC",
-      "platform": "android+ios",
-      "category": "Word",
-      "subcategories": [
-        "Connection &amp; Puzzle Games"
-      ],
-      "description": "Play 10 minutes a day to sharpen your thinking skills and keep your brain active.<br><br>Word Box - Association is a brain-challenging game that encourages you to think from different perspectives and find 4 words that belong to the same category.<br><br>●  Continuous Brain Training: Each level brings fresh content, new words, and unique ways to think.<br>●  Daily Challenge: Take on one challenging level each day to give your brain a boost, and collect beautiful cards.<br>●  Play with Other Players: Jump into the Word Tournament and test your skills against others online.<br>●  Leaderboard: Rise to the top—pass high enough levels and claim your spot on the leaderboard.<br><br>We’re also adding more games to Word Box, offering new ways to train your brain from different angles with a variety of experiences, from relaxing to challenging. Stay tuned! Connection &amp; Puzzle Games",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6757417830",
-      "screenshots": [
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/44/08/aa/4408aa16-90f8-1d7a-2659-c654a15d127e/1242x2688_1.jpg/462x1000bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/4f/a2/ef/4fa2ef1e-7439-a9fb-6ba1-c73e8e3d38c8/1242x2688_2.jpg/462x1000bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/32/c1/c3/32c1c374-9b64-c6ef-066b-ee4c93298d7e/1242x2688_5.jpg/462x1000bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5e/d1/24/5ed12434-5154-5bc7-cbcc-fab7e22f91d3/1242x2688_4.jpg/462x1000bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/04/7f/d6/047fd612-4385-1acb-687a-23f1d1b1975a/1242x2688_3.jpg/462x1000bb.png"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2c/ef/e5/2cefe5b8-ff48-e463-17c5-036eb0faae26/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/150x150bb.jpg",
-      "installs_total": 8946,
-      "country": "WW",
-      "launch_date": "2026-03-31T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Word",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6757417830",
-          "installs_total": 899,
-          "launch_date": "2026-04-05T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6757417830",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.yallagame.wordbox",
-          "installs_total": 8047,
-          "launch_date": "2026-03-31T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.yallagame.wordbox",
-          "country": "US"
         }
       ],
       "first_seen": "2026-05-12",
@@ -18392,59 +18252,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "com.makefast.taskap",
-      "app_id": "com.makefast.taskap",
-      "name": "Superbet",
-      "publisher": "MARKO KOCH",
-      "platform": "android",
-      "category": "Word",
-      "subcategories": [],
-      "description": "The Superbet Brain Spark Workout app is a premium mobile tool designed to enhance your cognitive abilities through engaging neurophysiological exercises. It focuses on consistent mental stimulation, helping you maintain peak mental sharpness in everyday tasks. Every day, Superbet provides a new opportunity to challenge your mind, offering a balanced variety of drills aimed at different aspects of thinking, speed, and attention.<br><br>At the core of the app is the Superbet Daily Exercise module. Each day, you receive five random tasks from specialized categories. The \"Memory\" category tests your ability to recall complex sequences of numbers and symbols, a skill essential for the Superbet experience. The \"Reaction\" category focuses on information processing speed and focus through timed signal-response tasks, where you must act quickly and accurately within the Superbet training environment.<br><br>To keep long-term progress exciting, the app includes a Superbet Weekly Challenges section. Each week, a unique goal is assigned to gently push your limits. Superbet also offers informative articles on neuro-exercises, explaining how regular practice maintains concentration. Daily cognitive exercises with Superbet",
-      "keywords": [],
-      "store_url": "https://play.google.com/store/apps/details?id=com.makefast.taskap",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/HfK9ET_BPiJyMtIjuwtIf4_umW87mU83LcP-ytETRBIjiQAwEU-RBiUF7CXj-yoGjj4PumbC4HAhkFj2_gPqgEM",
-        "https://play-lh.googleusercontent.com/_QmiSo0PqAFmEiE7MO76AuLB1TvTmvLFniWhNseM6_KTNH48X0AM790CcKBCxJFrtgNdnKm4O3zvkyn0F8kR",
-        "https://play-lh.googleusercontent.com/esGn-D7V3C8DvY76W5YKaaVm8cIxLFFxhdxMEbsVjDwssdip5xSQeSDztjt30M9u3z_I0rvmMos_2QsQSjPv",
-        "https://play-lh.googleusercontent.com/rnTw9gopp1F5POyH209tcgRMzA_rQMTrNtMKowg4ML_bhf3aRkCOnCiwaBojcr0w3R99Y0jCNskVHCuQyeC1",
-        "https://play-lh.googleusercontent.com/HfK9ET_BPiJyMtIjuwtIf4_umW87mU83LcP-ytETRBIjiQAwEU-RBiUF7CXj-yoGjj4PumbC4HAhkFj2_gPqgEM",
-        "https://play-lh.googleusercontent.com/_QmiSo0PqAFmEiE7MO76AuLB1TvTmvLFniWhNseM6_KTNH48X0AM790CcKBCxJFrtgNdnKm4O3zvkyn0F8kR",
-        "https://play-lh.googleusercontent.com/esGn-D7V3C8DvY76W5YKaaVm8cIxLFFxhdxMEbsVjDwssdip5xSQeSDztjt30M9u3z_I0rvmMos_2QsQSjPv",
-        "https://play-lh.googleusercontent.com/rnTw9gopp1F5POyH209tcgRMzA_rQMTrNtMKowg4ML_bhf3aRkCOnCiwaBojcr0w3R99Y0jCNskVHCuQyeC1"
-      ],
-      "icon_url": "https://play-lh.googleusercontent.com/l4J4N32TtYHu12Vms6ujKOPjxvBRlBZ4TParug8yjmvJDDk9ir_vur1my-ScbeLhYn2nbAOXGsTS-q9RgKviMw=s150",
-      "installs_total": 5194,
-      "country": "BR",
-      "launch_date": "2026-04-10T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Word",
-      "platforms": [
-        {
-          "platform": "android",
-          "app_id": "com.makefast.taskap",
-          "installs_total": 867,
-          "launch_date": "2026-04-10T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.makefast.taskap",
-          "country": "BR"
-        },
-        {
-          "platform": "android",
-          "app_id": "brain.spark.workout.ddl",
-          "installs_total": 4327,
-          "launch_date": "2026-04-20T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=brain.spark.workout.ddl",
-          "country": "BR"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.ParallelStudios.Parallel",
       "app_id": "com.ParallelStudios.Parallel",
       "name": "Parallel: Strategy Card Game",
@@ -19548,59 +19355,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "6757656025",
-      "app_id": "6757656025",
-      "name": "KikiQuiz",
-      "publisher": "Ignacio Saslavsky",
-      "platform": "android+ios",
-      "category": "Trivia",
-      "subcategories": [
-        "Be Fast, Be Smart"
-      ],
-      "description": "Be fast, be smart! KikiQuiz challenges you with trivia questions that get harder as you advance. Start easy and climb through levels of increasing difficulty until you reach expert mode.<br><br>  Features:<br>  • Questions tailored to your country and culture<br>  • Progressive difficulty: easy → medium → hard → expert<br>  • Power-ups to help you: extra time, skip questions, reveal answers, and extra lives<br>  • Compete in local and global rankings<br>  • Daily rewards and referral bonuses<br>  • Available in multiple languages<br><br>  How far can you go before running out of lives? Challenge yourself and climb the leaderboard! Be fast, be smart! Trivia questions from your country. How far can you go?",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6757656025",
-      "screenshots": [
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e9/2a/d0/e92ad099-536f-6aa1-67b8-b1e4ca06d826/1-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/73/71/db/7371db80-f58b-c1de-540e-2f52913b1e83/2-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/97/5a/11/975a119c-936c-e23f-f60a-81a6233fce89/3-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5e/ad/49/5ead4932-c1b8-5966-d62a-ce134c2eb4b1/4-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9a/5f/61/9a5f61e5-1f5a-403d-d37e-5c29c2d44bf8/5-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/8c/02/bb/8c02bb62-d4d2-cf38-f894-497093c78d3f/6-Kiki_Store_1284x2778.jpg/1284x2778bb.png"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/16/6a/ac166ac1-7143-18f0-9862-0dc9a36c1bf9/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/150x150bb.jpg",
-      "installs_total": 4708,
-      "country": "WW",
-      "launch_date": "2026-03-25T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Trivia",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6757656025",
-          "installs_total": 941,
-          "launch_date": "2026-03-28T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6757656025",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.nanogames.kikiquiz",
-          "installs_total": 3767,
-          "launch_date": "2026-03-25T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.nanogames.kikiquiz",
-          "country": "CO"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "6754686238",
       "app_id": "6754686238",
       "name": "Spider Solitaire：Stamps Travel",
@@ -20333,69 +20087,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "com.duclong.baucuatim.hoadaothamtuoi",
-      "app_id": "com.duclong.baucuatim.hoadaothamtuoi",
-      "name": "Bau Cua 2026 2027",
-      "publisher": "Đức Long",
-      "platform": "android",
-      "category": "Word",
-      "subcategories": [],
-      "description": "Bau Cua 2026 2027 is a traditional Vietnamese game played during festivals and the Lunar New Year. We designed it for mobile phones to provide entertainment for everyone.<br><br>The new Bau Cua 2026 version features many changes to the interface, images, and vibrant sounds, aiming to give players a more exciting experience.<br><br>The gameplay is simple: just press the Shake button to predict the animal symbol: gourd, crab, shrimp, fish, chicken, deer, then press the Open button to check the result.<br><br>📥 Download Bau Cua 2026 2027 now and enjoy the fun with your friends!<br>Disclaimer – Bau Cua 2026 2027<br>Bau Cua 2026 is an offline folk entertainment game, simulating the traditional Vietnamese Bau Cua game.<br><br>This application is not gambling, does not involve casinos, betting, rewards, or deposits/withdrawals.<br><br>The game is developed solely for entertainment purposes, for fun during holidays and festivals.<br>The application is not affiliated with and does not encourage any form of gambling.<br><br>Installing and using this application signifies that you have read, understood, and agree to the contents of this notice. Bau Cua (Vietnamese dice game) for entertainment",
-      "keywords": [],
-      "store_url": "https://play.google.com/store/apps/details?id=com.duclong.baucuatim.hoadaothamtuoi",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/1B86xFCTA4Z4HxRdmnt_JeF0gvyKUiDcaTmWGLGm9Jo9qQ5c894RoOy_og0n_ruuxsYTT0doExpIWuV7XAE66Q",
-        "https://play-lh.googleusercontent.com/7nkqQozY8EU5cK2rLOOWcYmF12RPwrFbOnxgrKWbeVDF9_H3K93Ld6PTKJV_mKYJIDrjJ_BcI5gM8uabf_8MVA",
-        "https://play-lh.googleusercontent.com/4LLc4T6v4XygZq3-LfAx1k1sPzfi3zIlCln93EjTPTB0G1lCpfquDMuPGnBNEs1_d-Yr-Oc6-cp2xSaQy0vHyA",
-        "https://play-lh.googleusercontent.com/-jW_E7IED025FJZc7PVSFxxTwP1pU6s5Y82UPaooorZ_NbKPlVuXODLaQBJihJkw9vF4e4kSCSw7StMvcNf5",
-        "https://play-lh.googleusercontent.com/SVlk_hiBEt7wGdB3SBs_FmumTAsUBHWuzJIX0VTsjHO1qJSRy0LAn7_QRi7LZAgOBUtTasEpxNGOTc5lV6CO",
-        "https://play-lh.googleusercontent.com/I8TzOt_sDX1kQ4W8aPJTkmhj-K7rZWGKncFnyQfY0AVuKFR6n5IkS7hIHgP0KCmLPxiHzYihxK-r5UelQIB_VQ",
-        "https://play-lh.googleusercontent.com/JriCmi0OV6psTWr0yJvusXp_zQZhz4ZmSXR-d5hK8xH2vxT1Sf9I5Wze6-TUaW5YqW_ZOS-iFwbzIWagoHXu",
-        "https://play-lh.googleusercontent.com/WUTxu8pne9C2e4K9Zj6yyjutqCfC0kMQSAhwtaiB7dIpa608Kb2UMpPcZCrP0XCjG_xCYHecUGX0rLT4U781alQ",
-        "https://play-lh.googleusercontent.com/PebpqsLlayPrBEKf3T2RsdKyXNzkOq-liM-UB4SAb8jNmbyE24IOPRhU2vWTLRAneFAU_2yW5DMMLc_ptXkwKNs",
-        "https://play-lh.googleusercontent.com/N-n8Vodsc0TuPSUvb09ttmqCD7pu4tjP6QBczhq63vzoAG6CyYBzpN4RGOJAIyp673yaQNg_swym-6jrla_C-A",
-        "https://play-lh.googleusercontent.com/dVJZ5IFWhMfEHJaFK_teMPujy_XQ_7HCFpavAhKy1Z_3hNnjGel7WpbX22BODpcLlFRKAV4dSjMrhKNQnW5RO8o",
-        "https://play-lh.googleusercontent.com/aBNdrpbnyWYECq2R-5sB0fqi5qcObI6Wy0kQA58QNYQ7fzm1okriZGzwObyNfpEoZyHi0lIrdXEIQphp_Ukr",
-        "https://play-lh.googleusercontent.com/QhDELNxCtFmKBiqK8Zex5v89HhQTT6gWwA2GjCtkVSAN2RW5kNe1gr17itX3w1WD-CEJoKgPkuNl_xk7MEGRBA",
-        "https://play-lh.googleusercontent.com/iMBKEtFCa96Wzoby7DXgFvdxJ-gP22Pjb29onNf3Wg9LomusQi9YBKksLziRsE6W07GQK0oLkV75gy2gJ8_Oqg",
-        "https://play-lh.googleusercontent.com/_8uTMYuSELe3HSFXDeukvko9LZYx1-23ss33utZKKn26qZBnO_8oAffWLtq-r7TiU66kuEgCAhIurtNRylEYGJ0",
-        "https://play-lh.googleusercontent.com/hvGtD3e9j4Ld4VQToSaZBAALH1SgHDONuXvKM0kguK5ZXY6k_hooQz-klJvAiEbeWvTDW8S3SefN-6jSxEM-",
-        "https://play-lh.googleusercontent.com/ApoJIsAe1j7SbMgBL1E3kyEuShS0IvnuztJ6p55OXbD1n6v4a9WtEtsjH4FuKoDAYqLdjuewun_kfl6w7OjAte8",
-        "https://play-lh.googleusercontent.com/bf2ZFBXZOoDkSlzEQGBj5f277kiM8dn-Jrn8TdDmiG8PWzvkRxt-r3j-u2HOhm5ePYxR3HqQcRiIpWlyWFxBxw"
-      ],
-      "icon_url": "https://play-lh.googleusercontent.com/WlhpnjJK4UXTj_9AYMrReSHoU63kaiqi7fxE7YmR4B1O3juRRrwowsSpZlPTB6j4lV6uDKkKBdISThHuIKc6=s150",
-      "installs_total": 4409,
-      "country": "VN",
-      "launch_date": "2026-03-20T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Word",
-      "platforms": [
-        {
-          "platform": "android",
-          "app_id": "com.duclong.baucuatim.hoadaothamtuoi",
-          "installs_total": 803,
-          "launch_date": "2026-03-20T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.duclong.baucuatim.hoadaothamtuoi",
-          "country": "VN"
-        },
-        {
-          "platform": "android",
-          "app_id": "pingpong.baucua.bachtuoc",
-          "installs_total": 3606,
-          "launch_date": "",
-          "store_url": "https://play.google.com/store/apps/details?id=pingpong.baucua.bachtuoc",
-          "country": "VN"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.bitteknobilisim.kingoftrivia",
       "app_id": "com.bitteknobilisim.kingoftrivia",
       "name": "King of Trivia",
@@ -20529,61 +20220,6 @@
           "launch_date": "2026-04-07T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.road.chickenroad.cards",
           "country": "NG"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
-      "fid": "6759930856",
-      "app_id": "6759930856",
-      "name": "BLFFD",
-      "publisher": "Piece of Web",
-      "platform": "android+ios",
-      "category": "Trivia",
-      "subcategories": [
-        "The Social Bluffing Game"
-      ],
-      "description": "BLFFD is the ultimate digital party game where your ability to lie is just as important as your knowledge. Designed for 2 to 20 players, this high-stakes trivia game challenges you to create the most believable fake answers to trick your friends while you try to hunt down the actual truth. Whether you are hosting a small game night or a massive online gathering, BLFFD delivers a seamless and competitive experience that keeps everyone on their toes.<br><br>The game flow is designed to be fast-paced and engaging. It begins in the Lobby, where the host can customize settings including language, total rounds, and categories. Once the game starts, the system shuffles the turn order and assigns a Chooser. This player selects a category, and our smart deprioritization algorithm picks a question that players in the room have seen the least, ensuring every round feels fresh and unpredictable.<br><br>During the Bluffing phase, everyone must submit a fake answer. To keep the game challenging and fair, BLFFD features a sophisticated cross-language blocking system. It checks your submission against the correct answer and its synonyms across all supported languages. If your bluff is too close to the truth, the game will prompt you to try again. This phase also introduces the Buff Bluff mechanic. Each player gets one chance per game to activate a Buff Bluff. If you successfully fool your friends while this is active, you earn double the points for every person you trick.<br><br>Once all bluffs are in, the Voting phase begins. All fake answers are mixed with the real one and shuffled. You must cast your vote for the answer you believe is correct, but you are strictly forbidden from voting for your own bluff. Scoring is simple but competitive: you get 2 points for finding the correct answer and 1 point for every player who falls for your bluff. If you use your Buff Bluff strategically, those points can stack up quickly and shift the leaderboard in an instant.<br><br>The Reveal phase is where the chaos happens. The host controls the pacing as the game unveils who submitted which bluff and who was fooled by them. At the end of the set number of rounds, the game checks for a winner. If there is a tie at the top of the leaderboard, BLFFD automatically triggers extra tie-breaker rounds until a single champion is crowned.<br><br>Technical reliability is at the core of the BLFFD experience. The game features robust reconnection logic, allowing players to jump back into their session if they lose their connection. It also includes ghost cleanup to remove inactive players during the lobby or end-game phases, and server time synchronization to ensure all timers are accurate for every participant.<br><br>Whether you are a master of deception or just looking for a laugh with friends, BLFFD offers a unique blend of trivia and social strategy. Download BLFFD today, set up your lobby, and see who among your friends is the ultimate bluffing champion. Outsmart friends in BLFFD! Create clever lies, find the truth, and win.",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6759930856",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/uv_xF4H4qSJCUld-USb8hb0xBog_rsf6YTrltjD1g1GN0GFsdEd25pTFP2opt5MaDCUYkaHwpUJkt_9bjtROLw",
-        "https://play-lh.googleusercontent.com/ABQy_yGU6MPGJ_CzMgAM4eMCbrpYzMtq4J6sIsxWNuD2CDqko92Py_924VkiKJiueOgoZ-dR8SVWmEFsweE_",
-        "https://play-lh.googleusercontent.com/ZJW4OgSefVCn6Adk0uEUwHtDaMs1RIZwhlCIsjuceTpQ8XOMvjeVQecD052__ug8-2TeQPg10ItQmXqAi8dhqA",
-        "https://play-lh.googleusercontent.com/0JBg_lKIXzoGDZEcNR20THqA86V7J8e9-ccSV9TuNhqZu3DwlepuEXkbFQxiU2NCxEyqKfe3ih0yAPWrenZ_",
-        "https://play-lh.googleusercontent.com/ctBUsChE0tbSKmHWnQMVG-aFbR7Vhot17IhJhQ6Zdg7CTLv07OEt9oV4MdOdKWyKi2At1l14pfPvQy1MD-7Zm8U",
-        "https://play-lh.googleusercontent.com/GSu3hJYy8JrE4C7TX2Ry9EemXVgRNe2T_uTknrOORFRoE8olJaaj1Tp3wrtMplw_1g-zTjh6hMiCVc3e7DTGyQ",
-        "https://play-lh.googleusercontent.com/AvMAr8aAtD79wNxfud9Uemb5dVPndN6XSqyj6unuwDR9am7rusWVo3NYY6h6iel6YZzwR5XWqARTsAdfcYoj7w",
-        "https://play-lh.googleusercontent.com/Vzi8Tle00o-1nAPpRZuXPQCvWEMLH6PiZO76vfJcYUi5VDm5uK29sNlKwoImDZD8PUCk2wvGpIw_m8VwaML29_o"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/74/9b/4a749bad-9ffd-a89f-fea6-c7f4d47ca7be/AppIcon-0-0-1x_U007ephone-0-11-0-85-220.png/150x150bb.jpg",
-      "installs_total": 4301,
-      "country": "WW",
-      "launch_date": "2026-03-17T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Trivia",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6759930856",
-          "installs_total": 799,
-          "launch_date": "2026-03-29T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6759930856",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.blffd.game",
-          "installs_total": 3502,
-          "launch_date": "2026-03-17T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.blffd.game",
-          "country": "EG"
         }
       ],
       "first_seen": "2026-05-12",
@@ -27325,54 +26961,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "6760715918",
-      "app_id": "6760715918",
-      "name": "挪箭666-挪一挪箭头消除",
-      "publisher": "子幸 聂",
-      "platform": "ios",
-      "category": "Puzzle",
-      "subcategories": [],
-      "description": "指尖一动，箭头听令！\n \n欢迎来到箭头组成的奇妙世界。\n在这里，你就是唯一指挥官。顺滑滑动，引导无数箭头从混乱走向整齐，让它们齐刷刷冲向终点。\n \n这是视觉盛宴，更是脑力挑战。\n \n• 简单规则，藏着无限玄机\n规则一看就懂，每一步却至关重要。一次滑动，既能破局，也能翻盘，全看你的逻辑与大局。\n• 超解压，成就感直接拉满\n碎片时间随时玩，当最后一个箭头归位、画面瞬间清爽，那种顿悟与满足，会上瘾。\n• 海量关卡，越玩越上头\n从轻松入门到烧脑大师，关卡源源不断。休闲放松、挑战自我，全都满足。\n \n箭头迷宫已就位，就等最会布局的你。\n立即下载，用指尖掌控一切！",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6760715918",
-      "screenshots": [
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/27/10/fc/2710fcce-8596-2900-ad57-463711a239a7/1.png/462x1000bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/94/d3/1c/94d31c17-fc00-7850-4415-73bedf39184b/2.png/462x1000bb.png",
-        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/64/ba/4c/64ba4cc0-56dc-c179-fcbd-a3727372f8bf/3.png/462x1000bb.png"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d5/83/de/d583de92-e630-80cf-38df-37cc61111ab2/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/150x150bb.jpg",
-      "installs_total": 2531,
-      "country": "WW",
-      "launch_date": "2026-03-20T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Puzzle",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6760715918",
-          "installs_total": 1848,
-          "launch_date": "2026-03-20T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6760715918",
-          "country": "WW"
-        },
-        {
-          "platform": "ios",
-          "app_id": "6761743043",
-          "installs_total": 683,
-          "launch_date": "2026-04-08T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6761743043",
-          "country": "WW"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.Adroll.pirateshipseabattle",
       "app_id": "com.Adroll.pirateshipseabattle",
       "name": "Pirate Ship: Sea Battle",
@@ -29682,56 +29270,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "com.girajabcsxyonogame.app",
-      "app_id": "com.girajabcsxyonogame.app",
-      "name": "Yono Game",
-      "publisher": "GIRRAJA FUTURE COACHING CLASSES",
-      "platform": "android",
-      "category": "Card",
-      "subcategories": [],
-      "description": "Enjoy the classic thrill of Rummy anytime, anywhere with the ultimate offline rummy experience designed purely for fun and skill-building!<br>Play this traditional Indian rummy card game offline with no internet required. Challenge smart<br>Completely Offline – Play without Wi-Fi or data – perfect for travel, breaks, or anytime fun!<br>Classic Gameplay – to declare and .<br>Fun Features – Spin the wheel  and high scores. Offline spin game Play with virtual coins.",
-      "keywords": [],
-      "store_url": "https://play.google.com/store/apps/details?id=com.girajabcsxyonogame.app",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/kmPbjo5Ii1KKObZPMmNoIo11UgdAZgxv6u9BlrkjYvooLQgp0HfCxKjJ7rilXIVTNnUErBISvi8kwAS0lcs4qw",
-        "https://play-lh.googleusercontent.com/TQFybIbbL74pzmCirJWZPG3NMb5aVaFRtysb6jSBtHCz1uXIG-SmX9zDEK_dtkypd1vluAlWNUOwQdnlhNUBHw",
-        "https://play-lh.googleusercontent.com/l7_Pr-zjnOHdpKlX1ii9ejtCpH4pRnqJ6-kyXAEbLt8GBOq5Y7AHURge1jABbx5ERBUKkHqKBcrdx0ajRhZ7",
-        "https://play-lh.googleusercontent.com/zueGvrHjOsAHyHiZmgb_iOPuDTg8FLtuV6nEMHtEdxgEURuflWJ3bcBPUizolz6--mzWLPCnOLeUZIqLicf5",
-        "https://play-lh.googleusercontent.com/6oXKyM61lDiK0mPVC7O14LmQ8qAC8tRB7Wg6YoeDUdOO-NKg6igI-SKJQ1HQaxE5VjfGS5l2KhmUqt2X3fMaAA"
-      ],
-      "icon_url": "https://play-lh.googleusercontent.com/uwja748ZUBayjf2qOP_qy2M_zYGyvMVtdmCq3FK58cmavWl9iJguLL7bN-SwSAVh6ZIwErq_4oFSEJsZD9FGew=s150",
-      "installs_total": 2140,
-      "country": "IN",
-      "launch_date": "2026-03-15T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Card",
-      "platforms": [
-        {
-          "platform": "android",
-          "app_id": "com.girajabcsxyonogame.app",
-          "installs_total": 913,
-          "launch_date": "2026-03-15T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.girajabcsxyonogame.app",
-          "country": "IN"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.sonuyonoapp.app",
-          "installs_total": 1227,
-          "launch_date": "2026-04-02T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.sonuyonoapp.app",
-          "country": "IN"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.cloud.drift.path",
       "app_id": "com.cloud.drift.path",
       "name": "Cloud Drift Path",
@@ -29942,59 +29480,6 @@
           "launch_date": "",
           "store_url": "https://play.google.com/store/apps/details?id=com.tenggfsdv.menverty",
           "country": "IN"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
-      "fid": "6760852900",
-      "app_id": "6760852900",
-      "name": "Vyzyvatel",
-      "publisher": "Rustai",
-      "platform": "android+ios",
-      "category": "Board",
-      "subcategories": [],
-      "description": "Vyzyvatel je komunitní vědomostní hra, ve které soupeříš s 2–5 hráči o nadvládu nad mapou. Odpovídej správně na otázky z 15 kategorií, dobývej území protivníků a braň si svá pole. Vyhrává ten, kdo ovládne mapu a přežije!<br><br>🎯 JAK SE HRAJE<br>Každý hráč začíná na své základně a střídavě obsazuje volná území nebo útočí na soupeře. Při útoku i obraně rozhodují tvé znalosti – kdo odpoví lépe, vyhrává pole. Každý hráč má 3 životy – přijdeš-li o všechny, jsi vyřazen.<br><br>📚 15 KATEGORIÍ OTÁZEK<br>Historie, Geografie, Matematika, Sport, Příroda, Zábava, Vzdělávání, Technologie, Hry, Filmy, Internet, Obecné znalosti, Niche, Hudba a Literatura.<br><br>🕹️ HERNÍ REŽIMY<br>• Rychlá hra – skok rovnou do akce přes matchmaking<br>• Hodnocená hra – soupeř s ostatními v žebříčku s ELO ratingem<br>• Vlastní lobby – vytvoř si hru s vlastním nastavením, přidej boty se 3 úrovněmi obtížnosti<br><br>🌍 KOMUNITA TVOŘÍ OBSAH<br>Otázky nevznikají jen v redakci – tvoří je celá komunita! Můžeš vytvářet vlastní sady otázek, sdílet je s ostatními a po ověření moderátory se mohou dostat do hry pro všechny.<br><br>⭐ HLAVNÍ FUNKCE<br>• Tahová strategická hra s vědomostními otázkami<br>• 2–5 hráčů v každém zápase<br>• Systém území a základen na mapě českých regionů<br>• Uživatelské profily, statistiky a historie zápasů<br>• Žebříčky nejlepších hráčů<br>• Chat během hry<br>• Prémiové funkce pro ty, kteří chtějí víc<br><br>Vyzyvatel je hra od komunity pro komunitu. Připoj se, otestuj své znalosti a ukaž, že jsi ten nejlepší! Vědomostní hra pro 2-5 hráčů. Odpovídej, dobývej území a poraz soupeře!",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6760852900",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/1XTphuPQuoBxiNQAHMFD4PHlhtSisiVmPrGFUbh6uYqKtsyyjS4DsxZihqUOHKYjaIGRaiPxjtyw1iTrY_UnWw",
-        "https://play-lh.googleusercontent.com/3q80hvcYkxZFkW0BXVLf4qZwoCOPRPU4OU9ieX2iAA1krva0k8KUlLwignXJ6tbUr4GaAOKXNaimOi34H4L_P-c",
-        "https://play-lh.googleusercontent.com/SLOcRaAY9ituiXQDOvZ-WGEKJyhl83tf0UBwuFTI2XikuHaFRwq8QFeFJsCV_rQ142HpOTW6E-cUcXZnb1wR_Eo",
-        "https://play-lh.googleusercontent.com/cAo04y_AR_MRropjjE0Oo_oo6uIGHTZemrDf6PjpQWWejykKngjvMo7MHC1nWrbibrihhT3xpGlgPIB0BAVaZw",
-        "https://play-lh.googleusercontent.com/1XTphuPQuoBxiNQAHMFD4PHlhtSisiVmPrGFUbh6uYqKtsyyjS4DsxZihqUOHKYjaIGRaiPxjtyw1iTrY_UnWw",
-        "https://play-lh.googleusercontent.com/3q80hvcYkxZFkW0BXVLf4qZwoCOPRPU4OU9ieX2iAA1krva0k8KUlLwignXJ6tbUr4GaAOKXNaimOi34H4L_P-c",
-        "https://play-lh.googleusercontent.com/SLOcRaAY9ituiXQDOvZ-WGEKJyhl83tf0UBwuFTI2XikuHaFRwq8QFeFJsCV_rQ142HpOTW6E-cUcXZnb1wR_Eo",
-        "https://play-lh.googleusercontent.com/cAo04y_AR_MRropjjE0Oo_oo6uIGHTZemrDf6PjpQWWejykKngjvMo7MHC1nWrbibrihhT3xpGlgPIB0BAVaZw"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c3/10/2b/c3102b31-212c-337e-dfa3-613a0abbf304/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/150x150bb.jpg",
-      "installs_total": 2103,
-      "country": "WW",
-      "launch_date": "2026-04-01T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Board",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6760852900",
-          "installs_total": 769,
-          "launch_date": "2026-04-01T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6760852900",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.vyzyvatel.twa",
-          "installs_total": 1334,
-          "launch_date": "",
-          "store_url": "https://play.google.com/store/apps/details?id=com.vyzyvatel.twa",
-          "country": "CZ"
         }
       ],
       "first_seen": "2026-05-12",
@@ -32423,71 +31908,6 @@
       "last_seen": "2026-05-12"
     },
     {
-      "fid": "6759793209",
-      "app_id": "6759793209",
-      "name": "Mini Escapes: Infinity Pool",
-      "publisher": "Glitch Games",
-      "platform": "android+ios",
-      "category": "Puzzle",
-      "subcategories": [
-        "Escape room puzzle mystery"
-      ],
-      "description": "A first-person escape room puzzle you can finish in one sitting — if you can solve it.<br><br>You find a door in the middle of the desert.<br>No signs. No explanation.<br><br>Do you go in?<br><br>Of course you do.<br><br>Step into a strange, atmospheric world and uncover the secrets behind the Infinity Pool — a place that shouldn’t exist… and doesn’t want you to leave.<br><br>Something about this place feels wrong.<br><br>Mini Escapes is a series of bite-sized escape room puzzle mysteries — each one a complete, self-contained adventure.<br><br>Solve interconnected puzzles, follow subtle clues, and uncover a mystery piece by piece.<br><br>Features:<br><br>• A full escape room puzzle you can finish in one sitting<br>• Smart, satisfying puzzles that reward careful observation<br>• A mysterious, story-driven world to uncover<br>• First-person point-and-click exploration<br>• A built-in camera system to capture clues and solve puzzles<br>• Designed for a tight, satisfying playthrough with no filler<br>• No adverts. No in-app purchases. No interruptions<br>• Autosave — pick up exactly where you left off<br><br>Follow us to receive all the latest news!<br>Facebook: https://www.facebook.com/GlitchGames/<br>Bluesky: https://bsky.app/profile/glitch.games<br>Newsletter: https://glitch.games/newsletter<br>Twitter: https://x.com/GlitchGames<br>Instagram: https://www.instagram.com/theglitchgames/<br>YouTube: https://www.youtube.com/@GlitchGames A first-person escape room puzzle you can finish in one sitting.",
-      "keywords": [],
-      "store_url": "https://apps.apple.com/app/id6759793209",
-      "screenshots": [
-        "https://play-lh.googleusercontent.com/8gtbjs80QdT56XvaiHmYKcUe-9uBtFrl90jqCbOYihYEoxHUM3QY8ju6SuW_E0iT9Z4uATwC5bx1wopqk8llVQ",
-        "https://play-lh.googleusercontent.com/jwZ5voQiyWEndyfwUDwhmtpDhUmWQe3wsdQpw3OedohW00sxxqWbQ2UtDZ1ernIZ9hedgbqxl_9rDje_ALcj_Q",
-        "https://play-lh.googleusercontent.com/HD1WrLwMbAnvct48cd3EjBXHnzV_YSQvxL9tlvrvAreh__fU-t-3ZmQXv8QXsaZLjifcC54-JFv1PS_0UWBAS_c",
-        "https://play-lh.googleusercontent.com/Q1E_6UThMxaF82NYXVxZ1Se21Ex5yMcqfZaSusyJMdrpfK63BI1NZKcu8RKA8wJAaZudYERFVVfVIJlHquCK",
-        "https://play-lh.googleusercontent.com/E_nc3s8oEPuT8fUX1_sPil6vFavnb1rBr2DST4nwss9iHWQEw2j2KNPxotdvs9UtglWGEyKxR8V6U0hclpu32w",
-        "https://play-lh.googleusercontent.com/lqDT9TDPfvEF5dwjgOy4IPhdjURfWqI_EM1PE9wpq2vUelYLJspEmcCjd9AY-yr3Di0FHAWMPLhfbrdRO0Q_",
-        "https://play-lh.googleusercontent.com/yoM_GmHwSA49TAvY1Wkzc7nwLj9qU8FINJRaetHxiUkojuFtBJf1EAmBOPWTWpVUQaB-zS36Wk1UCfwki_6L",
-        "https://play-lh.googleusercontent.com/q2pju8I62hOygZUsAKsdjyatuf4VP-h2W7lXur8J_Avwo_LQ-FKfBeD7XninD2en-9spgv6fxT4yRCqbkek4NA",
-        "https://play-lh.googleusercontent.com/r9QxEXV9OmM0ycOXzoX0TTsrqW_Nli8ylSzjLtqmomqKt_-GLrdoGztsflMyr_1N3c8NbrEwoYa3THpLw6YntA",
-        "https://play-lh.googleusercontent.com/ELSjWsVL4goBbSw8TOdtjdh3R5VL_deu6cPYJ7VLNr-Nn99mF3a5_4O8sJsqpDX34z7RH5n4BJuJ9-3iMm2adDQ",
-        "https://play-lh.googleusercontent.com/QQL147oyV_iQmeDrDBpgu5k8Y5BRbuUeCk4dZkFT8MH099mIvmFp-0phMfV1_zAmpimW72yle5CM9tog5zkb",
-        "https://play-lh.googleusercontent.com/8wbCFtS3BDdOZYIfgwSQUI7Cv0lYHlHRyoNliARpNsDcG0lGUGJczcQ9mg38Rh7-LcxMwMTxe_NHRrmq5a5Yqg",
-        "https://play-lh.googleusercontent.com/yoM_GmHwSA49TAvY1Wkzc7nwLj9qU8FINJRaetHxiUkojuFtBJf1EAmBOPWTWpVUQaB-zS36Wk1UCfwki_6L",
-        "https://play-lh.googleusercontent.com/q2pju8I62hOygZUsAKsdjyatuf4VP-h2W7lXur8J_Avwo_LQ-FKfBeD7XninD2en-9spgv6fxT4yRCqbkek4NA",
-        "https://play-lh.googleusercontent.com/ELSjWsVL4goBbSw8TOdtjdh3R5VL_deu6cPYJ7VLNr-Nn99mF3a5_4O8sJsqpDX34z7RH5n4BJuJ9-3iMm2adDQ",
-        "https://play-lh.googleusercontent.com/r9QxEXV9OmM0ycOXzoX0TTsrqW_Nli8ylSzjLtqmomqKt_-GLrdoGztsflMyr_1N3c8NbrEwoYa3THpLw6YntA",
-        "https://play-lh.googleusercontent.com/QQL147oyV_iQmeDrDBpgu5k8Y5BRbuUeCk4dZkFT8MH099mIvmFp-0phMfV1_zAmpimW72yle5CM9tog5zkb",
-        "https://play-lh.googleusercontent.com/8wbCFtS3BDdOZYIfgwSQUI7Cv0lYHlHRyoNliARpNsDcG0lGUGJczcQ9mg38Rh7-LcxMwMTxe_NHRrmq5a5Yqg"
-      ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/44/19/2c/44192cb6-2846-7864-be45-cd35d663155e/AppIcon-0-0-1x_U007emarketing-0-8-85-220.png/150x150bb.jpg",
-      "installs_total": 1705,
-      "country": "WW",
-      "launch_date": "2026-03-16T00:00:00Z",
-      "st_genre": "",
-      "st_sub_genre": "",
-      "st_theme": "",
-      "st_class": "",
-      "st_product_model": "",
-      "st_store_subcategory": "",
-      "intel_category": "Puzzle",
-      "platforms": [
-        {
-          "platform": "ios",
-          "app_id": "6759793209",
-          "installs_total": 699,
-          "launch_date": "2026-03-16T00:00:00Z",
-          "store_url": "https://apps.apple.com/app/id6759793209",
-          "country": "WW"
-        },
-        {
-          "platform": "android",
-          "app_id": "com.glitchgames.miniescapes.infinitypool",
-          "installs_total": 1006,
-          "launch_date": "2026-03-16T00:00:00Z",
-          "store_url": "https://play.google.com/store/apps/details?id=com.glitchgames.miniescapes.infinitypool",
-          "country": "US"
-        }
-      ],
-      "first_seen": "2026-05-12",
-      "last_seen": "2026-05-12"
-    },
-    {
       "fid": "com.Top10impact.TruthOrDare",
       "app_id": "com.Top10impact.TruthOrDare",
       "name": "Truth or Dare - Party Spin AI",
@@ -34290,6 +33710,60 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "com.games.chessking",
+      "app_id": "com.games.chessking",
+      "name": "Chess",
+      "publisher": "Aaditya Garg",
+      "platform": "android",
+      "category": "Board",
+      "subcategories": [],
+      "description": "♟ CHESS - The Ultimate Classic Board Game Experience<br><br>Whether you're a beginner learning the basics or an experienced player mastering advanced chess strategy, this app delivers the perfect chess experience on your Android device.<br><br>PLAY CHESS ANYWHERE<br>Enjoy a complete two-player chess game on a single device. Play with friends and family anytime, anywhere — no internet connection required!<br><br>KEY FEATURES<br>✅ Full Chess Rules — castling, en passant, pawn promotion, check &amp; checkmate<br>✅ Beautiful Chess Board — classic design with clear piece distinction<br>✅ Move Hints — tap any piece to see all legal moves highlighted<br>✅ Move History — complete algebraic notation log of every move<br>✅ Captured Pieces — track all captured pieces throughout the game<br>✅ Check Detection — instant alert when your king is in check<br>✅ Stalemate Detection — automatic draw detection<br>✅ Portrait &amp; Landscape — play in any screen orientation<br>✅ No Internet Required — play offline anytime<br><br>PERFECT FOR ALL SKILL LEVELS<br>🔰 Beginners — learn chess moves with visual hints<br>⚡ Intermediate — practice chess tactics and strategy<br>🏆 Advanced — sharpen your endgame and opening theory<br><br>WHY CHOOSE THIS CHESS APP?<br>- Clean, distraction-free chess board<br>- Smooth and responsive piece movement<br>- Instant legal move validation<br>- No registration or account required<br>- Completely free to play<br><br>ABOUT CHESS<br>Chess is one of the world's oldest and most popular strategy board games, played by millions worldwide. Known as the \"Game of Kings,\" chess develops critical thinking, problem solving, memory, and concentration skills. Each chess match is unique — with over 9 million possible positions after just 3 moves each!<br><br>Whether you want to play a quick chess game on your lunch break or a deep strategic battle with a friend, this app has everything you need.<br><br>Download now and start playing chess today! ♟ Play classic chess anytime with smooth gameplay and simple UI",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.games.chessking",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/y1_vSiexS_B7vb8gIK2nQMXkxR1LBhbQKpym-gtabS76UU7KnJBA2w67UR_Nli-7bsYEfTN4kZBU5_ovccuWKQ",
+        "https://play-lh.googleusercontent.com/IYT_xsimA8m6PS9velX-RXXiSfdO22DJbyS-6HgZACaITKgcnzA3CQzP7dxzM4OImkfQkQF29t-Sf3nrIADp-jE",
+        "https://play-lh.googleusercontent.com/-6rFhk_NL-RSpZ1L-ViXpAAxJNoeJLY-yA1Qf8LTNflsgo70ie7I_dEy0xCxlYj1G92TEp6QtgxVtQ1zuW-gLg",
+        "https://play-lh.googleusercontent.com/1vu29Y614WT6FLNvk7myQB7eeoEBjblEoxLExTXK2UV_OUjJcROn7pKDkrdl-qmnhtobnYCZpcb8cx4Vw2Yg",
+        "https://play-lh.googleusercontent.com/WHeVSsk8nj7iP71wyla6pQxLuKThCUw2EHi5iJZWUYBfqqlWuhwkVqsfoBLcThpX28nzynQM0-fxfloETzSQPw",
+        "https://play-lh.googleusercontent.com/ghFlpBUQaEziiO02rIslBj88TyEUbTpZ4fvvJ7P_1Rq68gcoXw5ZayhfQy09NKMzqMRwzUGJhULJTPte5nWBcw",
+        "https://play-lh.googleusercontent.com/Id5zemAYoxrfJ-kz46AA8-nqkkOhQScA-X8CRYa32f_x-f7SeHWFPUSmSyYnqgSTpTNcPWPLsMwFy0jYJlZIhw",
+        "https://play-lh.googleusercontent.com/RbKDDXUgsLYQK6YC4lyZwpIn_aMqtOyAmrTOQBcUrbdPNjuEwzcYeZsD9wUW21DgXLBiJK1KYTxBmeRhuSo",
+        "https://play-lh.googleusercontent.com/XI7TfB5-jEJIoYsAu-R9gbNTFY5yVDyN8QcZqei2S_ccm7Qsjm4I0Yo9FerId3HNJSGLA8Dn1JF4a36j10byeQ"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/BnPQ0j8H6fOb0rSMAyPPW0xPVdJ4ytPthfm99UuCBNAkPSvrS7FpYXdnstfWxobrjMfLobIrCHpxMx1xNdlq9w=s150",
+      "installs_total": 1515,
+      "country": "IN",
+      "launch_date": "2026-04-18T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Board",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.games.chessking",
+          "installs_total": 913,
+          "launch_date": "2026-04-19T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.games.chessking",
+          "country": "IN"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.neelam.chess",
+          "installs_total": 602,
+          "launch_date": "2026-04-18T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.neelam.chess",
+          "country": "IN"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "6760697731",
       "app_id": "6760697731",
       "name": "Perfect End",
@@ -34666,6 +34140,59 @@
           "launch_date": "2026-03-13T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.quvhuvrjdg.scxpnhnv",
           "country": "BR"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.cyber.cybertrivia",
+      "app_id": "com.cyber.cybertrivia",
+      "name": "Rainbet",
+      "publisher": "Irfi BSN",
+      "platform": "android",
+      "category": "Trivia",
+      "subcategories": [],
+      "description": "Rainbet is a focused cyber sports and gaming literacy quiz built for quick rounds on your phone. Open Rainbet, move past the entry screen, and you step straight into a multiple-choice flow where every question has four possible answers. The in-app title frames the experience as a cyber sports quiz, and rainbet keeps the pace honest: you always see your current score, remaining lives, question position in the deck, and a live countdown for the active prompt. Just like at a top-tier online casino, your focus and speed determine your place on the leaderboard.<br><br>Mechanically, Rainbet gives you a fresh twenty-second window for every question, adds ten points when your choice matches the correct option, and begins each run with three lives. If the countdown in rainbet reaches zero before you tap an answer, Rainbet treats that the same as an incorrect response for life purposes. Those rules are easy to learn and repeat every time you open rainbet. For those who enjoy casino games, this format offers the same excitement as hitting the bonus on high-stakes slot machines.<br><br>Each round in Rainbet is structured around a fixed set of eight themed questions drawn from sports licensing, flagship esports events, well-known game franchises, genre vocabulary, Olympic-style multi-sport games, vehicle-based competition, racing as an esports pillar, and common language from tactical shooters. That variety is what makes rainbet feel like a compact arena of facts rather than a single-topic drill. When you answer correctly, Rainbet adds points to your running total. When you miss a question or let the timer expire, rainbet removes one life from your small pool. The run ends as soon as you finish every question in the deck or your lives drop to zero, so Rainbet rewards both accuracy and steady timing under pressure. This is the best betting app for your intellect, helping you learn how to win money through sharp gaming knowledge.<br><br>rainbet persists your session with on-device storage, so progress through a run is tracked reliably while you play. After a completed run, Rainbet opens a dedicated results view that summarizes your score alongside how many answers you got right and how many questions you attempted in that session. The same screen lists your best finished runs stored locally, ranked by score. This free game no internet ensures you can play anywhere, anytime. rainbet shows up to five saved high-score finishes from your device history in that list. When you want another attempt, Rainbet lets you start a fresh run from the results flow, resetting the deck and counters for a clean challenge.<br><br>rainbet also includes a lightweight offline rules page that explains how scoring, lives, and finishing conditions work. Permissions in Rainbet reflect standard connectivity checks; the quiz content itself is packaged with the app for consistent offline play once you are in the game. If you like short, self-contained trivia about games and competitive play, rainbet delivers a complete loop: answer, survive the clock, review your outcome, and try to place higher among your own saved top finishes in Rainbet. It is like a digital jackpot for your brain, where every casino bonus comes as a new expert insight. Immerse yourself in the world of online gambling education and prove you are a true gaming pro. Rainbet: test your cyber sports expertise in this fast-paced gaming quiz app.",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.cyber.cybertrivia",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/2ogTMJkn5A7PVGNWdzDcKtZx3TD_ObbgDPVqdaPU0RXvY4CfBK4mzdMEjBRNQk0iCCMg3xLBaXPQ8ThNEQGV",
+        "https://play-lh.googleusercontent.com/1A_2idLWdOVmdfRdeuh5BzQzyMwn6nNYr9LHGRe39xJo5VmBzWLJYrk42Ik0w_L1khsSaVA1nuXZ2R-67O7e",
+        "https://play-lh.googleusercontent.com/zMM3PiBVvJEQlXsk-fXgel6EAsLyp9aItU4t8mea2Nq9mwZFrjfyGSZ29-I7gGc3IoVaEDzevkGaGa46thLHaQ",
+        "https://play-lh.googleusercontent.com/4662O9dmNTNLR52ae3yKK_uXjmbWHl1h-V4JtEYY-LRg6jchV3DL99EFU6qI8KzXt8WWESI58d5V6xX6OO23",
+        "https://play-lh.googleusercontent.com/2ogTMJkn5A7PVGNWdzDcKtZx3TD_ObbgDPVqdaPU0RXvY4CfBK4mzdMEjBRNQk0iCCMg3xLBaXPQ8ThNEQGV",
+        "https://play-lh.googleusercontent.com/1A_2idLWdOVmdfRdeuh5BzQzyMwn6nNYr9LHGRe39xJo5VmBzWLJYrk42Ik0w_L1khsSaVA1nuXZ2R-67O7e",
+        "https://play-lh.googleusercontent.com/zMM3PiBVvJEQlXsk-fXgel6EAsLyp9aItU4t8mea2Nq9mwZFrjfyGSZ29-I7gGc3IoVaEDzevkGaGa46thLHaQ",
+        "https://play-lh.googleusercontent.com/4662O9dmNTNLR52ae3yKK_uXjmbWHl1h-V4JtEYY-LRg6jchV3DL99EFU6qI8KzXt8WWESI58d5V6xX6OO23"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/vPQJK7Ii6aB5UKLY5rK2LCpi6ZaW_eNM5E7jshTicLNBDFJkpPCKkU8Zph7CU8SN3Xi5oOeJmXvmvPmCGslVKQI=s150",
+      "installs_total": 1476,
+      "country": "CI",
+      "launch_date": "2026-03-19T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Trivia",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.cyber.cybertrivia",
+          "installs_total": 925,
+          "launch_date": "2026-03-19T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.cyber.cybertrivia",
+          "country": "CI"
+        },
+        {
+          "platform": "android",
+          "app_id": "com.gamepairsapp.mypairsapp",
+          "installs_total": 551,
+          "launch_date": "2026-03-26T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.gamepairsapp.mypairsapp",
+          "country": "CL"
         }
       ],
       "first_seen": "2026-05-12",
@@ -40610,6 +40137,48 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "com.girajyonoslotes.app",
+      "app_id": "com.girajyonoslotes.app",
+      "name": "Yono Slots",
+      "publisher": "GIRRAJA FUTURE COACHING CLASSES",
+      "platform": "android",
+      "category": "Card",
+      "subcategories": [],
+      "description": "Yono Slots is a fun and entertaining offline Yono Slots designed purely for enjoyment and casual gameplay. This game is created only for entertainment purposes and does NOT involve real money, gambling, or cash rewards in any form. Fun Yono Slots for entertainment only.",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.girajyonoslotes.app",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/E5CQFDgzRd7rSFJUp48lcd3Kt5w7bpAsSdRd1lWAjJ-0ycNm4o2m2DuRhQeqCtkTNYwqhz57D6Zyp9r7xZerNw",
+        "https://play-lh.googleusercontent.com/5Lm9qjlGL92lWY6cBCjOPk19uC_Q7MaRwQ7vvFFNu7ZQrg5qcK4D5Ig2D9-RtPXZH36K5dAy-raM8KbMPgP4",
+        "https://play-lh.googleusercontent.com/-kZjLeDT12haMGwOaFH3cgPfLXCi3fl_tiMDdmQ3NXklaDleCrvRm618JSZ4q6OsSI_N2DcJJAmk84yBbAvQ6w",
+        "https://play-lh.googleusercontent.com/NNeIyWtRPhz9F2t0QdM4xDnuMahpOAMl2Pm6leOzooLW7Pm_pRGwGfXnxY4z8vO1VX3KBwc16RmiwxF481GAvw",
+        "https://play-lh.googleusercontent.com/tSe0vOJsGpF1GfzZG7JhbAsTPczCTybTh5wZQaeLShRcEj1xFcgCbF0a2cB98N0P2jq5KYsWNPUv_H1Z9adhNRg"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/tzwsot96QcWCWNeZaIJEzhT5HrWkn9urRzPfM2SwQ0uvSoLaHoIvmOp6fmcpDQ94BDPswVGLJChfDdxP7enD5A=s150",
+      "installs_total": 994,
+      "country": "IN",
+      "launch_date": "2026-03-16T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Card",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.girajyonoslotes.app",
+          "installs_total": 994,
+          "launch_date": "2026-03-16T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.girajyonoslotes.app",
+          "country": "IN"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "com.casino.leovegas.app356",
       "app_id": "com.casino.leovegas.app356",
       "name": "Fan Duel",
@@ -41094,6 +40663,51 @@
           "launch_date": "2026-04-10T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.sonuscrachnewabcrummy.app",
           "country": "IN"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "6757656025",
+      "app_id": "6757656025",
+      "name": "KikiQuiz",
+      "publisher": "Ignacio Saslavsky",
+      "platform": "ios",
+      "category": "Trivia",
+      "subcategories": [
+        "Be Fast, Be Smart"
+      ],
+      "description": "Challenge your brain with KikiQuiz - the ultimate trivia game!\n\n  Test your knowledge across multiple categories including science, history, geography, entertainment, sports, and more. Answer questions tailored to your country or\n  go global with worldwide trivia.\n\nTerms of Use: https://kikiquiz.com/terms.html\n\n  FEATURES:\n  • Thousands of questions in multiple languages\n  • Questions adapted to your country and culture\n  • Daily rewards to keep you coming back\n  • Power-ups to help you in tough moments: 50/50, Extra Time, Skip, and more\n  • Compete in global and country rankings\n  • Premium subscription for an ad-free experience\n\n  How far can you go? Download now and find out! Be Fast, Be Smart",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6757656025",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e9/2a/d0/e92ad099-536f-6aa1-67b8-b1e4ca06d826/1-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/73/71/db/7371db80-f58b-c1de-540e-2f52913b1e83/2-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/97/5a/11/975a119c-936c-e23f-f60a-81a6233fce89/3-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5e/ad/49/5ead4932-c1b8-5966-d62a-ce134c2eb4b1/4-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9a/5f/61/9a5f61e5-1f5a-403d-d37e-5c29c2d44bf8/5-Kiki_Store_1284x2778.jpg/1284x2778bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/8c/02/bb/8c02bb62-d4d2-cf38-f894-497093c78d3f/6-Kiki_Store_1284x2778.jpg/1284x2778bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/16/6a/ac166ac1-7143-18f0-9862-0dc9a36c1bf9/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/150x150bb.jpg",
+      "installs_total": 941,
+      "country": "WW",
+      "launch_date": "2026-03-28T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Trivia",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6757656025",
+          "installs_total": 941,
+          "launch_date": "2026-03-28T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6757656025",
+          "country": "WW"
         }
       ],
       "first_seen": "2026-05-12",
@@ -41631,6 +41245,48 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "com.girajabcsxyonogame.app",
+      "app_id": "com.girajabcsxyonogame.app",
+      "name": "Yono Game",
+      "publisher": "GIRRAJA FUTURE COACHING CLASSES",
+      "platform": "android",
+      "category": "Card",
+      "subcategories": [],
+      "description": "Yono Game is a fun and entertaining offline Spin Rummy Club designed purely for enjoyment and casual gameplay. This game is created only for entertainment purposes and does NOT involve real money, gambling, or cash rewards in any form Fun Yono Game for entertainment only.",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.girajabcsxyonogame.app",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/kmPbjo5Ii1KKObZPMmNoIo11UgdAZgxv6u9BlrkjYvooLQgp0HfCxKjJ7rilXIVTNnUErBISvi8kwAS0lcs4qw",
+        "https://play-lh.googleusercontent.com/TQFybIbbL74pzmCirJWZPG3NMb5aVaFRtysb6jSBtHCz1uXIG-SmX9zDEK_dtkypd1vluAlWNUOwQdnlhNUBHw",
+        "https://play-lh.googleusercontent.com/l7_Pr-zjnOHdpKlX1ii9ejtCpH4pRnqJ6-kyXAEbLt8GBOq5Y7AHURge1jABbx5ERBUKkHqKBcrdx0ajRhZ7",
+        "https://play-lh.googleusercontent.com/zueGvrHjOsAHyHiZmgb_iOPuDTg8FLtuV6nEMHtEdxgEURuflWJ3bcBPUizolz6--mzWLPCnOLeUZIqLicf5",
+        "https://play-lh.googleusercontent.com/6oXKyM61lDiK0mPVC7O14LmQ8qAC8tRB7Wg6YoeDUdOO-NKg6igI-SKJQ1HQaxE5VjfGS5l2KhmUqt2X3fMaAA"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/uwja748ZUBayjf2qOP_qy2M_zYGyvMVtdmCq3FK58cmavWl9iJguLL7bN-SwSAVh6ZIwErq_4oFSEJsZD9FGew=s150",
+      "installs_total": 913,
+      "country": "IN",
+      "launch_date": "2026-03-15T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Card",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.girajabcsxyonogame.app",
+          "installs_total": 913,
+          "launch_date": "2026-03-15T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.girajabcsxyonogame.app",
+          "country": "IN"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "com.company.ttt",
       "app_id": "com.company.ttt",
       "name": "Caro Master",
@@ -41820,6 +41476,50 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "6757417830",
+      "app_id": "6757417830",
+      "name": "Word Box: Association",
+      "publisher": "Yalla Technology FZ-LLC",
+      "platform": "ios",
+      "category": "Word",
+      "subcategories": [
+        "Connection &amp; Puzzle Games"
+      ],
+      "description": "Play 10 minutes a day to sharpen your thinking skills and keep your brain active.\n\nWord Box - Association is a brain-challenging game that encourages you to think from different perspectives and find 4 words that belong to the same category.\n\n●  Continuous Brain Training: Each level brings fresh content, new words, and unique ways to think.\n●  Daily Challenge: Take on one challenging level each day to give your brain a boost, and collect beautiful cards.\n●  Play with Other Players: Jump into the Word Tournament and test your skills against others online.\n●  Leaderboard: Rise to the top—pass high enough levels and claim your spot on the leaderboard.\n\nWe’re also adding more games to Word Box, offering new ways to train your brain from different angles with a variety of experiences, from relaxing to challenging. Stay tuned! Connection &amp; Puzzle Games",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6757417830",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/44/08/aa/4408aa16-90f8-1d7a-2659-c654a15d127e/1242x2688_1.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/4f/a2/ef/4fa2ef1e-7439-a9fb-6ba1-c73e8e3d38c8/1242x2688_2.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/32/c1/c3/32c1c374-9b64-c6ef-066b-ee4c93298d7e/1242x2688_5.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/5e/d1/24/5ed12434-5154-5bc7-cbcc-fab7e22f91d3/1242x2688_4.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/04/7f/d6/047fd612-4385-1acb-687a-23f1d1b1975a/1242x2688_3.jpg/462x1000bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2c/ef/e5/2cefe5b8-ff48-e463-17c5-036eb0faae26/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/150x150bb.jpg",
+      "installs_total": 899,
+      "country": "WW",
+      "launch_date": "2026-04-05T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Word",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6757417830",
+          "installs_total": 899,
+          "launch_date": "2026-04-05T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6757417830",
+          "country": "WW"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "app.lostpuzzle.egypt.boxes",
       "app_id": "app.lostpuzzle.egypt.boxes",
       "name": "Lost Puzzles of Egypt",
@@ -41973,6 +41673,61 @@
           "launch_date": "2026-03-26T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.red.capsasusun",
           "country": "ID"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.gtm.imposter",
+      "app_id": "com.gtm.imposter",
+      "name": "Imposter Game: Word Party",
+      "publisher": "Ultimate Party Apps",
+      "platform": "android",
+      "category": "Word",
+      "subcategories": [],
+      "description": "Think you can spot a lie? Or are you the master of deception? 🎭<br><br>Welcome to the most addictive party edition of the classic social deduction genre: Imposter Game - Word Party. Whether you’re at a hangout, a family dinner, or a late-night word party, this is the ultimate way to test your wits and your friendships!<br><br>In this high-stakes imposter game, everyone gets a secret word—except for one person. The undercover player must blend in, listen closely, and fake it to victory. Your mission? Find the imposter before they figure out the secret!<br><br>HOW TO PLAY:<br>1️⃣ Get Your Word: Everyone sees the secret word, but the spy is left in the dark!<br>2️⃣ Describe It: Give one-word clues to prove you’re a Citizen. But be careful—don't give too much away!<br>3️⃣ Vote &amp; Win: Discuss, accuse, and guess the imposter. If you catch the liar... BAM! You win. If they escape, the spy takes the crown!<br><br>WHY YOU’LL LOVE Imposter Game - Word Party:<br><br>🌍 Global Party Games: Perfect for 3 to 10 players.<br><br>⚡ Fast-Paced Action: Quick rounds that keep the energy high.<br><br>🔍 Who is the Imposter? Use logic and intuition to unmask the liar.<br><br>🎨 Sleek UI: A modern splash of color with intuitive, easy gameplay.<br><br>EXPLORE 1,000+ WORD TOPICS:<br>Never run out of fun with our curated decks! Choose from:<br><br>🏆 The Essentials: The perfect words to get the party started.<br><br>🔥 No Filter: Wilder topics for those who are a little naughty.<br><br>📺 Cartoons: Nostalgic characters and animated favorites.<br><br>🍕 On the Menu: From gourmet meals to your favorite snacks.<br><br>Imposter Game - Word Party: THE ULTIMATE SOCIAL SHOWDOWN<br>Tired of the same old word games? Imposter Game - Word Party is the next level of social party games. Whether you are looking for quick 3 player games or a massive group battle, the goal is simple: don’t let the liar fake it! Much like the tension in popular among us games, every word is a clue. One wrong move and the spy is exposed. Do you have the skills to expose the truth, or will the impostor leave everyone guessing?<br><br>Stop searching for boring party games and start the showdown. Can you stay undercover, or will the group find the imposter first?<br><br>Download now and play the ultimate Imposter Game - Word Party! 🚀 Unmask the liar! The ultimate word party &amp; impostor game for friends. Guess who!",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.gtm.imposter",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/86y7veCzK0MLjMReXjHHCKoFEioG5utM3uLbcoZtiE2PzYDsIpn5zVSqw9UNNaf_z-TAhhWeB7w1FyvNbZlb6Q",
+        "https://play-lh.googleusercontent.com/E7rrvngKKKFH9qOJXsftUEUKJ9Eg11sslaWgXxzXmhOgYEaEElcG6l9ZBvSXowVgWchZt381I6lTCrg12JBoKA",
+        "https://play-lh.googleusercontent.com/6H_NlQH5cIKwdwnOvVwst-xpy86iAT36OAHRLrdS08z48iI_e_5d3ke09aN5rT76_x8QYIb75pxf8AgVONlPHB4",
+        "https://play-lh.googleusercontent.com/qsb8yuslNrVBblIydFsqXdOnRF2xDpBiSu5A5loA-ZPnxPSSE3nUaMivK-5WYM_Vll-ZssrM4hEVUntErs93uA",
+        "https://play-lh.googleusercontent.com/NBEnU3spA54Edn1lGovzELSmtfjMi2NDRbXV0megRixzZD4TCT9HI5zv4HVJoHSu9GHt6b4Wb03R2nUjFlvz1w",
+        "https://play-lh.googleusercontent.com/d-jkmlp_ReQSGRKfqKzHmZKdnDQqpTSJxz-G7DBOi9qcDvslRuscY5o3ZjISjt90OBlDtegfxzjAVZXSW1TioA",
+        "https://play-lh.googleusercontent.com/OYWIE_KpLGrsouboAn24ZhU_Pmk8sARL6Q1LhpjSWcSTYzMoKngVjmNT87_2FcxpYmametIfFDs7aQeKj3UJ",
+        "https://play-lh.googleusercontent.com/qf6xSRCY63X4BHZz5CUhRD9YFai2oGW0XdWxKq2t7TV-u7FRjotBjhpDo2CZUxIO8IY9-nVLx4M8ltlYKPTjer0",
+        "https://play-lh.googleusercontent.com/wI6uxhIuVqsDTaQKN-TCGZD94mpV0qySUyVPTib8WqTVXeuWiSWwkR1Z459VFb1EgtyggJ5tbtsCmen3hJ42lw",
+        "https://play-lh.googleusercontent.com/T3DsLq1yG9Rm4chhXTeBs9pSeX2WwOp9yZUA-_0uZ0Oz55azmnGzxPK4yKyWkas1DNaRLQyZpdzX3II4h5kBBw",
+        "https://play-lh.googleusercontent.com/-ViY4-CqNJrFBmX4puLsDhDnKtGOof-hvP7dePz-svP-RGwLDWHrzbvVMdc7EJ7LoV7wUoXkc3Ayy_GhjPdc",
+        "https://play-lh.googleusercontent.com/lAsnM1PjRFhuMUtPXUfVG_SE5mIzVZW52w7XeTMtpudOV-YEPqkkT5CuiB-QQU3AVjaOIH6rbd7quZPzuuyRDw",
+        "https://play-lh.googleusercontent.com/JbiZCRzqobGIGK1s4mneV8qNpElBN0GuYlCDqbhwseJWSN1uf-JHamAZhSQRVK8NnBTGaxeG7oju__165TJw",
+        "https://play-lh.googleusercontent.com/LaaIl8ZQNy9vTRLll7jMObbCCWDL-kXzpZCJYYk8Fg6K4i3Ewwk1xbGgsGerycvrCGpxUSJ3B2GI-PHbc8WDCw",
+        "https://play-lh.googleusercontent.com/uX9VitFbpYLkWPKp562r2nBrRN5AfaaiMkMgYT0kOYNDM3f-UfO-iYJ1bG594UzKRUxMKdjASfPuBnBmH8v1Kqg",
+        "https://play-lh.googleusercontent.com/CCxQ4Yl3DiIA6XEd4CO9ZKlie9vw6M2RSDhOja5TBq7zfzBuO6r1R8lvSnuOZFea33YWVjJhcNGwMZs32SGc",
+        "https://play-lh.googleusercontent.com/vf0-Qzo3asJvIGxntFpDs5VlllzYoAE2Qf-_UO6YsNDteLRWoeJw1jgMRamG_j8EmY4oZPdZnbGKCTUtYR3f",
+        "https://play-lh.googleusercontent.com/Pez8F_jFFM8gCulq9nQBk4v6LOGPuvRWn3nta4RJfVIYC5se9jUX-1eyPMkAUjmaywB1Qe7_k3GtfA2rBWloXw"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/U9Q0eG2RdQrZOmwVj1jQibsf3wOlcUsshb-N9bFm60lBD6Qyaf07ceYFQY5SCGOxsOS6nvz4QqcJ4iF56GOayA=s150",
+      "installs_total": 888,
+      "country": "AR",
+      "launch_date": "2026-03-19T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Word",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.gtm.imposter",
+          "installs_total": 888,
+          "launch_date": "2026-03-19T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.gtm.imposter",
+          "country": "AR"
         }
       ],
       "first_seen": "2026-05-12",
@@ -42356,6 +42111,51 @@
           "installs_total": 870,
           "launch_date": "2026-03-14T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.xplymlrkb.jcwgydvr",
+          "country": "BR"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.makefast.taskap",
+      "app_id": "com.makefast.taskap",
+      "name": "Superbet",
+      "publisher": "MARKO KOCH",
+      "platform": "android",
+      "category": "Word",
+      "subcategories": [],
+      "description": "Superbet is a high-energy reaction game that transforms simple challenges into thrilling competitive moments for two players. The Superbet games is designed for local multiplayer, with the screen divided into two sides so both players can compete at the same time. Each player faces identical tasks, and the winner is always the one who reacts faster and more accurately.<br>Tasks are built around perception and timing. In one challenge, players must carefully observe changing visuals and tap the screen precisely when the text color and background color match. The challenge requires concentration, quick thinking, and confidence, especially as the game speeds up and the margin for error becomes smaller.<br>Superbet casino offers a smooth and intuitive experience suitable for players of all ages. Its minimalist design highlights the gameplay itself, keeping the focus on reaction speed rather than complex mechanics. Perfect for short competitive sessions or longer play sessions, superbet romania turns every match into a test of reflexes, awareness, and competitive spirit. It’s a great choice for anyone who loves fast-paced games and real-time rivalry. Who loves fast-paced games",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.makefast.taskap",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/HfK9ET_BPiJyMtIjuwtIf4_umW87mU83LcP-ytETRBIjiQAwEU-RBiUF7CXj-yoGjj4PumbC4HAhkFj2_gPqgEM",
+        "https://play-lh.googleusercontent.com/_QmiSo0PqAFmEiE7MO76AuLB1TvTmvLFniWhNseM6_KTNH48X0AM790CcKBCxJFrtgNdnKm4O3zvkyn0F8kR",
+        "https://play-lh.googleusercontent.com/esGn-D7V3C8DvY76W5YKaaVm8cIxLFFxhdxMEbsVjDwssdip5xSQeSDztjt30M9u3z_I0rvmMos_2QsQSjPv",
+        "https://play-lh.googleusercontent.com/rnTw9gopp1F5POyH209tcgRMzA_rQMTrNtMKowg4ML_bhf3aRkCOnCiwaBojcr0w3R99Y0jCNskVHCuQyeC1",
+        "https://play-lh.googleusercontent.com/HfK9ET_BPiJyMtIjuwtIf4_umW87mU83LcP-ytETRBIjiQAwEU-RBiUF7CXj-yoGjj4PumbC4HAhkFj2_gPqgEM",
+        "https://play-lh.googleusercontent.com/_QmiSo0PqAFmEiE7MO76AuLB1TvTmvLFniWhNseM6_KTNH48X0AM790CcKBCxJFrtgNdnKm4O3zvkyn0F8kR",
+        "https://play-lh.googleusercontent.com/esGn-D7V3C8DvY76W5YKaaVm8cIxLFFxhdxMEbsVjDwssdip5xSQeSDztjt30M9u3z_I0rvmMos_2QsQSjPv",
+        "https://play-lh.googleusercontent.com/rnTw9gopp1F5POyH209tcgRMzA_rQMTrNtMKowg4ML_bhf3aRkCOnCiwaBojcr0w3R99Y0jCNskVHCuQyeC1"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/l4J4N32TtYHu12Vms6ujKOPjxvBRlBZ4TParug8yjmvJDDk9ir_vur1my-ScbeLhYn2nbAOXGsTS-q9RgKviMw=s150",
+      "installs_total": 867,
+      "country": "BR",
+      "launch_date": "2026-04-10T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Word",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.makefast.taskap",
+          "installs_total": 867,
+          "launch_date": "2026-04-10T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.makefast.taskap",
           "country": "BR"
         }
       ],
@@ -43951,6 +43751,48 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "com.duclong.baucuatim.hoadaothamtuoi",
+      "app_id": "com.duclong.baucuatim.hoadaothamtuoi",
+      "name": "Bau Cua 2026 2027",
+      "publisher": "Đức Long",
+      "platform": "android",
+      "category": "Word",
+      "subcategories": [],
+      "description": "Trò chơi tái hiện trải nghiệm Bầu Cua truyền thống với diện mạo hiện đại – đồ họa sắc nét, âm thanh sống động. Người chơi lựa chọn các biểu tượng quen thuộc như Bầu, Cua, Tôm, Cá, Gà và Hươu, sau đó lắc ba viên xúc xắc để xác định kết quả và thử vận may.<br>TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM<br>Trò chơi này chỉ mang tính chất giải trí, hoàn toàn không liên quan đến cá cược hoặc đánh bạc bằng tiền thật. Tất cả nội dung và yếu tố trong game chỉ là mô phỏng, không phản ánh hay đại diện cho bất kỳ hoạt động tài chính thực tế nào. Chúng tôi không khuyến khích, không tổ chức và không cung cấp bất kỳ hình thức cờ bạc nào Bầu Cua truyền thống với đồ họa sắc nét, âm thanh sống động.",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.duclong.baucuatim.hoadaothamtuoi",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/Rpguu__zHNqhHv61sDpI4PndX-QEuAibz3cJ-TV_AU15K6GCLk3TntTe_yp9dklPLDniHRCHFhAwf0MPD0ArXYI",
+        "https://play-lh.googleusercontent.com/Oj0J3nsGdmMMboUHG56VYHBuPE4SlrMSIWplNCgoi51EJ6_g7sVPQSjVfc7dnkVQMdj6dAdjWMEk3u8ikw1A",
+        "https://play-lh.googleusercontent.com/QbNM7U_jWvaRp0smqpWB5370AlhN00766Ex7AqB4KD7714NO9DtLDwTGrmmH46M_cpy-Iy-PW1PrJGR8_pPscys",
+        "https://play-lh.googleusercontent.com/bzKF-Y6dq3cc_O_zmoVo0Bu1wh3SCy2HBLAuCEsay50sThh_EC_9KwWXoz3puP5Z6aDoJasw0uxXlw-HxBW3uA",
+        "https://play-lh.googleusercontent.com/pghCMTlAcz3pnerpfzY0jlG4y7xAhWoX6wO4Xp7SECggAc2yPzzsjCx-Ql4G5WvnUPBTN7kP8UfzU7uJKh6qc_0"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/WlhpnjJK4UXTj_9AYMrReSHoU63kaiqi7fxE7YmR4B1O3juRRrwowsSpZlPTB6j4lV6uDKkKBdISThHuIKc6=s150",
+      "installs_total": 803,
+      "country": "VN",
+      "launch_date": "2026-03-20T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Word",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.duclong.baucuatim.hoadaothamtuoi",
+          "installs_total": 803,
+          "launch_date": "2026-03-20T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.duclong.baucuatim.hoadaothamtuoi",
+          "country": "VN"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "6761560156",
       "app_id": "6761560156",
       "name": "Yazımı Karıştırılan Kelimeler",
@@ -44029,6 +43871,52 @@
           "launch_date": "2026-03-15T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.refe.gameinferde",
           "country": "ZA"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "6759930856",
+      "app_id": "6759930856",
+      "name": "BLFFD",
+      "publisher": "Piece of Web",
+      "platform": "ios",
+      "category": "Trivia",
+      "subcategories": [
+        "The Social Bluffing Game"
+      ],
+      "description": "BLFFD is the social trivia game where being \"right\" is only half the strategy. Can you convince your friends that a total lie is the absolute truth? In this high-stakes party game, your ability to deceive is just as important as your general knowledge.\n\n\n\nHow to BLFFD:\n\n-Get the Question: A bizarre-but-true trivia question appears.\n-Create the Lie: Write your own convincing fake answer to trick your opponents.\n-Find the Truth: Everyone’s lies are mixed in with the real answer. Can you spot the fact among the fakes?\n-Score Big: Earn points for finding the truth—and even more points for every friend who falls for your bluff. The Social Bluffing Game",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6759930856",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5b/66/01/5b66018a-9099-2646-0c56-a62081e5b2d5/Iphone_1.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/b5/a8/d9/b5a8d9ac-74d0-8a36-9c34-3de42dbca748/Iphone_2.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/be/cb/6a/becb6af8-781b-e8b9-94cd-2fc53046b46f/Iphone_3.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/21/7f/62/217f62d8-a049-205e-9cfb-1f1025d5161e/Iphone_4.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a8/fc/ad/a8fcad6a-42b4-832b-20d3-266686a9cf6f/Iphone_6.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/08/1a/6d/081a6de5-3bcb-fde7-b0b8-8e186580066b/Iphone_5.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d8/f0/95/d8f095e1-a600-d8e7-9dea-568cf83782d6/Iphone_7.jpg/462x1000bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/74/9b/4a749bad-9ffd-a89f-fea6-c7f4d47ca7be/AppIcon-0-0-1x_U007ephone-0-11-0-85-220.png/150x150bb.jpg",
+      "installs_total": 799,
+      "country": "WW",
+      "launch_date": "2026-03-29T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Trivia",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6759930856",
+          "installs_total": 799,
+          "launch_date": "2026-03-29T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6759930856",
+          "country": "WW"
         }
       ],
       "first_seen": "2026-05-12",
@@ -44455,6 +44343,49 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "6760852900",
+      "app_id": "6760852900",
+      "name": "Vyzyvatel",
+      "publisher": "Rustai",
+      "platform": "ios",
+      "category": "Board",
+      "subcategories": [],
+      "description": "Vyzyvatel je komunitní vědomostní hra, ve které soupeříš s 2–5 hráči o nadvládu nad mapou. Odpovídej správně na otázky z 15 kategorií, dobývej území protivníků a braň si svá pole. Vyhrává ten, kdo ovládne mapu a přežije!\n\nJAK SE HRAJE\nKaždý hráč začíná na své základně a střídavě obsazuje volná území nebo útočí na soupeře. Při útoku i obraně rozhodují tvé znalosti – kdo odpoví lépe, vyhrává pole. Každý hráč má 3 životy – přijdeš-li o všechny, jsi vyřazen.\n\n15 KATEGORIÍ OTÁZEK\nHistorie, Geografie, Matematika, Sport, Příroda, Zábava, Vzdělávání, Technologie, Hry, Filmy, Internet, Obecné znalosti, Niche, Hudba a Literatura.\n\nHERNÍ REŽIMY\n• Rychlá hra – skok rovnou do akce přes matchmaking\n• Hodnocená hra – soupeř s ostatními v žebříčku s ELO ratingem\n• Vlastní lobby – vytvoř si hru s vlastním nastavením, přidej boty se 3 úrovněmi obtížnosti\nKOMUNITA TVOŘÍ OBSAH\nOtázky nevznikají jen v redakci – tvoří je celá komunita! Můžeš vytvářet vlastní sady otázek, sdílet je s ostatními a po ověření moderátory se mohou dostat do hry pro všechny.\n\nHLAVNÍ FUNKCE\n• Tahová strategická hra s vědomostními otázkami\n• 2–5 hráčů v každém zápase\n• Systém území a základen na mapě českých regionů\n• Uživatelské profily, statistiky a historie zápasů\n• Žebříčky nejlepších hráčů\n• Chat během hry\n• Prémiové funkce pro ty, kteří chtějí víc\n\nVyzyvatel je hra od komunity pro komunitu. Připoj se, otestuj své znalosti a ukaž, že jsi ten nejlepší!",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6760852900",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/10/74/49/1074493b-3367-edab-e98e-b746f6be48a5/Kopie_navrhu_VyzyvatelPropagaceProSkoly_2688_x_1242_px1.png/1000x462bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9d/fb/22/9dfb2200-2ef1-401e-9ed4-3cd074e24d43/1.png/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4b/ef/7e/4bef7e6b-216c-3496-57de-189ea1c567bb/4.png/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/73/66/95/73669563-1f05-6ec1-6492-6e97de3c4cd5/2.png/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2a/c0/17/2ac01721-29e7-0c91-cfe1-f18cdf136ab8/3.png/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9e/18/50/9e185078-b22a-008e-19d8-493ac30ca65a/5.png/462x1000bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c3/10/2b/c3102b31-212c-337e-dfa3-613a0abbf304/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/150x150bb.jpg",
+      "installs_total": 769,
+      "country": "WW",
+      "launch_date": "2026-04-01T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Board",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6760852900",
+          "installs_total": 769,
+          "launch_date": "2026-04-01T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6760852900",
+          "country": "WW"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "btcv.mysg.qfhl",
       "app_id": "btcv.mysg.qfhl",
       "name": "Cenova Game",
@@ -44762,6 +44693,49 @@
           "launch_date": "2026-03-15T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.ktg.crowloop",
           "country": "ID"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.bandospottr.app",
+      "app_id": "com.bandospottr.app",
+      "name": "Bandospottr",
+      "publisher": "Urbexlocation",
+      "platform": "android",
+      "category": "Trivia",
+      "subcategories": [],
+      "description": "HOW TO PLAY                                                                                                     <br>You'll see a satellite view of a real area somewhere in the world. Look for signs of decay, overgrown vegetation, crumbling rooftops, forgotten paths. Place your pin as close as you can to the abandoned location.  <br><br>The closer you get, the higher your score. Within 25 meters = perfect score!<br>                                                                                                                  <br>GAME MODES                                                                                                   <br>• Solo — Endless rounds to sharpen your skills<br>• Versus — Challenge friends to head-to-head matches                                                            <br>• Ranked — Compete in monthly seasons for leaderboard glory                                                     <br>                                                                                                                  <br>FEATURES                                                                                                        <br>• Daily check-in rewards with streak bonuses                                                                    <br>• 40+ cosmetic items to customize your explorer character                                                       <br>• Daily quests and achievements<br>• XP leveling system with unique rank titles                                                                    <br>• Earn free coins by watching short ads                                                                         <br>                                                                                                                  <br>GO PREMIUM                                                                                                      Remove all ads, earn 2x daily coins, unlock exclusive cosmetics, and get a premium badge on your profile.    <br>                                                                                                                  <br>Can you spot the bando? Find abandoned places from satellite views. Guess locations, compete &amp; win!",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.bandospottr.app",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/tB7TTpP6WxQjFjzfTVWPStO7eN3MTviaKX0h-yEQkoQVLtKP0uHmbWFqSyXvP5hq08o0FXa8Q0Z1BzG_OK-SKw",
+        "https://play-lh.googleusercontent.com/WqjVuX5927pG1LYBMAqkrmMIh8vreNQE0_bZrHoElDdcnhl_8L7P17Jnnv4L_aPEMJkdOM8K2JWyigs-fNXCXQ",
+        "https://play-lh.googleusercontent.com/tB7TTpP6WxQjFjzfTVWPStO7eN3MTviaKX0h-yEQkoQVLtKP0uHmbWFqSyXvP5hq08o0FXa8Q0Z1BzG_OK-SKw",
+        "https://play-lh.googleusercontent.com/WqjVuX5927pG1LYBMAqkrmMIh8vreNQE0_bZrHoElDdcnhl_8L7P17Jnnv4L_aPEMJkdOM8K2JWyigs-fNXCXQ",
+        "https://play-lh.googleusercontent.com/X8xG2YiQm-DMWj-H9bYtDo5NuAh49XJIJFq0xn8I8hu4rL66Z4iX-U90G0X5Px1-m7Cgrd79isZXunffDH48",
+        "https://play-lh.googleusercontent.com/bIDBtTXXT51QoKoGfhx_vQUKq0aHYK6s_FSep7NIz2HFsO532cy7NN4MPhYWNTlXcF1GevN-YZRt90HHdDROmg"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/q0bCkvIIOfUajocJjriBw5MvhBZvOJhQM5KYc3wHTkaMhJLipCJPUzmyxqduegGgapdIBmg0ugnvPOdqPJYc=s150",
+      "installs_total": 736,
+      "country": "US",
+      "launch_date": "2026-04-14T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Trivia",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.bandospottr.app",
+          "installs_total": 736,
+          "launch_date": "2026-04-14T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.bandospottr.app",
+          "country": "US"
         }
       ],
       "first_seen": "2026-05-12",
@@ -45499,6 +45473,51 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "6761406464",
+      "app_id": "6761406464",
+      "name": "Urban Lore:Doppelganger Street",
+      "publisher": "Biginfive Co,.Ltd.",
+      "platform": "ios",
+      "category": "Casual",
+      "subcategories": [
+        "Which is the real one?"
+      ],
+      "description": "Two people. Only one is real.\nAsk, observe, and suspect!\nPlayers pose a variety of questions\nand compare the answers and reactions of two individuals.\nSame question, different answers.\nAn awkward way of speaking.\nMemories that don't quite line up.\nAn unease you can't explain.\nEvery detail is a clue.\nYour choice determines the truth!\nQuestions are limited — you can't ask everything.\nChoose your questions carefully,\nand find the fake.\nGame Features\nA unique deduction system comparing two side-by-side individuals\nInterrogation gameplay based on question selection\nA psychological game of reading subtle differences\nUI optimized for mobile landscape mode\nImmersive tension and atmosphere\nCan you tell the real from the fake?\nEvery choice becomes a clue,\nand every judgment leads to a consequence.\nNow, find the real one. Which is the real one?",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6761406464",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/9f/d0/e0/9fd0e0c6-7230-65c9-5454-0aab262c9a8a/_U110b_U1161_U110b_U1175_U1111_U1169_U11ab1.jpg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/4c/e1/e4/4ce1e437-858d-1d6f-c8a1-b99e6b07c510/_U110b_U1161_U110b_U1175_U1111_U1169_U11ab2.jpg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/72/59/ee725951-2ebc-3e6e-cb47-3909833a8fc8/_U110b_U1161_U110b_U1175_U1111_U1169_U11ab3.jpg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ea/6b/9c/ea6b9c44-d278-5118-f906-96ab24510355/_U110b_U1161_U110b_U1175_U1111_U1169_U11ab4.jpg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/0f/b2/61/0fb26140-c066-ebf9-ed4c-495aa1508b82/_U110b_U1161_U110b_U1175_U1111_U1169_U11ab5.jpg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/7a/87/13/7a871392-70ba-e26e-5512-d59a2a4d74cc/_U110b_U1161_U110b_U1175_U1111_U1169_U11ab6.jpg/2778x1284bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7a/ab/80/7aab806d-93fb-a364-8312-0982ebe7b145/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/150x150bb.jpg",
+      "installs_total": 712,
+      "country": "WW",
+      "launch_date": "2026-04-02T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Trivia",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6761406464",
+          "installs_total": 712,
+          "launch_date": "2026-04-02T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6761406464",
+          "country": "WW"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "com.kuantark.stackdown",
       "app_id": "com.kuantark.stackdown",
       "name": "Stackdown: Word Tile Puzzle",
@@ -45695,6 +45714,53 @@
       "last_seen": "2026-05-12"
     },
     {
+      "fid": "6760336172",
+      "app_id": "6760336172",
+      "name": "Imposter (Party Word Game)",
+      "publisher": "Roberto Garcia Pardo",
+      "platform": "ios",
+      "category": "Word",
+      "subcategories": [
+        "Find the liar in the group"
+      ],
+      "description": "Who is the impostor among your friends?\n\nFind the Impostor is the ultimate word, deception and deduction game for parties, gatherings and nights with friends. Read the clues, bluff like a pro and discover who is lying before it’s too late.\n\nGather your group, get ready to laugh and put your intuition to the test. Perfect to play at home, on trips or during any hangout with friends or family. A word game that turns any moment into a party. A true splash of wit and chaos that turns any moment into a party.\n\nHow does it work?\n\n1. Everyone sees the same secret word… except one player.\n2. That player only sees the word IMPOSTOR.\n3. Taking turns, each player says a word related to the secret word.\n4. The impostor must improvise and blend in without knowing the real word.\n5. After a few rounds, everyone votes for who they think the impostor is.\n\nCan you spot the liar before they fool the whole group?\n\nGame Features\n\n- Play locally with 3 to 20 players on a single device\n- More than 15 free categories: food, movies, animals, football, anime and much more\n- Hundreds of unique secret words across many different topics\n- No accounts, no registration and no Internet required\n- Perfect for kids, teenagers and adults\n- Add more impostors or activate a timer for each round\n- Create your own categories with custom words\n- Fully optimized design for iPhone and iPad\n\nThe perfect social game for parties\n\nFind the Impostor combines the best of word games, social games and group deduction:\n\n- Discover the liar and unmask the impostor\n- Defend yourself while trying to fool your friends\n- Laugh, argue and vote in every round\n- Ideal for small or large groups\n\nEvery match is different. Get ready for epic moments of tension, laughter and the classic “I knew it!”.\n\nOnline Multiplayer: Now you can also play the impostor game online with up to 20 players. Create a room, share the code and start playing in seconds, wherever you are. Perfect for playing remotely or over video calls.\n\nFamily-friendly and viral: Find the Impostor is a family game suitable for all ages: kids, teenagers and adults. It includes Kids Mode, with illustrations, educational content and simple words designed for children.\n\nCreated by Game of Shots — The Original Partyverse Studios. Words, deception and a splash of laughs. Find the impostor among your friends in this fun party word game full of bluffing, guessing and social chaos. Find the liar in the group",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6760336172",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/99/11/02/99110248-ae79-b4d6-6ce2-f2f559c9037f/ENG1_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/34/a4/ae/34a4ae1c-7130-201f-c95e-64b7e751fb0a/ENG2_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c9/fb/43/c9fb43d0-1191-a59f-34c1-f2ad8eac13a3/ENG3_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/06/91/f8/0691f8e7-386b-9c0c-dd48-8b6593cddfbd/ENG4_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/67/f4/f3/67f4f3fa-9a10-e283-09a4-0f3bb688f1cb/ENG5_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/a9/86/ed/a986edec-69a0-6bed-33cf-f16c80956946/ENG6_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ff/f1/f6/fff1f65c-265c-a9b0-2404-6262354e7a19/ENG7_-_Iphone6_U002c7.jpg/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ea/90/55/ea9055f3-2c6d-62e9-8fed-215df5c38e5f/ENG8_-_Iphone6_U002c7.jpg/462x1000bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/41/68/5c416801-a6f8-5f1e-db73-758c9891f3db/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/150x150bb.jpg",
+      "installs_total": 703,
+      "country": "WW",
+      "launch_date": "2026-04-05T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Word",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6760336172",
+          "installs_total": 703,
+          "launch_date": "2026-04-05T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6760336172",
+          "country": "WW"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
       "fid": "6757946399",
       "app_id": "6757946399",
       "name": "ABC Letter Tracing Kids Games",
@@ -45776,6 +45842,51 @@
           "launch_date": "2026-03-15T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.footfantype.gamebLes",
           "country": "PK"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "6759793209",
+      "app_id": "6759793209",
+      "name": "Mini Escapes: Infinity Pool",
+      "publisher": "Glitch Games",
+      "platform": "ios",
+      "category": "Puzzle",
+      "subcategories": [
+        "Escape room puzzle mystery"
+      ],
+      "description": "A first-person escape room puzzle you can finish in one sitting — if you can solve it.\n\nYou find a door in the middle of the desert.\nNo signs. No explanation.\n\nDo you go in?\n\nOf course you do.\n\nStep into a strange, atmospheric world and uncover the secrets behind the Infinity Pool — a place that shouldn’t exist… and doesn’t want you to leave.\n\nSomething about this place feels wrong.\n\nMini Escapes is a series of bite-sized escape room puzzle mysteries — each one a complete, self-contained adventure.\n\nSolve interconnected puzzles, follow subtle clues, and uncover a mystery piece by piece.\n\nFeatures:\n\n• A full escape room puzzle you can finish in one sitting\n• Smart, satisfying puzzles that reward careful observation\n• A mysterious, story-driven world to uncover\n• First-person point-and-click exploration\n• A built-in camera system to capture clues and solve puzzles\n• Designed for a tight, satisfying playthrough with no filler\n• No adverts. No in-app purchases. No interruptions\n• Autosave — pick up exactly where you left off\n\nFollow us to receive all the latest news!\nFacebook: https://www.facebook.com/GlitchGames/\nBluesky: https://bsky.app/profile/glitch.games\nNewsletter: https://glitch.games/newsletter\nTwitter: https://x.com/GlitchGames\nInstagram: https://www.instagram.com/theglitchgames/\nYouTube: https://www.youtube.com/@GlitchGames Escape room puzzle mystery",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6759793209",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/04/4e/4c/044e4c8d-c706-3118-a968-1b31e6e237c9/1.jpeg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3c/ac/44/3cac44ab-8484-4e8c-203a-330df73aadac/2.jpeg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/02/38/e5/0238e505-1d62-1eb7-4c71-d283dbd23d2e/3.jpeg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3f/66/23/3f6623ba-9fe1-f709-37be-99369855b704/4.jpeg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ad/9d/7b/ad9d7b8c-ad45-42a2-47c3-5eeb125ef303/5.jpeg/2778x1284bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/98/e4/04/98e404a8-6be3-d078-7319-057a850a0536/6.jpeg/2778x1284bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/44/19/2c/44192cb6-2846-7864-be45-cd35d663155e/AppIcon-0-0-1x_U007emarketing-0-8-85-220.png/150x150bb.jpg",
+      "installs_total": 699,
+      "country": "WW",
+      "launch_date": "2026-03-16T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Puzzle",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6759793209",
+          "installs_total": 699,
+          "launch_date": "2026-03-16T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6759793209",
+          "country": "WW"
         }
       ],
       "first_seen": "2026-05-12",
@@ -46096,6 +46207,46 @@
           "installs_total": 684,
           "launch_date": "2026-03-24T00:00:00Z",
           "store_url": "https://apps.apple.com/app/id6761009304",
+          "country": "WW"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "6761743043",
+      "app_id": "6761743043",
+      "name": "画个箭头：万箭归宗，一个箭头666",
+      "publisher": "嘉欣 肖",
+      "platform": "ios",
+      "category": "Puzzle",
+      "subcategories": [],
+      "description": "每一个箭头都向往自由，而你将帮助它们找到方向。通过点击与滑动，匹配相同方向的箭头，解锁关卡，开启一场从轻松入门到富有挑战的益智之旅。游戏兼具放松的休闲体验与逐步升级的脑力挑战，在指尖操作中获得轻松愉悦的体验。 核心玩法 精准匹配：点击箭头，匹配相同方向，解开谜题，完成挑战。​难度升级：关卡逐步进阶，锻炼观察力与逻辑思维。​自由缩放：支持画面缩放，可查看细节或纵观全局，轻松应对复杂关卡。",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6761743043",
+      "screenshots": [
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/45/a0/fd/45a0fd86-fa15-f5dc-d9e1-a138931b55fb/1.png/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/71/51/36/715136db-b357-11d3-32af-ea3c74d5c32f/2.png/462x1000bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/00/18/8d/00188d72-81cf-cd2f-f9bb-48b5b1d55efe/3.png/462x1000bb.png"
+      ],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ff/39/bf/ff39bf79-f211-f918-abf8-a6593396c407/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/150x150bb.jpg",
+      "installs_total": 683,
+      "country": "WW",
+      "launch_date": "2026-04-08T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Board",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6761743043",
+          "installs_total": 683,
+          "launch_date": "2026-04-08T00:00:00Z",
+          "store_url": "https://apps.apple.com/app/id6761743043",
           "country": "WW"
         }
       ],
@@ -47374,6 +47525,48 @@
           "installs_total": 626,
           "launch_date": "",
           "store_url": "https://play.google.com/store/apps/details?id=com.superludo.pro",
+          "country": "IN"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.mohitraniclots.app",
+      "app_id": "com.mohitraniclots.app",
+      "name": "Rani Slots",
+      "publisher": "MOHIT SELLER TECHNOLOGY",
+      "platform": "android",
+      "category": "Card",
+      "subcategories": [],
+      "description": "Spin Game Zone – Fun &amp; Rewarding Experience<br><br>Welcome to Spin Game Zone!<br>Enjoy exciting spin wheel and slot games designed for fun, entertainment, and rewarding gameplay.<br><br>🎯 Game Modes<br>🎡 Spin Wheel<br>Spin the wheel and test your luck<br>Win coins, bonuses, and exciting rewards<br>Try daily spins and enjoy surprises<br>🎰 Slot Game (Fruit Slots)<br>Classic slot machine experience<br>Match symbols and win rewards<br>Smooth animations and engaging gameplay Spin wheel &amp; play slots game to win coins and enjoy fun gameplay",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.mohitraniclots.app",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/PTKtapi9XPuofdv1Ag53odZel7_a_WxLcZVs_Qa7hRMcXdLfjBssItr1_o9itg2eFTBpftN44OGLIoKy4YKL",
+        "https://play-lh.googleusercontent.com/EXudYPJEA8hGaC2rLdNipIGTEUrrt1lmkHdXpkSABOiaepUPS3UKp-yR1Fdyh-dUF4mSzFDXmUT0lkVZfax9I2k",
+        "https://play-lh.googleusercontent.com/gzrZ263jkEckFmI22xtmoteuwPHAkf4kY6i7kTSXZxOEI1l9UgkJzgsnmivaP97mCJPj_DwhbVjfWya-Y-0Z",
+        "https://play-lh.googleusercontent.com/lrU8Px4RVZzAXWMtNSHtwsXT3DZ0_WWc1cQcJiNSxUB6HndK85-_ZIvPEszYZigvtRJY_NQMsT865fawmP5o",
+        "https://play-lh.googleusercontent.com/2opmgURZFDnDBzXLr-ADkY_jk4n5DSPgmftr2GwBy7ark6usEv0DgKRhBonEFERCLLZUOdkDRpY1qT3J--hZzA"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/M4imyxQdEwTrNvcxwzVUyYFcycT-UoGlmJLgcUMbWqIJ-0fO4n3aBTMR5sZWxtkuhPmwUaqI5fEkqQaWL3sJHQ=s150",
+      "installs_total": 624,
+      "country": "IN",
+      "launch_date": "2026-04-21T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Card",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.mohitraniclots.app",
+          "installs_total": 624,
+          "launch_date": "2026-04-21T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.mohitraniclots.app",
           "country": "IN"
         }
       ],
@@ -48926,6 +49119,47 @@
           "launch_date": "2026-03-16T00:00:00Z",
           "store_url": "https://apps.apple.com/app/id6760539791",
           "country": "WW"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.iconsgameball.footbalunciwe",
+      "app_id": "com.iconsgameball.footbalunciwe",
+      "name": "1xbet",
+      "publisher": "RED TREIDINH",
+      "platform": "android",
+      "category": "Puzzle",
+      "subcategories": [],
+      "description": "Welcome to the Ultimate 1xbet!<br>1x bet is a high-pressure football-themed card matching game that tests your memory and reflexes. If you are looking for the excitement of a sports match without the financial tension of a 1xbet betting app, step onto our virtual stadium field! Your goal is to flip cards and find all matching pairs before time runs out.<br><br>High Stakes Memory Challenge<br>What sets Icons FootCard apart is the explosive bomb mechanic hidden among the cards. Every move you make is a calculated risk—a true 1x bet on your own focus and recall! Tap a bomb and the game is over instantly, adding a layer of intense tension to every match.<br><br>Three Tiers of Difficulty<br>Three difficulty levels progressively increase the grid size and reduce the available time, creating a genuine challenge for players of all skill levels:<br><br>Easy Mode: Offers a relaxed 3x3 grid with a full minute on the clock.<br><br>Medium Mode: Raises the stakes with a 4x4 field and more bombs to dodge.<br><br>Hard Mode: Compresses everything into a 5x5 grid with only 45 seconds, demanding sharp recall and fast decision-making.<br><br>Premium Quality Aesthetics<br>The entire experience is wrapped in a polished stadium atmosphere with bold red visuals and custom-designed card art. Running with the sleek, responsive performance you would expect from a top-tier 1xbet application, Icons FootCard delivers a focused, original take on the classic memory game format.<br><br>Disclaimer: Pure Skill, No Gambling<br>We value transparency for our players. If your recent search history includes looking for a specific 1xbet app, checking out various 1xbet apps, or if you simply typed 1хбет or 1xbet, you have discovered a fantastic, stress-free sports alternative.<br><br>Please note: Icons FootCard is a 100% skill-based memory puzzle. * It does NOT feature real-money betting, gambling, or payouts. * Enjoy a safe, 1xbet apps original style sports atmosphere without any financial risks!<br><br>Download Icons FootCard today, avoid the explosive hazards, and prove you have the ultimate football memory! 1xbet is a football-themed card matching game.",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.iconsgameball.footbalunciwe",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/JszrkjahaUCJH6wD8YGVAx1Pfb6XxXzklcSzJwTpnVsdlhRc9Sg8KiBmmXkdJ-jLao2Jd-y47ZIC-C0jJkCM9A",
+        "https://play-lh.googleusercontent.com/NPccQv_y_4vo2eEhJWkQAv3s3X3vjbncr-5jjavAVq426v8ykY_-psoMo2STSMAffDjduFXDCaLGMoa8Uhxe6Q",
+        "https://play-lh.googleusercontent.com/tfu4lHnnDLqnHUsk0hdSqLhItaB8QQCyBva3flwY5nWVtf4BQasWRwBKSFzJmCufVQ0wFcm0DOsQlhcj_OCp",
+        "https://play-lh.googleusercontent.com/3o-vn-GHd_Vfol1OoqZQqEB9T2RC8Mv4WmU4QzTomtReA52ozOvqK1yAFgxSXs8xwu-enNy2i02qTN7CebJrog"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/cpvV1jthh_8BOb9qMNBiH6-qwH5GTP_3IXPkNaYR-R0u8R1lJIHY4a-HpIoJhkGSnfVLq9AybzgvwBBfMMIx3A=s150",
+      "installs_total": 565,
+      "country": "BD",
+      "launch_date": "2026-03-15T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Puzzle",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.iconsgameball.footbalunciwe",
+          "installs_total": 565,
+          "launch_date": "2026-03-15T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.iconsgameball.footbalunciwe",
+          "country": "BD"
         }
       ],
       "first_seen": "2026-05-12",
@@ -50787,6 +51021,45 @@
           "launch_date": "2026-04-21T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.domino.association",
           "country": "US"
+        }
+      ],
+      "first_seen": "2026-05-12",
+      "last_seen": "2026-05-12"
+    },
+    {
+      "fid": "com.eticosoft.impostor",
+      "app_id": "com.eticosoft.impostor",
+      "name": "impostor",
+      "publisher": "eticosoft",
+      "platform": "android",
+      "category": "Board",
+      "subcategories": [],
+      "description": "Impostor is the perfect social game for laughter, suspicion, and testing your intuition.<br><br>In each round, players receive secret roles: civilians and impostor.<br><br>The civilians must uncover the imposter using clues, logic, and observation. The impostor, on the other hand, must skillfully lie to remain undetected until the very end.<br><br>Ideal for parties, get-togethers with friends, and family game nights.<br><br>Why you'll love Impostor:<br><br>• Fast-paced and dynamic gameplay<br>• Simple rules, instant fun<br>• Multiple rounds for non-stop play<br>• A social experience full of strategy and suspense<br>• Perfect for groups<br><br>If you enjoy games of deduction, bluffing, and intense voting, Impostor is for you.<br><br>Download it for free and discover who's lying. Social deduction game: discover the imposter before they deceive you.",
+      "keywords": [],
+      "store_url": "https://play.google.com/store/apps/details?id=com.eticosoft.impostor",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/ikhjWR5is15Ut57e32o2KLSrKpLaH6SBhOsd9aXMk-nKERSHXYSWiNlM32T_ZHY2XyoQKZp7lg57CfBty_HTTS8",
+        "https://play-lh.googleusercontent.com/ikhjWR5is15Ut57e32o2KLSrKpLaH6SBhOsd9aXMk-nKERSHXYSWiNlM32T_ZHY2XyoQKZp7lg57CfBty_HTTS8"
+      ],
+      "icon_url": "https://play-lh.googleusercontent.com/l8NSUPP3zHr-9mh6aH5mhYCC0WZJVZPaKemE__a6sZXVlyUU1SjO6bMhePQtJ3nITG4ufyzmW14oIPbb_XzjYw=s150",
+      "installs_total": 504,
+      "country": "BR",
+      "launch_date": "2026-04-07T00:00:00Z",
+      "st_genre": "",
+      "st_sub_genre": "",
+      "st_theme": "",
+      "st_class": "",
+      "st_product_model": "",
+      "st_store_subcategory": "",
+      "intel_category": "Board",
+      "platforms": [
+        {
+          "platform": "android",
+          "app_id": "com.eticosoft.impostor",
+          "installs_total": 504,
+          "launch_date": "2026-04-07T00:00:00Z",
+          "store_url": "https://play.google.com/store/apps/details?id=com.eticosoft.impostor",
+          "country": "BR"
         }
       ],
       "first_seen": "2026-05-12",
