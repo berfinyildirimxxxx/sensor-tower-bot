@@ -327,6 +327,7 @@ def _fetch_app_tags(
         params: dict[str, Any] = {
             "auth_token": auth_token,
             "app_ids[]": batch,
+            "field_categories[]": list(TAG_FIELDS.keys()),
         }
         data = _get_json(url, params)
         logger.info(
@@ -605,7 +606,7 @@ def _fetch_platform_games(
 # ---------------------------------------------------------------------------
 
 def fetch_new_games(
-    max_installs: int | None = 10_00,
+    max_installs: int | None = 50_000,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
     """Fetch games released in last N days with installs between 500–max_installs."""
