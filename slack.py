@@ -9,6 +9,8 @@ import requests
 
 logger = logging.getLogger(__name__)
 
+RADAR_URL = "https://berfinyildirimxxxx.github.io/sensor-tower-bot"
+
 
 def _post_blocks(blocks: list[dict[str, Any]]) -> bool:
     from config import load_config
@@ -37,14 +39,10 @@ def _post_blocks(blocks: list[dict[str, Any]]) -> bool:
 
 
 def send_test_message() -> bool:
-    """Manual test message for debugging the webhook."""
     blocks: list[dict[str, Any]] = [
         {
             "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": "🧪 *Test message* — Slack webhook is alive.",
-            },
+            "text": {"type": "mrkdwn", "text": "🧪 *Test message* — Slack webhook is alive."},
         },
     ]
     return _post_blocks(blocks)
@@ -53,26 +51,18 @@ def send_test_message() -> bool:
 def send_summary_message(
     run_date: str,
     total_fetched: int = 0,
-    ios_fetched: int = 0,
-    android_fetched: int = 0,
+    new_today: int = 0,
 ) -> bool:
-    """Daily summary — only this is sent to Slack now.
+    """Daily summary sent to Slack.
 
-    Per-game alerts have been removed. Browse games on the Radar Dashboard.
+    Shows total scanned count and how many games were added to radar today.
+    No game names — browse on the dashboard.
     """
     lines = [f"📊 *Daily Casual Game Scan — {run_date}*", ""]
-
-    if total_fetched > 0:
-        lines.append(f"🔍 *{total_fetched:,}* casual games scanned")
-
-    if ios_fetched or android_fetched:
-        lines.append("")
-        lines.append(f"🍎 iOS: *{ios_fetched:,}*")
-        lines.append(f"🤖 Android: *{android_fetched:,}*")
-
+    lines.append(f"🔍 *{total_fetched:,}* games scanned")
+    lines.append(f"🆕 *{new_today:,}* new on radar today")
     lines.append("")
-    web_url = "https://berfinyildirimxxxx.github.io/sensor-tower-bot"
-    lines.append(f"🌐 <{web_url}|Open Radar Dashboard>")
+    lines.append(f"🌐 <{RADAR_URL}|Open Radar Dashboard>")
 
     blocks = [
         {
