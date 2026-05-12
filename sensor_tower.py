@@ -329,25 +329,43 @@ def _fetch_app_tags(
             "app_ids[]": batch,
         }
         data = _get_json(url, params)
+        logger.info(
+            "app_tags batch type=%s preview=%s",
+            type(data).__name__,
+            str(data)[:400] if data is not None else "None",
+        )
         if not isinstance(data, dict):
             logger.warning("app_tags unexpected response type=%s", type(data).__name__)
             continue
-        items = data.get("data", [])
+
+        # Support both {"data": [...]} and {"apps": [...]} response shapes
+        items = data.get("data") or data.get("apps") or data.get("results") or []
         if not isinstance(items, list):
+            logger.warning("app_tags items not a list, keys=%s", list(data.keys())[:10])
             continue
+
+        matched_in_batch = 0
         for item in items:
-            app_id = str(item.get("app_id", ""))
+            if not isinstance(item, dict):
+                continue
+            app_id = str(item.get("app_id") or item.get("id") or "")
             if not app_id:
                 continue
             tag_values: dict[str, str] = {}
-            for tag in item.get("tags", []):
-                name = str(tag.get("name", ""))
-                value = str(tag.get("value", ""))
-                if name in TAG_FIELDS and value and value.upper() not in ("N/A", ""):
+            raw_tags = item.get("tags") or item.get("tag_list") or []
+            for tag in raw_tags:
+                if not isinstance(tag, dict):
+                    continue
+                name = str(tag.get("name") or tag.get("tag_name") or "")
+                value = str(tag.get("value") or tag.get("tag_value") or "")
+                if name in TAG_FIELDS and value and value.upper() not in ("N/A", "NONE", ""):
                     tag_values[TAG_FIELDS[name]] = value
+            if tag_values:
+                matched_in_batch += 1
             tags_by_id[app_id] = tag_values
+        logger.info("app_tags batch: %d items, %d with tags", len(items), matched_in_batch)
 
-    logger.info("app_tags complete: %d/%d apps returned tags.", len(tags_by_id), len(app_ids))
+    logger.info("app_tags complete: %d/%d apps have any tags.", len(tags_by_id), len(app_ids))
     return tags_by_id
 
 
