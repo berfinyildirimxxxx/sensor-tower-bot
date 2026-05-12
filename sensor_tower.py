@@ -1,4 +1,4 @@
-"""Sensor Tower API client for fetching newly released puzzle/casual games."""
+"""Sensor Tower API client — fetches newly released puzzle/casual games."""
 
 from __future__ import annotations
 
@@ -15,14 +15,18 @@ from config import load_config
 
 logger = logging.getLogger(__name__)
 
+# ---------------------------------------------------------------------------
+# Category configuration
+# ---------------------------------------------------------------------------
+
 PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
     "ios": [
-        "7012",  # Games/Puzzle
-        "7003",  # Games/Casual
-        "7019",  # Games/Word
-        "7004",  # Games/Board
-        "7009",  # Games/Family
-        "7018",  # Games/Trivia
+        "7012",  # Puzzle
+        "7003",  # Casual
+        "7019",  # Word
+        "7004",  # Board
+        "7009",  # Family
+        "7018",  # Trivia
     ],
     "android": [
         "game_puzzle",
@@ -37,20 +41,15 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
     ],
 }
 
-MIN_INSTALLS: dict[str, int] = {
-    "ios": 500,
-    "android": 500,
-}
+MIN_INSTALLS: dict[str, int] = {"ios": 500, "android": 500}
 
 CATEGORY_DISPLAY: dict[str, str] = {
-    # iOS numeric IDs
     "7012": "Puzzle",
     "7003": "Casual",
     "7019": "Word",
     "7004": "Board",
     "7009": "Family",
     "7018": "Trivia",
-    # Android category slugs
     "game_puzzle": "Puzzle",
     "game_casual": "Casual",
     "game_word": "Word",
@@ -62,15 +61,29 @@ CATEGORY_DISPLAY: dict[str, str] = {
     "game_family": "Family",
 }
 
+# Tags API field mapping: Sensor Tower tag name → game object key
+TAG_FIELDS: dict[str, str] = {
+    "Game Genre":          "st_genre",
+    "Game Sub-genre":      "st_sub_genre",
+    "Game Theme":          "st_theme",
+    "Game Class":          "st_class",
+    "Game Product Model":  "st_product_model",
+    "Store Subcategory":   "st_store_subcategory",
+}
+
 BASE_URL = "https://api.sensortower.com"
-APP_URL = "https://app.sensortower.com"
 MAX_REQUESTS_PER_SECOND = 5.0
 APP_IDS_BATCH_SIZE = 50
 METADATA_BATCH_SIZE = 100
+TAGS_BATCH_SIZE = 100
 
 _last_request_time: float = 0.0
 _rate_lock = threading.Lock()
 
+
+# ---------------------------------------------------------------------------
+# HTTP helpers
+# ---------------------------------------------------------------------------
 
 def _chunked(items: list[str], size: int) -> list[list[str]]:
     return [items[i: i + size] for i in range(0, len(items), size)]
@@ -99,7 +112,7 @@ def _throttled_get(url: str, params: dict[str, Any]) -> requests.Response:
     usage_count = response.headers.get("x-api-usage-count")
     usage_limit = response.headers.get("x-api-usage-limit")
     if usage_count is not None:
-        logger.info("Sensor Tower API usage: count=%s limit=%s", usage_count, usage_limit or "unknown")
+        logger.info("ST API usage: count=%s limit=%s", usage_count, usage_limit or "unknown")
     return response
 
 
@@ -124,6 +137,10 @@ def _get_json(url: str, params: dict[str, Any]) -> Any | None:
         logger.error("ST invalid JSON %s error=%s", log_url, exc)
     return None
 
+
+# ---------------------------------------------------------------------------
+# App ID fetching
+# ---------------------------------------------------------------------------
 
 def _fetch_app_ids_for_category(
     platform: str, category_id: str, start_date: str, auth_token: str
@@ -157,6 +174,10 @@ def _fetch_app_ids_for_category(
     logger.info("Category %s on %s: %d app IDs", category_id, platform, len(app_ids))
     return [a for a in app_ids if a]
 
+
+# ---------------------------------------------------------------------------
+# Install totals
+# ---------------------------------------------------------------------------
 
 def _fetch_install_totals(
     platform: str, app_ids: list[str], start_date: str, end_date: str, auth_token: str,
@@ -199,9 +220,7 @@ def _fetch_install_totals(
                 row.get("iu") or row.get("u") or row.get("units")
                 or row.get("downloads") or row.get("installs") or 0
             )
-            country_code = str(
-                row.get("cc") or row.get("c") or row.get("country") or "WW"
-            )
+            country_code = str(row.get("cc") or row.get("c") or row.get("country") or "WW")
             existing = install_map.setdefault(
                 app_id, {"installs_total": 0, "country": "WW", "top_country_installs": -1},
             )
@@ -212,6 +231,10 @@ def _fetch_install_totals(
     logger.info("install_totals complete platform=%s: %d apps.", platform, len(install_map))
     return install_map
 
+
+# ---------------------------------------------------------------------------
+# Metadata
+# ---------------------------------------------------------------------------
 
 def _normalize_subcategories(raw_value: Any) -> list[str]:
     if isinstance(raw_value, list):
@@ -284,63 +307,64 @@ def _fetch_metadata(
     return metadata_by_id
 
 
+# ---------------------------------------------------------------------------
+# Tags API  (/v1/app_tag/tags_for_apps)
+# ---------------------------------------------------------------------------
 
-def _fetch_game_intel(
-    platform: str, app_ids: list[str], session_cookie: str
-) -> dict[str, dict[str, Any]]:
-    """Fetch game_intel_data via app.sensortower.com per-app endpoint (session cookie auth)."""
-    intel_by_id: dict[str, dict[str, Any]] = {}
-    if not session_cookie:
-        logger.info("game_intel skipped: no SENSORTOWER_SESSION set")
-        return intel_by_id
+def _fetch_app_tags(
+    app_ids: list[str], auth_token: str
+) -> dict[str, dict[str, str]]:
+    """Fetch genre/sub-genre/theme/class tags for a list of app_ids.
 
-    headers = {
-        "Cookie": f"sensor_tower_session={session_cookie}; locale=en",
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.9",
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        "Referer": "https://app.sensortower.com/",
-    }
+    Endpoint is platform-agnostic; works for both iOS numeric IDs and
+    Android package names in the same batch.
+    Returns {app_id: {st_genre: ..., st_sub_genre: ..., ...}}.
+    """
+    tags_by_id: dict[str, dict[str, str]] = {}
+    url = f"{BASE_URL}/v1/app_tag/tags_for_apps"
 
-    global _last_request_time
-    for app_id in app_ids:
-        url = f"{APP_URL}/api/{platform}/apps/{app_id}"
-        min_interval = 1.0 / MAX_REQUESTS_PER_SECOND
-        with _rate_lock:
-            elapsed = time.monotonic() - _last_request_time
-            if elapsed < min_interval:
-                time.sleep(min_interval - elapsed)
-            _last_request_time = time.monotonic()
-        try:
-            r = requests.get(url, params={"country": "US"}, headers=headers, timeout=15)
-            if r.status_code == 200:
-                data = r.json()
-                if isinstance(data, dict):
-                    intel = data.get("game_intel_data")
-                    if intel:
-                        intel_by_id[app_id] = intel
-            else:
-                logger.debug("game_intel app_id=%s status=%d", app_id, r.status_code)
-        except Exception as exc:
-            logger.warning("game_intel app_id=%s error=%s", app_id, exc)
+    for batch in _chunked(app_ids, TAGS_BATCH_SIZE):
+        params: dict[str, Any] = {
+            "auth_token": auth_token,
+            "app_ids[]": batch,
+        }
+        data = _get_json(url, params)
+        if not isinstance(data, dict):
+            logger.warning("app_tags unexpected response type=%s", type(data).__name__)
+            continue
+        items = data.get("data", [])
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            app_id = str(item.get("app_id", ""))
+            if not app_id:
+                continue
+            tag_values: dict[str, str] = {}
+            for tag in item.get("tags", []):
+                name = str(tag.get("name", ""))
+                value = str(tag.get("value", ""))
+                if name in TAG_FIELDS and value and value.upper() not in ("N/A", ""):
+                    tag_values[TAG_FIELDS[name]] = value
+            tags_by_id[app_id] = tag_values
 
-    logger.info("game_intel complete platform=%s: %d/%d apps.", platform, len(intel_by_id), len(app_ids))
-    return intel_by_id
+    logger.info("app_tags complete: %d/%d apps returned tags.", len(tags_by_id), len(app_ids))
+    return tags_by_id
 
+
+# ---------------------------------------------------------------------------
+# Combine into game object
+# ---------------------------------------------------------------------------
 
 def _combine_game_data(
     platform: str,
     app_id: str,
     installs: dict[str, Any],
     metadata: dict[str, Any],
-    intel: dict[str, Any] | None = None,
+    tags: dict[str, str] | None = None,
     source_category: str = "",
 ) -> dict[str, Any]:
-    # --- Basic metadata ---
+    tags = tags or {}
+
     publisher = str(
         metadata.get("publisher") or metadata.get("publisher_name")
         or metadata.get("developer") or ""
@@ -351,7 +375,6 @@ def _combine_game_data(
         or metadata.get("published_at") or ""
     )
 
-    # --- Rich description: combine all text fields ---
     description = " ".join(filter(None, [
         str(metadata.get("description") or ""),
         str(metadata.get("short_description") or ""),
@@ -359,7 +382,6 @@ def _combine_game_data(
         str(metadata.get("subtitle") or ""),
     ])).strip()
 
-    # --- Category: map raw IDs to display names ---
     def _map_cat(raw: str) -> str:
         return CATEGORY_DISPLAY.get(raw.strip(), "") if raw.strip().isdigit() or raw.strip().startswith("game_") else raw.strip()
 
@@ -375,7 +397,6 @@ def _combine_game_data(
         )
         category_name = _map_cat(raw_cat) if raw_cat else ""
 
-    # Try richer genre fields iOS/Android may return
     meta_genre = str(
         metadata.get("primary_genre_name") or metadata.get("genre_name")
         or metadata.get("primary_genre") or ""
@@ -392,7 +413,6 @@ def _combine_game_data(
         or metadata.get("genre_names") or []
     )
 
-    # subtitle as extra subcategory signal
     subtitle = str(metadata.get("subtitle") or "").strip()
     if subtitle and subtitle not in subcategories:
         subcategories = [subtitle] + subcategories
@@ -404,52 +424,48 @@ def _combine_game_data(
         or metadata.get("icon_url_60") or ""
     )
 
-    # --- Game Intel (Sensor Tower taxonomy) ---
-    intel = intel or {}
-    intel_category  = str((intel.get("category")  or {}).get("name") or "")
-    intel_genre     = str((intel.get("genre")      or {}).get("name") or "")
-    intel_sub_genre = str((intel.get("sub_genre")  or {}).get("name") or "")
-    intel_theme     = str((intel.get("theme")      or {}).get("name") or "")
+    # Tags API fields (primary source for genre/sub-genre)
+    st_genre         = tags.get("st_genre", "")
+    st_sub_genre     = tags.get("st_sub_genre", "")
+    st_theme         = tags.get("st_theme", "")
+    st_class         = tags.get("st_class", "")
+    st_product_model = tags.get("st_product_model", "")
+    st_store_subcategory = tags.get("st_store_subcategory", "")
 
-    # Fallback for category only — source_category is category-level, not sub_genre
-    if not intel_category:
-        intel_category = source_category or meta_genre or category_name
-    # intel_sub_genre intentionally left empty if taxonomy API returned nothing
-
-    # Inject taxonomy tags into subcategories so relevance.py picks them up
-    taxonomy_tags = [
-        t for t in [intel_sub_genre, intel_genre, intel_category, intel_theme]
-        if t and t != "N/A"
-    ]
-    if taxonomy_tags:
-        subcategories = list(dict.fromkeys(taxonomy_tags + subcategories))
+    # intel_category: Tags API genre → fallback to store category
+    intel_category = st_genre or source_category or meta_genre or category_name
 
     return {
-        "fid": app_id,
-        "app_id": app_id,
-        "name": name,
-        "publisher": publisher,
-        "platform": platform,
-        "category": category_name,
-        "subcategories": subcategories,
-        "description": description,
-        "keywords": keywords,
-        "store_url": _build_store_url(platform, app_id),
-        "screenshots": screenshots,
-        "icon_url": icon_url,
-        "installs_total": total_installs,
-        "installs_last_day": total_installs,
-        "country": str(installs.get("country", "WW") or "WW"),
-        "launch_date": launch_date,
-        "intel_category": intel_category,
-        "intel_genre": intel_genre,
-        "intel_sub_genre": intel_sub_genre,
-        "intel_theme": intel_theme,
+        "fid":                  app_id,
+        "app_id":               app_id,
+        "name":                 name,
+        "publisher":            publisher,
+        "platform":             platform,
+        "category":             category_name,
+        "subcategories":        subcategories,
+        "description":          description,
+        "keywords":             keywords,
+        "store_url":            _build_store_url(platform, app_id),
+        "screenshots":          screenshots,
+        "icon_url":             icon_url,
+        "installs_total":       total_installs,
+        "country":              str(installs.get("country", "WW") or "WW"),
+        "launch_date":          launch_date,
+        # Tags API enrichment
+        "st_genre":             st_genre,
+        "st_sub_genre":         st_sub_genre,
+        "st_theme":             st_theme,
+        "st_class":             st_class,
+        "st_product_model":     st_product_model,
+        "st_store_subcategory": st_store_subcategory,
+        # Backward-compat alias used by HTML filter
+        "intel_category":       intel_category,
     }
 
 
-
-
+# ---------------------------------------------------------------------------
+# Platform fetch orchestration
+# ---------------------------------------------------------------------------
 
 def _fetch_platform_games(
     platform: str,
@@ -459,7 +475,6 @@ def _fetch_platform_games(
     cutoff_date: Any,
     max_installs: int | None,
     auth_token: str,
-    session_cookie: str = "",
 ) -> list[dict[str, Any]]:
     platform_min = MIN_INSTALLS.get(platform, 500)
     platform_app_ids: list[str] = []
@@ -514,7 +529,7 @@ def _fetch_platform_games(
         surviving_ids.append(app_id)
 
     logger.info(
-        "Platform=%s: %d passed filter (below=%d above_cap=%d).",
+        "Platform=%s: %d passed install filter (below=%d above_cap=%d).",
         platform, len(surviving_ids), below_threshold, above_threshold,
     )
 
@@ -531,10 +546,10 @@ def _fetch_platform_games(
         logger.warning("No metadata for platform=%s.", platform)
         return []
 
-    taxonomy_by_id = _fetch_game_intel(
-        platform=platform,
+    # Enrich with Tags API (genre, sub-genre, theme, etc.)
+    tags_by_id = _fetch_app_tags(
         app_ids=surviving_ids,
-        session_cookie=session_cookie,
+        auth_token=auth_token,
     )
 
     games: list[dict[str, Any]] = []
@@ -544,10 +559,12 @@ def _fetch_platform_games(
         if metadata is None or installs is None:
             continue
 
-        intel = taxonomy_by_id.get(app_id)
         game_data = _combine_game_data(
-            platform, app_id, installs, metadata,
-            intel=intel,
+            platform=platform,
+            app_id=app_id,
+            installs=installs,
+            metadata=metadata,
+            tags=tags_by_id.get(app_id),
             source_category=app_id_to_category.get(app_id, ""),
         )
 
@@ -565,11 +582,15 @@ def _fetch_platform_games(
     return games
 
 
+# ---------------------------------------------------------------------------
+# Public entry point
+# ---------------------------------------------------------------------------
+
 def fetch_new_games(
-    max_installs: int | None = 50000,
+    max_installs: int | None = 50_000,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
-    """Fetch games released in last N days with install thresholds."""
+    """Fetch games released in last N days with installs between 500–max_installs."""
     import concurrent.futures
 
     try:
@@ -597,7 +618,6 @@ def fetch_new_games(
             cutoff_date=cutoff_date,
             max_installs=max_installs,
             auth_token=config.sensor_tower_api_key,
-            session_cookie=config.sensortower_session,
         )
 
     all_games: list[dict[str, Any]] = []
