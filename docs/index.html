@@ -435,6 +435,51 @@
   .pills[data-group="release"] .pill.active { background: var(--amber); border-color: var(--amber); color: white; }
   .pills[data-group="sort"] .pill.active { background: var(--indigo); border-color: var(--indigo); color: white; }
 
+  .fl-install::before { background: var(--blue); }
+  .install-input {
+    width: 140px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+  .install-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+  }
+  .install-input.error {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+  .install-error {
+    font-size: 11px;
+    color: var(--red);
+    margin-left: 4px;
+  }
+  .install-clear {
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .install-clear:hover {
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+    color: var(--text);
+  }
+
   /* ============ RESULT BAR ============ */
   .result-bar {
     display: flex; align-items: center; justify-content: space-between;
@@ -764,6 +809,15 @@
               <button class="pill" data-sort="released">Newest released</button>
             </div>
           </div>
+
+          <div class="filter-group">
+            <span class="filter-label fl-install">Max Installs</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <input type="text" id="maxInstallInput" class="install-input" placeholder="e.g. 50000" autocomplete="off" />
+              <button class="install-clear" id="maxInstallClear" style="display:none;">Clear</button>
+              <span class="install-error" id="maxInstallError" style="display:none;"></span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -793,6 +847,7 @@ const filters = {
   release: 'all',
   sort: 'installs',
   search: '',
+  maxInstalls: null,
 };
 let view = 'grid';
 
@@ -1068,6 +1123,56 @@ function bindFilters() {
     render();
   });
 
+  const maxInstallInput = document.getElementById('maxInstallInput');
+  const maxInstallError = document.getElementById('maxInstallError');
+  const maxInstallClear = document.getElementById('maxInstallClear');
+
+  function applyMaxInstallInput() {
+    const val = maxInstallInput.value.trim();
+    if (val === '') {
+      maxInstallInput.classList.remove('error');
+      maxInstallError.style.display = 'none';
+      maxInstallClear.style.display = 'none';
+      filters.maxInstalls = null;
+      render();
+      return;
+    }
+    if (val.includes('.') || val.includes(',')) {
+      maxInstallInput.classList.add('error');
+      maxInstallError.textContent = 'No dots or commas — enter a plain number (e.g. 50000)';
+      maxInstallError.style.display = '';
+      maxInstallClear.style.display = '';
+      filters.maxInstalls = null;
+      render();
+      return;
+    }
+    const n = parseInt(val, 10);
+    if (isNaN(n) || n < 0 || String(n) !== val) {
+      maxInstallInput.classList.add('error');
+      maxInstallError.textContent = 'Enter a whole number (e.g. 50000)';
+      maxInstallError.style.display = '';
+      maxInstallClear.style.display = '';
+      filters.maxInstalls = null;
+      render();
+      return;
+    }
+    maxInstallInput.classList.remove('error');
+    maxInstallError.style.display = 'none';
+    maxInstallClear.style.display = '';
+    filters.maxInstalls = n;
+    render();
+  }
+
+  maxInstallInput.addEventListener('input', applyMaxInstallInput);
+  maxInstallClear.addEventListener('click', () => {
+    maxInstallInput.value = '';
+    maxInstallInput.classList.remove('error');
+    maxInstallError.style.display = 'none';
+    maxInstallClear.style.display = 'none';
+    filters.maxInstalls = null;
+    render();
+  });
+
   document.getElementById('viewGrid').addEventListener('click', () => setView('grid'));
   document.getElementById('viewList').addEventListener('click', () => setView('list'));
 
@@ -1105,6 +1210,7 @@ function applyFilters() {
       const hay = ((g.name || '') + ' ' + (g.publisher || '')).toLowerCase();
       if (!hay.includes(filters.search)) return false;
     }
+    if (filters.maxInstalls !== null && getInstalls(g) > filters.maxInstalls) return false;
     return true;
   });
 }
