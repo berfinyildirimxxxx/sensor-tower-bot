@@ -103,7 +103,7 @@ def _build_relevant_row(item: dict[str, Any]) -> list[str]:
 
 
 def _build_all_games_row(game: dict[str, Any]) -> list[str]:
-    """Build a sheet row for the all-games export (no relevance data)."""
+    """Build a sheet row for the all-games export with sub-genre."""
     installs = _get_installs(game)
     launch_date = _format_launch_date(game)
 
@@ -115,6 +115,7 @@ def _build_all_games_row(game: dict[str, Any]) -> list[str]:
         launch_date,
         str(installs),
         str(game.get("category") or ""),
+        str(game.get("intel_sub_genre") or ""),
         str(game.get("store_url") or ""),
     ]
 
@@ -186,6 +187,7 @@ def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
             "Release Date",
             "Total Installs",
             "Category",
+            "Sub-Genre",
             "Store URL",
         ]
         worksheet = _get_or_create_worksheet(

@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 TOP_N = 10
 LOOKBACK_DAYS = 60
-MAX_INSTALLS = 550
+MAX_INSTALLS = 50000
 
 _cache: dict[str, Any] | None = None
 _cache_lock = threading.Lock()

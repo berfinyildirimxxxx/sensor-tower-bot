@@ -600,9 +600,9 @@
     <div class="pills" data-group="category" id="categoryPills"></div>
   </section>
 
-  <!-- MECHANIC BAND — shown only when a category is selected -->
+  <!-- SUB-GENRE BAND — shown only when a category is selected -->
   <section class="mech-band" id="mechanicBand" style="display:none;">
-    <div class="mech-band-label">Mechanic</div>
+    <div class="mech-band-label">Sub-Genre</div>
     <div class="pills" data-group="mechanic" id="mechanicPills"></div>
   </section>
 
@@ -692,12 +692,6 @@ const filters = {
 let view = 'grid';
 
 // ---------- helpers ----------
-function getScore(g) {
-  const v = g.score;
-  if (typeof v === 'number') return v;
-  const n = parseInt(String(v), 10);
-  return isNaN(n) ? 0 : n;
-}
 function getInstalls(g) {
   const v = g.installs_total ?? g.installs;
   if (typeof v === 'number') return v;
@@ -731,12 +725,6 @@ function addedLabel(g) {
   if (d < 14) return '1 week ago';
   if (d < 30) return Math.floor(d / 7) + ' weeks ago';
   return d + 'd ago';
-}
-function scoreBadgeClass(s) {
-  if (s === 0) return 'score-zero';
-  if (s >= 70) return 'score-high';
-  if (s >= 40) return 'score-mid';
-  return 'score-low';
 }
 function getPlatforms(g) {
   if (Array.isArray(g.platforms) && g.platforms.length) return g.platforms;
@@ -853,12 +841,11 @@ function buildMechanicPills(category) {
     return;
   }
 
-  // Count mechanics within the selected category
   const pool = allGames.filter(g => (g.intel_category || '') === category);
   const counts = new Map();
   pool.forEach(g => {
-    const m = (g.mechanic || 'Other Puzzle').trim();
-    counts.set(m, (counts.get(m) || 0) + 1);
+    const m = (g.intel_sub_genre || '').trim();
+    if (m) counts.set(m, (counts.get(m) || 0) + 1);
   });
 
   if (!counts.size) { band.style.display = 'none'; return; }
@@ -953,7 +940,7 @@ function applyFilters() {
   return allGames.filter(g => {
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
     if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
-    if (filters.mechanic !== 'all' && (g.mechanic || 'Other Puzzle') !== filters.mechanic) return false;
+    if (filters.mechanic !== 'all' && (g.intel_sub_genre || '') !== filters.mechanic) return false;
 
     if (filters.release !== 'all') {
       const r = daysAgo(g.launch_date);
@@ -1085,8 +1072,7 @@ function openModal(g) {
         <p class="modal-publisher">${escapeHtml(g.publisher || '—')}</p>
         <div class="badges">
           ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.mechanic ? `<span class="badge mechanic">${escapeHtml(g.mechanic)}${g.mechanic_confidence ? ` <span style="opacity:0.65;font-size:10px;">${g.mechanic_confidence}%</span>` : ''}</span>` : ''}
-          ${g.mechanic_family && g.mechanic_family !== 'Other' ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.mechanic_family)}</span>` : ''}
+          ${g.intel_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
         </div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1104,16 +1090,6 @@ function openModal(g) {
           ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
         </div>
       </div>` : ''}
-    ${g.mechanic ? `
-      <div style="margin-top:14px;padding:12px;background:var(--surface-2);border-radius:10px;font-size:12px;">
-        <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">🎮 Mechanic Classification</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
-          <span style="padding:3px 8px;background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-border);border-radius:5px;font-weight:600;">${escapeHtml(g.mechanic)}${g.mechanic_confidence ? ` · ${g.mechanic_confidence}%` : ''}</span>
-          ${(g.secondary_mechanics || []).map(m => `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">also: ${escapeHtml(m)}</span>`).join('')}
-        </div>
-        ${g.reason ? `<div style="font-size:11px;color:var(--text-soft);font-family:'JetBrains Mono',monospace;">${escapeHtml(g.reason)}</div>` : ''}
-      </div>` : ''}
-    ${g.reason && !g.mechanic ? `<div class="modal-desc" style="font-size:11px;color:var(--text-soft);">Why this score: ${escapeHtml(g.reason)}</div>` : ''}
   `;
   document.getElementById('modalBackdrop').classList.add('open');
 }

@@ -12,10 +12,10 @@ from pathlib import Path
 from typing import Any
 
 from config import load_config
-from relevance import score_game
 from sensor_tower import fetch_new_games
-from sheets import write_all_games_to_sheet, write_to_sheet
+from sheets import write_all_games_to_sheet
 from slack import send_summary_message, send_test_message
+from sub_genre import get_sub_genres_for_apps
 
 logger = logging.getLogger(__name__)
 
@@ -186,45 +186,48 @@ def main() -> int:
     merged = merge_cross_platform(raw_games)
     logger.info("After cross-platform merge: %d unique games", len(merged))
 
-    # 3) Score everything — no threshold filter
-    scored: list[dict[str, Any]] = []
-    for g in merged:
-        result = score_game(g)
-        scored.append({
-            **g,
-            "score":               result["score"],
-            "mechanic":            result["mechanic"],
-            "mechanic_confidence": result["mechanic_confidence"],
-            "mechanic_signals":    result["mechanic_signals"],
-            "secondary_mechanics": result["secondary_mechanics"],
-            "mechanic_family":     result["mechanic_family"],
-            "reason":              result["reason"],
+    # 3) Enrich with sub-genre from Sensor Tower Custom Fields API
+    config = load_config()
+    auth_token = config.sensor_tower_api_key
+
+    all_app_ids: list[str] = []
+    for game in merged:
+        app_id = str(game.get("app_id") or game.get("fid") or "")
+        if app_id:
+            all_app_ids.append(app_id)
+
+    sub_genre_map: dict[str, str] = {}
+    if auth_token and all_app_ids:
+        logger.info("Fetching sub-genres for %d games via Sensor Tower API", len(all_app_ids))
+        sub_genre_map = get_sub_genres_for_apps(all_app_ids, auth_token)
+        logger.info("Sub-genre enrichment complete: %d/%d matched", len(sub_genre_map), len(all_app_ids))
+
+    enriched: list[dict[str, Any]] = []
+    for game in merged:
+        app_id = str(game.get("app_id") or game.get("fid") or "")
+        enriched.append({
+            **game,
+            "intel_sub_genre": sub_genre_map.get(app_id, ""),
         })
 
-    logger.info("Scored %d games", len(scored))
+    logger.info("Enriched %d games with sub-genre data", len(enriched))
 
-    # 4) Google Sheets
+    # 4) Google Sheets — write all games (no score-based filtering)
     try:
-        write_all_games_to_sheet(scored)
+        write_all_games_to_sheet(enriched)
     except Exception as exc:
         logger.error("Failed to write all-games tab: %s", exc)
 
-    try:
-        relevant_only = [g for g in scored if g["score"] >= 60]
-        write_to_sheet(relevant_only)
-    except Exception as exc:
-        logger.error("Failed to write portfolio-match tab: %s", exc)
-
     # 5) Web dashboard
     sheet_url = _build_sheet_url()
-    update_web_data(scored, sheet_url=sheet_url)
+    update_web_data(enriched, sheet_url=sheet_url)
 
     # 6) Slack summary — match slack.py's send_summary_message signature exactly
     run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     try:
         send_summary_message(
             run_date=run_date,
-            total_fetched=len(scored),
+            total_fetched=len(enriched),
             ios_fetched=ios_raw,
             android_fetched=android_raw,
         )
