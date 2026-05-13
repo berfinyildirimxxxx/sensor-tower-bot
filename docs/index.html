@@ -745,7 +745,7 @@ const IS_DEV = location.hostname === 'localhost' || location.hostname === '127.0
 
 async function loadData() {
   try {
-    const dataUrl = IS_DEV ? '/api/top10?_=' + Date.now() : 'games_data.json?_=' + Date.now();
+    const dataUrl = IS_DEV ? '/api/games?_=' + Date.now() : 'games_data.json?_=' + Date.now();
     if (IS_DEV) {
       document.getElementById('lastUpdated').textContent = 'Fetching live data from Sensor Tower...';
     }

@@ -16,3 +16,4 @@ __pycache__/
 .env
 venv/
 *.pyc
+.sub_genre_filter_cache.json

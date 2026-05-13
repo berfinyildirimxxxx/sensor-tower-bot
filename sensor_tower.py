@@ -64,9 +64,11 @@ CATEGORY_DISPLAY: dict[str, str] = {
 
 BASE_URL = "https://api.sensortower.com"
 APP_URL = "https://app.sensortower.com"
-MAX_REQUESTS_PER_SECOND = 5.0
+MAX_REQUESTS_PER_SECOND = 10.0
 APP_IDS_BATCH_SIZE = 50
 METADATA_BATCH_SIZE = 100
+INSTALL_FETCH_WORKERS = 6
+METADATA_FETCH_WORKERS = 4
 
 _last_request_time: float = 0.0
 _rate_lock = threading.Lock()
@@ -161,10 +163,15 @@ def _fetch_app_ids_for_category(
 def _fetch_install_totals(
     platform: str, app_ids: list[str], start_date: str, end_date: str, auth_token: str,
 ) -> dict[str, dict[str, Any]]:
+    import concurrent.futures
+
     install_map: dict[str, dict[str, Any]] = {}
+    install_lock = threading.Lock()
     url = f"{BASE_URL}/v1/{platform}/sales_report_estimates"
     batches = _chunked(app_ids, APP_IDS_BATCH_SIZE)
-    for batch_idx, batch in enumerate(batches):
+
+    def _process_batch(indexed_batch: tuple[int, list[str]]) -> None:
+        batch_idx, batch = indexed_batch
         params: dict[str, Any] = {
             "auth_token": auth_token,
             "start_date": start_date,
@@ -175,11 +182,6 @@ def _fetch_install_totals(
         if platform == "ios":
             params["countries[]"] = ["WW"]
         data = _get_json(url, params)
-        logger.info(
-            "install_totals platform=%s batch=%d/%d type=%s preview=%s",
-            platform, batch_idx + 1, len(batches), type(data).__name__,
-            str(data)[:200] if data is not None else "None",
-        )
         if not isinstance(data, list):
             if isinstance(data, dict):
                 for key in ("data", "results", "estimates"):
@@ -188,28 +190,37 @@ def _fetch_install_totals(
                         break
             if not isinstance(data, list):
                 logger.warning("Unexpected install response platform=%s batch=%d", platform, batch_idx + 1)
-                continue
-        for row in data:
-            if not isinstance(row, dict):
-                continue
-            app_id = str(row.get("aid") or row.get("app_id") or row.get("id") or "")
-            if not app_id:
-                continue
-            installs = int(
-                row.get("iu") or row.get("u") or row.get("units")
-                or row.get("downloads") or row.get("installs") or 0
-            )
-            country_code = str(
-                row.get("cc") or row.get("c") or row.get("country") or "WW"
-            )
-            existing = install_map.setdefault(
-                app_id, {"installs_total": 0, "country": "WW", "top_country_installs": -1},
-            )
-            existing["installs_total"] += installs
-            if installs > int(existing["top_country_installs"]):
-                existing["country"] = country_code
-                existing["top_country_installs"] = installs
-    logger.info("install_totals complete platform=%s: %d apps.", platform, len(install_map))
+                return
+
+        with install_lock:
+            for row in data:
+                if not isinstance(row, dict):
+                    continue
+                app_id = str(row.get("aid") or row.get("app_id") or row.get("id") or "")
+                if not app_id:
+                    continue
+                installs = int(
+                    row.get("iu") or row.get("u") or row.get("units")
+                    or row.get("downloads") or row.get("installs") or 0
+                )
+                country_code = str(
+                    row.get("cc") or row.get("c") or row.get("country") or "WW"
+                )
+                existing = install_map.setdefault(
+                    app_id, {"installs_total": 0, "country": "WW", "top_country_installs": -1},
+                )
+                existing["installs_total"] += installs
+                if installs > int(existing["top_country_installs"]):
+                    existing["country"] = country_code
+                    existing["top_country_installs"] = installs
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=INSTALL_FETCH_WORKERS) as executor:
+        list(executor.map(_process_batch, enumerate(batches)))
+
+    logger.info(
+        "install_totals complete platform=%s: %d apps from %d batches.",
+        platform, len(install_map), len(batches),
+    )
     return install_map
 
 
@@ -255,32 +266,41 @@ def _extract_metadata_items(data: Any) -> list[dict[str, Any]]:
 def _fetch_metadata(
     platform: str, app_ids: list[str], auth_token: str
 ) -> dict[str, dict[str, Any]]:
+    import concurrent.futures
+
     metadata_by_id: dict[str, dict[str, Any]] = {}
+    metadata_lock = threading.Lock()
     url = f"{BASE_URL}/v1/{platform}/apps"
-    for batch in _chunked(app_ids, METADATA_BATCH_SIZE):
+    batches = _chunked(app_ids, METADATA_BATCH_SIZE)
+
+    def _process_batch(batch: list[str]) -> None:
         params: dict[str, Any] = {
             "auth_token": auth_token,
             "app_ids[]": batch,
             "country": "US",
         }
         data = _get_json(url, params)
-        logger.info(
-            "metadata platform=%s batch_size=%d: type=%s preview=%s",
-            platform, len(batch), type(data).__name__,
-            str(data)[:300] if data is not None else "None",
-        )
         items = _extract_metadata_items(data)
         if not items:
             logger.warning("Empty metadata batch platform=%s", platform)
-            continue
-        for item in items:
-            raw_id = (
-                item.get("app_id") or item.get("aid")
-                or item.get("id") or item.get("package_name")
-            )
-            if raw_id is None:
-                continue
-            metadata_by_id[str(raw_id)] = item
+            return
+        with metadata_lock:
+            for item in items:
+                raw_id = (
+                    item.get("app_id") or item.get("aid")
+                    or item.get("id") or item.get("package_name")
+                )
+                if raw_id is None:
+                    continue
+                metadata_by_id[str(raw_id)] = item
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=METADATA_FETCH_WORKERS) as executor:
+        list(executor.map(_process_batch, batches))
+
+    logger.info(
+        "metadata complete platform=%s: %d apps from %d batches.",
+        platform, len(metadata_by_id), len(batches),
+    )
     return metadata_by_id
 
 

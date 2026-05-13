@@ -22,7 +22,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TOP_N = 10
 LOOKBACK_DAYS = 60
 MAX_INSTALLS = 50000
 
@@ -31,8 +30,8 @@ _cache_lock = threading.Lock()
 _fetching = False
 
 
-def _fetch_top_games() -> dict[str, Any]:
-    """Fetch from Sensor Tower, merge, pick top N, then enrich with sub-genre."""
+def _fetch_all_games() -> dict[str, Any]:
+    """Fetch from Sensor Tower, merge, then enrich every result with sub-genre."""
     raw_games = fetch_new_games(
         release_lookback_days=LOOKBACK_DAYS,
         max_installs=MAX_INSTALLS,
@@ -41,7 +40,6 @@ def _fetch_top_games() -> dict[str, Any]:
 
     merged = merge_cross_platform(raw_games)
     merged.sort(key=lambda g: int(g.get("installs_total") or 0), reverse=True)
-    top_games = merged[:TOP_N]
 
     try:
         config = load_config()
@@ -49,19 +47,19 @@ def _fetch_top_games() -> dict[str, Any]:
     except Exception:
         auth_token = ""
 
-    top_app_ids = []
-    for game in top_games:
+    all_app_ids = []
+    for game in merged:
         app_id = str(game.get("app_id") or game.get("fid") or "")
         if app_id:
-            top_app_ids.append(app_id)
+            all_app_ids.append(app_id)
 
     sub_genre_map: dict[str, str] = {}
-    if auth_token and top_app_ids:
-        logger.info("Fetching sub-genres for top %d games via official API", len(top_app_ids))
-        sub_genre_map = get_sub_genres_for_apps(top_app_ids, auth_token)
+    if auth_token and all_app_ids:
+        logger.info("Fetching sub-genres for all %d games via official API", len(all_app_ids))
+        sub_genre_map = get_sub_genres_for_apps(all_app_ids, auth_token)
 
     minimal_games = []
-    for game in top_games:
+    for game in merged:
         app_id = str(game.get("app_id") or game.get("fid") or "")
         intel_sub_genre = sub_genre_map.get(app_id, "")
 
@@ -90,8 +88,9 @@ def index():
     return send_from_directory("docs", "index.html")
 
 
+@app.route("/api/games")
 @app.route("/api/top10")
-def api_top10():
+def api_games():
     global _cache, _fetching
     force_refresh = request.args.get("refresh") == "1"
 
@@ -104,7 +103,7 @@ def api_top10():
         _fetching = True
 
     try:
-        data = _fetch_top_games()
+        data = _fetch_all_games()
         _cache = data
         return jsonify(data)
     finally:
@@ -114,6 +113,6 @@ def api_top10():
 
 if __name__ == "__main__":
     print("Starting dev server at http://localhost:8000")
-    print(f"Fetching last {LOOKBACK_DAYS} days, installs 500-{MAX_INSTALLS}, showing top {TOP_N} games")
+    print(f"Fetching last {LOOKBACK_DAYS} days, max installs {MAX_INSTALLS}, showing ALL results")
     print("Sub-genre: using official API (auth_token, no cookie needed)")
     app.run(host="127.0.0.1", port=8000, debug=False)
