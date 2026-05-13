@@ -61,7 +61,18 @@ CATEGORY_DISPLAY: dict[str, str] = {
     "game_family": "Family",
 }
 
-# Tags API field mapping: Sensor Tower tag name → game object key
+# Tags API: field_categories[] values expected by the API (snake_case)
+TAG_CATEGORIES = [
+    "game_genre",
+    "game_sub_genre",
+    "game_theme",
+    "game_class",
+    "game_product_model",
+    "store_subcategory",
+]
+
+# Tag name (as returned in API response) → game object key
+# Handles both "Title Case" and snake_case variants in the response
 TAG_FIELDS: dict[str, str] = {
     "Game Genre":          "st_genre",
     "Game Sub-genre":      "st_sub_genre",
@@ -69,6 +80,17 @@ TAG_FIELDS: dict[str, str] = {
     "Game Class":          "st_class",
     "Game Product Model":  "st_product_model",
     "Store Subcategory":   "st_store_subcategory",
+    "game_genre":          "st_genre",
+    "game_sub_genre":      "st_sub_genre",
+    "game_theme":          "st_theme",
+    "game_class":          "st_class",
+    "game_product_model":  "st_product_model",
+    "store_subcategory":   "st_store_subcategory",
+    "Genre":               "st_genre",
+    "Sub-genre":           "st_sub_genre",
+    "Theme":               "st_theme",
+    "Class":               "st_class",
+    "Product Model":       "st_product_model",
 }
 
 BASE_URL = "https://api.sensortower.com"
@@ -327,7 +349,7 @@ def _fetch_app_tags(
         params: dict[str, Any] = {
             "auth_token": auth_token,
             "app_ids[]": batch,
-            "field_categories[]": list(TAG_FIELDS.keys()),
+            "field_categories[]": TAG_CATEGORIES,
         }
         data = _get_json(url, params)
         logger.info(
