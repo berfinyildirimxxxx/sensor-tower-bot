@@ -131,7 +131,7 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
 
     try:
         spreadsheet = _load_spreadsheet()
-        tab_name = f"Portfolio Match - {datetime.utcnow().strftime('%Y-%m-%d')}"
+        tab_name = f"Radar Game Info {datetime.utcnow().strftime('%d.%m.%Y')}"
         headers = [
             "Game Name",
             "Developer",
@@ -178,7 +178,7 @@ def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
 
     try:
         spreadsheet = _load_spreadsheet()
-        tab_name = f"Scanned - {datetime.utcnow().strftime('%Y-%m-%d')}"
+        tab_name = f"Radar Game Info {datetime.utcnow().strftime('%d.%m.%Y')}"
         headers = [
             "Game Name",
             "Developer",

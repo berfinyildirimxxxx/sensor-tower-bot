@@ -84,7 +84,6 @@
 
   /* ============ TOPBAR ============ */
   .topbar {
-    position: sticky; top: 0; z-index: 50;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -153,12 +152,143 @@
     max-width: 1400px; margin: 0 auto;
     padding: 24px;
   }
+  .page-layout {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+  }
 
-  /* ============ STAT CARDS (2 boxes) ============ */
+  /* ============ LEFT SIDEBAR ============ */
+  .sidebar {
+    width: 184px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 24px;
+    padding-right: 16px;
+  }
+  .sidebar-header {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-soft);
+    padding: 0 8px;
+    margin-bottom: 6px;
+  }
+  .cat-item {
+    position: relative;
+  }
+  .cat-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: background 0.12s, color 0.12s;
+    user-select: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+  }
+  .cat-trigger:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .cat-trigger.active {
+    background: var(--orange-soft);
+    color: var(--orange);
+    font-weight: 600;
+  }
+  .cat-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cat-count {
+    font-size: 10px;
+    color: var(--text-soft);
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .cat-trigger.active .cat-count {
+    background: var(--orange-border);
+    color: var(--orange);
+  }
+  .cat-arrow {
+    font-size: 11px;
+    color: var(--text-soft);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* Flyout */
+  .cat-flyout {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    z-index: 30;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    min-width: 170px;
+    padding: 4px;
+  }
+  .cat-item:hover .cat-flyout {
+    display: block;
+  }
+  .cat-flyout-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.1s;
+    user-select: none;
+  }
+  .cat-flyout-item:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .cat-flyout-item.active {
+    background: var(--orange-soft);
+    color: var(--orange);
+    font-weight: 600;
+  }
+  .cat-flyout-label { flex: 1; }
+  .cat-flyout-count {
+    font-size: 10px;
+    color: var(--text-soft);
+    background: var(--surface-2);
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+  }
+  .cat-flyout-item.active .cat-flyout-count {
+    background: var(--orange-border);
+    color: var(--orange);
+  }
+  .cat-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 3px 6px;
+  }
+
+  /* ============ CONTENT AREA ============ */
+  .content { flex: 1; min-width: 0; }
+
+  /* ============ STAT CARD (single) ============ */
   .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
     margin-bottom: 20px;
   }
   .stat {
@@ -176,7 +306,6 @@
     width: 3px;
   }
   .stat.scanned::before { background: var(--orange); }
-  .stat.radar::before { background: var(--blue); }
   .stat.scanned::after {
     content: '';
     position: absolute; right: -40px; top: -40px;
@@ -207,35 +336,6 @@
   .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
   .dot.ios { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
   .dot.android { background: var(--green); box-shadow: 0 0 6px var(--green); }
-
-  /* ============ CATEGORY / MECHANIC BANDS ============ */
-  .mech-band {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow-sm);
-  }
-  .mech-band-label {
-    font-size: 10px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .mech-band-label::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--orange);
-  }
-  #mechanicBand .mech-band-label::before { background: var(--blue); }
-  .mech-pills {
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
-  .pills[data-group="mechanic"] .pill.active {
-    background: var(--blue); border-color: var(--blue); color: white;
-    box-shadow: 0 0 0 3px var(--blue-soft);
-  }
 
   /* ============ FILTER BAR ============ */
   .filter-bar {
@@ -296,15 +396,13 @@
     text-transform: uppercase; letter-spacing: 0.07em;
     color: var(--text-muted);
     display: flex; align-items: center; gap: 6px;
-    min-width: 90px; flex-shrink: 0;
+    min-width: 80px; flex-shrink: 0;
   }
   .filter-label::before {
     content: ''; width: 5px; height: 5px; border-radius: 50%;
   }
   .fl-platform::before { background: var(--purple); }
-  .fl-score::before { background: var(--green); }
   .fl-release::before { background: var(--amber); }
-  .fl-added::before { background: var(--pink); }
   .fl-sort::before { background: var(--indigo); }
   .pills { display: flex; flex-wrap: wrap; gap: 4px; }
 
@@ -335,28 +433,9 @@
     opacity: 0.6;
     font-size: 11px;
   }
-  /* Color-coded active pills per group */
   .pills[data-group="platform"] .pill.active { background: var(--purple); border-color: var(--purple); color: white; box-shadow: 0 0 0 3px var(--purple-soft); }
-  .pills[data-group="category"] .pill.active { background: var(--orange); border-color: var(--orange); color: white; box-shadow: 0 0 0 3px var(--orange-soft); }
   .pills[data-group="release"] .pill.active { background: var(--amber); border-color: var(--amber); color: white; }
-  .pills[data-group="added"] .pill.active { background: var(--pink); border-color: var(--pink); color: white; }
   .pills[data-group="sort"] .pill.active { background: var(--indigo); border-color: var(--indigo); color: white; }
-
-  .date-picker {
-    display: inline-flex; align-items: center;
-    padding: 5px 10px;
-    border: 1px solid var(--border); border-radius: 6px;
-    background: var(--surface);
-    font-size: 12px; font-family: inherit;
-    color: var(--text-muted);
-    cursor: pointer;
-  }
-  .date-picker input {
-    border: none; background: transparent;
-    color: var(--text); font-family: inherit;
-    width: 110px;
-  }
-  .date-picker input:focus { outline: none; }
 
   /* ============ RESULT BAR ============ */
   .result-bar {
@@ -365,6 +444,23 @@
     font-size: 12px; color: var(--text-muted);
   }
   .result-count strong { color: var(--text); font-weight: 600; }
+  .btn-export {
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 12px; font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .btn-export:hover {
+    background: var(--blue-soft);
+    border-color: var(--blue-border);
+    color: var(--blue);
+  }
 
   /* ============ GAME GRID ============ */
   .games {
@@ -448,9 +544,15 @@
   .badge.score-mid { background: rgba(217, 119, 6, 0.12); color: var(--amber); }
   .badge.score-low { background: rgba(220, 38, 38, 0.10); color: var(--red); }
   .badge.score-zero { background: var(--surface-2); color: var(--text-soft); }
-  .badge.mechanic {
-    background: var(--orange-soft); color: var(--orange);
-    border: 1px solid var(--orange-border);
+  .badge.cat-badge {
+    font-size: 11px;
+    background: var(--purple-soft); color: var(--purple);
+    border: 1px solid var(--purple-border);
+  }
+  .badge.mech-badge {
+    font-size: 9px;
+    background: rgba(217,119,6,0.12); color: var(--amber);
+    border: 1px solid rgba(217,119,6,0.35);
   }
   .card-released {
     margin-top: 8px;
@@ -458,6 +560,11 @@
     display: flex; align-items: center; gap: 5px;
   }
   .card-released::before { content: '📅'; font-size: 11px; }
+  .card-released.unavailable {
+    color: var(--text-soft);
+    font-style: italic;
+  }
+  .card-released.unavailable::before { content: ''; }
 
   /* ============ LIST VIEW ============ */
   .games.list-view .card {
@@ -541,9 +648,23 @@
     color: var(--text-soft); font-size: 13px;
   }
 
+  @media (max-width: 900px) {
+    .page-layout { flex-direction: column; gap: 16px; }
+    .sidebar {
+      width: 100%;
+      position: static;
+      padding-right: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      align-items: center;
+    }
+    .sidebar-header { width: 100%; margin-bottom: 2px; }
+    .cat-item { flex-shrink: 0; }
+    .cat-flyout { left: 0; top: 100%; margin-top: 2px; }
+  }
   @media (max-width: 760px) {
-    .stats { grid-template-columns: 1fr; }
-    .filter-row { gap: 12px; }
+    .games { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -576,100 +697,90 @@
 </header>
 
 <main class="main">
+  <div class="page-layout">
 
-  <!-- 2 STAT CARDS -->
-  <section class="stats">
-    <div class="stat scanned">
-      <div class="stat-label" id="scannedLabel">Scanned today</div>
-      <div class="stat-value mono" id="scannedValue">0</div>
-      <div class="stat-sub">
-        <span class="stat-sub-item"><span class="dot ios"></span>iOS <strong class="mono" id="iosCount">0</strong></span>
-        <span class="stat-sub-item"><span class="dot android"></span>Android <strong class="mono" id="androidCount">0</strong></span>
+    <!-- LEFT SIDEBAR: categories -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">Categories</div>
+      <div class="cat-item">
+        <button class="cat-trigger active" id="catAll" data-category="all">
+          <span class="cat-name">All</span>
+          <span class="cat-count" id="catAllCount">0</span>
+        </button>
       </div>
-    </div>
-    <div class="stat radar">
-      <div class="stat-label">Total on radar</div>
-      <div class="stat-value mono" id="radarValue">0</div>
-      <div class="stat-sub"><span>for 30 days</span></div>
-    </div>
-  </section>
+      <div id="catList"></div>
+    </aside>
 
-  <!-- CATEGORY BAND -->
-  <section class="mech-band">
-    <div class="mech-band-label">Category</div>
-    <div class="pills" data-group="category" id="categoryPills"></div>
-  </section>
+    <!-- CONTENT -->
+    <div class="content">
 
-  <!-- SUB-GENRE BAND — shown only when a category is selected -->
-  <section class="mech-band" id="mechanicBand" style="display:none;">
-    <div class="mech-band-label">Sub-Genre</div>
-    <div class="pills" data-group="mechanic" id="mechanicPills"></div>
-  </section>
-
-  <!-- FILTER BAR -->
-  <section class="filter-bar">
-    <div class="search-row">
-      <div class="search">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Search by name or publisher…" />
-      </div>
-      <div class="view-toggle">
-        <button id="viewGrid" class="active">Grid</button>
-        <button id="viewList">List</button>
-      </div>
-    </div>
-
-    <div class="filter-row">
-      <div class="filter-group">
-        <span class="filter-label fl-platform">Platform</span>
-        <div class="pills" data-group="platform" id="platformPills">
-          <button class="pill active" data-platform="all">All</button>
-          <button class="pill" data-platform="ios">iOS</button>
-          <button class="pill" data-platform="android">Android</button>
+      <!-- SINGLE STAT CARD -->
+      <section class="stats">
+        <div class="stat scanned">
+          <div class="stat-label" id="scannedLabel">Scanned today</div>
+          <div class="stat-value mono" id="scannedValue">0</div>
+          <div class="stat-sub">
+            <span class="stat-sub-item"><span class="dot ios"></span>iOS <strong class="mono" id="iosCount">0</strong></span>
+            <span class="stat-sub-item"><span class="dot android"></span>Android <strong class="mono" id="androidCount">0</strong></span>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="filter-group">
-        <span class="filter-label fl-release">Released</span>
-        <div class="pills" data-group="release" id="releasePills">
-          <button class="pill active" data-release="all">All</button>
-          <button class="pill" data-release="7">Last 7d</button>
-          <button class="pill" data-release="30">Last 30d</button>
-          <button class="pill" data-release="60">Last 60d</button>
+      <!-- FILTER BAR -->
+      <section class="filter-bar">
+        <div class="search-row">
+          <div class="search">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search by name or publisher…" />
+          </div>
+          <div class="view-toggle">
+            <button id="viewGrid" class="active">Grid</button>
+            <button id="viewList">List</button>
+          </div>
         </div>
-      </div>
 
-      <div class="filter-group">
-        <span class="filter-label fl-added">Added</span>
-        <div class="pills" data-group="added" id="addedPills">
-          <button class="pill active" data-added="all">All</button>
-          <button class="pill" data-added="0">Today</button>
-          <button class="pill" data-added="1">Yesterday</button>
-          <button class="pill" data-added="3">3d</button>
-          <button class="pill" data-added="7">7d</button>
-          <button class="pill" data-added="14">14d</button>
+        <div class="filter-row">
+          <div class="filter-group">
+            <span class="filter-label fl-platform">Platform</span>
+            <div class="pills" data-group="platform" id="platformPills">
+              <button class="pill active" data-platform="all">All</button>
+              <button class="pill" data-platform="ios">iOS</button>
+              <button class="pill" data-platform="android">Android</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label fl-release">Released</span>
+            <div class="pills" data-group="release" id="releasePills">
+              <button class="pill active" data-release="all">All</button>
+              <button class="pill" data-release="7">Last 7d</button>
+              <button class="pill" data-release="30">Last 30d</button>
+              <button class="pill" data-release="60">Last 60d</button>
+              <button class="pill" data-release="na">Not available</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label fl-sort">Sort</span>
+            <div class="pills" data-group="sort" id="sortPills">
+              <button class="pill active" data-sort="installs">Most installs</button>
+              <button class="pill" data-sort="added">Newest added</button>
+              <button class="pill" data-sort="released">Newest released</button>
+            </div>
+          </div>
         </div>
-        <label class="date-picker">📅 <input type="date" id="datePick" /></label>
+      </section>
+
+      <div class="result-bar">
+        <div class="result-count">Showing <strong id="shownCount">0</strong> of <strong id="totalCount">0</strong> games</div>
+        <button class="btn-export" onclick="exportCSV()">⬇ Export CSV</button>
       </div>
 
-      <div class="filter-group">
-        <span class="filter-label fl-sort">Sort</span>
-        <div class="pills" data-group="sort" id="sortPills">
-          <button class="pill active" data-sort="installs">Most installs</button>
-          <button class="pill" data-sort="added">Newest added</button>
-          <button class="pill" data-sort="released">Newest released</button>
-        </div>
-      </div>
-    </div>
-  </section>
+      <section class="games" id="gamesGrid"></section>
+      <div class="empty" id="emptyState" style="display:none;">No games match your filters.</div>
 
-  <div class="result-bar">
-    <div class="result-count">Showing <strong id="shownCount">0</strong> of <strong id="totalCount">0</strong> games</div>
-  </div>
-
-  <section class="games" id="gamesGrid"></section>
-  <div class="empty" id="emptyState" style="display:none;">No games match your filters.</div>
-
+    </div><!-- /content -->
+  </div><!-- /page-layout -->
 </main>
 
 <div class="modal-backdrop" id="modalBackdrop">
@@ -684,8 +795,6 @@ const filters = {
   category: 'all',
   mechanic: 'all',
   release: 'all',
-  added: 'all',
-  addedDate: null,
   sort: 'installs',
   search: '',
 };
@@ -706,7 +815,6 @@ function fmtInstalls(n) {
 }
 function fmtDate(s) {
   if (!s) return '';
-  // accept ISO date or full string
   const d = new Date(s);
   if (isNaN(d.getTime())) return s;
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -762,22 +870,18 @@ async function loadData() {
     dataMeta = data;
     document.getElementById('lastUpdated').textContent = 'Last updated: ' + (data.last_updated || '—');
 
-    // Scanned label with today's date
     const dateStr = data.run_date || new Date().toISOString().slice(0, 10);
-    const lbl = fmtDate(dateStr);
-    document.getElementById('scannedLabel').textContent = 'Scanned ' + lbl;
+    document.getElementById('scannedLabel').textContent = 'Scanned ' + fmtDate(dateStr);
     document.getElementById('scannedValue').textContent = (data.total_fetched_today || 0).toLocaleString();
     document.getElementById('iosCount').textContent = (data.ios_fetched_today || 0).toLocaleString();
     document.getElementById('androidCount').textContent = (data.android_fetched_today || 0).toLocaleString();
-    document.getElementById('radarValue').textContent = (data.total_games_on_site || allGames.length).toLocaleString();
 
-    // Sheet button
     const sheetBtn = document.getElementById('sheetBtn');
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit';
     sheetBtn.href = data.sheet_url || SHEET_URL;
     sheetBtn.style.display = '';
 
-    buildCategoryPills();
+    buildSidebar();
     bindFilters();
     render();
   } catch (e) {
@@ -786,7 +890,7 @@ async function loadData() {
   }
 }
 
-// ---------- category pills ----------
+// ---------- category order ----------
 const CATEGORY_ORDER = ['Puzzle','Casual','Word','Board','Family','Trivia','Arcade','Card','Educational'];
 
 const MECHANIC_ORDER = [
@@ -796,7 +900,25 @@ const MECHANIC_ORDER = [
   'Environmental','Word','Trivia','Other Puzzle',
 ];
 
-function buildCategoryPills() {
+// ---------- sidebar ----------
+function getSubGenresForCategory(category) {
+  const pool = allGames.filter(g => (g.intel_category || '') === category);
+  const counts = new Map();
+  pool.forEach(g => {
+    const m = (g.intel_sub_genre || '').trim();
+    if (m) counts.set(m, (counts.get(m) || 0) + 1);
+  });
+  return [...counts.entries()].sort((a, b) => {
+    const ai = MECHANIC_ORDER.indexOf(a[0]);
+    const bi = MECHANIC_ORDER.indexOf(b[0]);
+    if (ai !== -1 && bi !== -1) return ai - bi;
+    if (ai !== -1) return -1;
+    if (bi !== -1) return 1;
+    return b[1] - a[1];
+  });
+}
+
+function buildSidebar() {
   const counts = new Map();
   allGames.forEach(g => {
     const cat = (g.intel_category || '').trim();
@@ -812,70 +934,87 @@ function buildCategoryPills() {
     return a[0].localeCompare(b[0]);
   });
 
-  const container = document.getElementById('categoryPills');
-  container.innerHTML = '';
+  document.getElementById('catAllCount').textContent = allGames.length;
 
-  const allBtn = document.createElement('button');
-  allBtn.className = 'pill active';
-  allBtn.dataset.category = 'all';
-  allBtn.innerHTML = `All <span class="count">${allGames.length}</span>`;
-  container.appendChild(allBtn);
+  const list = document.getElementById('catList');
+  list.innerHTML = '';
 
   sorted.forEach(([name, count]) => {
-    const b = document.createElement('button');
-    b.className = 'pill';
-    b.dataset.category = name;
-    b.innerHTML = `${name} <span class="count">${count}</span>`;
-    container.appendChild(b);
+    const subGenres = getSubGenresForCategory(name);
+    const hasSubGenres = subGenres.length > 0;
+
+    const item = document.createElement('div');
+    item.className = 'cat-item';
+
+    let flyoutHtml = '';
+    if (hasSubGenres) {
+      const sgItems = subGenres.map(([sg, sgCount]) =>
+        `<div class="cat-flyout-item" data-mechanic="${escapeAttr(sg)}">
+          <span class="cat-flyout-label">${escapeHtml(sg)}</span>
+          <span class="cat-flyout-count">${sgCount}</span>
+        </div>`
+      ).join('');
+      flyoutHtml = `
+        <div class="cat-flyout">
+          <div class="cat-flyout-item" data-mechanic="all" data-category="${escapeAttr(name)}">
+            <span class="cat-flyout-label">All</span>
+            <span class="cat-flyout-count">${count}</span>
+          </div>
+          <div class="cat-divider"></div>
+          ${sgItems}
+        </div>`;
+    }
+
+    item.innerHTML = `
+      <button class="cat-trigger" data-category="${escapeAttr(name)}">
+        <span class="cat-name">${escapeHtml(name)}</span>
+        <span class="cat-count">${count}</span>
+        ${hasSubGenres ? '<span class="cat-arrow">›</span>' : ''}
+      </button>
+      ${flyoutHtml}`;
+
+    list.appendChild(item);
+  });
+
+  // event delegation on sidebar
+  document.getElementById('sidebar').addEventListener('click', e => {
+    const flyoutItem = e.target.closest('.cat-flyout-item');
+    const trigger = e.target.closest('.cat-trigger');
+
+    if (flyoutItem) {
+      e.stopPropagation();
+      const mechanic = flyoutItem.dataset.mechanic;
+      const parentItem = flyoutItem.closest('.cat-item');
+      const cat = parentItem
+        ? parentItem.querySelector('.cat-trigger')?.dataset.category
+        : flyoutItem.dataset.category;
+      selectCategory(cat || 'all', mechanic === 'all' ? 'all' : mechanic);
+    } else if (trigger) {
+      selectCategory(trigger.dataset.category, 'all');
+    }
   });
 }
 
-// ---------- mechanic pills (rebuilt when category changes) ----------
-function buildMechanicPills(category) {
-  const band = document.getElementById('mechanicBand');
-  const container = document.getElementById('mechanicPills');
+function selectCategory(category, mechanic) {
+  filters.category = category;
+  filters.mechanic = mechanic || 'all';
 
+  document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
   if (category === 'all') {
-    band.style.display = 'none';
-    filters.mechanic = 'all';
-    return;
+    document.getElementById('catAll').classList.add('active');
+  } else {
+    const trigger = document.querySelector(`#catList .cat-trigger[data-category="${CSS.escape(category)}"]`);
+    if (trigger) trigger.classList.add('active');
   }
 
-  const pool = allGames.filter(g => (g.intel_category || '') === category);
-  const counts = new Map();
-  pool.forEach(g => {
-    const m = (g.intel_sub_genre || '').trim();
-    if (m) counts.set(m, (counts.get(m) || 0) + 1);
-  });
+  document.querySelectorAll('.cat-flyout-item').forEach(el => el.classList.remove('active'));
+  if (mechanic && mechanic !== 'all') {
+    document.querySelectorAll(`.cat-flyout-item[data-mechanic="${CSS.escape(mechanic)}"]`).forEach(el => {
+      el.classList.add('active');
+    });
+  }
 
-  if (!counts.size) { band.style.display = 'none'; return; }
-
-  const sorted = [...counts.entries()].sort((a, b) => {
-    const ai = MECHANIC_ORDER.indexOf(a[0]);
-    const bi = MECHANIC_ORDER.indexOf(b[0]);
-    if (ai !== -1 && bi !== -1) return ai - bi;
-    if (ai !== -1) return -1;
-    if (bi !== -1) return 1;
-    return b[1] - a[1]; // by count descending for unknowns
-  });
-
-  container.innerHTML = '';
-
-  const allBtn = document.createElement('button');
-  allBtn.className = 'pill active';
-  allBtn.dataset.mechanic = 'all';
-  allBtn.innerHTML = `All <span class="count">${pool.length}</span>`;
-  container.appendChild(allBtn);
-
-  sorted.forEach(([name, count]) => {
-    const b = document.createElement('button');
-    b.className = 'pill';
-    b.dataset.mechanic = name;
-    b.innerHTML = `${escapeHtml(name)} <span class="count">${count}</span>`;
-    container.appendChild(b);
-  });
-
-  band.style.display = '';
+  render();
 }
 
 // ---------- bind filter pills ----------
@@ -888,14 +1027,7 @@ function bindFilters() {
       pill.classList.add('active');
       const g = group.dataset.group;
       if (g === 'platform') filters.platform = pill.dataset.platform;
-      if (g === 'category') {
-        filters.category = pill.dataset.category;
-        filters.mechanic = 'all';
-        buildMechanicPills(filters.category);
-      }
-      if (g === 'mechanic') filters.mechanic = pill.dataset.mechanic;
       if (g === 'release') filters.release = pill.dataset.release;
-      if (g === 'added') { filters.added = pill.dataset.added; filters.addedDate = null; document.getElementById('datePick').value = ''; }
       if (g === 'sort') filters.sort = pill.dataset.sort;
       render();
     });
@@ -906,19 +1038,9 @@ function bindFilters() {
     render();
   });
 
-  document.getElementById('datePick').addEventListener('change', e => {
-    if (e.target.value) {
-      filters.addedDate = e.target.value;
-      filters.added = 'pick';
-      document.querySelectorAll('#addedPills .pill').forEach(p => p.classList.remove('active'));
-    }
-    render();
-  });
-
   document.getElementById('viewGrid').addEventListener('click', () => setView('grid'));
   document.getElementById('viewList').addEventListener('click', () => setView('list'));
 
-  // keyboard
   document.addEventListener('keydown', e => {
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
       e.preventDefault();
@@ -942,19 +1064,11 @@ function applyFilters() {
     if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
     if (filters.mechanic !== 'all' && (g.intel_sub_genre || '') !== filters.mechanic) return false;
 
-    if (filters.release !== 'all') {
+    if (filters.release === 'na') {
+      if (g.launch_date) return false;
+    } else if (filters.release !== 'all') {
       const r = daysAgo(g.launch_date);
       if (r > parseInt(filters.release, 10)) return false;
-    }
-
-    if (filters.added === 'pick' && filters.addedDate) {
-      if (String(g.first_seen) !== filters.addedDate) return false;
-    } else if (filters.added !== 'all') {
-      const d = daysAgo(g.first_seen);
-      const n = parseInt(filters.added, 10);
-      if (n === 0 && d !== 0) return false;
-      if (n === 1 && d !== 1) return false;
-      if (n >= 3 && d > n) return false;
     }
 
     if (filters.search) {
@@ -993,7 +1107,7 @@ function render() {
   });
 }
 
-function renderCard(g, i) {
+function renderCard(g) {
   const installs = getInstalls(g);
   const plats = getPlatforms(g);
   const addLbl = addedLabel(g);
@@ -1011,6 +1125,15 @@ function renderCard(g, i) {
     return '';
   }).join('');
 
+  const cat = g.intel_category || g.category || '';
+  const mech = g.intel_sub_genre || '';
+  const catBadge = cat ? `<span class="badge cat-badge">Category: ${escapeHtml(cat)}</span>` : '';
+  const mechBadge = mech ? `<span class="badge mech-badge">Mechanic: ${escapeHtml(mech)}</span>` : '';
+
+  const releaseHtml = g.launch_date
+    ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>`
+    : `<div class="card-released unavailable">Release info is not available.</div>`;
+
   return `
     <div class="card">
       <div class="card-added ${isNew ? 'new' : ''}">${addLbl}</div>
@@ -1024,10 +1147,10 @@ function renderCard(g, i) {
       <div class="badges">
         ${platformBadges}
         <span class="badge installs">${fmtInstalls(installs)} installs</span>
-        <span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">Category: ${escapeHtml(g.intel_category || g.category || 'bulunamadı')}</span>
-        <span class="badge" style="background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);">Sub-Genre: ${escapeHtml(g.intel_sub_genre || 'bulunamadı')}</span>
+        ${catBadge}
+        ${mechBadge}
       </div>
-      ${g.launch_date ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>` : ''}
+      ${releaseHtml}
     </div>
   `;
 }
@@ -1041,17 +1164,49 @@ function pickIconColor(cat) {
   return map[cat] || '#78716c';
 }
 
+// ---------- export CSV ----------
+function exportCSV() {
+  const games = sortGames(applyFilters());
+  const headers = ['Name','Publisher','Platform','Category','Mechanic','Release Date','Total Installs','Store URL'];
+  const rows = games.map(g => [
+    g.name || '',
+    g.publisher || '',
+    getPlatforms(g).map(p => p.platform).filter(Boolean).join('+'),
+    g.intel_category || g.category || '',
+    g.intel_sub_genre || '',
+    g.launch_date || '',
+    getInstalls(g),
+    getPlatforms(g).map(p => p.store_url).filter(Boolean).join(' | '),
+  ]);
+
+  const csv = [headers, ...rows]
+    .map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+    .join('\n');
+
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const today = new Date().toISOString().slice(0, 10);
+  a.download = `agave-radar-${today}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 // ---------- modal ----------
 function openModal(g) {
   const plats = getPlatforms(g);
   const platHtml = plats.map(p => {
     const name = String(p.platform || '');
     const icon = name.toLowerCase().includes('ios') ? '📱' : '🤖';
+    const releasedStr = p.launch_date ? fmtDate(p.launch_date) : 'Not available';
     return `
       <div class="platform-box">
         <div class="platform-box-name">${icon} ${escapeHtml(name.toUpperCase())}</div>
         <div class="platform-box-row"><span>Installs</span><strong>${fmtInstalls(p.installs_total)}</strong></div>
-        <div class="platform-box-row"><span>Released</span><strong>${fmtDate(p.launch_date) || '—'}</strong></div>
+        <div class="platform-box-row"><span>Released</span><strong>${releasedStr}</strong></div>
         ${p.store_url ? `<div class="platform-box-row"><a href="${escapeAttr(p.store_url)}" target="_blank" rel="noopener">Open in store →</a></div>` : ''}
       </div>
     `;
@@ -1072,8 +1227,8 @@ function openModal(g) {
         <h2 class="modal-title">${escapeHtml(g.name || 'Unknown')}</h2>
         <p class="modal-publisher">${escapeHtml(g.publisher || '—')}</p>
         <div class="badges">
-          ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.intel_sub_genre ? `<span class="badge" style="background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+          ${g.intel_category ? `<span class="badge cat-badge">${escapeHtml(g.intel_category)}</span>` : ''}
+          ${g.intel_sub_genre ? `<span class="badge mech-badge">Mechanic: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
         </div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1086,7 +1241,7 @@ function openModal(g) {
         <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">📊 Sensor Tower Taxonomy</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;">
           ${g.intel_category ? `<span style="padding:3px 8px;background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);border-radius:5px;font-weight:600;">Category: ${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.intel_sub_genre ? `<span style="padding:3px 8px;background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);border-radius:5px;font-weight:600;">Sub-genre: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+          ${g.intel_sub_genre ? `<span style="padding:3px 8px;background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);border-radius:5px;font-weight:600;">Mechanic: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
           ${g.intel_genre ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Genre: ${escapeHtml(g.intel_genre)}</span>` : ''}
           ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
         </div>
