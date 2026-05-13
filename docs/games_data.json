@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-05-13 15:40 UTC",
+  "last_updated": "2026-05-13 16:07 UTC",
   "run_date": "2026-05-13",
   "sheet_url": "https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit",
-  "total_fetched_today": 1283,
-  "ios_fetched_today": 355,
+  "total_fetched_today": 1284,
+  "ios_fetched_today": 356,
   "android_fetched_today": 941,
-  "total_games_on_site": 1283,
+  "total_games_on_site": 1284,
   "games": [
     {
       "fid": "jp.co.goodroid.hyper.puzzle.arrows3dcubepuzzle",
@@ -7005,7 +7005,7 @@
         "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/87/32/7b/87327b7d-3809-2187-083d-0a9b2f6e1428/_U9009_U62e9_U4f60_U7684_U4e3b_U9898_1242_2688.jpg/462x1000bb.png",
         "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/54/08/cd/5408cd04-0120-817e-224a-2a41de8b94b2/_U5b66_U4e60_U65b0_U5355_U8bcd_1242_2688.jpg/462x1000bb.png"
       ],
-      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/84/6f/92/846f924b-033a-3bbd-e1ee-c0d5c193cafc/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/150x150bb.jpg",
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f3/38/1d/f3381d37-2417-e9d7-e402-17b67e186326/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/150x150bb.jpg",
       "installs_total": 26698,
       "installs_last_day": 26698,
       "country": "WW",
@@ -33492,6 +33492,42 @@
           "launch_date": "2026-03-16T00:00:00Z",
           "store_url": "https://play.google.com/store/apps/details?id=com.masterpiece.mpga",
           "country": "ID"
+        }
+      ],
+      "first_seen": "2026-05-13",
+      "last_seen": "2026-05-13"
+    },
+    {
+      "fid": "6761470578",
+      "app_id": "6761470578",
+      "name": "疯狂卡片消 - 词语分类接龙，奇妙卡牌世界",
+      "publisher": "Halos Labs Technology Co.,Ltd",
+      "platform": "ios",
+      "category": "Casual",
+      "subcategories": [
+        "Word"
+      ],
+      "description": "乐趣闯关，益智休闲好选择！\n准备好开启一场趣味满满的脑力闯关了吗？ 这款清爽简约的体验，让你轻松玩转主题卡牌归类消除，巧用策略步步通关，清空所有卡牌，解锁专属胜利喜悦！\n\n核心亮点：\n 上手零门槛： 规则简单易懂，新手也能快速入门，随时随地畅享消除乐趣。\n 治愈清新画风： 萌趣可爱的视觉设计，配色明快柔和，带来沉浸式舒适体验。\n 海量趣味关卡： 关卡创意持续更新，层层进阶，考验你的观察力与反应力。\n 实用闯关道具： 巧妙利用专属辅助道具，轻松破解难题，畅快突破难关。\n 个性化自定义： 多款卡牌皮肤、精美背景随心换，打造你的专属界面。\n 实时榜单竞技： 登上趣味排行榜，与全球玩家比拼实力，赢取高光荣誉。\n \n 立即加入这场智慧与策略的趣味盛宴，解锁脑洞，挑战极限，秀出你的超强脑力！",
+      "keywords": [],
+      "store_url": "https://apps.apple.com/app/id6761470578",
+      "screenshots": [],
+      "icon_url": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/55/5e/19/555e193e-c49c-4e0f-2d25-92207885c5dc/AppIcon-0-0-1x_U007epad-0-1-85-220.png/150x150bb.jpg",
+      "installs_total": 2358,
+      "installs_last_day": 2358,
+      "country": "WW",
+      "launch_date": "",
+      "intel_category": "Word",
+      "intel_genre": "",
+      "intel_sub_genre": "Word",
+      "intel_theme": "",
+      "platforms": [
+        {
+          "platform": "ios",
+          "app_id": "6761470578",
+          "installs_total": 2358,
+          "launch_date": "",
+          "store_url": "https://apps.apple.com/app/id6761470578",
+          "country": "WW"
         }
       ],
       "first_seen": "2026-05-13",
