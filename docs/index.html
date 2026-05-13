@@ -811,9 +811,9 @@
           </div>
 
           <div class="filter-group">
-            <span class="filter-label fl-install">Max Installs</span>
+            <span class="filter-label fl-install">Min Installs</span>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              <input type="text" id="maxInstallInput" class="install-input" placeholder="e.g. 50000" autocomplete="off" />
+              <input type="text" id="maxInstallInput" class="install-input" placeholder="e.g. 1500" autocomplete="off" />
               <button class="install-clear" id="maxInstallClear" style="display:none;">Clear</button>
               <span class="install-error" id="maxInstallError" style="display:none;"></span>
             </div>
@@ -847,7 +847,7 @@ const filters = {
   release: 'all',
   sort: 'installs',
   search: '',
-  maxInstalls: null,
+  minInstalls: null,
 };
 let view = 'grid';
 
@@ -1133,33 +1133,33 @@ function bindFilters() {
       maxInstallInput.classList.remove('error');
       maxInstallError.style.display = 'none';
       maxInstallClear.style.display = 'none';
-      filters.maxInstalls = null;
+      filters.minInstalls = null;
       render();
       return;
     }
     if (val.includes('.') || val.includes(',')) {
       maxInstallInput.classList.add('error');
-      maxInstallError.textContent = 'No dots or commas — enter a plain number (e.g. 50000)';
+      maxInstallError.textContent = 'No dots or commas — enter a plain number (e.g. 1500)';
       maxInstallError.style.display = '';
       maxInstallClear.style.display = '';
-      filters.maxInstalls = null;
+      filters.minInstalls = null;
       render();
       return;
     }
     const n = parseInt(val, 10);
     if (isNaN(n) || n < 0 || String(n) !== val) {
       maxInstallInput.classList.add('error');
-      maxInstallError.textContent = 'Enter a whole number (e.g. 50000)';
+      maxInstallError.textContent = 'Enter a whole number (e.g. 1500)';
       maxInstallError.style.display = '';
       maxInstallClear.style.display = '';
-      filters.maxInstalls = null;
+      filters.minInstalls = null;
       render();
       return;
     }
     maxInstallInput.classList.remove('error');
     maxInstallError.style.display = 'none';
     maxInstallClear.style.display = '';
-    filters.maxInstalls = n;
+    filters.minInstalls = n;
     render();
   }
 
@@ -1169,7 +1169,7 @@ function bindFilters() {
     maxInstallInput.classList.remove('error');
     maxInstallError.style.display = 'none';
     maxInstallClear.style.display = 'none';
-    filters.maxInstalls = null;
+    filters.minInstalls = null;
     render();
   });
 
@@ -1210,7 +1210,7 @@ function applyFilters() {
       const hay = ((g.name || '') + ' ' + (g.publisher || '')).toLowerCase();
       if (!hay.includes(filters.search)) return false;
     }
-    if (filters.maxInstalls !== null && getInstalls(g) > filters.maxInstalls) return false;
+    if (filters.minInstalls !== null && getInstalls(g) < filters.minInstalls) return false;
     return true;
   });
 }
