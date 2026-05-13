@@ -226,7 +226,7 @@
     line-height: 1;
   }
 
-  /* Flyout */
+  /* Flyout — shown/hidden by JS, not CSS hover */
   .cat-flyout {
     display: none;
     position: absolute;
@@ -239,10 +239,8 @@
     box-shadow: var(--shadow-md);
     min-width: 170px;
     padding: 4px;
-    margin-left: 4px;
-  }
-  .cat-item:hover .cat-flyout {
-    display: block;
+    margin-left: 0;
+    padding-left: 8px; /* invisible bridge: mouse stays in hover zone when moving right */
   }
   .cat-flyout-item {
     display: flex;
@@ -983,6 +981,27 @@ function buildSidebar() {
     } else if (trigger) {
       selectCategory(trigger.dataset.category, 'all');
     }
+  });
+
+  initFlyouts();
+}
+
+function initFlyouts() {
+  let flyoutTimer = null;
+  document.querySelectorAll('#catList .cat-item').forEach(item => {
+    const flyout = item.querySelector('.cat-flyout');
+    if (!flyout) return;
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(flyoutTimer);
+      flyout.style.display = 'block';
+    });
+    item.addEventListener('mouseleave', () => {
+      flyoutTimer = setTimeout(() => { flyout.style.display = 'none'; }, 150);
+    });
+    flyout.addEventListener('mouseenter', () => clearTimeout(flyoutTimer));
+    flyout.addEventListener('mouseleave', () => {
+      flyoutTimer = setTimeout(() => { flyout.style.display = 'none'; }, 150);
+    });
   });
 }
 
