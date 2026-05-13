@@ -150,16 +150,21 @@
   /* ============ MAIN LAYOUT ============ */
   .main {
     max-width: 1400px; margin: 0 auto;
-    padding: 24px 24px 24px 200px;
+    padding: 0 24px;
   }
-  .page-layout { /* sidebar is fixed; this wrapper is just for .content */ }
+  .page-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
   /* ============ LEFT SIDEBAR ============ */
   .sidebar {
-    position: fixed;
-    left: 8px;
-    top: 62px;
     width: 176px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    padding-top: 24px;
     z-index: 40;
   }
   .sidebar-header {
@@ -282,7 +287,7 @@
   }
 
   /* ============ CONTENT AREA ============ */
-  .content { min-width: 0; }
+  .content { flex: 1; min-width: 0; padding-top: 24px; }
 
   /* ============ STAT CARD (single) ============ */
   .stats {
@@ -542,7 +547,7 @@
     border: 1px solid var(--purple-border);
   }
   .badge.mech-badge {
-    font-size: 9px;
+    font-size: 11px;
     background: rgba(217,119,6,0.12); color: var(--amber);
     border: 1px solid rgba(217,119,6,0.35);
   }
@@ -641,24 +646,22 @@
   }
 
   @media (max-width: 900px) {
+    .page-layout { flex-direction: column; gap: 0; }
     .sidebar {
-      top: auto;
-      bottom: 0;
-      left: 0;
+      position: static;
       width: 100%;
-      height: auto;
+      padding-top: 16px;
+      padding-bottom: 4px;
       display: flex;
       flex-wrap: nowrap;
       gap: 2px;
-      padding: 8px 12px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
     .sidebar-header { display: none; }
-    .cat-flyout { left: 0; top: auto; bottom: 100%; margin-left: 0; margin-bottom: 4px; }
-    .main { padding: 16px 16px 72px 16px; }
+    .cat-flyout { left: 0; top: 100%; margin-left: 0; margin-top: 2px; }
+    .content { padding-top: 12px; }
+    .main { padding: 0 16px 24px; }
   }
   @media (max-width: 760px) {
     .games { grid-template-columns: 1fr; }
@@ -1113,7 +1116,7 @@ function renderCard(g) {
 
   const cat = g.intel_category || g.category || '';
   const mech = g.intel_sub_genre || '';
-  const catBadge = cat ? `<span class="badge cat-badge">Category: ${escapeHtml(cat)}</span>` : '';
+  const catBadge = cat ? `<span class="badge cat-badge">${escapeHtml(cat)}</span>` : '';
   const mechBadge = mech ? `<span class="badge mech-badge">Mechanic: ${escapeHtml(mech)}</span>` : '';
 
   const releaseHtml = g.launch_date
