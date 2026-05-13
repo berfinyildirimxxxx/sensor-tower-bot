@@ -64,11 +64,13 @@ CATEGORY_DISPLAY: dict[str, str] = {
 
 BASE_URL = "https://api.sensortower.com"
 APP_URL = "https://app.sensortower.com"
-MAX_REQUESTS_PER_SECOND = 10.0
+MAX_REQUESTS_PER_SECOND = 5.0
 APP_IDS_BATCH_SIZE = 50
 METADATA_BATCH_SIZE = 100
-INSTALL_FETCH_WORKERS = 6
-METADATA_FETCH_WORKERS = 4
+INSTALL_FETCH_WORKERS = 4
+METADATA_FETCH_WORKERS = 3
+HTTP_MAX_RETRIES = 4
+HTTP_RETRY_BACKOFF_BASE = 2.0
 
 _last_request_time: float = 0.0
 _rate_lock = threading.Lock()
@@ -107,23 +109,59 @@ def _throttled_get(url: str, params: dict[str, Any]) -> requests.Response:
 
 def _get_json(url: str, params: dict[str, Any]) -> Any | None:
     log_url = _build_log_url(url, params)
-    try:
-        response = _throttled_get(url, params)
-        response.raise_for_status()
-        return response.json()
-    except requests.HTTPError as exc:
-        status_code = exc.response.status_code if exc.response is not None else "unknown"
-        body_preview = ""
-        if exc.response is not None:
-            try:
-                body_preview = exc.response.text[:500]
-            except Exception:
-                pass
-        logger.error("ST HTTP error %s status=%s body=%s", log_url, status_code, body_preview)
-    except requests.RequestException as exc:
-        logger.error("ST request failed %s error=%s", log_url, exc)
-    except ValueError as exc:
-        logger.error("ST invalid JSON %s error=%s", log_url, exc)
+    for attempt in range(1, HTTP_MAX_RETRIES + 1):
+        try:
+            response = _throttled_get(url, params)
+            if response.status_code == 429:
+                retry_after_header = response.headers.get("Retry-After")
+                try:
+                    retry_after = float(retry_after_header) if retry_after_header else 0.0
+                except ValueError:
+                    retry_after = 0.0
+                wait = max(retry_after, HTTP_RETRY_BACKOFF_BASE ** attempt)
+                if attempt < HTTP_MAX_RETRIES:
+                    logger.warning(
+                        "ST 429 rate-limited (attempt %d/%d), sleeping %.1fs: %s",
+                        attempt, HTTP_MAX_RETRIES, wait, log_url,
+                    )
+                    time.sleep(wait)
+                    continue
+                logger.error("ST 429 exhausted retries: %s", log_url)
+                return None
+            response.raise_for_status()
+            return response.json()
+        except requests.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else "unknown"
+            body_preview = ""
+            if exc.response is not None:
+                try:
+                    body_preview = exc.response.text[:500]
+                except Exception:
+                    pass
+            if status_code in (500, 502, 503, 504) and attempt < HTTP_MAX_RETRIES:
+                wait = HTTP_RETRY_BACKOFF_BASE ** attempt
+                logger.warning(
+                    "ST %s server error (attempt %d/%d), sleeping %.1fs: %s",
+                    status_code, attempt, HTTP_MAX_RETRIES, wait, log_url,
+                )
+                time.sleep(wait)
+                continue
+            logger.error("ST HTTP error %s status=%s body=%s", log_url, status_code, body_preview)
+            return None
+        except requests.RequestException as exc:
+            if attempt < HTTP_MAX_RETRIES:
+                wait = HTTP_RETRY_BACKOFF_BASE ** attempt
+                logger.warning(
+                    "ST request failed (attempt %d/%d), sleeping %.1fs: %s err=%s",
+                    attempt, HTTP_MAX_RETRIES, wait, log_url, exc,
+                )
+                time.sleep(wait)
+                continue
+            logger.error("ST request failed %s error=%s", log_url, exc)
+            return None
+        except ValueError as exc:
+            logger.error("ST invalid JSON %s error=%s", log_url, exc)
+            return None
     return None
 
 

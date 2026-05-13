@@ -52,15 +52,20 @@ def send_summary_message(
     run_date: str,
     total_fetched: int = 0,
     new_today: int = 0,
+    ios_fetched: int = 0,
+    android_fetched: int = 0,
 ) -> bool:
     """Daily summary sent to Slack.
 
-    Shows total scanned count and how many games were added to radar today.
+    Shows total scanned count and platform breakdown.
     No game names — browse on the dashboard.
     """
     lines = [f"📊 *Daily Casual Game Scan — {run_date}*", ""]
     lines.append(f"🔍 *{total_fetched:,}* games scanned")
-    lines.append(f"🆕 *{new_today:,}* new on radar today")
+    if ios_fetched or android_fetched:
+        lines.append(f"📱 iOS: *{ios_fetched:,}*  •  🤖 Android: *{android_fetched:,}*")
+    if new_today:
+        lines.append(f"🆕 *{new_today:,}* new on radar today")
     lines.append("")
     lines.append(f"🌐 <{RADAR_URL}|Open Radar Dashboard>")
 
