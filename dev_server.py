@@ -23,6 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 LOOKBACK_DAYS = 60
+MAX_INSTALLS = 50000
 
 _cache: dict[str, Any] | None = None
 _cache_lock = threading.Lock()
@@ -33,6 +34,7 @@ def _fetch_all_games() -> dict[str, Any]:
     """Fetch from Sensor Tower, merge, then enrich every result with sub-genre."""
     raw_games = fetch_new_games(
         release_lookback_days=LOOKBACK_DAYS,
+        max_installs=MAX_INSTALLS,
     )
     logger.info("Fetched %d raw games from Sensor Tower", len(raw_games))
 
@@ -111,6 +113,6 @@ def api_games():
 
 if __name__ == "__main__":
     print("Starting dev server at http://localhost:8000")
-    print(f"Fetching last {LOOKBACK_DAYS} days, no install cap, showing ALL results")
+    print(f"Fetching last {LOOKBACK_DAYS} days, max installs {MAX_INSTALLS}, showing ALL results")
     print("Sub-genre: using official API (auth_token, no cookie needed)")
     app.run(host="127.0.0.1", port=8000, debug=False)
