@@ -150,21 +150,17 @@
   /* ============ MAIN LAYOUT ============ */
   .main {
     max-width: 1400px; margin: 0 auto;
-    padding: 24px;
+    padding: 24px 24px 24px 200px;
   }
-  .page-layout {
-    display: flex;
-    gap: 0;
-    align-items: flex-start;
-  }
+  .page-layout { /* sidebar is fixed; this wrapper is just for .content */ }
 
   /* ============ LEFT SIDEBAR ============ */
   .sidebar {
-    width: 184px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 24px;
-    padding-right: 16px;
+    position: fixed;
+    left: 8px;
+    top: 62px;
+    width: 176px;
+    z-index: 40;
   }
   .sidebar-header {
     font-size: 10px;
@@ -231,13 +227,14 @@
     position: absolute;
     left: 100%;
     top: 0;
-    z-index: 30;
+    z-index: 50;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     min-width: 170px;
     padding: 4px;
+    margin-left: 4px;
   }
   .cat-item:hover .cat-flyout {
     display: block;
@@ -285,7 +282,7 @@
   }
 
   /* ============ CONTENT AREA ============ */
-  .content { flex: 1; min-width: 0; }
+  .content { min-width: 0; }
 
   /* ============ STAT CARD (single) ============ */
   .stats {
@@ -482,6 +479,7 @@
     position: relative;
     overflow: hidden;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 140px;
   }
   .card:hover {
     transform: translateY(-2px);
@@ -512,22 +510,16 @@
     font-size: 12px; color: var(--text-muted);
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-  .card-added {
-    position: absolute; top: 10px; right: 12px;
-    font-size: 10px; font-weight: 600;
-    color: var(--text-soft);
-    text-transform: uppercase; letter-spacing: 0.04em;
-  }
-  .card-added.new {
-    color: var(--orange);
-    background: var(--orange-soft);
-    padding: 3px 7px;
-    border-radius: 5px;
-    border: 1px solid var(--orange-border);
-  }
   .badges {
-    display: flex; flex-wrap: wrap; gap: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     margin-top: 8px;
+  }
+  .badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
   }
   .badge {
     font-size: 11px; font-weight: 500;
@@ -649,19 +641,24 @@
   }
 
   @media (max-width: 900px) {
-    .page-layout { flex-direction: column; gap: 16px; }
     .sidebar {
+      top: auto;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      position: static;
-      padding-right: 0;
+      height: auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      align-items: center;
+      flex-wrap: nowrap;
+      gap: 2px;
+      padding: 8px 12px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .sidebar-header { width: 100%; margin-bottom: 2px; }
-    .cat-item { flex-shrink: 0; }
-    .cat-flyout { left: 0; top: 100%; margin-top: 2px; }
+    .sidebar-header { display: none; }
+    .cat-flyout { left: 0; top: auto; bottom: 100%; margin-left: 0; margin-bottom: 4px; }
+    .main { padding: 16px 16px 72px 16px; }
   }
   @media (max-width: 760px) {
     .games { grid-template-columns: 1fr; }
@@ -824,15 +821,6 @@ function daysAgo(s) {
   const d = new Date(s);
   if (isNaN(d.getTime())) return Infinity;
   return Math.floor((Date.now() - d.getTime()) / (1000 * 60 * 60 * 24));
-}
-function addedLabel(g) {
-  const d = daysAgo(g.first_seen);
-  if (d <= 0) return 'Today';
-  if (d === 1) return 'Yesterday';
-  if (d < 7) return d + 'd ago';
-  if (d < 14) return '1 week ago';
-  if (d < 30) return Math.floor(d / 7) + ' weeks ago';
-  return d + 'd ago';
 }
 function getPlatforms(g) {
   if (Array.isArray(g.platforms) && g.platforms.length) return g.platforms;
@@ -1110,8 +1098,6 @@ function render() {
 function renderCard(g) {
   const installs = getInstalls(g);
   const plats = getPlatforms(g);
-  const addLbl = addedLabel(g);
-  const isNew = daysAgo(g.first_seen) <= 1;
 
   const iconHtml = g.icon_url
     ? `<img src="${escapeAttr(g.icon_url)}" alt="" onerror="this.parentNode.innerHTML='${(g.name||'?').charAt(0).toUpperCase()}'; this.parentNode.style.background='${pickIconColor(g.intel_category)}';" />`
@@ -1136,7 +1122,6 @@ function renderCard(g) {
 
   return `
     <div class="card">
-      <div class="card-added ${isNew ? 'new' : ''}">${addLbl}</div>
       <div class="card-head">
         <div class="card-icon" style="${iconStyle}">${iconHtml}</div>
         <div class="card-title-block">
@@ -1145,8 +1130,10 @@ function renderCard(g) {
         </div>
       </div>
       <div class="badges">
-        ${platformBadges}
-        <span class="badge installs">${fmtInstalls(installs)} installs</span>
+        <div class="badges-row">
+          ${platformBadges}
+          <span class="badge installs">${fmtInstalls(installs)} installs</span>
+        </div>
         ${catBadge}
         ${mechBadge}
       </div>
