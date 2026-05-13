@@ -18,11 +18,9 @@ Public API:
 from __future__ import annotations
 
 import concurrent.futures
-import json
 import logging
 import threading
 import time
-from pathlib import Path
 from typing import Any
 
 import requests
@@ -38,10 +36,6 @@ APP_TAG_PAGE_LIMIT = 2000
 SUB_GENRE_WORKERS = 3
 MANUAL_RETRIES = 3
 RETRY_BACKOFF_BASE = 5.0
-FILTER_CACHE_PATH = Path(".sub_genre_filter_cache.json")
-
-_filter_cache: dict[str, str] | None = None
-_filter_cache_lock = threading.Lock()
 
 
 def _build_session() -> requests.Session:
@@ -143,33 +137,6 @@ def _auth_headers(auth_token: str) -> dict[str, str]:
     }
 
 
-def _load_filter_cache() -> dict[str, str]:
-    global _filter_cache
-    with _filter_cache_lock:
-        if _filter_cache is not None:
-            return _filter_cache
-        if FILTER_CACHE_PATH.exists():
-            try:
-                _filter_cache = json.loads(FILTER_CACHE_PATH.read_text())
-                if not isinstance(_filter_cache, dict):
-                    _filter_cache = {}
-            except (json.JSONDecodeError, OSError):
-                _filter_cache = {}
-        else:
-            _filter_cache = {}
-        return _filter_cache
-
-
-def _save_filter_cache() -> None:
-    with _filter_cache_lock:
-        if _filter_cache is None:
-            return
-        try:
-            FILTER_CACHE_PATH.write_text(json.dumps(_filter_cache, indent=2))
-        except OSError as exc:
-            logger.debug("Filter cache save failed: %s", exc)
-
-
 # ---------------------------------------------------------------------------
 # 1. Discover sub-genre values dynamically
 # ---------------------------------------------------------------------------
@@ -236,12 +203,7 @@ def _discover_sub_genre_values(auth_token: str) -> list[str]:
 # ---------------------------------------------------------------------------
 
 def _create_filter(sub_genre: str, auth_token: str) -> str | None:
-    """POST /v1/custom_fields_filter — returns filter ID (cached to disk)."""
-    cache = _load_filter_cache()
-    cached_id = cache.get(sub_genre)
-    if cached_id:
-        return cached_id
-
+    """POST /v1/custom_fields_filter — returns filter ID."""
     url = f"{BASE_URL}/v1/custom_fields_filter"
     body = {
         "custom_fields": [
@@ -270,13 +232,9 @@ def _create_filter(sub_genre: str, auth_token: str) -> str | None:
             )
         return None
     try:
-        filter_id = response.json().get("custom_fields_filter_id")
+        return response.json().get("custom_fields_filter_id")
     except ValueError:
         return None
-    if filter_id:
-        with _filter_cache_lock:
-            cache[sub_genre] = filter_id
-    return filter_id
 
 
 # ---------------------------------------------------------------------------
@@ -481,6 +439,5 @@ def get_sub_genres_for_apps(
                 logger.info("All target apps matched, stopping early")
                 break
 
-    _save_filter_cache()
     logger.info("Sub-genre mapping complete: %d/%d apps matched", len(result), len(target_set))
     return result

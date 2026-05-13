@@ -1023,8 +1023,9 @@ function renderCard(g, i) {
       </div>
       <div class="badges">
         ${platformBadges}
+        <span class="badge installs">${fmtInstalls(installs)} installs</span>
         <span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">Category: ${escapeHtml(g.intel_category || g.category || 'bulunamadı')}</span>
-        <span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">Sub-Genre: ${escapeHtml(g.intel_sub_genre || 'bulunamadı')}</span>
+        <span class="badge" style="background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);">Sub-Genre: ${escapeHtml(g.intel_sub_genre || 'bulunamadı')}</span>
       </div>
       ${g.launch_date ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>` : ''}
     </div>
@@ -1072,7 +1073,7 @@ function openModal(g) {
         <p class="modal-publisher">${escapeHtml(g.publisher || '—')}</p>
         <div class="badges">
           ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.intel_sub_genre ? `<span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+          ${g.intel_sub_genre ? `<span class="badge" style="background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);">${escapeHtml(g.intel_sub_genre)}</span>` : ''}
         </div>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1085,7 +1086,7 @@ function openModal(g) {
         <div style="font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);margin-bottom:8px;">📊 Sensor Tower Taxonomy</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;">
           ${g.intel_category ? `<span style="padding:3px 8px;background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);border-radius:5px;font-weight:600;">Category: ${escapeHtml(g.intel_category)}</span>` : ''}
-          ${g.intel_sub_genre ? `<span style="padding:3px 8px;background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);border-radius:5px;font-weight:600;">Sub-genre: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
+          ${g.intel_sub_genre ? `<span style="padding:3px 8px;background:rgba(217,119,6,0.12);color:var(--amber);border:1px solid rgba(217,119,6,0.35);border-radius:5px;font-weight:600;">Sub-genre: ${escapeHtml(g.intel_sub_genre)}</span>` : ''}
           ${g.intel_genre ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Genre: ${escapeHtml(g.intel_genre)}</span>` : ''}
           ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
         </div>
