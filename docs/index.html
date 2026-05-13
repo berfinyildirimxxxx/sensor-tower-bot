@@ -753,9 +753,15 @@ function hasPlatform(g, p) {
 }
 
 // ---------- data load ----------
+const IS_DEV = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+
 async function loadData() {
   try {
-    const r = await fetch('games_data.json?_=' + Date.now());
+    const dataUrl = IS_DEV ? '/api/top10?_=' + Date.now() : 'games_data.json?_=' + Date.now();
+    if (IS_DEV) {
+      document.getElementById('lastUpdated').textContent = 'Fetching live data from Sensor Tower...';
+    }
+    const r = await fetch(dataUrl);
     const text = await r.text();
     if (!r.ok || text.trim().startsWith('<')) {
       document.getElementById('lastUpdated').textContent = 'No data yet — run the bot first (Actions → Daily Alert → Run workflow)';
@@ -1030,9 +1036,8 @@ function renderCard(g, i) {
       </div>
       <div class="badges">
         ${platformBadges}
-        <span class="badge installs">${fmtInstalls(installs)} installs</span>
-        ${g.intel_category ? `<span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">${escapeHtml(g.intel_category)}</span>` : ''}
-        ${g.mechanic && g.mechanic !== 'Other Puzzle' ? `<span class="badge mechanic">${escapeHtml(g.mechanic)}</span>` : ''}
+        <span class="badge" style="background:var(--purple-soft);color:var(--purple);border:1px solid var(--purple-border);">Category: ${escapeHtml(g.intel_category || g.category || 'bulunamadı')}</span>
+        <span class="badge" style="background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue-border);">Sub-Genre: ${escapeHtml(g.intel_sub_genre || 'bulunamadı')}</span>
       </div>
       ${g.launch_date ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>` : ''}
     </div>
