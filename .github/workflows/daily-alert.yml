@@ -1,7 +1,7 @@
 name: Daily Alert
 on:
   schedule:
-    - cron: "0 13 * * *"
+    - cron: "0 7 * * *"
   workflow_dispatch:
     inputs:
       test_mode:

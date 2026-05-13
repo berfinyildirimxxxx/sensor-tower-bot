@@ -226,7 +226,7 @@
     line-height: 1;
   }
 
-  /* Flyout — shown/hidden by JS, not CSS hover */
+  /* Flyout — shown/hidden by JS only */
   .cat-flyout {
     display: none;
     position: absolute;
@@ -239,8 +239,6 @@
     box-shadow: var(--shadow-md);
     min-width: 170px;
     padding: 4px;
-    margin-left: 0;
-    padding-left: 8px; /* invisible bridge: mouse stays in hover zone when moving right */
   }
   .cat-flyout-item {
     display: flex;
@@ -987,22 +985,44 @@ function buildSidebar() {
 }
 
 function initFlyouts() {
-  let flyoutTimer = null;
-  document.querySelectorAll('#catList .cat-item').forEach(item => {
+  const catItems = document.querySelectorAll('#catList .cat-item');
+  let activeItem = null;
+
+  function closeAll() {
+    catItems.forEach(item => {
+      const f = item.querySelector('.cat-flyout');
+      if (f) f.style.display = 'none';
+    });
+    activeItem = null;
+  }
+
+  catItems.forEach(item => {
     const flyout = item.querySelector('.cat-flyout');
     if (!flyout) return;
+
     item.addEventListener('mouseenter', () => {
-      clearTimeout(flyoutTimer);
+      if (activeItem && activeItem !== item) {
+        const prev = activeItem.querySelector('.cat-flyout');
+        if (prev) prev.style.display = 'none';
+      }
       flyout.style.display = 'block';
+      activeItem = item;
     });
-    item.addEventListener('mouseleave', () => {
-      flyoutTimer = setTimeout(() => { flyout.style.display = 'none'; }, 150);
+
+    item.addEventListener('mouseleave', (e) => {
+      if (flyout.contains(e.relatedTarget)) return;
+      flyout.style.display = 'none';
+      if (activeItem === item) activeItem = null;
     });
-    flyout.addEventListener('mouseenter', () => clearTimeout(flyoutTimer));
-    flyout.addEventListener('mouseleave', () => {
-      flyoutTimer = setTimeout(() => { flyout.style.display = 'none'; }, 150);
+
+    flyout.addEventListener('mouseleave', (e) => {
+      if (item.contains(e.relatedTarget)) return;
+      flyout.style.display = 'none';
+      if (activeItem === item) activeItem = null;
     });
   });
+
+  document.getElementById('sidebar').addEventListener('mouseleave', closeAll);
 }
 
 function selectCategory(category, mechanic) {
