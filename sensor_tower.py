@@ -624,10 +624,15 @@ def _fetch_platform_games(
 
 
 def fetch_new_games(
-    max_installs: int | None = 50000,
+    max_installs: int | None = None,
     release_lookback_days: int = 60,
 ) -> list[dict[str, Any]]:
-    """Fetch games released in last N days with install thresholds."""
+    """Fetch games released in last N days.
+
+    Lower install threshold (>=500) is enforced inside the platform fetcher;
+    no upper bound by default so the daily list captures every casual/puzzle
+    game above the lower threshold for the release window.
+    """
     import concurrent.futures
 
     try:

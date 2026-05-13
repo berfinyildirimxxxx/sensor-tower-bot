@@ -7,7 +7,7 @@ import json
 import logging
 import os
 import sys
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -20,7 +20,6 @@ from sub_genre import get_sub_genres_for_apps
 logger = logging.getLogger(__name__)
 
 WEB_DATA_PATH = Path("docs/games_data.json")
-RETENTION_DAYS = 30
 
 
 # ---------------------------------------------------------------------------
@@ -85,63 +84,32 @@ def merge_cross_platform(games: list[dict[str, Any]]) -> list[dict[str, Any]]:
 # Web data
 # ---------------------------------------------------------------------------
 
-def _load_existing_web_data() -> dict[str, Any]:
-    if not WEB_DATA_PATH.exists():
-        return {"games": [], "last_updated": ""}
-    try:
-        return json.loads(WEB_DATA_PATH.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning("Failed to read existing web data, starting fresh: %s", exc)
-        return {"games": [], "last_updated": ""}
-
-
-def _prune_old_games(games: list[dict[str, Any]], retention_days: int) -> list[dict[str, Any]]:
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=retention_days)).date().isoformat()
-    return [g for g in games if str(g.get("first_seen") or "") >= cutoff]
-
-
 def update_web_data(scored_games: list[dict[str, Any]], sheet_url: str | None) -> None:
-    """Merge today's scored games into docs/games_data.json with 30d retention."""
+    """Overwrite docs/games_data.json with today's scan.
+
+    No retention or cross-day merging — every run produces a fresh snapshot.
+    """
     today = datetime.now(timezone.utc).date().isoformat()
-    existing = _load_existing_web_data()
-    existing_games: list[dict[str, Any]] = existing.get("games") or []
+    games = [{**g, "first_seen": today, "last_seen": today} for g in scored_games]
+    games.sort(key=lambda g: int(g.get("installs_total") or 0), reverse=True)
 
-    by_key: dict[str, dict[str, Any]] = {}
-    for g in existing_games:
-        key = _merge_key(g)
-        by_key[key] = g
-
-    for g in scored_games:
-        key = _merge_key(g)
-        if key in by_key:
-            g["first_seen"] = by_key[key].get("first_seen") or today
-        else:
-            g["first_seen"] = today
-        g["last_seen"] = today
-        by_key[key] = g
-
-    all_games = list(by_key.values())
-    all_games = _prune_old_games(all_games, RETENTION_DAYS)
-    all_games.sort(key=lambda g: int(g.get("installs_total") or 0), reverse=True)
-
-    ios_count = sum(1 for g in scored_games if "ios" in str(g.get("platform") or ""))
-    android_count = sum(1 for g in scored_games if "android" in str(g.get("platform") or ""))
+    ios_count = sum(1 for g in games if "ios" in str(g.get("platform") or ""))
+    android_count = sum(1 for g in games if "android" in str(g.get("platform") or ""))
 
     payload = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "run_date": today,
-        "retention_days": RETENTION_DAYS,
-        "sheet_url": sheet_url or existing.get("sheet_url") or "",
-        "total_fetched_today": len(scored_games),
+        "sheet_url": sheet_url or "",
+        "total_fetched_today": len(games),
         "ios_fetched_today": ios_count,
         "android_fetched_today": android_count,
-        "total_games_on_site": len(all_games),
-        "games": all_games,
+        "total_games_on_site": len(games),
+        "games": games,
     }
 
     WEB_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     WEB_DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    logger.info("Web data updated: %d games today, %d total on site", len(scored_games), len(all_games))
+    logger.info("Web data updated: %d games scanned today", len(games))
 
 
 # ---------------------------------------------------------------------------
