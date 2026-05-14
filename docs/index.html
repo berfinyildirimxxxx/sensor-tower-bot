@@ -402,6 +402,7 @@
   .fl-platform::before { background: var(--purple); }
   .fl-release::before { background: var(--amber); }
   .fl-sort::before { background: var(--indigo); }
+  .fl-added::before { background: var(--orange); }
   .pills { display: flex; flex-wrap: wrap; gap: 4px; }
 
   .pill {
@@ -434,6 +435,7 @@
   .pills[data-group="platform"] .pill.active { background: var(--purple); border-color: var(--purple); color: white; box-shadow: 0 0 0 3px var(--purple-soft); }
   .pills[data-group="release"] .pill.active { background: var(--amber); border-color: var(--amber); color: white; }
   .pills[data-group="sort"] .pill.active { background: var(--indigo); border-color: var(--indigo); color: white; }
+  .pills[data-group="added"] .pill.active { background: var(--orange); border-color: var(--orange); color: white; }
 
   .fl-install::before { background: var(--blue); }
   .install-input {
@@ -707,6 +709,107 @@
   @media (max-width: 760px) {
     .games { grid-template-columns: 1fr; }
   }
+
+  /* ============ TODAY ADDED BADGE ============ */
+  .today-added-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; font-weight: 600;
+    color: var(--orange); background: var(--orange-soft);
+    border: 1px solid var(--orange-border);
+    border-radius: 6px; padding: 2px 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ============ CARD ADDED LABEL ============ */
+  .card-added {
+    margin-top: 5px;
+    font-size: 10px; font-weight: 600;
+    color: var(--text-soft);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  .card-added.added-today { color: var(--orange); }
+
+  /* ============ STAR BUTTON ============ */
+  .card { position: relative; }
+  .star-btn {
+    position: absolute; top: 8px; right: 8px;
+    width: 26px; height: 26px;
+    border: none; background: none; cursor: pointer;
+    font-size: 15px; line-height: 1;
+    color: var(--text-soft);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+    z-index: 2; opacity: 0;
+  }
+  .card:hover .star-btn,
+  .star-btn.starred { opacity: 1; }
+  .star-btn.starred { color: #f59e0b; }
+  .star-btn:hover { background: var(--surface-2); color: #f59e0b; }
+
+  /* ============ LIST ADD BUTTON ============ */
+  .list-add-btn {
+    font-size: 10px; font-weight: 600;
+    color: var(--text-soft); background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px; padding: 2px 7px;
+    cursor: pointer; font-family: inherit;
+    opacity: 0; transition: all 0.15s;
+    margin-top: 5px;
+  }
+  .card:hover .list-add-btn { opacity: 1; }
+  .list-add-btn:hover { background: var(--surface-2); color: var(--text); border-color: var(--border-strong); }
+
+  /* ============ LIST DROPDOWN ============ */
+  .list-dropdown {
+    position: fixed; z-index: 200;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow-md);
+    min-width: 164px; padding: 4px;
+    animation: fadeIn 0.12s ease;
+  }
+  .list-dropdown-item {
+    padding: 6px 10px; font-size: 12px;
+    color: var(--text-muted); cursor: pointer;
+    border-radius: 6px;
+    display: flex; align-items: center; gap: 6px;
+    transition: background 0.1s;
+    user-select: none;
+  }
+  .list-dropdown-item:hover { background: var(--surface-2); color: var(--text); }
+  .list-dropdown-item.in-list { color: var(--blue); }
+  .list-dropdown-item.new-list { color: var(--orange); font-weight: 600; }
+  .list-dropdown-divider { height: 1px; background: var(--border); margin: 3px 6px; }
+
+  /* ============ SIDEBAR SECTIONS (Starred / Lists) ============ */
+  .sidebar-divider { height: 1px; background: var(--border); margin: 10px 6px; }
+  .sidebar-section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-soft);
+    padding: 0 8px; margin-bottom: 6px; margin-top: 4px;
+  }
+  .add-list-icon {
+    width: 16px; height: 16px;
+    border: 1px solid var(--border); border-radius: 4px;
+    background: var(--surface-2); color: var(--text-muted);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 400; line-height: 1;
+    transition: all 0.15s; padding: 0; font-family: inherit;
+  }
+  .add-list-icon:hover { background: var(--orange-soft); color: var(--orange); border-color: var(--orange-border); }
+  .list-sidebar-item .cat-trigger { padding-right: 28px; }
+  .list-delete-btn {
+    position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px; border: none; background: none;
+    color: var(--text-soft); cursor: pointer; border-radius: 4px;
+    font-size: 12px; display: none; align-items: center; justify-content: center;
+    transition: all 0.1s;
+  }
+  .list-sidebar-item:hover .list-delete-btn { display: flex; }
+  .list-delete-btn:hover { color: var(--red); background: rgba(220,38,38,0.1); }
 </style>
 </head>
 <body>
@@ -750,6 +853,24 @@
         </button>
       </div>
       <div id="catList"></div>
+
+      <!-- Starred section -->
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-header">Starred</div>
+      <div class="cat-item">
+        <button class="cat-trigger" id="catStarred" data-view="starred">
+          <span class="cat-name">⭐ Starred</span>
+          <span class="cat-count" id="starredCount">0</span>
+        </button>
+      </div>
+
+      <!-- Lists section -->
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-header">
+        Lists
+        <button class="add-list-icon" id="newListBtn" title="New list">+</button>
+      </div>
+      <div id="listsSidebar"></div>
     </aside>
 
     <!-- CONTENT -->
@@ -763,6 +884,7 @@
           <div class="stat-sub">
             <span class="stat-sub-item"><span class="dot ios"></span>iOS <strong class="mono" id="iosCount">0</strong></span>
             <span class="stat-sub-item"><span class="dot android"></span>Android <strong class="mono" id="androidCount">0</strong></span>
+            <span class="today-added-badge" id="todayAddedBadge" style="display:none;">+<span id="todayAddedCount">0</span> new today</span>
           </div>
         </div>
       </section>
@@ -811,6 +933,18 @@
           </div>
 
           <div class="filter-group">
+            <span class="filter-label fl-added">Added</span>
+            <div class="pills" data-group="added" id="addedPills">
+              <button class="pill active" data-added="all">All</button>
+              <button class="pill" data-added="today">Today</button>
+              <button class="pill" data-added="yesterday">Yesterday</button>
+              <button class="pill" data-added="3">Last 3d</button>
+              <button class="pill" data-added="7">Last 7d</button>
+              <button class="pill" data-added="14">Last 14d</button>
+            </div>
+          </div>
+
+          <div class="filter-group">
             <span class="filter-label fl-install">Min Installs</span>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               <input type="text" id="maxInstallInput" class="install-input" placeholder="e.g. 1500" autocomplete="off" />
@@ -837,6 +971,11 @@
   <div class="modal" id="modal"></div>
 </div>
 
+<!-- Global list dropdown (repositioned by JS) -->
+<div class="list-dropdown" id="listDropdown" style="display:none;">
+  <div id="listDropdownContent"></div>
+</div>
+
 <script>
 let allGames = [];
 let dataMeta = {};
@@ -845,11 +984,81 @@ const filters = {
   category: 'all',
   mechanic: 'all',
   release: 'all',
+  added: 'all',
   sort: 'installs',
   search: '',
   minInstalls: null,
+  view: 'all', // 'all' | 'starred' | 'list:<name>'
 };
 let view = 'grid';
+
+// ---------- shared starred (GitHub API) + personal lists (localStorage) ----------
+const LS_LISTS = 'agave_lists_v1';
+let lists = loadLists();
+
+function loadLists() {
+  try { return JSON.parse(localStorage.getItem(LS_LISTS) || '{}'); }
+  catch { return {}; }
+}
+function saveLists() {
+  try { localStorage.setItem(LS_LISTS, JSON.stringify(lists)); } catch (_) {}
+}
+function getGameKey(g) {
+  return ((g.name || '').toLowerCase().trim() + '||' + (g.publisher || '').toLowerCase().trim());
+}
+
+// Shared starred — backed by docs/starred.json in the repo
+const _GH_TOKEN = '__STARRED_GH_TOKEN__';
+const _GH_API   = 'https://api.github.com/repos/berfinyildirimxxxx/sensor-tower-bot/contents/docs/starred.json';
+let starred = new Set();
+let _starredSha = null;
+let _starSaving = false;
+
+async function loadStarred() {
+  try {
+    const r = await fetch(_GH_API, {
+      headers: { 'Authorization': `Bearer ${_GH_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!r.ok) return;
+    const data = await r.json();
+    _starredSha = data.sha;
+    const parsed = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    starred = new Set(parsed.starred || []);
+  } catch (_) {}
+}
+
+async function saveStarred() {
+  if (_starSaving) return;
+  _starSaving = true;
+  const content = btoa(unescape(encodeURIComponent(
+    JSON.stringify({ starred: [...starred] }, null, 2) + '\n'
+  )));
+  const body = { message: 'update starred games', content, branch: 'main' };
+  if (_starredSha) body.sha = _starredSha;
+  try {
+    const r = await fetch(_GH_API, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${_GH_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    if (r.status === 409) {
+      // Conflict — someone else updated simultaneously; re-fetch and retry once
+      await loadStarred();
+      _starSaving = false;
+      await saveStarred();
+      return;
+    }
+    if (r.ok) {
+      const data = await r.json();
+      _starredSha = data.content?.sha || _starredSha;
+    }
+  } catch (_) {}
+  _starSaving = false;
+}
 
 // ---------- helpers ----------
 function getInstalls(g) {
@@ -914,15 +1123,29 @@ async function loadData() {
 
     const dateStr = data.run_date || new Date().toISOString().slice(0, 10);
     document.getElementById('scannedLabel').textContent = 'Scanned ' + fmtDate(dateStr);
-    document.getElementById('scannedValue').textContent = (data.total_fetched_today || 0).toLocaleString();
-    document.getElementById('iosCount').textContent = (data.ios_fetched_today || 0).toLocaleString();
-    document.getElementById('androidCount').textContent = (data.android_fetched_today || 0).toLocaleString();
+    document.getElementById('scannedValue').textContent = (data.total_games_on_site || data.total_fetched_today || 0).toLocaleString();
+
+    const iosGames = (allGames || []).filter(g => hasPlatform(g, 'ios'));
+    const androidGames = (allGames || []).filter(g => hasPlatform(g, 'android'));
+    document.getElementById('iosCount').textContent = iosGames.length.toLocaleString();
+    document.getElementById('androidCount').textContent = androidGames.length.toLocaleString();
+
+    const todayAdded = data.today_added_count;
+    const todayAddedDate = data.today_added_date;
+    const todayBadge = document.getElementById('todayAddedBadge');
+    if (todayAdded > 0 && todayAddedDate === dateStr) {
+      document.getElementById('todayAddedCount').textContent = todayAdded.toLocaleString();
+      todayBadge.style.display = '';
+    } else {
+      todayBadge.style.display = 'none';
+    }
 
     const sheetBtn = document.getElementById('sheetBtn');
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit';
     sheetBtn.href = data.sheet_url || SHEET_URL;
     sheetBtn.style.display = '';
 
+    await loadStarred();
     buildSidebar();
     bindFilters();
     render();
@@ -1037,6 +1260,71 @@ function buildSidebar() {
   });
 
   initFlyouts();
+
+  // Starred button click
+  document.getElementById('catStarred').addEventListener('click', () => selectView('starred'));
+
+  // New list button
+  document.getElementById('newListBtn').addEventListener('click', () => promptNewList());
+
+  buildListsSidebar();
+  updateStarredCount();
+}
+
+function buildListsSidebar() {
+  const container = document.getElementById('listsSidebar');
+  container.innerHTML = '';
+  Object.keys(lists).forEach(name => {
+    const count = (lists[name] || []).length;
+    const item = document.createElement('div');
+    item.className = 'cat-item list-sidebar-item';
+    item.style.position = 'relative';
+    item.innerHTML = `
+      <button class="cat-trigger ${filters.view === 'list:' + name ? 'active' : ''}" data-list="${escapeAttr(name)}">
+        <span class="cat-name">📋 ${escapeHtml(name)}</span>
+        <span class="cat-count">${count}</span>
+      </button>
+      <button class="list-delete-btn" title="Delete list" data-del-list="${escapeAttr(name)}">✕</button>`;
+    container.appendChild(item);
+  });
+
+  container.querySelectorAll('.cat-trigger[data-list]').forEach(btn => {
+    btn.addEventListener('click', () => selectView('list:' + btn.dataset.list));
+  });
+  container.querySelectorAll('.list-delete-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const name = btn.dataset.delList;
+      if (confirm(`Delete list "${name}"?`)) {
+        delete lists[name];
+        saveLists();
+        if (filters.view === 'list:' + name) selectView('all');
+        else buildListsSidebar();
+      }
+    });
+  });
+}
+
+function updateStarredCount() {
+  document.getElementById('starredCount').textContent = starred.size;
+  const btn = document.getElementById('catStarred');
+  btn.classList.toggle('active', filters.view === 'starred');
+}
+
+function selectView(viewKey) {
+  filters.view = viewKey;
+  // Reset category/mechanic when switching to starred/list view
+  if (viewKey !== 'all') {
+    filters.category = 'all';
+    filters.mechanic = 'all';
+    document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.cat-flyout-item').forEach(el => el.classList.remove('active'));
+  } else {
+    document.getElementById('catAll').classList.add('active');
+  }
+  updateStarredCount();
+  buildListsSidebar();
+  render();
 }
 
 function initFlyouts() {
@@ -1083,6 +1371,7 @@ function initFlyouts() {
 function selectCategory(category, mechanic) {
   filters.category = category;
   filters.mechanic = mechanic || 'all';
+  filters.view = 'all';
 
   document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
   if (category === 'all') {
@@ -1091,6 +1380,8 @@ function selectCategory(category, mechanic) {
     const trigger = document.querySelector(`#catList .cat-trigger[data-category="${CSS.escape(category)}"]`);
     if (trigger) trigger.classList.add('active');
   }
+  updateStarredCount();
+  buildListsSidebar();
 
   document.querySelectorAll('.cat-flyout-item').forEach(el => el.classList.remove('active'));
   if (mechanic && mechanic !== 'all') {
@@ -1114,6 +1405,7 @@ function bindFilters() {
       if (g === 'platform') filters.platform = pill.dataset.platform;
       if (g === 'release') filters.release = pill.dataset.release;
       if (g === 'sort') filters.sort = pill.dataset.sort;
+      if (g === 'added') filters.added = pill.dataset.added;
       render();
     });
   });
@@ -1193,8 +1485,28 @@ function setView(v) {
 }
 
 // ---------- filter + render ----------
+function addedDaysAgo(g) {
+  return daysAgo(g.added_date || g.first_seen);
+}
+
+function addedBadgeHtml(g) {
+  const days = addedDaysAgo(g);
+  if (days === 0) return '<div class="card-added added-today">Today</div>';
+  if (days === 1) return '<div class="card-added">Yesterday</div>';
+  if (days <= 7) return `<div class="card-added">${days}d ago</div>`;
+  return '';
+}
+
 function applyFilters() {
   return allGames.filter(g => {
+    // View mode: starred or list
+    if (filters.view === 'starred') {
+      if (!starred.has(getGameKey(g))) return false;
+    } else if (filters.view && filters.view.startsWith('list:')) {
+      const listName = filters.view.slice(5);
+      if (!(lists[listName] || []).includes(getGameKey(g))) return false;
+    }
+
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
     if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
     if (filters.mechanic !== 'all' && (g.intel_sub_genre || '') !== filters.mechanic) return false;
@@ -1204,6 +1516,15 @@ function applyFilters() {
     } else if (filters.release !== 'all') {
       const r = daysAgo(g.launch_date);
       if (r > parseInt(filters.release, 10)) return false;
+    }
+
+    if (filters.added !== 'all') {
+      const d = addedDaysAgo(g);
+      if (filters.added === 'today' && d !== 0) return false;
+      if (filters.added === 'yesterday' && d !== 1) return false;
+      if (filters.added === '3' && d > 2) return false;
+      if (filters.added === '7' && d > 6) return false;
+      if (filters.added === '14' && d > 13) return false;
     }
 
     if (filters.search) {
@@ -1246,6 +1567,8 @@ function render() {
 function renderCard(g) {
   const installs = getInstalls(g);
   const plats = getPlatforms(g);
+  const key = getGameKey(g);
+  const isStarred = starred.has(key);
 
   const iconHtml = g.icon_url
     ? `<img src="${escapeAttr(g.icon_url)}" alt="" onerror="this.parentNode.innerHTML='${(g.name||'?').charAt(0).toUpperCase()}'; this.parentNode.style.background='${pickIconColor(g.intel_category)}';" />`
@@ -1268,8 +1591,12 @@ function renderCard(g) {
     ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>`
     : `<div class="card-released unavailable">Release info is not available.</div>`;
 
+  const addedHtml = addedBadgeHtml(g);
+  const hasLists = Object.keys(lists).length > 0;
+
   return `
-    <div class="card">
+    <div class="card" data-key="${escapeAttr(key)}">
+      <button class="star-btn ${isStarred ? 'starred' : ''}" title="${isStarred ? 'Unstar' : 'Star'}" onclick="toggleStar(event,'${escapeAttr(key)}')">${isStarred ? '★' : '☆'}</button>
       <div class="card-head">
         <div class="card-icon" style="${iconStyle}">${iconHtml}</div>
         <div class="card-title-block">
@@ -1286,6 +1613,8 @@ function renderCard(g) {
         ${mechBadge}
       </div>
       ${releaseHtml}
+      ${addedHtml}
+      <button class="list-add-btn" onclick="openListDropdown(event,'${escapeAttr(key)}')">+ List</button>
     </div>
   `;
 }
@@ -1298,6 +1627,103 @@ function pickIconColor(cat) {
   };
   return map[cat] || '#78716c';
 }
+
+// ---------- star / list actions ----------
+async function toggleStar(e, key) {
+  e.stopPropagation();
+  if (starred.has(key)) starred.delete(key);
+  else starred.add(key);
+  updateStarredCount();
+
+  // Update the card button in-place without full re-render
+  const btn = document.querySelector(`.card[data-key="${CSS.escape(key)}"] .star-btn`);
+  if (btn) {
+    const isNowStarred = starred.has(key);
+    btn.textContent = isNowStarred ? '★' : '☆';
+    btn.classList.toggle('starred', isNowStarred);
+    btn.title = isNowStarred ? 'Unstar' : 'Star';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+
+  await saveStarred();
+
+  if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+  if (filters.view === 'starred') render();
+}
+
+let _dropdownKey = null;
+function openListDropdown(e, key) {
+  e.stopPropagation();
+  const dropdown = document.getElementById('listDropdown');
+
+  if (_dropdownKey === key && dropdown.style.display !== 'none') {
+    closeListDropdown();
+    return;
+  }
+  _dropdownKey = key;
+
+  const content = document.getElementById('listDropdownContent');
+  const listNames = Object.keys(lists);
+  let html = '';
+  if (listNames.length) {
+    listNames.forEach(name => {
+      const inList = (lists[name] || []).includes(key);
+      html += `<div class="list-dropdown-item ${inList ? 'in-list' : ''}" data-list-name="${escapeAttr(name)}">
+        <span>${inList ? '✓' : '○'}</span>
+        <span>${escapeHtml(name)}</span>
+      </div>`;
+    });
+    html += '<div class="list-dropdown-divider"></div>';
+  }
+  html += `<div class="list-dropdown-item new-list" id="dropdownNewList">+ New list</div>`;
+  content.innerHTML = html;
+
+  content.querySelectorAll('[data-list-name]').forEach(item => {
+    item.addEventListener('click', () => {
+      const name = item.dataset.listName;
+      const arr = lists[name] || [];
+      const idx = arr.indexOf(key);
+      if (idx === -1) arr.push(key);
+      else arr.splice(idx, 1);
+      lists[name] = arr;
+      saveLists();
+      buildListsSidebar();
+      closeListDropdown();
+      if (filters.view === 'list:' + name) render();
+    });
+  });
+  content.querySelector('#dropdownNewList').addEventListener('click', () => {
+    closeListDropdown();
+    promptNewList(key);
+  });
+
+  const rect = e.currentTarget.getBoundingClientRect();
+  dropdown.style.display = 'block';
+  dropdown.style.top = (rect.bottom + 4 + window.scrollY) + 'px';
+  dropdown.style.left = rect.left + 'px';
+}
+
+function closeListDropdown() {
+  document.getElementById('listDropdown').style.display = 'none';
+  _dropdownKey = null;
+}
+
+function promptNewList(keyToAdd) {
+  const name = prompt('New list name:');
+  if (!name || !name.trim()) return;
+  const trimmed = name.trim();
+  if (!lists[trimmed]) lists[trimmed] = [];
+  if (keyToAdd && !lists[trimmed].includes(keyToAdd)) lists[trimmed].push(keyToAdd);
+  saveLists();
+  buildListsSidebar();
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('#listDropdown') && !e.target.closest('.list-add-btn')) {
+    closeListDropdown();
+  }
+});
 
 // ---------- export CSV ----------
 function exportCSV() {

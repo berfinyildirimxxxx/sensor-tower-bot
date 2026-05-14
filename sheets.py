@@ -167,18 +167,19 @@ def write_to_sheet(scored_games: list[dict[str, Any]]) -> str | None:
         return None
 
 
-def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
-    """Write ALL fetched games (iOS + Android, no filter) to 'Scanned - YYYY-MM-DD' tab.
+def write_new_games_to_sheet(new_games: list[dict[str, Any]]) -> None:
+    """Write only today's newly added games to a timestamped 'Today Added DD.MM.YYYY HH:MM' tab.
 
+    Each run gets its own tab, so two runs on the same day produce two tabs.
     Sorted by total installs descending. Never crashes — logs errors.
     """
-    if not games:
-        logger.info("No fetched games to write to scanned-games sheet.")
+    if not new_games:
+        logger.info("No new games to write to sheet today.")
         return
 
     try:
         spreadsheet = _load_spreadsheet()
-        tab_name = f"Radar Game Info {datetime.utcnow().strftime('%d.%m.%Y')}"
+        tab_name = f"Today Added {datetime.utcnow().strftime('%d.%m.%Y %H:%M')}"
         headers = [
             "Game Name",
             "Developer",
@@ -190,23 +191,16 @@ def write_all_games_to_sheet(games: list[dict[str, Any]]) -> None:
             "Sub-Genre",
             "Store URL",
         ]
-        worksheet = _get_or_create_worksheet(
-            spreadsheet=spreadsheet,
-            tab_name=tab_name,
-            rows=len(games) + 10,
+        worksheet = spreadsheet.add_worksheet(
+            title=tab_name,
+            rows=len(new_games) + 10,
             cols=len(headers),
         )
-        _ensure_headers(worksheet, headers)
+        worksheet.append_row(headers, value_input_option="RAW")
 
-        sorted_games = sorted(
-            games,
-            key=lambda game: _get_installs(game),
-            reverse=True,
-        )
-        rows = [_build_all_games_row(game) for game in sorted_games]
+        sorted_games = sorted(new_games, key=lambda g: _get_installs(g), reverse=True)
+        rows = [_build_all_games_row(g) for g in sorted_games]
         worksheet.append_rows(rows, value_input_option="RAW")
-        logger.info(
-            "Wrote %d total scanned games to sheet tab '%s'.", len(rows), tab_name
-        )
+        logger.info("Wrote %d new games to sheet tab '%s'.", len(rows), tab_name)
     except Exception as exc:
-        logger.error("Failed to write scanned games to Google Sheets: %s", exc)
+        logger.error("Failed to write new games to Google Sheets: %s", exc)
