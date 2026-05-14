@@ -237,8 +237,28 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
-    min-width: 170px;
-    padding: 4px;
+    padding: 6px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  .cat-flyout-header {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+  }
+  .cat-flyout-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(10, auto);
+    gap: 2px 4px;
+    max-width: calc(100vw - 220px);
+  }
+  @media (max-width: 900px) {
+    .cat-flyout-grid {
+      display: flex;
+      flex-direction: column;
+      max-width: none;
+    }
   }
   .cat-flyout-item {
     display: flex;
@@ -250,6 +270,7 @@
     font-size: 12px;
     color: var(--text-muted);
     cursor: pointer;
+    min-width: 160px;
     transition: background 0.1s;
     user-select: none;
   }
@@ -1258,12 +1279,15 @@ function buildSidebar() {
       ).join('');
       flyoutHtml = `
         <div class="cat-flyout">
-          <div class="cat-flyout-item" data-mechanic="all" data-category="${escapeAttr(name)}">
-            <span class="cat-flyout-label">All</span>
-            <span class="cat-flyout-count">${count}</span>
+          <div class="cat-flyout-header">
+            <div class="cat-flyout-item" data-mechanic="all" data-category="${escapeAttr(name)}">
+              <span class="cat-flyout-label">All</span>
+              <span class="cat-flyout-count">${count}</span>
+            </div>
           </div>
-          <div class="cat-divider"></div>
-          ${sgItems}
+          <div class="cat-flyout-grid">
+            ${sgItems}
+          </div>
         </div>`;
     }
 
