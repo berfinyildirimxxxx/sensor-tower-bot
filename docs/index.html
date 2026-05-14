@@ -730,6 +730,141 @@
   }
   .card-added.added-today { color: var(--orange); }
 
+  /* ============ STAR BUTTON ============ */
+  .star-btn {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-soft);
+    font-size: 17px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s ease;
+    z-index: 2;
+    padding: 0;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .star-btn:hover {
+    background: var(--orange-soft);
+    border-color: var(--orange-border);
+    color: var(--orange);
+  }
+  .star-btn.starred {
+    color: var(--orange);
+    background: var(--orange-soft);
+    border-color: var(--orange-border);
+  }
+  .card-head { padding-right: 30px; }
+
+  /* list view: star becomes last grid column, not absolute */
+  .games.list-view .card {
+    grid-template-columns: 48px 1fr auto auto auto auto 28px;
+  }
+  .games.list-view .star-btn {
+    position: static;
+    order: 7;
+    align-self: center;
+  }
+
+  /* ============ MY VIEWS SIDEBAR ============ */
+  .my-views-section { margin-bottom: 12px; }
+  .my-views-header {
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-soft);
+    padding: 0 8px; margin-bottom: 6px;
+  }
+  .view-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 8px; border-radius: 8px;
+    cursor: pointer; font-size: 13px; color: var(--text-muted);
+    transition: background 0.12s, color 0.12s;
+    border: none; background: none;
+    width: 100%; text-align: left; font-family: inherit;
+    position: relative;
+  }
+  .view-item:hover { background: var(--surface-2); color: var(--text); }
+  .view-item.active { background: var(--orange-soft); color: var(--orange); font-weight: 600; }
+  .view-item .view-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .view-item .view-count {
+    font-size: 10px; color: var(--text-soft);
+    background: var(--surface-2); padding: 1px 5px; border-radius: 4px;
+    flex-shrink: 0; font-family: 'JetBrains Mono', monospace;
+  }
+  .view-item.active .view-count { background: var(--orange-border); color: var(--orange); }
+  .view-delete {
+    display: none; width: 18px; height: 18px;
+    border-radius: 4px; border: none; background: none;
+    color: var(--text-soft); cursor: pointer; font-size: 13px;
+    padding: 0; flex-shrink: 0;
+    align-items: center; justify-content: center;
+    transition: all 0.12s;
+  }
+  .view-item:hover .view-delete { display: flex; }
+  .view-delete:hover { background: rgba(220,38,38,0.12); color: var(--red); }
+  .new-list-btn {
+    display: flex; align-items: center; gap: 6px;
+    width: 100%; padding: 6px 8px;
+    border: 1px dashed var(--border); border-radius: 8px;
+    background: none; color: var(--text-soft);
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    transition: all 0.15s; font-family: inherit; margin-top: 4px;
+  }
+  .new-list-btn:hover { border-color: var(--orange-border); background: var(--orange-soft); color: var(--orange); }
+  .sidebar-section-divider { height: 1px; background: var(--border); margin: 8px 4px 10px; }
+
+  /* ============ ADD-TO-LIST DROPDOWN ============ */
+  .list-dropdown-wrap { position: relative; display: inline-block; }
+  .list-dropdown {
+    display: none; position: absolute;
+    top: 100%; left: 0; z-index: 200;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow-md);
+    min-width: 220px; padding: 6px; margin-top: 4px;
+  }
+  .list-dropdown.open { display: block; }
+  .list-dropdown-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 10px; border-radius: 6px; font-size: 13px;
+    color: var(--text-muted); cursor: pointer; transition: background 0.1s;
+    user-select: none;
+  }
+  .list-dropdown-item:hover { background: var(--surface-2); color: var(--text); }
+  .list-dropdown-item input[type="checkbox"] {
+    accent-color: var(--orange); width: 14px; height: 14px;
+    cursor: pointer; flex-shrink: 0;
+  }
+  .list-dropdown-divider { height: 1px; background: var(--border); margin: 4px 2px; }
+  .list-dropdown-new {
+    font-size: 12px; color: var(--orange); font-weight: 600;
+    cursor: pointer; padding: 7px 10px; border-radius: 6px; transition: background 0.1s;
+  }
+  .list-dropdown-new:hover { background: var(--orange-soft); }
+
+  /* ============ DATA MENU ============ */
+  .data-menu-wrap { position: relative; }
+  .data-menu {
+    display: none; position: absolute;
+    top: 100%; right: 0; z-index: 200;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow-md);
+    min-width: 180px; padding: 6px; margin-top: 6px;
+  }
+  .data-menu.open { display: block; }
+  .data-menu-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px; border-radius: 6px; font-size: 13px;
+    color: var(--text-muted); cursor: pointer; transition: background 0.1s;
+  }
+  .data-menu-item:hover { background: var(--surface-2); color: var(--text); }
+
+  /* modal actions row */
+  .modal-actions { margin-top: 16px; display: flex; gap: 8px; align-items: center; }
+
 </style>
 </head>
 <body>
@@ -755,6 +890,13 @@
       <a href="#" id="sheetBtn" class="btn-icon btn-sheet" target="_blank" rel="noopener" title="Open Google Sheet">
         📁 Sheet
       </a>
+      <div class="data-menu-wrap" id="dataMenuWrap">
+        <button class="btn-icon" id="dataMenuBtn" title="Export / Import my data">📥</button>
+        <div class="data-menu" id="dataMenu">
+          <div class="data-menu-item" id="exportDataBtn">⬇ Export my data</div>
+          <div class="data-menu-item" id="importDataBtn">⬆ Import data</div>
+        </div>
+      </div>
       <button class="btn-icon" id="themeBtn" title="Toggle theme">🌙</button>
     </div>
   </div>
@@ -765,6 +907,8 @@
 
     <!-- LEFT SIDEBAR: categories -->
     <aside class="sidebar" id="sidebar">
+      <div id="myViewsSection" class="my-views-section"></div>
+      <div class="sidebar-section-divider" id="sidebarDivider" style="display:none;"></div>
       <div class="sidebar-header">Categories</div>
       <div class="cat-item">
         <button class="cat-trigger active" id="catAll" data-category="all">
@@ -875,8 +1019,69 @@
 
 
 <script>
+// ---------- localStorage helpers ----------
+function getStarred() {
+  try { return JSON.parse(localStorage.getItem('agave_radar_starred') || '[]'); } catch { return []; }
+}
+function setStarred(arr) {
+  try { localStorage.setItem('agave_radar_starred', JSON.stringify(arr)); } catch {}
+}
+function isStarred(key) { return getStarred().includes(key); }
+function toggleStar(key) {
+  const s = getStarred();
+  const i = s.indexOf(key);
+  if (i === -1) s.push(key); else s.splice(i, 1);
+  setStarred(s);
+}
+function getLists() {
+  try { return JSON.parse(localStorage.getItem('agave_radar_lists') || '{}'); } catch { return {}; }
+}
+function setLists(obj) {
+  try { localStorage.setItem('agave_radar_lists', JSON.stringify(obj)); } catch {}
+}
+function createList(name) {
+  const l = getLists();
+  if (!l[name]) l[name] = [];
+  setLists(l);
+}
+function deleteList(name) {
+  const l = getLists();
+  delete l[name];
+  setLists(l);
+}
+function addGameToList(name, key) {
+  const l = getLists();
+  if (!l[name]) l[name] = [];
+  if (!l[name].includes(key)) l[name].push(key);
+  setLists(l);
+}
+function removeGameFromList(name, key) {
+  const l = getLists();
+  if (l[name]) l[name] = l[name].filter(k => k !== key);
+  setLists(l);
+}
+function exportUserData() {
+  return JSON.stringify({ starred: getStarred(), lists: getLists() }, null, 2);
+}
+function importUserData(json, merge) {
+  const data = JSON.parse(json);
+  if (merge) {
+    setStarred([...new Set([...getStarred(), ...(data.starred || [])])]);
+    const l = getLists();
+    Object.entries(data.lists || {}).forEach(([name, keys]) => {
+      if (!l[name]) l[name] = [];
+      l[name] = [...new Set([...l[name], ...keys])];
+    });
+    setLists(l);
+  } else {
+    setStarred(data.starred || []);
+    setLists(data.lists || {});
+  }
+}
+
 let allGames = [];
 let dataMeta = {};
+let activeView = null; // null = normal category view, 'starred', or list name
 const filters = {
   platform: 'all',
   category: 'all',
@@ -1092,6 +1297,7 @@ function buildSidebar() {
   });
 
   initFlyouts();
+  buildMyViews();
 }
 
 function initFlyouts() {
@@ -1135,7 +1341,86 @@ function initFlyouts() {
   document.getElementById('sidebar').addEventListener('mouseleave', closeAll);
 }
 
+function buildMyViews() {
+  const section = document.getElementById('myViewsSection');
+  const divider = document.getElementById('sidebarDivider');
+  if (!section) return;
+
+  const starred = getStarred();
+  const lists = getLists();
+  const listNames = Object.keys(lists);
+
+  const hasAny = starred.length > 0 || listNames.length > 0;
+  if (divider) divider.style.display = hasAny ? '' : 'none';
+
+  const starredActive = activeView === 'starred' ? ' active' : '';
+  let html = `<div class="my-views-header">My Views</div>
+    <button class="view-item${starredActive}" id="viewStarredBtn">
+      <span>⭐</span>
+      <span class="view-name">Starred</span>
+      <span class="view-count">${starred.length}</span>
+    </button>`;
+
+  listNames.forEach(name => {
+    const isActive = activeView === name ? ' active' : '';
+    const count = (lists[name] || []).length;
+    html += `
+      <button class="view-item${isActive}" data-list="${escapeAttr(name)}">
+        <span>📋</span>
+        <span class="view-name">${escapeHtml(name)}</span>
+        <span class="view-count">${count}</span>
+        <span class="view-delete" data-delete-list="${escapeAttr(name)}" title="Delete list">×</span>
+      </button>`;
+  });
+
+  html += `<button class="new-list-btn" id="newListBtn">＋ New list</button>`;
+  section.innerHTML = html;
+
+  section.querySelector('#viewStarredBtn').addEventListener('click', () => selectView('starred'));
+
+  section.querySelectorAll('[data-list]').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.closest('[data-delete-list]')) return;
+      selectView(el.dataset.list);
+    });
+  });
+
+  section.querySelectorAll('[data-delete-list]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const name = btn.dataset.deleteList;
+      if (confirm(`Delete list "${name}"?\n\nThis won't delete the games, just the list.`)) {
+        deleteList(name);
+        if (activeView === name) selectView(null);
+        else buildMyViews();
+      }
+    });
+  });
+
+  section.querySelector('#newListBtn').addEventListener('click', () => {
+    const name = prompt('New list name:');
+    if (name && name.trim()) {
+      createList(name.trim());
+      buildMyViews();
+    }
+  });
+}
+
+function selectView(view) {
+  activeView = view;
+  document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.cat-flyout-item').forEach(el => el.classList.remove('active'));
+  if (!view) {
+    document.getElementById('catAll').classList.add('active');
+    filters.category = 'all';
+    filters.mechanic = 'all';
+  }
+  buildMyViews();
+  render();
+}
+
 function selectCategory(category, mechanic) {
+  activeView = null;
   filters.category = category;
   filters.mechanic = mechanic || 'all';
 
@@ -1263,9 +1548,19 @@ function addedBadgeHtml(g) {
 
 function applyFilters() {
   return allGames.filter(g => {
+    // Special view filter: starred / named list (replaces category filter)
+    if (activeView === 'starred') {
+      if (!getStarred().includes(getGameKey(g))) return false;
+    } else if (activeView !== null) {
+      const listKeys = (getLists()[activeView] || []);
+      if (!listKeys.includes(getGameKey(g))) return false;
+    } else {
+      // Normal category view
+      if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
+      if (filters.mechanic !== 'all' && (g.intel_sub_genre || '') !== filters.mechanic) return false;
+    }
+
     if (filters.platform !== 'all' && !hasPlatform(g, filters.platform)) return false;
-    if (filters.category !== 'all' && (g.intel_category || '') !== filters.category) return false;
-    if (filters.mechanic !== 'all' && (g.intel_sub_genre || '') !== filters.mechanic) return false;
 
     if (filters.release === 'na') {
       if (g.launch_date) return false;
@@ -1303,6 +1598,8 @@ function sortGames(games) {
 }
 
 function render() {
+  buildMyViews();
+
   let games = applyFilters();
   games = sortGames(games);
 
@@ -1315,12 +1612,38 @@ function render() {
   empty.style.display = 'none';
 
   grid.innerHTML = games.map((g, i) => renderCard(g, i)).join('');
+
   grid.querySelectorAll('.card').forEach((el, i) => {
     el.addEventListener('click', () => openModal(games[i]));
+  });
+
+  grid.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const key = btn.dataset.star;
+      toggleStar(key);
+      const starred = isStarred(key);
+      btn.textContent = starred ? '★' : '☆';
+      btn.className = `star-btn${starred ? ' starred' : ''}`;
+      btn.title = starred ? 'Unstar this game' : 'Star this game';
+      buildMyViews();
+      // If in starred view and just unstarred, remove the card with animation
+      if (activeView === 'starred' && !starred) {
+        const card = btn.closest('.card');
+        if (card) {
+          card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => render(), 200);
+        }
+      }
+    });
   });
 }
 
 function renderCard(g) {
+  const key = getGameKey(g);
+  const starred = isStarred(key);
   const installs = getInstalls(g);
   const plats = getPlatforms(g);
 
@@ -1348,7 +1671,8 @@ function renderCard(g) {
   const addedHtml = addedBadgeHtml(g);
 
   return `
-    <div class="card">
+    <div class="card" data-key="${escapeAttr(key)}">
+      <button class="star-btn${starred ? ' starred' : ''}" data-star="${escapeAttr(key)}" title="${starred ? 'Unstar' : 'Star'} this game">${starred ? '★' : '☆'}</button>
       <div class="card-head">
         <div class="card-icon" style="${iconStyle}">${iconHtml}</div>
         <div class="card-title-block">
@@ -1461,13 +1785,142 @@ function openModal(g) {
           ${g.intel_theme ? `<span style="padding:3px 8px;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text-muted);">Theme: ${escapeHtml(g.intel_theme)}</span>` : ''}
         </div>
       </div>` : ''}
+    <div class="modal-actions">
+      <div class="list-dropdown-wrap">
+        <button class="btn-icon" id="modalListBtn" style="width:auto;padding:0 14px;gap:6px;font-size:13px;font-weight:500;height:36px;">📋 Add to list</button>
+        <div class="list-dropdown" id="modalListDropdown"></div>
+      </div>
+    </div>
   `;
+  buildModalListDropdown(getGameKey(g));
   document.getElementById('modalBackdrop').classList.add('open');
 }
 function closeModal() { document.getElementById('modalBackdrop').classList.remove('open'); }
 document.getElementById('modalBackdrop').addEventListener('click', e => {
   if (e.target.id === 'modalBackdrop') closeModal();
 });
+
+function buildModalListDropdown(gameKey) {
+  const btn = document.getElementById('modalListBtn');
+  const dropdown = document.getElementById('modalListDropdown');
+  if (!btn || !dropdown) return;
+
+  function populate() {
+    const lists = getLists();
+    const names = Object.keys(lists);
+    let html = '';
+    if (!names.length) {
+      html += `<div style="padding:8px 10px;font-size:12px;color:var(--text-soft);">No lists yet</div>`;
+    } else {
+      names.forEach(name => {
+        const inList = (lists[name] || []).includes(gameKey);
+        html += `<label class="list-dropdown-item">
+          <input type="checkbox" data-list-name="${escapeAttr(name)}"${inList ? ' checked' : ''}>
+          <span style="flex:1;">${escapeHtml(name)}</span>
+          <span style="font-size:10px;color:var(--text-soft);font-family:monospace;">${(lists[name]||[]).length}</span>
+        </label>`;
+      });
+    }
+    html += `<div class="list-dropdown-divider"></div>
+      <div class="list-dropdown-new" id="dropdownNewList">＋ New list</div>`;
+    dropdown.innerHTML = html;
+
+    dropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) addGameToList(cb.dataset.listName, gameKey);
+        else removeGameFromList(cb.dataset.listName, gameKey);
+        buildMyViews();
+        if (activeView === cb.dataset.listName) render();
+      });
+    });
+
+    const newBtn = document.getElementById('dropdownNewList');
+    if (newBtn) {
+      newBtn.addEventListener('click', () => {
+        const name = prompt('New list name:');
+        if (name && name.trim()) {
+          createList(name.trim());
+          addGameToList(name.trim(), gameKey);
+          buildMyViews();
+          populate();
+        }
+      });
+    }
+  }
+
+  populate();
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = dropdown.classList.contains('open');
+    if (open) { dropdown.classList.remove('open'); }
+    else { populate(); dropdown.classList.add('open'); }
+  });
+
+  document.addEventListener('click', function handler(e) {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      document.removeEventListener('click', handler);
+    }
+  });
+}
+
+// ---------- data export / import ----------
+function initDataMenu() {
+  const menuBtn = document.getElementById('dataMenuBtn');
+  const menu = document.getElementById('dataMenu');
+
+  menuBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    menu.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    const wrap = document.getElementById('dataMenuWrap');
+    if (wrap && !wrap.contains(e.target)) menu.classList.remove('open');
+  });
+
+  document.getElementById('exportDataBtn').addEventListener('click', () => {
+    menu.classList.remove('open');
+    const json = exportUserData();
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `agave-radar-mydata-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('importDataBtn').addEventListener('click', () => {
+    menu.classList.remove('open');
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json,application/json';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const replace = confirm('Replace your current data with this file?\n\nOK = Replace\nCancel = Merge with existing data');
+          importUserData(ev.target.result, !replace);
+          buildMyViews();
+          render();
+          alert('Data imported successfully!');
+        } catch {
+          alert('Failed to import — make sure it\'s a valid export file.');
+        }
+      };
+      reader.readAsText(file);
+    };
+    document.body.appendChild(input);
+    input.click();
+    document.body.removeChild(input);
+  });
+}
 
 // ---------- theme ----------
 const themeBtn = document.getElementById('themeBtn');
@@ -1491,6 +1944,7 @@ function escapeHtml(s) {
 }
 function escapeAttr(s) { return escapeHtml(s); }
 
+initDataMenu();
 loadData();
 </script>
 </body>
