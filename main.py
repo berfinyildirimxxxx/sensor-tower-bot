@@ -14,7 +14,7 @@ from typing import Any
 from config import load_config
 from sensor_tower import fetch_new_games
 from sheets import write_new_games_to_sheet
-from slack import send_summary_message, send_test_message
+from slack import send_test_message
 from sub_genre import get_sub_genres_for_apps
 
 logger = logging.getLogger(__name__)
@@ -266,18 +266,16 @@ def main() -> int:
     except Exception as exc:
         logger.error("Failed to write new-games tab: %s", exc)
 
-    # 6) Slack summary — match slack.py's send_summary_message signature exactly
+    # 6) Write run summary so the workflow can send Slack after HTML deploy
     run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    try:
-        send_summary_message(
-            run_date=run_date,
-            total_fetched=len(enriched),
-            ios_fetched=ios_raw,
-            android_fetched=android_raw,
-        )
-    except Exception as exc:
-        logger.error("Failed to send Slack summary: %s", exc)
-        return 1
+    Path(".run_summary.json").write_text(
+        json.dumps({
+            "run_date": run_date,
+            "total_fetched": len(enriched),
+            "ios_fetched": ios_raw,
+            "android_fetched": android_raw,
+        })
+    )
 
     return 0
 
