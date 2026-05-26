@@ -1975,32 +1975,68 @@ loadData();
 <div id="lightbox-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; cursor:pointer;">
   <img id="lightbox-img" src="" style="max-width:90%; max-height:90vh; border-radius:8px; box-shadow:0 4px 32px rgba(0,0,0,0.7); pointer-events:none;"/>
   <span style="position:absolute; top:20px; right:32px; color:white; font-size:2rem; cursor:pointer;" id="lightbox-close">&times;</span>
+  <span id="lightbox-prev" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); color:white; font-size:2.5rem; cursor:pointer; user-select:none; padding:10px;">&#8592;</span>
+  <span id="lightbox-next" style="position:absolute; right:70px; top:50%; transform:translateY(-50%); color:white; font-size:2.5rem; cursor:pointer; user-select:none; padding:10px;">&#8594;</span>
 </div>
 
 <script>
 (function() {
   const overlay = document.getElementById('lightbox-overlay');
   const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
 
-  function openLightbox(src) {
-    lightboxImg.src = src;
+  let currentSrcs = [];
+  let currentIndex = 0;
+
+  function openLightbox(srcs, index) {
+    currentSrcs = srcs;
+    currentIndex = index;
+    lightboxImg.src = currentSrcs[currentIndex];
     overlay.style.display = 'flex';
   }
 
   function closeLightbox() {
     overlay.style.display = 'none';
     lightboxImg.src = '';
+    currentSrcs = [];
   }
 
-  overlay.addEventListener('click', closeLightbox);
-  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  function showPrev() {
+    if (currentSrcs.length === 0) return;
+    currentIndex = (currentIndex - 1 + currentSrcs.length) % currentSrcs.length;
+    lightboxImg.src = currentSrcs[currentIndex];
+  }
+
+  function showNext() {
+    if (currentSrcs.length === 0) return;
+    currentIndex = (currentIndex + 1) % currentSrcs.length;
+    lightboxImg.src = currentSrcs[currentIndex];
+  }
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeLightbox();
+  });
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', function(e) { e.stopPropagation(); showPrev(); });
+  nextBtn.addEventListener('click', function(e) { e.stopPropagation(); showNext(); });
+
   document.addEventListener('keydown', function(e) {
+    if (overlay.style.display === 'none') return;
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
   });
 
   document.addEventListener('click', function(e) {
     if (e.target.classList.contains('screenshot-thumb')) {
-      openLightbox(e.target.src);
+      const allThumbs = Array.from(
+        e.target.closest('div').querySelectorAll('.screenshot-thumb')
+      );
+      const srcs = allThumbs.map(img => img.src);
+      const index = allThumbs.indexOf(e.target);
+      openLightbox(srcs, index);
     }
   });
 })();
