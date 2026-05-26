@@ -225,30 +225,6 @@
     flex-shrink: 0;
     line-height: 1;
   }
-  .cat-trigger.alarm-trigger {
-    color: var(--orange);
-    font-weight: 600;
-  }
-  .cat-trigger.alarm-trigger .cat-count {
-    background: var(--orange-border);
-    color: var(--orange);
-  }
-  .cat-trigger.alarm-trigger:hover {
-    background: var(--orange-soft);
-  }
-  .cat-trigger.alarm-trigger.active {
-    background: var(--orange);
-    color: #fff;
-  }
-  .cat-trigger.alarm-trigger.active .cat-count {
-    background: rgba(255,255,255,0.3);
-    color: #fff;
-  }
-  .publisher-alarm-badge {
-    font-size: 11px;
-    margin-left: 4px;
-    vertical-align: middle;
-  }
 
   /* Flyout — shown/hidden by JS only */
   .cat-flyout {
@@ -961,12 +937,6 @@
           <span class="cat-count" id="catAllCount">0</span>
         </button>
       </div>
-      <div class="cat-item">
-        <button class="cat-trigger alarm-trigger" id="catAlarm">
-          <span class="cat-name">🔔 Publisher Alarm</span>
-          <span class="cat-count" id="catAlarmCount">0</span>
-        </button>
-      </div>
       <div id="catList"></div>
     </aside>
 
@@ -1288,7 +1258,6 @@ function buildSidebar() {
   });
 
   document.getElementById('catAllCount').textContent = allGames.length;
-  document.getElementById('catAlarmCount').textContent = allGames.filter(g => g.publisher_alarm).length;
 
   const list = document.getElementById('catList');
   list.innerHTML = '';
@@ -1346,8 +1315,6 @@ function buildSidebar() {
         ? parentItem.querySelector('.cat-trigger')?.dataset.category
         : flyoutItem.dataset.category;
       selectCategory(cat || 'all', mechanic === 'all' ? 'all' : mechanic);
-    } else if (trigger && trigger.id === 'catAlarm') {
-      selectPublisherAlarm();
     } else if (trigger) {
       selectCategory(trigger.dataset.category, 'all');
     }
@@ -1476,22 +1443,12 @@ function selectView(view) {
   render();
 }
 
-function selectPublisherAlarm() {
-  activeView = 'publisher_alarm';
-  document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.cat-flyout-item').forEach(el => el.classList.remove('active'));
-  document.getElementById('catAlarm').classList.add('active');
-  buildMyViews();
-  render();
-}
-
 function selectCategory(category, mechanic) {
   activeView = null;
   filters.category = category;
   filters.mechanic = mechanic || 'all';
 
   document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
-  document.getElementById('catAlarm').classList.remove('active');
   if (category === 'all') {
     document.getElementById('catAll').classList.add('active');
   } else {
@@ -1615,11 +1572,9 @@ function addedBadgeHtml(g) {
 
 function applyFilters() {
   return allGames.filter(g => {
-    // Special view filter: starred / named list / publisher alarm (replaces category filter)
+    // Special view filter: starred / named list (replaces category filter)
     if (activeView === 'starred') {
       if (!getStarred().includes(getGameKey(g))) return false;
-    } else if (activeView === 'publisher_alarm') {
-      if (!g.publisher_alarm) return false;
     } else if (activeView !== null) {
       const listKeys = (getLists()[activeView] || []);
       if (!listKeys.includes(getGameKey(g))) return false;
@@ -1746,7 +1701,7 @@ function renderCard(g) {
         <div class="card-icon" style="${iconStyle}">${iconHtml}</div>
         <div class="card-title-block">
           <div class="card-name">${escapeHtml(g.name || 'Unknown')}</div>
-          <div class="card-publisher">${escapeHtml(g.publisher || '—')}${g.publisher_alarm ? '<span class="publisher-alarm-badge" title="Publisher Alarm">🔔</span>' : ''}</div>
+          <div class="card-publisher">${escapeHtml(g.publisher || '—')}</div>
         </div>
       </div>
       <div class="badges">

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile main.py slack.py config.py)",
+      "Bash(python3 -m py_compile main.py slack.py config.py)",
+      "Bash(git push *)",
+      "Bash(git merge *)",
+      "Bash(git pull *)",
+      "Bash(python3 -c ' *)",
+      "Bash(cp /mnt/user-data/uploads/Untitled_spreadsheet_-_Sheet1.csv docs/publishers_source.csv)",
+      "Bash(cp \"/Users/berfinzelalyildirim/Downloads/Untitled spreadsheet - Sheet1.csv\" docs/publishers_source.csv)",
+      "Bash(python3)"
+    ],
+    "additionalDirectories": [
+      "/mnt/user-data/uploads",
+      "/Users/berfinzelalyildirim/Downloads"
+    ]
+  }
+}
