@@ -38,8 +38,8 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
 }
 
 MIN_INSTALLS: dict[str, int] = {
-    "ios": 500,
-    "android": 500,
+    "ios": 0,
+    "android": 0,
 }
 
 CATEGORY_DISPLAY: dict[str, str] = {
@@ -563,7 +563,7 @@ def _fetch_platform_games(
     below_threshold = above_threshold = 0
     for app_id, install_data in install_map.items():
         total = int(install_data.get("installs_total", 0) or 0)
-        if total < platform_min:
+        if total < 0:
             below_threshold += 1
             continue
         if max_installs is not None and total > max_installs:
@@ -625,7 +625,7 @@ def _fetch_platform_games(
 
 def fetch_new_games(
     max_installs: int | None = None,
-    release_lookback_days: int = 60,
+    release_lookback_days: int = 30,
 ) -> list[dict[str, Any]]:
     """Fetch games released in last N days.
 
