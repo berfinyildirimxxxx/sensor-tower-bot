@@ -1214,7 +1214,7 @@ async function loadData() {
 }
 
 // ---------- category order ----------
-const CATEGORY_ORDER = ['Puzzle','Casual','Word','Board','Family','Trivia','Arcade','Card','Educational'];
+const CATEGORY_ORDER = ['Puzzle','Casual','Word','Board','Family','Trivia','Card'];
 
 const MECHANIC_ORDER = [
   'Match Swap','Match Blast','Match Chain','Match Merge 2','Match Merge 3','Match Pair',
@@ -1722,7 +1722,7 @@ function pickIconColor(cat) {
   const map = {
     'Puzzle': '#7c3aed', 'Casual': '#ea580c', 'Word': '#16a34a',
     'Board': '#0891b2', 'Family': '#db2777', 'Trivia': '#d97706',
-    'Arcade': '#dc2626', 'Card': '#0d9488', 'Educational': '#2563eb',
+    'Card': '#0d9488',
   };
   return map[cat] || '#78716c';
 }
