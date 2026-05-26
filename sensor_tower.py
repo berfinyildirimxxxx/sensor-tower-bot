@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 import logging
+import re
 import threading
 import time
 from typing import Any
@@ -14,6 +15,10 @@ import requests
 from config import load_config
 
 logger = logging.getLogger(__name__)
+
+
+def _has_latin_chars(text: str) -> bool:
+    return bool(re.search(r'[A-Za-z]', text))
 
 PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
     "ios": [
@@ -617,6 +622,10 @@ def _fetch_platform_games(
                     continue
             except ValueError:
                 pass
+
+        name = game_data.get("name", "")
+        if not _has_latin_chars(name):
+            continue
 
         games.append(game_data)
 
