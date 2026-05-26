@@ -35,9 +35,7 @@ PUZZLE_CATEGORY_IDS: dict[str, list[str]] = {
         "game_word",
         "game_board",
         "game_trivia",
-        "game_arcade",
         "game_card",
-        "game_educational",
         "game_family",
     ],
 }
@@ -61,9 +59,7 @@ CATEGORY_DISPLAY: dict[str, str] = {
     "game_word": "Word",
     "game_board": "Board",
     "game_trivia": "Trivia",
-    "game_arcade": "Arcade",
     "game_card": "Card",
-    "game_educational": "Educational",
     "game_family": "Family",
 }
 
