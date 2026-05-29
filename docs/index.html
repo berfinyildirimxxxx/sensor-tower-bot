@@ -1019,6 +1019,24 @@
               <span class="install-error" id="maxInstallError" style="display:none;"></span>
             </div>
           </div>
+
+          <div class="filter-group">
+            <span class="filter-label fl-install">Max Installs</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <input type="text" id="maxInstallCapInput" class="install-input" placeholder="e.g. 100000" autocomplete="off" />
+              <button class="install-clear" id="maxInstallCapClear" style="display:none;">Clear</button>
+              <span class="install-error" id="maxInstallCapError" style="display:none;"></span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label fl-release">Release Date</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <input type="date" id="releaseDateInput" class="install-input" style="width:160px;" autocomplete="off" />
+              <button class="pill" id="releaseDateYesterday" style="font-size:12px;">Yesterday</button>
+              <button class="install-clear" id="releaseDateClear" style="display:none;">Clear</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1108,10 +1126,12 @@ const filters = {
   category: 'all',
   mechanic: 'all',
   release: 'all',
+  releaseDate: '',
   added: 'all',
   sort: 'installs',
   search: '',
   minInstalls: null,
+  maxInstalls: null,
 };
 let view = 'grid';
 
@@ -1476,7 +1496,12 @@ function bindFilters() {
       pill.classList.add('active');
       const g = group.dataset.group;
       if (g === 'platform') filters.platform = pill.dataset.platform;
-      if (g === 'release') filters.release = pill.dataset.release;
+      if (g === 'release') {
+        filters.release = pill.dataset.release;
+        // clear custom date when a release pill is clicked
+        const rdi = document.getElementById('releaseDateInput');
+        if (rdi) { rdi.value = ''; filters.releaseDate = ''; document.getElementById('releaseDateClear').style.display = 'none'; }
+      }
       if (g === 'sort') filters.sort = pill.dataset.sort;
       if (g === 'added') filters.added = pill.dataset.added;
       render();
@@ -1535,6 +1560,81 @@ function bindFilters() {
     maxInstallError.style.display = 'none';
     maxInstallClear.style.display = 'none';
     filters.minInstalls = null;
+    render();
+  });
+
+  // Max Installs cap input
+  const maxInstallCapInput = document.getElementById('maxInstallCapInput');
+  const maxInstallCapError = document.getElementById('maxInstallCapError');
+  const maxInstallCapClear = document.getElementById('maxInstallCapClear');
+
+  function applyMaxInstallCap() {
+    const val = maxInstallCapInput.value.trim();
+    if (val === '') {
+      maxInstallCapInput.classList.remove('error');
+      maxInstallCapError.style.display = 'none';
+      maxInstallCapClear.style.display = 'none';
+      filters.maxInstalls = null;
+      render();
+      return;
+    }
+    const n = parseInt(val, 10);
+    if (isNaN(n) || n < 0 || String(n) !== val) {
+      maxInstallCapInput.classList.add('error');
+      maxInstallCapError.textContent = 'Enter a whole number (e.g. 100000)';
+      maxInstallCapError.style.display = '';
+      maxInstallCapClear.style.display = '';
+      filters.maxInstalls = null;
+      render();
+      return;
+    }
+    maxInstallCapInput.classList.remove('error');
+    maxInstallCapError.style.display = 'none';
+    maxInstallCapClear.style.display = '';
+    filters.maxInstalls = n;
+    render();
+  }
+
+  maxInstallCapInput.addEventListener('input', applyMaxInstallCap);
+  maxInstallCapClear.addEventListener('click', () => {
+    maxInstallCapInput.value = '';
+    maxInstallCapInput.classList.remove('error');
+    maxInstallCapError.style.display = 'none';
+    maxInstallCapClear.style.display = 'none';
+    filters.maxInstalls = null;
+    render();
+  });
+
+  // Release Date input
+  const releaseDateInput = document.getElementById('releaseDateInput');
+  const releaseDateClear = document.getElementById('releaseDateClear');
+  const releaseDateYesterday = document.getElementById('releaseDateYesterday');
+
+  function applyReleaseDate() {
+    const val = releaseDateInput.value;
+    filters.releaseDate = val || '';
+    releaseDateClear.style.display = val ? '' : 'none';
+    // deactivate release pills when custom date is set
+    if (val) {
+      document.querySelectorAll('[data-release]').forEach(p => p.classList.remove('active'));
+      filters.release = 'all';
+    }
+    render();
+  }
+
+  releaseDateInput.addEventListener('change', applyReleaseDate);
+
+  releaseDateYesterday.addEventListener('click', () => {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    releaseDateInput.value = d.toISOString().slice(0, 10);
+    applyReleaseDate();
+  });
+
+  releaseDateClear.addEventListener('click', () => {
+    releaseDateInput.value = '';
+    filters.releaseDate = '';
+    releaseDateClear.style.display = 'none';
     render();
   });
 
@@ -1602,11 +1702,17 @@ function applyFilters() {
       if (filters.added === '14' && d > 13) return false;
     }
 
+    if (filters.releaseDate) {
+      const gameDate = (g.launch_date || '').slice(0, 10);
+      if (gameDate !== filters.releaseDate) return false;
+    }
+
     if (filters.search) {
       const hay = ((g.name || '') + ' ' + (g.publisher || '')).toLowerCase();
       if (!hay.includes(filters.search)) return false;
     }
     if (filters.minInstalls !== null && getInstalls(g) < filters.minInstalls) return false;
+    if (filters.maxInstalls !== null && getInstalls(g) > filters.maxInstalls) return false;
     return true;
   });
 }
