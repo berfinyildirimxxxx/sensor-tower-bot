@@ -55,24 +55,16 @@ def send_summary_message(
     ios_fetched: int = 0,
     android_fetched: int = 0,
 ) -> bool:
-    """Daily summary sent to Slack.
+    from datetime import datetime
+    try:
+        pretty_date = datetime.strptime(run_date, "%Y-%m-%d").strftime("%-d %B %Y")
+    except ValueError:
+        pretty_date = run_date
 
-    Shows total scanned count and platform breakdown.
-    No game names — browse on the dashboard.
-    """
-    lines = [f"📊 *Daily Casual Game Scan — {run_date}*", ""]
-    lines.append(f"🔍 *{total_fetched:,}* games scanned")
-    if ios_fetched or android_fetched:
-        lines.append(f"📱 iOS: *{ios_fetched:,}*  •  🤖 Android: *{android_fetched:,}*")
-    if new_today:
-        lines.append(f"🆕 *{new_today:,}* new on radar today")
-    lines.append("")
-    lines.append(f"🌐 <{RADAR_URL}|Open Radar Dashboard>")
-
-    blocks = [
-        {
-            "type": "section",
-            "text": {"type": "mrkdwn", "text": "\n".join(lines)},
-        },
-    ]
+    text = (
+        f"📊 *Daily Casual Game Scan — {pretty_date}*\n\n"
+        f"{new_today:,} new games fetched.\n\n"
+        f"🌐 <{RADAR_URL}|Open Radar Dashboard>"
+    )
+    blocks = [{"type": "section", "text": {"type": "mrkdwn", "text": text}}]
     return _post_blocks(blocks)
