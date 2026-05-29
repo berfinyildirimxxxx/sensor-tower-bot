@@ -629,7 +629,7 @@ def _fetch_platform_games(
 
 
 def fetch_new_games(
-    max_installs: int | None = None,
+    max_installs: int | None = 1_000_000,
     release_lookback_days: int = 30,
 ) -> list[dict[str, Any]]:
     """Fetch games released in last N days.
