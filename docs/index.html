@@ -886,6 +886,74 @@
   /* modal actions row */
   .modal-actions { margin-top: 16px; display: flex; gap: 8px; align-items: center; }
 
+  /* ============ PUBLISHER WATCH ============ */
+  .pub-watch {
+    background: var(--surface);
+    border: 1px solid var(--orange-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .pub-watch-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: background 0.15s;
+  }
+  .pub-watch-header:hover { background: var(--orange-soft); }
+  .pub-watch.expanded .pub-watch-header { border-bottom-color: var(--orange-border); }
+  .pub-watch-icon {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--orange-soft); border: 1px solid var(--orange-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .pub-watch-title {
+    font-weight: 700; font-size: 14px; color: var(--text); flex: 1;
+  }
+  .pub-watch-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    background: var(--orange-soft); color: var(--orange);
+    border: 1px solid var(--orange-border);
+    padding: 2px 8px; border-radius: 5px;
+  }
+  .pub-watch-chevron {
+    font-size: 12px; color: var(--text-soft);
+    transition: transform 0.2s ease; flex-shrink: 0;
+  }
+  .pub-watch.expanded .pub-watch-chevron { transform: rotate(180deg); }
+  .pub-watch-body {
+    display: none;
+    padding: 14px 16px;
+  }
+  .pub-watch.expanded .pub-watch-body { display: block; }
+  .pub-watch-empty {
+    text-align: center; padding: 24px;
+    color: var(--text-soft); font-size: 13px;
+  }
+  .pub-watch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .pub-watch-grid .card {
+    border-color: var(--orange-border);
+  }
+  .pub-watch-grid .card:hover { border-color: var(--orange); }
+  .badge.pub-badge {
+    background: var(--orange-soft); color: var(--orange);
+    border: 1px solid var(--orange-border);
+  }
+
+  /* sidebar publisher watch item */
+  .view-item.pub-watch-nav { color: var(--orange); }
+  .view-item.pub-watch-nav.active { background: var(--orange-soft); color: var(--orange); }
+  .view-item.pub-watch-nav .view-count { color: var(--orange); background: var(--orange-border); }
+
 </style>
 </head>
 <body>
@@ -953,6 +1021,20 @@
             <span class="stat-sub-item"><span class="dot android"></span>Android <strong class="mono" id="androidCount">0</strong></span>
             <span class="today-added-badge" id="todayAddedBadge" style="display:none;">+<span id="todayAddedCount">0</span> new today</span>
           </div>
+        </div>
+      </section>
+
+      <!-- PUBLISHER WATCH -->
+      <section class="pub-watch" id="pubWatchSection" style="display:none;">
+        <div class="pub-watch-header" id="pubWatchToggle">
+          <div class="pub-watch-icon">⚡</div>
+          <div class="pub-watch-title">Publisher Watch</div>
+          <div class="pub-watch-count" id="pubWatchCount">0</div>
+          <div class="pub-watch-chevron">▼</div>
+        </div>
+        <div class="pub-watch-body">
+          <div class="pub-watch-grid" id="pubWatchGrid"></div>
+          <div class="pub-watch-empty" id="pubWatchEmpty" style="display:none;">No games from watched publishers in the current radar.</div>
         </div>
       </section>
 
@@ -1119,8 +1201,9 @@ function importUserData(json, merge) {
 }
 
 let allGames = [];
+let watchedPublishers = []; // normalized lowercase strings from publishers.json
 let dataMeta = {};
-let activeView = null; // null = normal category view, 'starred', or list name
+let activeView = null; // null = normal category view, 'starred', 'publisher-watch', or list name
 const filters = {
   platform: 'all',
   category: 'all',
@@ -1134,6 +1217,8 @@ const filters = {
   maxInstalls: null,
 };
 let view = 'grid';
+let currentPage = 1;
+const PAGE_SIZE = 50;
 
 function getGameKey(g) {
   return ((g.name || '').toLowerCase().trim() + '||' + (g.publisher || '').toLowerCase().trim());
@@ -1176,6 +1261,11 @@ function getPlatforms(g) {
 function hasPlatform(g, p) {
   const plats = getPlatforms(g).map(x => String(x.platform).toLowerCase());
   return plats.some(x => x.includes(p));
+}
+function isWatchedPublisher(g) {
+  if (!watchedPublishers.length) return false;
+  const pub = (g.publisher || '').toLowerCase().trim();
+  return watchedPublishers.includes(pub);
 }
 
 // ---------- data load ----------
@@ -1223,6 +1313,25 @@ async function loadData() {
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1u0E3Cj5Ryzmmqd7NJbgs6gcexTKBQ36c4dwLy4vF5Ws/edit';
     sheetBtn.href = data.sheet_url || SHEET_URL;
     sheetBtn.style.display = '';
+
+    try {
+      const pubR = await fetch('publishers.json?_=' + Date.now());
+      if (pubR.ok) {
+        const pubData = await pubR.json();
+        watchedPublishers = (Array.isArray(pubData) ? pubData : [])
+          .map(p => String(p).toLowerCase().trim()).filter(Boolean);
+      }
+    } catch {}
+
+    const pubToggle = document.getElementById('pubWatchToggle');
+    pubToggle.addEventListener('click', () => {
+      const sec = document.getElementById('pubWatchSection');
+      sec.classList.toggle('expanded');
+      try { localStorage.setItem('pubWatchExpanded', sec.classList.contains('expanded') ? '1' : '0'); } catch {}
+    });
+    if (localStorage.getItem('pubWatchExpanded') === '1') {
+      document.getElementById('pubWatchSection').classList.add('expanded');
+    }
 
     buildSidebar();
     bindFilters();
@@ -1394,16 +1503,27 @@ function buildMyViews() {
   const lists = getLists();
   const listNames = Object.keys(lists);
 
-  const hasAny = starred.length > 0 || listNames.length > 0;
+  const pubWatchCount = allGames.filter(g => isWatchedPublisher(g)).length;
+  const hasAny = starred.length > 0 || listNames.length > 0 || watchedPublishers.length > 0;
   if (divider) divider.style.display = hasAny ? '' : 'none';
 
   const starredActive = activeView === 'starred' ? ' active' : '';
-  let html = `<div class="my-views-header">My Views</div>
-    <button class="view-item${starredActive}" id="viewStarredBtn">
-      <span>⭐</span>
-      <span class="view-name">Starred</span>
-      <span class="view-count">${starred.length}</span>
+  const pubWatchActive = activeView === 'publisher-watch' ? ' active' : '';
+  let html = `<div class="my-views-header">My Views</div>`;
+
+  if (watchedPublishers.length > 0) {
+    html += `<button class="view-item pub-watch-nav${pubWatchActive}" id="viewPubWatchBtn">
+      <span>⚡</span>
+      <span class="view-name">Publisher Watch</span>
+      <span class="view-count">${pubWatchCount}</span>
     </button>`;
+  }
+
+  html += `<button class="view-item${starredActive}" id="viewStarredBtn">
+    <span>⭐</span>
+    <span class="view-name">Starred</span>
+    <span class="view-count">${starred.length}</span>
+  </button>`;
 
   listNames.forEach(name => {
     const isActive = activeView === name ? ' active' : '';
@@ -1420,6 +1540,8 @@ function buildMyViews() {
   html += `<button class="new-list-btn" id="newListBtn">＋ New list</button>`;
   section.innerHTML = html;
 
+  const pubWatchBtn = section.querySelector('#viewPubWatchBtn');
+  if (pubWatchBtn) pubWatchBtn.addEventListener('click', () => selectView('publisher-watch'));
   section.querySelector('#viewStarredBtn').addEventListener('click', () => selectView('starred'));
 
   section.querySelectorAll('[data-list]').forEach(el => {
@@ -1452,6 +1574,7 @@ function buildMyViews() {
 
 function selectView(view) {
   activeView = view;
+  currentPage = 1;
   document.querySelectorAll('#sidebar .cat-trigger').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.cat-flyout-item').forEach(el => el.classList.remove('active'));
   if (!view) {
@@ -1465,6 +1588,7 @@ function selectView(view) {
 
 function selectCategory(category, mechanic) {
   activeView = null;
+  currentPage = 1;
   filters.category = category;
   filters.mechanic = mechanic || 'all';
 
@@ -1504,12 +1628,14 @@ function bindFilters() {
       }
       if (g === 'sort') filters.sort = pill.dataset.sort;
       if (g === 'added') filters.added = pill.dataset.added;
+      currentPage = 1;
       render();
     });
   });
 
   document.getElementById('searchInput').addEventListener('input', e => {
     filters.search = e.target.value.trim().toLowerCase();
+    currentPage = 1;
     render();
   });
 
@@ -1550,6 +1676,7 @@ function bindFilters() {
     maxInstallError.style.display = 'none';
     maxInstallClear.style.display = '';
     filters.minInstalls = n;
+    currentPage = 1;
     render();
   }
 
@@ -1592,6 +1719,7 @@ function bindFilters() {
     maxInstallCapError.style.display = 'none';
     maxInstallCapClear.style.display = '';
     filters.maxInstalls = n;
+    currentPage = 1;
     render();
   }
 
@@ -1602,6 +1730,7 @@ function bindFilters() {
     maxInstallCapError.style.display = 'none';
     maxInstallCapClear.style.display = 'none';
     filters.maxInstalls = null;
+    currentPage = 1;
     render();
   });
 
@@ -1614,11 +1743,11 @@ function bindFilters() {
     const val = releaseDateInput.value;
     filters.releaseDate = val || '';
     releaseDateClear.style.display = val ? '' : 'none';
-    // deactivate release pills when custom date is set
     if (val) {
       document.querySelectorAll('[data-release]').forEach(p => p.classList.remove('active'));
       filters.release = 'all';
     }
+    currentPage = 1;
     render();
   }
 
@@ -1635,6 +1764,7 @@ function bindFilters() {
     releaseDateInput.value = '';
     filters.releaseDate = '';
     releaseDateClear.style.display = 'none';
+    currentPage = 1;
     render();
   });
 
@@ -1675,6 +1805,8 @@ function applyFilters() {
     // Special view filter: starred / named list (replaces category filter)
     if (activeView === 'starred') {
       if (!getStarred().includes(getGameKey(g))) return false;
+    } else if (activeView === 'publisher-watch') {
+      if (!isWatchedPublisher(g)) return false;
     } else if (activeView !== null) {
       const listKeys = (getLists()[activeView] || []);
       if (!listKeys.includes(getGameKey(g))) return false;
@@ -1727,24 +1859,71 @@ function sortGames(games) {
   });
 }
 
+function renderPubWatch() {
+  const section = document.getElementById('pubWatchSection');
+  const grid = document.getElementById('pubWatchGrid');
+  const empty = document.getElementById('pubWatchEmpty');
+  const countEl = document.getElementById('pubWatchCount');
+
+  if (!watchedPublishers.length) { section.style.display = 'none'; return; }
+  section.style.display = '';
+
+  const games = sortGames(allGames.filter(g => isWatchedPublisher(g)));
+  countEl.textContent = games.length;
+
+  if (!games.length) {
+    grid.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+  grid.innerHTML = games.map(g => renderCard(g)).join('');
+  grid.querySelectorAll('.card').forEach((el, i) => {
+    el.addEventListener('click', () => openModal(games[i]));
+  });
+  grid.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const key = btn.dataset.star;
+      toggleStar(key);
+      const starred = isStarred(key);
+      btn.textContent = starred ? '★' : '☆';
+      btn.className = `star-btn${starred ? ' starred' : ''}`;
+      btn.title = starred ? 'Unstar this game' : 'Star this game';
+      buildMyViews();
+    });
+  });
+}
+
 function render() {
   buildMyViews();
+  renderPubWatch();
 
   let games = applyFilters();
   games = sortGames(games);
 
-  document.getElementById('shownCount').textContent = games.length.toLocaleString();
+  const totalFiltered = games.length;
+  const totalPages = Math.max(1, Math.ceil(totalFiltered / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageGames = games.slice(start, start + PAGE_SIZE);
+
+  document.getElementById('shownCount').textContent =
+    totalFiltered > PAGE_SIZE
+      ? `${(start + 1).toLocaleString()}–${Math.min(start + PAGE_SIZE, totalFiltered).toLocaleString()} of ${totalFiltered.toLocaleString()}`
+      : totalFiltered.toLocaleString();
   document.getElementById('totalCount').textContent = allGames.length.toLocaleString();
 
   const grid = document.getElementById('gamesGrid');
   const empty = document.getElementById('emptyState');
-  if (!games.length) { grid.innerHTML = ''; empty.style.display = ''; return; }
+  if (!totalFiltered) { grid.innerHTML = ''; renderPagination(0, 0); empty.style.display = ''; return; }
   empty.style.display = 'none';
 
-  grid.innerHTML = games.map((g, i) => renderCard(g, i)).join('');
+  grid.innerHTML = pageGames.map(g => renderCard(g)).join('');
 
   grid.querySelectorAll('.card').forEach((el, i) => {
-    el.addEventListener('click', () => openModal(games[i]));
+    el.addEventListener('click', () => openModal(pageGames[i]));
   });
 
   grid.querySelectorAll('.star-btn').forEach(btn => {
@@ -1757,7 +1936,6 @@ function render() {
       btn.className = `star-btn${starred ? ' starred' : ''}`;
       btn.title = starred ? 'Unstar this game' : 'Star this game';
       buildMyViews();
-      // If in starred view and just unstarred, remove the card with animation
       if (activeView === 'starred' && !starred) {
         const card = btn.closest('.card');
         if (card) {
@@ -1768,6 +1946,45 @@ function render() {
         }
       }
     });
+  });
+
+  renderPagination(currentPage, totalPages);
+}
+
+function renderPagination(page, totalPages) {
+  let el = document.getElementById('pagination');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'pagination';
+    el.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:8px;margin:20px 0 8px;';
+    document.getElementById('gamesGrid').insertAdjacentElement('afterend', el);
+  }
+  if (totalPages <= 1) { el.innerHTML = ''; return; }
+
+  const btnStyle = (disabled, active) =>
+    `style="padding:6px 12px;border-radius:7px;border:1px solid var(--border);background:${active ? 'var(--text)' : 'var(--surface)'};color:${active ? 'var(--surface)' : 'var(--text-muted)'};font-size:13px;font-weight:${active ? '700' : '500'};cursor:${disabled ? 'default' : 'pointer'};opacity:${disabled ? '0.4' : '1'};font-family:inherit;"`;
+
+  let pages = [];
+  // Always show first, last, current ±1, with ellipsis
+  const show = new Set([1, totalPages, page, page - 1, page + 1].filter(p => p >= 1 && p <= totalPages));
+  const sorted = [...show].sort((a, b) => a - b);
+  for (let i = 0; i < sorted.length; i++) {
+    if (i > 0 && sorted[i] - sorted[i - 1] > 1) pages.push('…');
+    pages.push(sorted[i]);
+  }
+
+  el.innerHTML =
+    `<button ${btnStyle(page === 1, false)} id="pgPrev">← Prev</button>` +
+    pages.map(p => p === '…'
+      ? `<span style="color:var(--text-soft);padding:0 2px;">…</span>`
+      : `<button ${btnStyle(false, p === page)} data-pg="${p}">${p}</button>`
+    ).join('') +
+    `<button ${btnStyle(page === totalPages, false)} id="pgNext">Next →</button>`;
+
+  el.querySelector('#pgPrev').addEventListener('click', () => { if (page > 1) { currentPage--; render(); window.scrollTo(0, 0); } });
+  el.querySelector('#pgNext').addEventListener('click', () => { if (page < totalPages) { currentPage++; render(); window.scrollTo(0, 0); } });
+  el.querySelectorAll('[data-pg]').forEach(btn => {
+    btn.addEventListener('click', () => { currentPage = parseInt(btn.dataset.pg); render(); window.scrollTo(0, 0); });
   });
 }
 
@@ -1793,6 +2010,7 @@ function renderCard(g) {
   const mech = g.intel_sub_genre || '';
   const catBadge = cat ? `<span class="badge cat-badge">${escapeHtml(cat)}</span>` : '';
   const mechBadge = mech ? `<span class="badge mech-badge">Mechanic: ${escapeHtml(mech)}</span>` : '';
+  const pubBadge = isWatchedPublisher(g) ? '<span class="badge pub-badge">⚡ Watched</span>' : '';
 
   const releaseHtml = g.launch_date
     ? `<div class="card-released">Released ${fmtDate(g.launch_date)}</div>`
@@ -1814,6 +2032,7 @@ function renderCard(g) {
         <div class="badges-row">
           ${platformBadges}
           <span class="badge installs">${fmtInstalls(installs)} installs</span>
+          ${pubBadge}
         </div>
         ${catBadge}
         ${mechBadge}
