@@ -62,7 +62,7 @@ def send_summary_message(
         pretty_date = run_date
 
     text = (
-        f"📊 *Daily Casual Game Scan — {pretty_date}*\n\n"
+        f"📊 *Game Radar Updated — {pretty_date}*\n\n"
         f"{new_today:,} new games fetched.\n\n"
         f"🌐 <{RADAR_URL}|Open Radar Dashboard>"
     )
