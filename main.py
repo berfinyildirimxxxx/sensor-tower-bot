@@ -271,6 +271,7 @@ def main() -> int:
     Path(".run_summary.json").write_text(
         json.dumps({
             "run_date": run_date,
+            "new_today": len(new_games),
             "total_fetched": len(enriched),
             "ios_fetched": ios_raw,
             "android_fetched": android_raw,
